@@ -1,0 +1,25 @@
+;;***************************;;    CATASTROPHIES
+;;***************************
+
+
+to catastrophy
+
+print "hehe"
+ let tirage-cata random-poisson g-cata-mean-poisson
+ show tirage-cata
+ 
+ if tirage-cata < g-cata-threshold
+  [impose-catastrophy]
+end
+
+
+
+
+to impose-catastrophy
+  
+  ask  one-of cities
+   [ask cities in-radius g-cata-radius 
+    [ set own-resource-available (own-resource-available / g-cataF)
+     ]
+    ]  
+end

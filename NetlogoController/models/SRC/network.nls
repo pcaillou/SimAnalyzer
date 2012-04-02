@@ -1,0 +1,487 @@
+patches-own
+[
+  altitude
+  tagged-city?
+]
+
+
+
+;***********************************
+; Design of the network
+;***********************************
+
+to set-cities-form
+   set shape "circle"
+   set color white
+   set list-population []
+   set list-resource []
+   set date-innovation-creation []
+   set date-innovation-adoption []
+   set own-population-growth-rate g-Population-Rate
+   set postcata 0
+end
+
+
+to init-and-test-population [ popsd popmean popchoice]
+
+ifelse g-force-load-pop? = true
+[
+  let population-max load-population
+  
+][
+  let population-max (set-population popsd popmean popchoice)
+]
+end
+
+
+to create-new-cities [ncities netchoice popsd popmean popchoice reschoice resmaxchoice initabondance maxabondance]
+
+  if netchoice = "topo"
+     [ topo-network ncities netchoice popsd popmean popchoice reschoice resmaxchoice initabondance maxabondance]
+  
+  if netchoice = "fractal"
+     [ serpiensky-network ncities netchoice popsd popmean popchoice reschoice resmaxchoice initabondance maxabondance]
+         
+  ;; ATTENTION ERREUR ICI, SET RESSOURCE MET A JOUR TOUTE LES RESSOURCES DES CITIES
+  ;; ALORS QUICI ON EFFECTUE UN TRAITEMENT CITIES PAR CITIES !
+  ;; DU COUP A CHAQUE CREATION D'UNE CITIES, ON RECALCULE L'ENSEMBLE DES RESSOURCES ET POPULATION POUR LENSEMBLE DES VILLES EXISTANTES!         
+  if netchoice = "random"
+     [ let nb-id-cities 0
+        repeat ncities [ create-cities 1
+                           [ setxy random-xcor random-ycor
+                             set-cities-form
+                             set id nb-id-cities ]
+                             init-and-test-population popsd popmean popchoice
+                             set-resource popsd popmean reschoice resmaxchoice initabondance maxabondance
+                        set nb-id-cities nb-id-cities + 1]
+       ]
+     
+  if netchoice = "fix"
+  [
+  ;show "fix network ok"
+      file-open "init-situation.txt"
+       while [file-at-end? = false]
+         [let line file-read-line
+          let listobject read-from-string line 
+          create-cities 1
+                     [ set id item 0 listobject
+                       set xcor item 1 listobject
+                       set ycor item 2 listobject
+                       set population item 3 listobject
+                       set own-resource-available item 4 listobject
+                       set own-resource-max item 5 listobject
+                       set percolation-index item 6 listobject
+                       set class item 7 listobject
+                       set-cities-form ]
+          ]
+         
+         file-close
+         connect-cities-cristal
+      ]
+      
+         
+  if netchoice = "circle"
+      [ create-cities ncities
+         [ layout-circle sort cities with [who != 0] 15
+           set-cities-form
+             ]
+         init-and-test-population popsd popmean popchoice
+         set-resource popsd popmean reschoice resmaxchoice initabondance maxabondance
+       ]
+          
+  if netchoice = "linear"  ; c'est un peu complique mais c'est juste pour r�partir de facon homogene les villes sur une ligne...
+       [ create-cities ncities
+          [ ifelse who < (ncities / 2)
+            [ set ycor 0
+              set xcor who * world-width  * (1 / ncities)]
+          
+            [ set ycor 0
+              set xcor (who + 1 - round (ncities / 2)) * world-width  * (- 1 / ncities)]
+            
+             set-cities-form
+              ]
+          init-and-test-population popsd popmean popchoice
+          set-resource popsd popmean reschoice resmaxchoice initabondance maxabondance
+        ]
+       
+    If netchoice = "cristal"
+    
+      [ 
+        let nb-id-cities 0
+        repeat ncities 
+          [ 
+            create-cities 1
+            [ 
+              set-cities-form
+              set id nb-id-cities 
+            ]
+          set nb-id-cities nb-id-cities + 1
+          ]
+          
+           ; quand on choisi une repartition de type Christallerienne, il est oblige d'avoir un distribution LogNormal des populations de villes, des ressources proportionelles etc.
+           ; on ecrase les valeur defini par l'utilisateur
+           
+           set Initial_Population_Distribution "LogNormal"
+           set g-Initial_Population_Distribution Initial_Population_Distribution
+          
+           set Initial_Resource_Distribution "Prop-pop"
+           set g-Initial_Resource_Distribution Initial_Resource_Distribution
+          
+           set Initial_Resource_Max "Homogeneous"
+           set g-Initial_Resource_Max Initial_Resource_Max
+          
+           init-and-test-population popsd popmean popchoice
+           set-resource popsd popmean reschoice resmaxchoice initabondance maxabondance
+           set-distribution-cristal
+          
+       ]
+          
+end
+
+
+
+to create-network [netchoice]
+  
+  if netchoice = "random" ;or netchoice = "fix"
+    [create-links-with other get-specific-market in-radius g-proximity-threshold ]
+    
+  if netchoice = "circle"
+    [ask get-specific-market with  
+      [ where-is-house = city 0]
+      [ create-links-with other get-specific-market ]
+     ]
+  
+   if netchoice = "linear" 
+    [create-links-with other get-specific-market in-radius (1 + world-width / g-number-cities) ]
+  
+   if netchoice = "fractal"
+    [rebuilt-network ]
+    
+   if netchoice = "topo"
+    [rebuilt-network ]
+  
+   if netchoice = "cristal"  or netchoice = "fix"
+     [rebuilt-network]
+  
+end
+
+
+;********************************************
+; Spatial Configuration 'a la' Christaller
+; network = 'cristal'
+;********************************************* 
+
+
+to set-distribution-cristal
+  
+  set-class-value
+  sort-city-class
+  distribute_cristal
+  connect-cities-cristal
+  
+end
+
+
+; on fait le choix ici que l'effectif de population de chaque class est � peu pr�s �quivalent. 
+; Pour un tristribution LogNormal, on obtient une forte discrimination de villes par classe si et seulement si on a un fort �cart de population entre ville dans la distribution.
+; Sinon, les classes vont bien-sur avoir � peu pr�s le m�me nombre de villes...
+; C'est un choix de mod�lisation � garder en t�te
+to set-class-value
+ set g-class-value sum [population] of cities / 3
+end 
+
+
+to sort-city-class
+  
+ foreach sort-by [[population] of ?1 > [population] of ?2] cities
+  [ ask ? [ set-class ] ]
+
+end
+
+to set-class
+; En demandant aux villes par ordre d�croissant de taille (cf sort-city-class), on les place dans la classe la haute possible tant que l'effectif de cette class n'est pas d�pass�,
+; sinon, on passe � la classe du dessous
+; Optimisation possible avez des compteurs passe en parametres => evite de refaire la somme a chaque fois !
+
+ ifelse sum [population] of cities with [class = 1] < g-class-value
+      [ set class 1]
+      
+      [ ifelse sum [population] of cities with [class = 2] < g-class-value
+              [ set class 2]
+              [ set class 3]
+      ]
+end
+
+
+to distribute_cristal
+ 
+  ask cities with [class = 1] [ move-to one-of patches with [occ-class1 = 0 and occ-radius = 0]
+                                ask patches in-radius g-radius-class1 [set occ-class1 1]    ; on black-list les patches alentour dans un radius de class1 qui ne pourront donc plus acceuilir de ville de class1
+                                ask patches in-radius g-radius-class3 [set occ-radius 1]]   ; on black-list les patches alentour dans un radius de class3 qui ne pourront donc plus acceuilir de ville de n'import qu'elle classe
+                                                                                            ; on consid�re donc que le minimum d'espace entre deux villes et �quivalent � l'espace min entre villes de class3 (la + petite)
+  ask cities with [class = 2] [ move-to one-of patches with [occ-class2 = 0 and occ-radius = 0]
+                                ask patches in-radius g-radius-class2 [set occ-class2 2]
+                                ask patches in-radius g-radius-class3 [set occ-radius 1]]
+  
+  ask cities with [class = 3] [ move-to one-of patches with [occ-class3 = 0 and occ-radius = 0]
+                                ask patches in-radius g-radius-class3 [set occ-class3 3]
+                                ask patches in-radius g-radius-class3 [set occ-radius 1]]
+end
+
+
+to connect-cities-cristal
+; ce qu'il faut faire la c'est juste creer le reseau entre les villes, on le convertira apres en reseau entre market en activant les lignes dans la procedure create-network plus haut...
+ 
+ ask cities with [class = 1]
+ [
+   ifelse g-switch-porte-radius-class1? = true
+   [
+     
+     create-links-with other cities with [class = 1] in-radius g-porte-radius-class1
+     ;show word "create link" g-porte-radius-class1
+   ][
+   
+   create-links-with other cities with [class = 1]
+   ]
+ ]
+ 
+  ask cities with [class = 2]
+ [
+   create-links-with other cities in-radius g-porte-radius-class2
+ ] 
+
+  ask cities with [class = 3]
+ [
+   create-links-with other cities in-radius g-porte-radius-class3
+ ] 
+  
+end
+
+
+
+
+;**********************************************
+;; Topographique network (Random distribution)
+;**********************************************
+
+
+to topo-network [ncities netchoice popsd popmean popchoice reschoice resmaxchoice initabondance maxabondance]
+  setup-altitude
+  localise-topo-cities ncities netchoice popsd popmean popchoice reschoice resmaxchoice initabondance maxabondance
+end
+
+
+;;to define altitudes randomly but according to the lottory algorythm
+;;-------------------------------------
+to setup-altitude
+ask n-of 200 patches  
+ [
+   set altitude random  g-altitude-max
+ ]
+ smooth-altitude
+end
+
+
+to smooth-altitude
+  repeat 30 
+  [ diffuse altitude 1
+    ]
+  translate-altitude
+  rescale-altitude
+  map-altitude
+end
+
+
+to translate-altitude
+  let min-altitude min [altitude] of patches
+  let max-altitude max [altitude] of patches 
+  ask patches 
+  [ set altitude (altitude - min-altitude)
+    ]
+end
+
+
+to rescale-altitude
+  let min-altitude min [altitude] of patches
+  let max-altitude max [altitude] of patches 
+  ask patches 
+  [ set altitude altitude * (g-altitude-max / max-altitude)
+    ]
+end
+
+to map-altitude
+  let max-altitude max [altitude] of patches
+  ask patches
+  [set pcolor scale-color green altitude 0 max-altitude 
+    ]
+end
+
+
+
+
+;;to localised and connect cities depending on the topography
+;;--------------------------------------------------------------
+
+
+to localise-topo-cities [ncities netchoice popsd popmean popchoice reschoice resmaxchoice initabondance maxabondance]
+  ask patches [set tagged-city? 0]
+  let nb-id-cities 0
+  while [count cities < ncities]
+  [
+    let destination find-patch
+    create-cities 1
+    [     
+     set-cities-form 
+     set id nb-id-cities
+     move-to destination
+     jitter-cities
+     ask patches in-radius g-topo-city-influence [set tagged-city? 1]
+      ]
+    
+    set nb-id-cities nb-id-cities + 1
+    
+    ]
+  init-and-test-population popsd popmean popchoice
+  set-resource popsd popmean reschoice resmaxchoice initabondance maxabondance
+  connect-topo-cities  
+  connect-topo-outliers
+end
+
+to jitter-cities
+fd random-float 1
+end
+
+to-report find-patch
+  let free-patches patches with [tagged-city? = 0]
+  let total random-float sum [g-altitude-max - altitude] of free-patches
+  let patch-found nobody
+  ask free-patches
+  [
+    let my-altitude g-altitude-max - altitude
+    ;; if there's no winner yet...
+    if patch-found = nobody
+    [
+      ifelse my-altitude > total
+        [ set patch-found self ]
+        [ set total total - my-altitude ]
+    ]
+  ]
+  report patch-found
+end
+
+to connect-topo-cities
+ ask cities
+ [
+   create-links-with other cities in-radius g-proximity-threshold
+ ] 
+end
+
+
+to connect-topo-outliers
+while [any? cities with [count link-neighbors = 0]]
+[
+  let outlier one-of cities with [count link-neighbors = 0]
+  if is-agent? outlier
+    [ 
+      let destination find-patch  
+      ask outlier
+      [
+        ask patches in-radius g-topo-city-influence [set tagged-city? 0]
+        move-to destination
+        jitter-cities
+        ask patches in-radius g-topo-city-influence [set tagged-city? 1]
+        create-links-with other cities in-radius g-proximity-threshold
+      ]
+    ]
+  
+]
+  
+end
+
+
+
+
+;*******************************
+;; Fractal network (Serpienski)
+;*******************************
+
+to serpiensky-network [ncities netchoice popsd popmean popchoice reschoice resmaxchoice initabondance maxabondance]
+  setup-Serpienski netchoice popsd popmean popchoice reschoice resmaxchoice initabondance maxabondance
+  while [(count cities) < ncities ] [Create-Serpienski g-seed-fractal]
+end
+
+
+; create a node and set its initial location and modulus-fractal
+to setup-Serpienski [ netchoice popsd popmean popchoice reschoice resmaxchoice initabondance maxabondance]
+  create-cities 1
+  [
+    setxy 0 -1
+    set heading 0
+    set-cities-form
+    set modulus-fractal 0.5 * max-pycor
+  ]
+  init-and-test-population popsd popmean popchoice
+  set-resource popsd popmean reschoice resmaxchoice initabondance maxabondance
+end
+
+; ask the nodes to go forward by modulus-fractal, create a new node to
+; draw the next iteration of sierpinski's tree, and return to its place
+to grow-Serpienski
+  hatch 1
+    [ set-cities-form
+      fd modulus-fractal
+     create-link-with myself
+      ifelse g-seed-fractal = 3 [set modulus-fractal (0.5 * modulus-fractal) ]  ; new node's modulus-fractal is half its parent's
+                                  [ifelse g-seed-fractal = 5 [set modulus-fractal (0.4 * modulus-fractal) ]
+                                                               [set modulus-fractal (0.3 * modulus-fractal) ] ]
+    ]
+end
+
+; draw the sierpinski tree
+to Create-Serpienski [nb]
+  ask cities with [count link-neighbors < 2]
+  [
+    repeat nb
+    [
+      grow-Serpienski
+      right  360 / nb  ; turn counter-clockwise to draw more legs
+    ]
+  ]
+end
+
+;to rebuilt-fractal-network
+; ; l� ce qu'on cherhe � fiare c'est de creer des links entre les markets dont les home sont connect�es...
+; ask market-innovations [ create-links-with market-innovations with [ member? ([where-is-house] of self) (connected-cities-fractal myself)]]
+; ask cities [ask my-links [die]]
+;  
+;end
+;
+;to-report connected-cities-fractal[market-asking]
+;  let c-cities nobody
+;  ask [where-is-house] of market-asking [ set c-cities link-neighbors ]
+;  report c-cities
+;end
+
+
+;;****************************************
+;; REBUILT NETWORK BETWEEN INNO-MARKET 
+;;(Rather than between cities)
+;;****************************************
+
+to rebuilt-network
+ ; Pour le modele on a besoin d'avoir des market connectes et non des villes connectees, hors c'est souvent plus facil de creer les reseau entre les villes :
+ ; cet algo permet de convertir les liaisons entre villes en liaisons entre market
+ ; la ce qu'on cherche donc a faire c'est de creer des links entre les markets dont les home sont connectees...
+ 
+ ask get-specific-market [ create-links-with get-specific-market with [ member? ([where-is-house] of self) (connected-network-cities myself)]]
+ ask cities [ask my-links [die]]
+  
+end
+
+to-report connected-network-cities [market-asking]
+  let c-cities nobody
+  ask [where-is-house] of market-asking [ set c-cities link-neighbors ]
+  report c-cities
+end
+
+

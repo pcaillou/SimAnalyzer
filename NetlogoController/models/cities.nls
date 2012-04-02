@@ -1,0 +1,198 @@
+turtles-own
+[
+ population
+ list-population
+ list-resource
+ own-population-growth-rate
+ resource
+ own-resource-max
+ own-resource-available
+ date-innovation-creation
+ date-innovation-adoption
+ id-in-distance-matrix
+ matrix-distance-other-cities
+ postcata
+ modulus-fractal
+ id
+ class
+ 
+ ; pour l'algo de percolation
+ percolation-index
+ infected?           ;; if true, the turtle is infectious
+ outbreak-node       ;; if 1, the turtle is a starting node
+ Time-Needed-to-reach-node ;;output indicator giving the time (# ticks) needed to percolate from the outbreak nodes to a given node
+ Time-Needed-to-reach-all-nodes ;;output indicator giving the time (# ticks) needed to percolate from the outbreak node to every node
+ Tagged              ;;if 1, turtle already used as outbreak node during the systematic exploration
+ test
+]
+
+cities-own
+[
+ 
+]
+
+patches-own
+
+[
+  occ-radius ; il est a 0 si aucune autre ville (quelque soit sa classe) est dans les parages et a 1 sinon
+  occ-class1 ; il est a 0 si aucune autre ville de class1 est dans les parages et a 1 sinon
+  occ-class2 ; il est a 0 si aucune autre ville de class2 est dans les parages et a 1 sinon
+  occ-class3 ; il est a 0 si aucune autre ville de class3 est dans les parages et a 1 sinon
+  
+  ]
+
+;*************************************************************************************************************************************************************
+;*************************************************************************************************************************************************************
+
+
+to init-cities [all-cities]
+  
+  ask all-cities [
+   set infected? false
+  ]
+  
+end
+
+to set-patches
+  ask patches 
+  [ set occ-radius 0
+    set occ-class1 0
+    set occ-class2 0
+    set occ-class3 0
+    ]
+end
+
+
+to-report load-population
+
+let listpop[]
+let var 0
+let temp 0
+
+file-open "logpopville.txt"
+while [file-at-end? = false]
+  [let line file-read-line
+    let listobject read-from-string line
+    ;show listobject
+    set listpop lput listobject listpop
+  ]
+
+file-close
+
+ask cities
+  [
+    set population (item var listpop)
+    
+    set list-population lput population list-population
+    set var var + 1 
+  ]
+
+show word "max pop> " max([population] of cities)
+report max([population] of cities)
+  
+end
+
+
+to-report set-population [ popsd popmean popchoice]
+  ;;parameters of the lognormal distribution
+  ;; PB: Je ne comprends pas ce que tu a fais la car "X est dite suivre une loi log-normale de parametres blabla  si la variable Y=ln(X) suit une loi normale de parametres blabla
+  ;; Pourquoi calculer des autres moyenne et ecrat-type?
+  let sigma sqrt (ln (((popsd * popsd) / (popmean * popmean)) + 1))
+  let mu ln (popmean) - (sigma / 2) 
+  
+;  let sigma sqrt (ln ( popmean / (sqrt (1 + (popsd / popmean)^ 2 ))))
+;  let mu  ln ( 1 + (popsd / popmean)^ 2)
+;  show sigma
+;  show mu
+  
+ask cities
+  [
+    if popchoice = "LogNormal"
+    [set population exp (random-normal mu sigma) ]  ;j'ai enleve le round  + 30 
+    if popchoice = "Normal"
+    [set population round (random-normal popmean popsd)]
+    if popchoice = "Exponential"
+    [set population round random-exponential popmean]
+    if popchoice = "Random"
+    [set population random (2 * popmean)]
+    if popchoice = "Homogeneous"
+    [set population popmean]
+     
+     set list-population lput population list-population
+     
+  ]
+  ;show word "max pop> " max([population] of cities)
+  report max([population] of cities)
+end
+
+
+to set-resource [popsd popmean reschoice resmaxchoice initabondance maxabondance]
+
+   ;;parameters of the lognormal distribution
+  ;let sigmaR sqrt (ln (((popsd * popsd) / (popmean * popmean)) + 1))
+  ;let muR ( ln (g-initial-abondance * popmean) - (sigmaR / 2) )
+  
+  let sigmaR sqrt (ln ( popmean * initabondance / (sqrt (1 + (popsd / (popmean * initabondance))^ 2 ))))
+  let muR  ln ( 1 + (popsd / ((popmean * initabondance)^ 2)))
+  
+  ;let sigmaRD sqrt (ln (((popsd * popsd) / (popmean * popmean)) + 1))
+ ; let muRD ( ln ( max-abondance * popmean) - (sigmaRD / 2) )
+  
+  let sigmaRD sqrt (ln ( popmean * maxabondance / (sqrt (1 + (popsd / (popmean * maxabondance))^ 2 ))))
+  let muRD  ln ( 1 + (popsd / (popmean * maxabondance)^ 2))
+
+ask cities 
+[
+ If reschoice = "Prop-pop"
+   [set own-resource-available round (population * initabondance)]
+  If reschoice = "Homogeneous"
+   [set own-resource-available (initabondance * popmean)]
+  If reschoice = "LogNormal"
+   [set own-resource-available round exp  (random-normal muR sigmaR) + 30 ]
+  If reschoice = "Exponential"
+   [set own-resource-available round random-exponential (popmean * initabondance) ]
+  
+  
+  set list-resource lput own-resource-available list-resource 
+  
+
+  If resmaxchoice  = "Prop-res"
+   [set own-resource-max own-resource-available * maxabondance]
+  If resmaxchoice  = "Homogeneous"
+   [set own-resource-max popmean * maxabondance]
+  If resmaxchoice  =  "Normal"
+   [set own-resource-max  round (random-normal (maxabondance * popmean) popsd)
+  ;; FIXME : peut avoir des configuration ou (own-resource-max = 0) ce qui pose pb apres car dvision par zero... donc ligne suivante mais pas tres joli...
+   set own-resource-max own-resource-max + 1]
+  If resmaxchoice = "LogNormal"
+   [set own-resource-max round exp (random-normal muRD sigmaRD)  + 30 ]
+]
+  
+end
+
+;******************************************
+; GROW FUNCTION (CITIES + RESOURCE)
+;******************************************
+
+to calculate-new-resource [city]
+
+  set own-resource-available own-resource-available * (1 + g-innovation-factor * ( 1 - (own-resource-available / own-resource-max)) )   
+
+end
+  
+
+; Dynamique de croissance demographique selon l'equation de Batty, plus que celle-la maintenant:
+
+to grow-cities [poprate]
+  
+  ask cities 
+  [
+    let previous-pop population
+    set population max list 0  (previous-pop + (previous-pop * poprate * (1 - (previous-pop / own-resource-available))))
+       
+    set list-population lput population list-population
+    
+    set list-resource lput own-resource-available list-resource
+    
+  ]
+end

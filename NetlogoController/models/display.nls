@@ -1,0 +1,178 @@
+to-report list-population-init
+  set list-p []
+  ask cities [
+   set list-p lput population list-p
+  ]
+  report sort list-p
+end
+
+
+to trace-cities
+
+  let adopting-market one-of get-specific-market with [ nb-innovation-copy  >= 1] 
+  let innovative-market one-of get-specific-market with [ nb-innovation-mine >= 1]
+ ; let normal-market one-of market-innovations with [ nb-innovation-copy = 0 and nb-innovation-mine = 0] 
+  
+  let innovative-city [where-is-house] of innovative-market
+  let adopting-city [where-is-house] of adopting-market
+;  let normal-city [where-is-house] of normal-market
+  
+ 
+  
+  
+  let time 0
+  set-current-plot "Trace-Population"
+  clear-plot
+  set-plot-x-range 0 max-x-axis
+  set-current-plot-pen "Creative"
+   if is-agent? innovative-city
+   [ask innovative-city
+     [
+       set shape "square"
+       set color red
+       repeat min list (length list-population) max-x-axis
+       [
+         plotxy time item time list-population
+         set time time + 1
+       ]
+     ]]
+
+  set time 0
+  set-current-plot-pen "Adoptant"
+   if is-agent? adopting-city
+   [ask adopting-city
+  [
+    set shape "square 2"
+    set color green
+    repeat min list (length list-population) max-x-axis
+    [
+      plotxy time item time list-population
+      set time time + 1
+    ]
+  ]]
+  
+;  set time 0
+;  set-current-plot-pen "Normal"
+;   if is-agent? normal-city
+;  [ask normal-city
+;  [
+;    repeat min list (length list-population) max-x-axis
+;    [
+;      plotxy time item time list-population
+;      set time time + 1
+;    ]
+;  ]
+;  ]
+  
+   set time 0
+  set-current-plot "Trace-Resource"
+  clear-plot
+  set-plot-x-range 0 max-x-axis
+  set-current-plot-pen "Creative"
+  if is-agent? innovative-city
+   [
+  ask innovative-city
+  [
+    repeat min list (length list-resource) max-x-axis
+    [
+      plotxy time item time list-resource
+      set time time + 1
+    ]
+  ]]
+
+  set time 0
+  set-current-plot-pen "Adoptant"
+   if is-agent? adopting-city
+   [
+  ask adopting-city
+  [
+    repeat min list (length list-resource) max-x-axis
+    [
+      plotxy time item time list-resource
+      set time time + 1
+    ]
+  ]]
+ 
+;  if is-agent? normal-city
+;  [
+;  set time 0
+;  set-current-plot-pen "Normal"
+;  ask normal-city
+;  [
+;    repeat min list (length list-resource) max-x-axis
+;    [
+;      plotxy time item time list-resource
+;      set time time + 1
+;    ]
+;  ]
+;  ]
+
+end
+
+to plot-Cumulated-Innovations
+  set-current-plot "Cumulated-Innovations"
+  set-current-plot-pen "Creations"
+  plot g-number-new-creations
+  set-current-plot-pen "Adoptions"
+  plot g-number-new-adoptions
+end
+
+to plot-all-pop
+  set-current-plot "Total Population"
+  set-current-plot-pen "all-pop"
+  plot sum-population-at-ticks
+end
+
+to histogram-populations
+    set-current-plot "Histogram-Population"
+    set-histogram-num-bars number-bins
+    if any? cities
+    [
+      set-plot-x-range (min [population] of cities  - 50) (max [population] of cities  + 50)
+      ]
+    histogram [population] of cities
+  end
+  
+ to histogram-resources
+    set-current-plot "Histogram-Resource"
+    set-histogram-num-bars number-bins
+    if any? cities 
+    [
+      set-plot-x-range (min [own-resource-available] of cities  - 50) (max [own-resource-available] of cities + 50)
+      ]
+    histogram [own-resource-available] of cities
+  end
+  
+  to histogram-resources-max
+    set-current-plot "Histogram-Resource-Max"
+    set-histogram-num-bars number-bins
+    if any? cities 
+    [
+      set-plot-x-range (min [own-resource-max] of cities  - 50) (max [own-resource-max] of cities  + 50)
+      ]
+    histogram [own-resource-max] of cities
+  end
+  
+to  map-cities
+  ask cities 
+  [
+    set size (population / City-Size-Reduction-Factor)
+  ]
+end
+
+
+
+to set-transparency
+  ;; since turtle colors might be either numbers (NetLogo colors) or lists
+  ;; (RGB or RGBA colors) make sure to handle both cases when changing the
+  ;; transparency
+  ifelse is-list? color
+  ;; list might either have 3 or 4 member since RGB and RGBA colors
+  ;; are allowed, so you can't just replace or add an item at the
+  ;; end of the list.  So, we take the first 3 elements of the list
+  ;; and add the alpha to the end
+  [ set color lput transparency sublist color 0 3 ]
+  ;; to get the RGB equivalent of a NetLogo color we
+  ;; use EXTRACT-RGB and then add alpha to the end
+  [ set color lput transparency extract-rgb color ]
+end

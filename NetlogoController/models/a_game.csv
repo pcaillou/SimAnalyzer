@@ -1,0 +1,4 @@
+type;(Tous);;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Somme de min;Somme de players;Somme de totalRemainingTokens;Somme de totalUsedTokens;Somme de totalIdeas;Somme de totalItems;Somme de totalComments;Somme de totalIdeasWithBets;Somme de playerId;Somme de playerRemainingTokens;Somme de playerUsedTokens;Somme de playerIdeas;Somme de playerItems;Somme de playerComments;Somme de playerTimeSinceAction;Somme de playerVotes;Somme de playerBestIdeaScore;Somme de playerItemUsage;Somme de playerIdeaUsage;Somme de playerCommentUsage;Somme de playercréativité;Somme de playerpertinence;Somme de playerpersuasion;Somme de playeradaptation;Somme de rankcréativité;Somme de rankpertinence;Somme de rankpersuasion;Somme de rankadaptation;Somme de itemCreationTime;Somme de ideaOwnerId;Somme de ideaCreationTime
+141;522;2268;2952;862;718;2596;0;657;339;531;157;149;518;6913;452;128;251;83;0;395;781;147,5666667;134,2666667;369;339;342;347;5249;588;50780

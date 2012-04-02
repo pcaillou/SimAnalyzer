@@ -1,0 +1,144 @@
+0	-1	288.0	null	null	-7.0	9.0	null	person service		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+1	-1	141.0	null	null	-9.0	9.0	null	person service		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+2	-1	118.0	null	null	-6.0	1.0	null	fish 2		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+3	-1	181.0	null	null	6.0	1.0	null	fish 2		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+4	-1	193.0	null	null	-6.0	0.0	null	fish		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+5	-1	337.0	null	null	6.0	0.0	null	fish		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+6	-1	73.0	null	null	-6.0	-1.0	null	rice2		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+7	-1	181.0	null	null	6.0	-1.0	null	rice2		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+8	-1	296.0	null	null	-6.0	-2.0	null	bottle		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+9	-1	108.0	null	null	6.0	-2.0	null	bottle		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+10	-1	350.0	null	null	-6.0	-3.0	null	container		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+11	-1	22.0	null	null	6.0	-3.0	null	container		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+12	-1	317.0	null	null	-6.0	-4.0	null	cow		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+13	-1	67.0	null	null	6.0	-4.0	null	cow		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+14	-1	248.0	null	null	-6.0	-5.0	null	monster		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+15	-1	225.0	null	null	6.0	-5.0	null	monster		9.9	Turtle	false	1.0	1.0	up	null	null	null	0.0
+16	-1	30.0	null	null	-1.0	-6.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -5 1	Tuna Sushi		0.0
+17	-1	97.0	null	null	3.0	-7.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 5 1	Tuna Sushi		0.0
+18	-1	331.0	null	null	-3.0	-3.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -5 1	Tuna Sushi		0.0
+19	-1	104.0	null	null	4.0	-3.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 5 -4	Steak		0.0
+20	-1	114.0	null	null	-3.0	-5.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -5 -4	Steak		0.0
+21	-1	124.0	null	null	-3.0	-4.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -5 -4	Steak		0.0
+22	-1	45.0	null	null	3.0	-5.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 5 0	Salmon Sushi		0.0
+23	-1	142.0	null	null	2.0	-1.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 5 -4	Steak		0.0
+24	-1	82.0	null	null	-4.0	1.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -5 -5	Calamari		0.0
+25	-1	264.0	null	null	5.0	-4.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 5 0	Salmon Sushi		0.0
+0	-1	288.0	null	null	-7.0	9.0	null	person service		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+1	-1	141.0	null	null	-9.0	9.0	null	person service		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+2	-1	118.0	null	null	-6.0	1.0	null	fish 2		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+3	-1	181.0	null	null	6.0	1.0	null	fish 2		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+4	-1	193.0	null	null	-6.0	0.0	null	fish		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+5	-1	337.0	null	null	6.0	0.0	null	fish		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+6	-1	73.0	null	null	-6.0	-1.0	null	rice2		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+7	-1	181.0	null	null	6.0	-1.0	null	rice2		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+8	-1	296.0	null	null	-6.0	-2.0	null	bottle		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+9	-1	108.0	null	null	6.0	-2.0	null	bottle		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+10	-1	350.0	null	null	-6.0	-3.0	null	container		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+11	-1	22.0	null	null	6.0	-3.0	null	container		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+12	-1	317.0	null	null	-6.0	-4.0	null	cow		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+13	-1	67.0	null	null	6.0	-4.0	null	cow		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+14	-1	248.0	null	null	-6.0	-5.0	null	monster		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+15	-1	225.0	null	null	6.0	-5.0	null	monster		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+16	-1	30.0	null	null	-1.0	3.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -1 3	Tuna Sushi	29.0	30.0
+17	-1	97.0	null	null	3.0	-5.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -3 -7	Tuna Sushi		30.0
+18	-1	331.0	null	null	-4.0	-7.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -4 -7	Tuna Sushi	22.0	30.0
+19	-1	104.0	null	null	5.0	3.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 5 3	Steak	27.0	30.0
+20	-1	114.0	null	null	4.0	3.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 4 3	Steak	24.0	30.0
+21	-1	124.0	null	null	1.0	3.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 1 3	Steak	16.0	30.0
+22	-1	45.0	null	null	0.0	3.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 0 3	Salmon Sushi		30.0
+23	-1	142.0	null	null	0.0	-1.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 0 3	Steak		30.0
+24	-1	82.0	null	null	-6.0	3.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -6 3	Calamari	29.0	30.0
+25	-1	264.0	null	null	4.0	-7.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 4 -7	Salmon Sushi	23.0	30.0
+26	-1	39.0	null	null	-7.0	10.0	null	person	queing	0.0	Turtle	false	1.0	1.0	up	null		null	30.0
+27	-1	236.0	null	null	-8.0	0.0	null	person	sitting W	0.0	Turtle	false	1.0	1.0	up	null	Calamari	null	30.0
+28	-1	225.0	null	null	-3.0	12.0	null	person	arriving	0.0	Turtle	false	1.0	1.0	up	null		null	30.0
+29	-1	13.0	null	null	1.0	4.0	null	square		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+30	-1	337.0	null	null	-8.0	12.0	null	person	arriving	0.0	Turtle	false	1.0	1.0	up	null		null	30.0
+31	-1	185.0	null	null	-4.0	-8.0	null	square		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+32	-1	103.0	null	null	4.0	-8.0	null	square		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+33	-1	342.0	null	null	4.0	4.0	null	square		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+34	-1	171.0	null	null	5.0	4.0	null	square		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+35	-1	279.0	null	null	-6.0	4.0	null	square		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+36	-1	84.0	null	null	-1.0	4.0	null	square		9.9	Turtle	false	1.0	1.0	up	null	null	null	30.0
+0	-1	288.0	null	null	-7.0	9.0	null	person service		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+1	-1	141.0	null	null	-9.0	9.0	null	person service		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+2	-1	118.0	null	null	-6.0	1.0	null	fish 2		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+3	-1	181.0	null	null	6.0	1.0	null	fish 2		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+4	-1	193.0	null	null	-6.0	0.0	null	fish		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+5	-1	337.0	null	null	6.0	0.0	null	fish		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+6	-1	73.0	null	null	-6.0	-1.0	null	rice2		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+7	-1	181.0	null	null	6.0	-1.0	null	rice2		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+8	-1	296.0	null	null	-6.0	-2.0	null	bottle		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+9	-1	108.0	null	null	6.0	-2.0	null	bottle		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+10	-1	350.0	null	null	-6.0	-3.0	null	container		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+11	-1	22.0	null	null	6.0	-3.0	null	container		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+12	-1	317.0	null	null	-6.0	-4.0	null	cow		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+13	-1	67.0	null	null	6.0	-4.0	null	cow		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+14	-1	248.0	null	null	-6.0	-5.0	null	monster		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+15	-1	225.0	null	null	6.0	-5.0	null	monster		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+16	-1	30.0	null	null	0.0	3.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 1 -8	Tuna Sushi	29.0	60.0
+17	-1	97.0	null	null	-3.0	-7.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -3 -7	Tuna Sushi	39.0	60.0
+18	-1	331.0	null	null	-4.0	-6.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 0 -8	Tuna Sushi	22.0	60.0
+19	-1	104.0	null	null	-1.0	-7.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -1 -8	Steak	27.0	60.0
+20	-1	114.0	null	null	1.0	-8.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 0 -8	Steak	24.0	60.0
+21	-1	124.0	null	null	-5.0	-1.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -5 -1	Salmon Sushi		60.0
+22	-1	45.0	null	null	0.0	-1.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -1 -8	Salmon Sushi	31.0	60.0
+23	-1	142.0	null	null	-5.0	2.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 0 -8	Steak	40.0	60.0
+24	-1	82.0	null	null	1.0	-6.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 5 1	Tuna Sushi		60.0
+25	-1	264.0	null	null	-2.0	-5.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -5 -5	Calamari		60.0
+26	-1	39.0	null	null	-5.0	-10.0	null	person	sitting S	0.0	Turtle	false	1.0	1.0	up	null	Tuna Sushi	null	60.0
+27	-1	236.0	null	null	-8.0	-2.0	null	person	waiting	0.0	Turtle	false	1.0	1.0	up	null	Calamari	null	60.0
+28	-1	225.0	null	null	3.0	6.0	null	person	waiting	0.0	Turtle	false	1.0	1.0	up	null	Steak	null	60.0
+30	-1	337.0	null	null	0.0	6.0	null	person	waiting	0.0	Turtle	false	1.0	1.0	up	null	Calamari	null	60.0
+38	-1	144.0	null	null	-3.0	-8.0	null	square		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+40	-1	188.0	null	null	0.0	12.0	null	person	arriving	0.0	Turtle	false	1.0	1.0	up	null		null	60.0
+41	-1	270.0	null	null	-4.5	-9.0	null	steak		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+42	-1	225.0	null	null	2.0	14.0	null	person	arriving	0.0	Turtle	false	1.0	1.0	up	null		null	60.0
+43	-1	270.0	null	null	-1.5	-9.0	null	sushi		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+44	-1	270.0	null	null	0.25	-9.0	null	calamari		9.9	Turtle	false	1.0	1.0	up	null	null	null	60.0
+0	-1	288.0	null	null	-7.0	9.0	null	person service		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+1	-1	141.0	null	null	-9.0	9.0	null	person service		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+2	-1	118.0	null	null	-6.0	1.0	null	fish 2		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+3	-1	181.0	null	null	6.0	1.0	null	fish 2		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+4	-1	193.0	null	null	-6.0	0.0	null	fish		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+5	-1	337.0	null	null	6.0	0.0	null	fish		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+6	-1	73.0	null	null	-6.0	-1.0	null	rice2		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+7	-1	181.0	null	null	6.0	-1.0	null	rice2		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+8	-1	296.0	null	null	-6.0	-2.0	null	bottle		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+9	-1	108.0	null	null	6.0	-2.0	null	bottle		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+10	-1	350.0	null	null	-6.0	-3.0	null	container		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+11	-1	22.0	null	null	6.0	-3.0	null	container		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+12	-1	317.0	null	null	-6.0	-4.0	null	cow		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+13	-1	67.0	null	null	6.0	-4.0	null	cow		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+14	-1	248.0	null	null	-6.0	-5.0	null	monster		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+15	-1	225.0	null	null	6.0	-5.0	null	monster		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+16	-1	30.0	null	null	2.0	-1.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 0 3	Calamari		90.0
+17	-1	97.0	null	null	1.0	-7.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -1 -8	Tuna Sushi	39.0	90.0
+18	-1	331.0	null	null	-5.0	-1.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -5 -1	Salmon Sushi		90.0
+19	-1	104.0	null	null	-1.0	-8.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -1 -8	Steak	27.0	90.0
+20	-1	114.0	null	null	4.0	-3.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -5 -7	Tuna Sushi		90.0
+21	-1	124.0	null	null	-3.0	3.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -3 3	Salmon Sushi	71.0	90.0
+22	-1	45.0	null	null	0.0	-7.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -1 -8	Salmon Sushi	31.0	90.0
+23	-1	142.0	null	null	0.0	-8.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch 5 1	Tuna Sushi		90.0
+24	-1	82.0	null	null	-1.0	3.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -1 3	Tuna Sushi	88.0	90.0
+25	-1	264.0	null	null	2.0	-8.0	null	chef		0.0	Turtle	false	1.0	1.0	up	patch -1 -8	Calamari	75.0	90.0
+26	-1	39.0	null	null	0.0	-10.0	null	person	eating	0.0	Turtle	false	1.0	1.0	up	null	Tuna Sushi	null	90.0
+27	-1	236.0	null	null	-8.0	-2.0	null	person	waiting	0.0	Turtle	false	1.0	1.0	up	null	Calamari	null	90.0
+28	-1	225.0	null	null	3.0	6.0	null	person	waiting	0.0	Turtle	false	1.0	1.0	up	null	Steak	null	90.0
+30	-1	337.0	null	null	0.0	6.0	null	person	waiting	0.0	Turtle	false	1.0	1.0	up	null	Calamari	null	90.0
+40	-1	188.0	null	null	-8.0	0.0	null	person	sitting W	0.0	Turtle	false	1.0	1.0	up	null	Steak	null	90.0
+41	-1	0.0	null	null	-6.75	-3.75	null	steak		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+42	-1	225.0	null	null	5.0	7.0	null	person	sitting E	0.0	Turtle	false	1.0	1.0	up	null	Tuna Sushi	null	90.0
+43	-1	0.0	null	null	-6.75	-6.75	null	sushi		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+44	-1	0.0	null	null	-6.75	-8.5	null	calamari		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+45	-1	126.0	null	null	-9.0	-3.0	null	person	sitting S	0.0	Turtle	false	1.0	1.0	up	null	Tuna Sushi	null	90.0
+46	-1	74.0	null	null	-9.0	3.0	null	person	sitting W	0.0	Turtle	false	1.0	1.0	up	null	Salmon Sushi	null	90.0
+47	-1	270.0	null	null	-5.5	-9.0	null	steak		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+48	-1	64.0	null	null	-7.0	8.0	null	person	sitting E	0.0	Turtle	false	1.0	1.0	up	null	Tuna Sushi	null	90.0
+49	-1	94.0	null	null	-3.0	4.0	null	square		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+50	-1	135.0	null	null	-1.0	12.0	null	person	arriving	0.0	Turtle	false	1.0	1.0	up	null		null	90.0
+52	-1	270.0	null	null	-2.75	-9.0	null	sushi		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+54	-1	198.0	null	null	-12.0	14.0	null	person	arriving	0.0	Turtle	false	1.0	1.0	up	null		null	90.0
+55	-1	270.0	null	null	-1.0	-9.0	null	steak		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0
+56	-1	264.0	null	null	-1.0	4.0	null	square		9.9	Turtle	false	1.0	1.0	up	null	null	null	90.0

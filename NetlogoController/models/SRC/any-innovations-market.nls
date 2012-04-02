@@ -1,0 +1,148 @@
+
+any-market-innovations-own[
+ where-is-house ; Ou suis je situe ?
+ last-date-creation
+ last-date-copy
+ nb-innovation-copy
+ nb-innovation-mine
+ probability-sucess-adoption
+ innovate-market? ;;La ville est elle innovante a un instant t ?
+ nbObjInnovation ;; Nombre d'objet innovation a chaque tour
+]
+
+;; --------------------------------------------
+;; INITIALISATION SPECIFIQUE DU MARCHE
+;; --------------------------------------------
+
+to init-any-market-innovation [agents-cities netchoice]
+    
+    ask agents-cities[
+      new-any-market-innovation self
+    ]
+    
+    ask any-market-innovations
+    [
+      create-network netchoice
+    ]
+   
+end
+
+to new-any-market-innovation [city-here]
+     
+   hatch-any-market-innovations 1 [
+      
+        set where-is-house city-here
+        set color blue
+       
+        if [class] of where-is-house = 1 [ set color red]
+        if [class] of where-is-house = 2 [ set color yellow]
+        if [class] of where-is-house = 3 [ set color green]
+        
+        set innovate-market? false
+         
+        set shape "box"
+        set hidden? false
+        set size 1
+        set last-date-creation []
+        set last-date-copy[]
+        set nb-innovation-copy 0
+        set nb-innovation-mine 0
+        set nbObjInnovation 0 
+        set probability-sucess-adoption g-probability-sucess-adoption
+        ]
+   
+end
+
+;; --------------------------------------------
+;; CHOIX TYPE / COPY CREATE INNOVATIONS 
+;; RQ: on fait appel aux fonction mutual-market, commun aux deux marche existants..
+;; --------------------------------------------
+
+to any-innovation-copy [destination-market origin-market]
+  let copie? false
+  set copie? new-common-object-copy destination-market origin-market
+end
+
+to any-innovation-create [market]
+      new-common-object-create market 
+end
+
+;; --------------------------------------------
+;; RECUPERATION SPECIFIQUE DU VOISINNAGE
+;; --------------------------------------------
+
+to-report get-any-neighbours [origin-market]
+  let agentset-neighbours link-neighbors
+  report agentset-neighbours  
+end
+  
+;; --------------------------------------------
+;; FONCTION SPECIFIQUE ESSAI INNOVATION
+;; --------------------------------------------
+
+to try-any-specific-innovate
+  
+  ask any-market-innovations [
+    
+    let probability-incr-innovation random-float 1
+    let p-binomial 0
+    
+    ask where-is-house [
+      set p-binomial binomial ((1 / 2) * (population * (population - 1 ))) g-probability-sucess-interaction
+    ]
+    
+    If (probability-incr-innovation <= p-binomial)
+    [
+      any-innovation-create self
+
+    ]
+
+  ]
+  
+end
+
+;******************************************
+; CREATE AND ADOPT FUNCTION
+;******************************************
+
+;to create-innovation
+;  
+;  ;Seule les x plus grandes villes peuvent creer, ce qui n'est pas le cas de l'adoption.
+;  let cities-elected cities with [dead-city? = 0]
+;  let new-innovation-agent nobody
+;  let probability-hard-innovation 0
+;  let probability-incr-innovation 0
+;  let binomial-probability 0
+;  
+;  ask cities-elected
+;  [ 
+;    set probability-incr-innovation random-float 1
+;    
+;    let p-binomial binomial population g-probability-sucess-interaction
+;    
+;;    print word "self" self
+;;    print word "p-binomial" p-binomial
+;;    print word "population" population
+;    
+;    If (probability-incr-innovation <= p-binomial)
+; 
+;    [
+;      
+;        set new-innovation-agent new-innovation 
+;        
+;        set innovation-adopted? innovation-adopted?  + 1
+;        set creator? creator? + 1
+;        set g-number-new-creations  g-number-new-creations + 1
+;        set shape "circle"
+;        set color red + creator? * 10
+;
+;        calculate-new-resource self
+;;        calculate-new-efficiency self new-innovation-agent
+;        
+;        set date-innovation-creation lput ticks date-innovation-creation
+;        set g-last-date-creation max list ticks g-last-date-creation
+;        set last-creation ticks
+;      
+;    ]
+;    ]
+;end

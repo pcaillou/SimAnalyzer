@@ -1,0 +1,445 @@
+
+;/**
+;* Fonction qui apelle l'initialisation des marché d'innovation, selon le type de marche selectionne
+;* @param agent-cities le pool d'agent cities
+;*/
+
+to init-common-market-innovation [agents-cities netchoice]
+   
+  ifelse g-type-of-market = "withDelayOfObjectInnovation"
+  [  
+    init-any-market-innovation agents-cities netchoice
+  ]
+  [
+    init-double-market-innovation agents-cities netchoice
+  ]
+  
+end
+
+link-graph-innovations-own[
+  count-innovation ; nombre d'innovation qui sont passes
+]
+
+
+;/**
+;* Fonction qui retourne, en fonction du type de marché choisi par l'utilisateur, le pool de marche
+;* @return le pool de marché 
+;*/
+
+to-report get-specific-market
+  
+  ifelse g-type-of-market = "withDelayOfObjectInnovation"
+  [
+    report any-market-innovations
+  ][
+    report double-market-innovations
+  ]
+
+end 
+
+;/**
+;* On calcule le nouveau pool de marche innovant, en faisant la mise a jour de l'attribut innovate-market? 
+;* Cette mise a jour se fait en regardant pour chaque marche d'innovation, si il y a ou pas presence d'innovation rattache
+;* @return un pool de marche uniquement INNOVANT !
+;*/
+
+to-report check-common-inovate-market
+  
+  let specific-market nobody
+  
+  set specific-market get-specific-market
+  
+  ;Mise a jour des marche !
+  ;On reconstruit de facon dynamique le pool de market innovant a partir des innovations encore existantes
+  ;(d'ou l'importance de virer les innovations perimes d'abord, voir fonction set-new-lifetime-innovation)
+  
+  ask specific-market[
+    
+    ;soit le marche est considere innovant 
+    ; a) quand on a encore des innovations rattache au marche
+    if g-type-of-market = "withDelayOfObjectInnovation"
+    [
+      let inno-here nobody
+      set inno-here g-pool-innovation with [where-is-market = myself]
+      ifelse any? inno-here
+      [
+        set nbObjInnovation count(inno-here)
+        set innovate-market? true
+      ]
+      [
+        set nbObjInnovation 0
+        set innovate-market? false
+      ]
+    ]
+    
+    ; b) si il a creer/copier au tour precedent
+    if g-type-of-market = "withDelayDouble"
+    [
+      check-double-specific-inovate-market self
+    ]
+  ]
+  
+   report specific-market with [ innovate-market? = true]
+    
+end 
+
+;/**
+;* Cette fonction fait plusieurs choses, toute en rapport avec la distribution de l'innovation : 
+;* - Recuperation des voisins : choose-neighbours
+;* - Calcul de la probabilité d'adoption pour chacun de ces voisins : calculate-interaction-between-market
+;* - Appel des fonction de choix de copie : choose-copy
+;*/
+
+to distribute-common-innovation
+  
+  let temp nobody
+  let my-subset-innovation nobody
+  
+  ;;Modification dynamique, ordonancement joue un role
+  ;;On interroge seulement les marche innovants ici !!!!!
+  ;show count g-pool-market-innovating
+  ask g-pool-market-innovating [
+    
+    ;;Recuperation vecteur de marketplace disponible pour innovation 
+    let neighbours choose-neighbours self
+    
+    ;;Ventilation innovation sur l'agentset neigbhours
+    let probability-to-adopt random-float 1
+    
+    ask neighbours [ 
+      let copy? calculate-interaction-between-market myself self
+      
+       if copy? = true [
+         ;self = destination
+         ;myself = origine 
+         choose-copy self myself
+       ]
+    ]
+  ]
+  
+end
+
+
+;/**
+;* Fonction de copie d'objet innovation, qui est transversale au different type de marche :
+;* 	    - Selection et retour de l'objet à copier : objet-innovation-to-copy
+;* 	    - diffusion de l'innovation : diffuse-innovation
+;*	    - application de l'innovation : apply-innovation-to-house
+;* 	    - et mise à jour des compteurs : update-counter-copy-innovation
+;* @param destination-market le marche destinataire de l'innovation
+;* @param origin-market le marche d'origine de l'innovation
+;* @return un boolean qui nous indique si la copie c'est bien deroule ou pas..
+;*/
+
+to-report new-common-object-copy [destination-market origin-market]
+ 
+    let innovation nobody
+    let object-innovation-to-copy nobody
+    let newInnovation nobody
+    
+    ;; 
+    ;; TEST IMPORTANT !
+    ;; Retour l'objet innovation à copier si la selection d'une innovation est possible ?
+    set object-innovation-to-copy select-object-innovation-to-diffuse destination-market origin-market
+    
+    ;show word "linnovation choisi a la copie = " object-innovation-to-copy
+    
+    ; re-copie de l'objet innovation SI IL EXISTE ! 
+    ifelse (is-innovation? object-innovation-to-copy)
+    [
+      
+      ;; FONCTION DE DIFUSION  
+      set newInnovation diffuse-innovation origin-market object-innovation-to-copy destination-market
+      ;show "l'innovation a copier existe, donc je copie !"
+      update-counter-copy-innovation
+      apply-innovation-to-house destination-market
+      
+      report true
+    ][
+    report false
+    ]
+end
+
+;/**
+;* Fonction de creation d'objet innovation :
+;* 	    - creation de l'innovation : new-object-innovation
+;*	    - application de l'innovation : apply-innovation-to-house
+;* 	    - et mise à jour des compteurs : update-counter-create-innovation
+;* @param origin-market le marche destinaire de la future creation d'innovation
+;*/
+
+to new-common-object-create [origin-market]
+  
+  let new-innovation nobody 
+  
+  ; Creation de l'objet innovation
+  set new-innovation new-object-innovation origin-market 
+  ;; Puis application
+  apply-innovation-to-house origin-market
+  update-counter-create-innovation
+ 
+end
+
+
+
+
+;/**
+;* Selection d'un objet innovation dans le marche origine, apres comparaison du pool d'innovation du marche d'origine 
+;* de la copie avec le pool d'innovation du marche destinataire de la copie :
+;* 	    - l'innovation doit être de date de creation differente, 
+;*	    - et who-is-my-father different
+;* @param destination-market le marche destinaire de l'innovation 
+;* @param origin-market le marche d'origine de la future copie
+;* return un objet innovation pioche selon diverses strategies dans le pool d'innovation du marche d'origine, qui respecte les 
+;* hypothèses énoncés au dessus !
+;*/
+
+;;Dans le cas ou il y a un objet innovation,
+;; la gestion de la selection des objets  innovations est commune aux differents type de market (pour le moment)
+;; TODO! : ON TESTE VOIR SI IL EXISTE DES INNOVATIONS QUI SONT AUTORISEE A ETRE COPIE : 
+;; => date differente et who-is-my-father-root different ! 
+;; + TEST LE NEXTJUMP? pour savoir egalement si on peut recopier cette innovation ... 
+to-report select-object-innovation-to-diffuse [destination-market origin-market]
+  
+  ; FIXME : Ameliorable en utilisant une recherche par liste, plus legere, mais aussi plus difficilement maintenable...
+  ; ON NE GARDE QUE LES INNOVATIONS "NON DEJA COPIE" par destination-market
+  let my-subset-origin-innovation nobody
+  let my-subset-destination-innovation nobody
+  let list-agent-innovation-filtered []
+  let innovation-to-copy nobody
+  
+  ;show word "origin copie" origin-market
+  ;show word "destination copie" destination-market
+  ;recuperation du pool d'objet innovation du marche d'origine
+  set my-subset-origin-innovation g-pool-innovation with [where-is-market = origin-market] 
+  ;recuperation du pool d'objet innovation venant du marche destination
+  set my-subset-destination-innovation g-pool-innovation with [where-is-market = destination-market]
+
+  let equalInnovation false
+  
+  ifelse any? my-subset-origin-innovation [ 
+    ifelse any? my-subset-destination-innovation [
+      ;show "*******************************************************************"
+      ;comparaison des deux pools, nettoyage du premier !
+      ask my-subset-origin-innovation [   
+        ;reset boolean
+        set equalInnovation false
+;         show "------origin"
+;         
+;         show word "> innovation > " [who] of self
+;         show word "> [where-is-market] > " [where-is-market] of self
+;         show word "> [date-of-root-innovation] of origine > "[date-of-root-innovation] of self
+;         show word "> [who-is-my-father-root] of origine > " [who-is-my-father-root] of self
+        ask my-subset-destination-innovation [
+;          show "------destination"
+;          show word "      > [where-is-market] > " [where-is-market] of self
+;          show word "      > [date-of-root-innovation] of destination > " [date-of-root-innovation] of self
+;          show word "      > [who-is-my-father-root] of destination > " [who-is-my-father-root] of self
+          if (([date-of-root-innovation] of self = [date-of-root-innovation] of myself) AND
+            ([who-is-my-father-root] of self = [who-is-my-father-root] of myself))
+          [
+            set equalInnovation true
+          ]
+;          show word "      > equalInnovation = " equalInnovation
+;          show "------"
+        ]
+         ; si on a trouve au moins une innovation identique alors on ajoute pas l'innovation
+          if equalInnovation = false [
+          set list-agent-innovation-filtered lput self list-agent-innovation-filtered
+          ]
+      ]
+    ]
+    [
+      ask my-subset-origin-innovation [
+        set list-agent-innovation-filtered lput self list-agent-innovation-filtered
+      ]
+    ]
+  ]
+  [
+    ;Pas d'innovation à diffuser, donc pas de diffusion
+    show "pas d'innovation a diffuser, bug"
+    set list-agent-innovation-filtered []
+  ]
+  
+  ifelse not empty? (list-agent-innovation-filtered)
+  [
+    ;show  "ok, ce n'est pas vide "
+    ; SOIT ON PIOCHE UNE DANS LES N INNOVATIONS ACTIVE et AUTORISE A DIFFUSER 
+    set innovation-to-copy (one-of list-agent-innovation-filtered)
+    
+    ; SOIT ON EN PIOCHE UNE DANS LES N DERNIERES (UNE SI SIMPLEDIFFUSION, DEUX SI DOUBLE DIFFUSION)
+  
+  ][
+  ;show  "list-agent-innovation-filtered = nobody equal"
+  ]
+ 
+  ;;ON RENVOIE LHEUREUSE ELUE QUI VA ETRE LORIGINE DE LA COPIE, ou SINON ON RENVOIE NOBODY 
+  ;; qui indique l'absence dinnovation copiable ! !
+  report innovation-to-copy 
+
+  
+end
+
+to check-common-market-delay
+  ifelse g-type-of-market = "withDelayOfObjectInnovation"
+  [
+   
+  ][
+    check-double-specific-market-delay
+  ]
+  
+end
+
+to-report choose-neighbours [origin-market]
+  
+  if g-type-of-market = "withDelayOfObjectInnovation"
+  [  
+    report get-any-neighbours origin-market
+  ]
+  ifelse g-type-of-market = "withDelayDouble"
+  [
+    report get-double-neighbours origin-market true
+  ]
+  [
+    report -1
+  ]
+  
+end
+
+to choose-copy [destination-market origin-market]
+  
+  ;;Utilise t on un objet innovation dans notre modele .
+  if g-type-of-market = "withDelayOfObjectInnovation"
+  [                      
+    any-innovation-copy destination-market origin-market
+  
+  ]
+  ifelse g-type-of-market = "withDelayDouble"
+  [
+    double-innovation-copy destination-market origin-market
+  ]
+  [
+    ;show "other condition copy" 
+  ]
+   
+end
+
+
+to update-counter-create-innovation
+  
+   ; on incremente le compteur global d'innovation
+    set g-counter-innovation g-counter-innovation + 1
+    set nb-innovation-mine nb-innovation-mine + 1
+    ;;FIXME : redondance avec le last date creation de la ville
+    set last-date-creation lput ticks last-date-creation
+    set g-last-date-creation max list ticks g-last-date-creation
+    set g-number-new-creations  g-number-new-creations + 1
+    
+    
+end
+
+to update-counter-copy-innovation
+  
+   ; on incremente le compteur global d'innovation
+    set g-counter-innovation g-counter-innovation + 1
+    set nb-innovation-copy nb-innovation-copy + 1
+    set g-last-date-adoption max list ticks g-last-date-adoption
+    ;;FIXME : redondance avec le last date creation de la ville
+    set last-date-copy lput ticks last-date-copy
+    set g-number-new-adoptions  g-number-new-adoptions + 1
+end
+
+
+to apply-innovation-to-house [market-to-apply]
+  ;show word "Application de l'innovation au marché > " market-to-apply
+  ;; AJOUT CONDITION POSSIBLE POUR DIFFERENCIER LE TYPE DINNOVATION A APPLIQUER
+  ask where-is-house [
+      applicate-simple-innovation self
+    ]
+end
+
+to applicate-simple-innovation [house]
+     
+      calculate-new-resource house
+      set date-innovation-creation lput ticks date-innovation-creation
+      set shape "circle"
+      ;set color red + creator? * 10
+end
+
+to-report calculate-interaction-between-market [market-start market-end]
+  
+    let probability-copy-innovation random-float 1
+    let state-copy-innovation false
+    
+    let pop-start 0
+    let pop-end 0
+    let p-binomial 0
+    let pA 0
+    
+    ask market-start [
+      ask where-is-house [
+        set pop-start population
+      ]
+    ]
+    
+    ask market-end [
+      ask where-is-house [
+        set pop-end population
+      ]
+    ]
+    
+    let population-adoption ((pop-start * pop-end)) ; on ne divise pas par deux car pas de redondance ici...
+    let link-beetween nobody
+    let distance-beetwen-market -1
+    
+    
+ask market-start [ 
+      set link-beetween link-with market-end 
+      ] ;; shows link 0 
+    ;print link-beetween
+    set distance-beetwen-market [[distance other-end] of end1] of link-beetween
+    
+    ;print distance-beetwen-market
+    ;; ----- ;;
+    
+    ask where-is-house [
+       ifelse g-distance-impact = true
+         [ set p-binomial binomial (  population-adoption / (distance-beetwen-market ^ g-distanceF) ) [g-probability-sucess-adoption] of myself]
+         [ set p-binomial binomial population-adoption [g-probability-sucess-adoption] of myself]
+    ]
+
+    If (probability-copy-innovation <= p-binomial)
+    [
+      set state-copy-innovation true
+    ]
+
+    report state-copy-innovation
+  
+end
+
+to try-common-innovate
+  
+    ;;Utilise t on un objet innovation dans notre modele .
+  if g-type-of-market = "withDelayOfObjectInnovation"
+  [  
+   try-any-specific-innovate
+  
+  ]
+  if g-type-of-market = "withDelayDouble"
+  [
+    try-double-specific-innovate
+  ]
+
+end
+
+to-report get-pop-of-my-city [market]
+  
+  let pop 0 
+  ask market [
+    ask where-is-house [
+      set pop population
+    ]
+  ]
+  report pop
+end
+

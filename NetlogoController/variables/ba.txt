@@ -1,0 +1,4 @@
+XCOR  YCOR  SAVINGS  LOANS  WALLET  
+true  false  true  false  false  
+empty  empty  Average  Maximum  Standard deviation  
+XCOR  YCOR  SAVINGS  LOANS  WALLET  

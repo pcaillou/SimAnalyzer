@@ -1,0 +1,4541 @@
+0	-1	15.0	null	null	-8.16240061091949	-4.6175317574478205	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -8 -5	0.0	0.0	0.415518850340122	patch -8 -5	0.0
+1	-1	75.0	null	null	-0.39498808824174214	-3.618655804038852	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 49
+turtle 131	0.0	false	random-min	patch -1 -4	0.0	0.0	0.7151662807785589	patch -1 -4	0.0
+2	-1	252.0	null	null	4.85129807754352	-7.909170997863881	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 34
+turtle 3
+turtle 61	0.0	false	random-min	patch 6 -8	0.0	0.0	1.1522872967642472	patch 6 -8	0.0
+3	-1	143.0	null	null	5.053205219154216	-8.075726626301078	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 2
+turtle 28
+turtle 61
+turtle 68
+turtle 34	0.0	false	random-min	patch 4 -7	0.0	0.0	1.5054663756413753	patch 4 -7	0.0
+4	-1	19.0	null	null	6.592063496452806	-3.340769651128421	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 89
+turtle 27
+turtle 12
+turtle 46
+turtle 127	0.0	false	random-min	patch 6 -4	0.0	0.0	0.8860721396733261	patch 6 -4	0.0
+5	-1	331.0	null	null	-6.425120946273864	9.01032439773447	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 69	0.0	false	random-min	patch -6 8	0.0	0.0	1.096121894507315	patch -6 8	0.0
+6	-1	10.0	null	null	9.325088002446744	-1.747066177525189	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 9 -2	0.0	0.0	0.41189528752649446	patch 9 -2	0.0
+7	-1	195.0	null	null	-4.606965461112543	1.5936868190929505	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 53
+turtle 16	0.0	false	random-min	patch -4 3	0.0	0.0	1.5317061838931334	patch -4 3	0.0
+8	-1	212.0	null	null	-4.8799279981062265	-2.5112702680465113	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 129
+turtle 72
+turtle 76	0.0	false	random-min	patch -4 -2	0.0	0.0	1.01767901070995	patch -4 -2	0.0
+9	-1	179.0	null	null	0.35857998367072025	-3.4380369834362936	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 1
+turtle 86	0.0	false	random-min	patch 0 -2	0.0	0.0	1.4820694890658295	patch 0 -2	0.0
+10	-1	18.0	null	null	-7.107756497542211	-1.3147138981376094	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 22
+turtle 95
+turtle 62	0.0	false	random-min	patch -7 -2	0.0	0.0	0.6937063529825248	patch -7 -2	0.0
+11	-1	317.0	null	null	-9.453091384778043	-3.6315915340525162	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 0
+turtle 20
+turtle 51
+turtle 25	0.0	false	random-min	patch -9 -4	0.0	0.0	0.5839662667841892	patch -9 -4	0.0
+12	-1	208.0	null	null	6.122294013563429	-5.7893195465946246	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 89
+turtle 27
+turtle 46
+turtle 127	0.0	false	random-min	patch 7 -5	0.0	0.0	1.1804207492512737	patch 7 -5	0.0
+13	-1	270.0	null	null	-8.649393458196545	3.13240473783098	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 71
+turtle 120	0.0	false	random-min	patch -8 3	0.0	0.0	0.6627540102847805	patch -8 3	0.0
+14	-1	21.0	null	null	-5.863112290623741	5.4197582567208284	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 120
+turtle 80
+turtle 140	0.0	false	random-min	patch -6 4	0.0	0.0	1.426342088177042	patch -6 4	0.0
+15	-1	351.0	null	null	-3.030519077327159	6.4371884164469995	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 126
+turtle 54	0.0	false	random-min	patch -3 5	0.0	0.0	1.4375124202768945	patch -3 5	0.0
+16	-1	31.0	null	null	-4.616246464263565	4.032205626455492	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 56
+turtle 7
+turtle 80	0.0	false	random-min	patch -5 3	0.0	0.0	1.1012335045196322	patch -5 3	0.0
+17	-1	270.0	null	null	-6.6824590894267955	0.6203547012912174	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 7	0.0	false	random-min	patch -6 1	0.0	0.0	0.7809487573285021	patch -6 1	0.0
+18	-1	161.0	null	null	6.543077058462782	0.12082678085168774	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 82
+turtle 31	0.0	false	random-min	patch 6 1	0.0	0.0	1.0333819432795381	patch 6 1	0.0
+19	-1	31.0	null	null	2.768322999264938	-1.2439849051560004	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 86
+turtle 122
+turtle 52	0.0	false	random-min	patch 2 -2	0.0	0.0	1.0779049377526069	patch 2 -2	0.0
+20	-1	97.0	null	null	-6.496368031016237	-5.195372080266945	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 0	0.0	false	random-min	patch -7 -5	0.0	0.0	0.540199416817804	patch -7 -5	0.0
+21	-1	249.0	null	null	3.900129908226381	-2.581026299398833	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 4 -3	0.0	0.0	0.4307121974431506	patch 4 -3	0.0
+22	-1	226.0	null	null	-7.352265456227304	-3.20816427836452	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 123
+turtle 10
+turtle 95	0.0	false	random-min	patch -7 -3	0.0	0.0	0.4091739464311626	patch -7 -3	0.0
+23	-1	220.0	null	null	-9.944978588560065	-1.6255403303077656	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 97
+turtle 45	0.0	false	random-min	patch -9 -1	0.0	0.0	1.133263092877608	patch -9 -1	0.0
+24	-1	175.0	null	null	-4.0125080153720365	4.21714973501012	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 80
+turtle 16
+turtle 15
+turtle 126	0.0	false	random-min	patch -4 5	0.0	0.0	0.7829501822231552	patch -4 5	0.0
+25	-1	330.0	null	null	-9.733648258061105	-2.564363738949416	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 11
+turtle 51	0.0	false	random-min	patch -9 -3	0.0	0.0	0.8532401294467032	patch -9 -3	0.0
+26	-1	188.0	null	null	6.838250397274218	-2.6397756780915644	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 99
+turtle 93	0.0	false	random-min	patch 7 -2	0.0	0.0	0.6599059419792106	patch 7 -2	0.0
+27	-1	158.0	null	null	5.518000062316696	-5.752045150357689	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 12
+turtle 61
+turtle 110
+turtle 127	0.0	false	random-min	patch 5 -5	0.0	0.0	0.9131790474691255	patch 5 -5	0.0
+28	-1	137.0	null	null	3.4961511641868306	-6.861209520717975	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 128
+turtle 68
+turtle 119	0.0	false	random-min	patch 3 -6	0.0	0.0	0.9939053356830477	patch 3 -6	0.0
+29	-1	79.0	null	null	-0.14483772626632652	-1.68642860911912	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 145
+turtle 130
+turtle 42	0.0	false	random-min	patch -1 -2	0.0	0.0	0.9108400142705172	patch -1 -2	0.0
+30	-1	63.0	null	null	9.37074754863848	0.03360191379165656	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 114
+turtle 102
+turtle 82	0.0	false	random-min	patch 8 0	0.0	0.0	1.3711593381911762	patch 8 0	0.0
+31	-1	14.0	null	null	7.7097566498315855	2.617365774901114	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 82
+turtle 35
+turtle 139
+turtle 148	0.0	false	random-min	patch 7 2	0.0	0.0	0.9406885786483264	patch 7 2	0.0
+32	-1	215.0	null	null	7.484669503415664	-7.340954060584657	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 7 -7	0.0	0.0	0.592582651594149	patch 7 -7	0.0
+33	-1	131.0	null	null	8.25741228332107	-2.90050706573643	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 99
+turtle 26
+turtle 93	0.0	false	random-min	patch 8 -2	0.0	0.0	0.9365757091905607	patch 8 -2	0.0
+34	-1	60.0	null	null	5.587189525211914	-7.335775857179284	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 124
+turtle 2
+turtle 3
+turtle 61	0.0	false	random-min	patch 5 -8	0.0	0.0	0.8865580919626803	patch 5 -8	0.0
+35	-1	220.0	null	null	8.017251897380593	2.0310259248541245	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 139
+turtle 148	0.0	false	random-min	patch 9 3	0.0	0.0	1.380110354829225	patch 9 3	0.0
+36	-1	291.0	null	null	-2.042420621385931	-6.792398772482041	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -2 -7	0.0	0.0	0.2118909596602265	patch -2 -7	0.0
+37	-1	176.0	null	null	-2.7913679825365603	2.657796909228918	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 74
+turtle 147	0.0	false	random-min	patch -3 4	0.0	0.0	1.358321190141091	patch -3 4	0.0
+38	-1	6.0	null	null	4.13895270745988	4.778300130061004	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 41
+turtle 109	0.0	false	random-min	patch 4 4	0.0	0.0	0.7906066957491615	patch 4 4	0.0
+39	-1	322.0	null	null	8.665456042582328	1.720950412309612	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 114
+turtle 30
+turtle 102	0.0	false	random-min	patch 9 1	0.0	0.0	0.7947887495769407	patch 9 1	0.0
+40	-1	247.0	null	null	-3.5603766958170677	-6.5526767488426	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 58
+turtle 36
+turtle 96	0.0	false	random-min	patch -3 -6	0.0	0.0	0.787066471097633	patch -3 -6	0.0
+41	-1	83.0	null	null	3.860268795679824	4.055162947261933	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 38
+turtle 146	0.0	false	random-min	patch 3 4	0.0	0.0	0.8620355860235918	patch 3 4	0.0
+42	-1	226.0	null	null	-1.4008671016710048	-1.45565577339084	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 29
+turtle 108	0.0	false	random-min	patch -1 -1	0.0	0.0	0.606890943272773	patch -1 -1	0.0
+43	-1	224.0	null	null	-6.5891425713978675	-7.398777294497216	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 149
+turtle 83
+turtle 85	0.0	false	random-min	patch -6 -7	0.0	0.0	0.7114157012885017	patch -6 -7	0.0
+44	-1	31.0	null	null	-1.771441189549381	2.271507086835296	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 53
+turtle 100
+turtle 108
+turtle 74	0.0	false	random-min	patch -2 1	0.0	0.0	1.2918859863420546	patch -2 1	0.0
+45	-1	221.0	null	null	-8.442801057072684	-0.44715784924945845	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 62
+turtle 97
+turtle 134	0.0	false	random-min	patch -8 0	0.0	0.0	0.6293035184154682	patch -8 0	0.0
+46	-1	167.0	null	null	7.238297432462361	-4.901724495260883	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 12
+turtle 127
+turtle 4	0.0	false	random-min	patch 7 -4	0.0	0.0	0.9326804016766126	patch 7 -4	0.0
+47	-1	12.0	null	null	-0.3692567102857852	-6.3074967318054505	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 115
+turtle 64
+turtle 144	0.0	false	random-min	patch -1 -7	0.0	0.0	0.9366951873366501	patch -1 -7	0.0
+48	-1	257.0	null	null	-1.3977970429531665	2.168364854872391	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 105
+turtle 44
+turtle 98	0.0	false	random-min	patch 0 2	0.0	0.0	1.4079003152371328	patch 0 2	0.0
+49	-1	52.0	null	null	-1.6764861838030756	-3.875325537946428	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 96
+turtle 137
+turtle 1	0.0	false	random-min	patch -2 -4	0.0	0.0	0.346705798565073	patch -2 -4	0.0
+50	-1	231.0	null	null	5.884350989929158	7.339674252418874	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 6 7	0.0	0.0	0.3588220886270612	patch 6 7	0.0
+51	-1	294.0	null	null	-9.300375801756248	-3.097937719817516	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 0
+turtle 11
+turtle 25
+turtle 22	0.0	false	random-min	patch -8 -4	0.0	0.0	1.582622375401418	patch -8 -4	0.0
+52	-1	141.0	null	null	2.1980214125493185	-0.8066812673173244	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 103	0.0	false	random-min	patch 2 0	0.0	0.0	0.8306305718360671	patch 2 0	0.0
+53	-1	16.0	null	null	-3.2305417044606304	2.4503298550188455	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 7
+turtle 37	0.0	false	random-min	patch -4 1	0.0	0.0	1.6418047255789396	patch -4 1	0.0
+54	-1	132.0	null	null	-2.531892043818169	6.176997151477374	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 15
+turtle 126
+turtle 92	0.0	false	random-min	patch -3 7	0.0	0.0	0.9468150544415144	patch -3 7	0.0
+55	-1	101.0	null	null	4.268812865898809	-0.813679348303115	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 52
+turtle 19	0.0	false	random-min	patch 3 -1	0.0	0.0	1.2824201627856222	patch 3 -1	0.0
+56	-1	129.0	null	null	-5.288759509883701	2.135395102688692	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 71	0.0	false	random-min	patch -6 3	0.0	0.0	1.1195555650505116	patch -6 3	0.0
+57	-1	341.0	null	null	-1.666858399013587	6.928689252236637	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -2 7	0.0	0.0	0.34068834593270186	patch -2 7	0.0
+58	-1	220.0	null	null	-3.855895210226082	-8.226092300398472	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 63
+turtle 91
+turtle 40
+turtle 36	0.0	false	random-min	patch -3 -7	0.0	0.0	1.4952788836816917	patch -3 -7	0.0
+59	-1	42.0	null	null	1.656103352657088	-8.52295322108226	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 60	0.0	false	random-min	patch 1 -9	0.0	0.0	0.8111998758898222	patch 1 -9	0.0
+60	-1	119.0	null	null	1.9372856790932773	-8.563000972676177	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 59
+turtle 73
+turtle 64
+turtle 144	0.0	false	random-min	patch 1 -8	0.0	0.0	1.0933775832106982	patch 1 -8	0.0
+61	-1	20.0	null	null	5.715923678402814	-6.043685825427058	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 2
+turtle 3
+turtle 68
+turtle 34
+turtle 12	0.0	false	random-min	patch 5 -7	0.0	0.0	1.1946060077644607	patch 5 -7	0.0
+62	-1	231.0	null	null	-8.551563223050378	-1.7702238676003	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 10
+turtle 45	0.0	false	random-min	patch -8 -1	0.0	0.0	0.947347241112194	patch -8 -1	0.0
+63	-1	263.0	null	null	-3.7419788714589393	-8.61751239640305	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 115
+turtle 58
+turtle 91	0.0	false	random-min	patch -3 -8	0.0	0.0	0.9653259581109995	patch -3 -8	0.0
+64	-1	181.0	null	null	0.10717730568384376	-7.814459063457721	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 73
+turtle 144
+turtle 47
+turtle 138	0.0	false	random-min	patch 0 -7	0.0	0.0	0.8214807002614707	patch 0 -7	0.0
+65	-1	91.0	null	null	-1.2980660569465947	8.473626546103356	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 101
+turtle 113
+turtle 125	0.0	false	random-min	patch -2 8	0.0	0.0	0.846778226919124	patch -2 8	0.0
+66	-1	156.0	null	null	1.0158881672273763	8.346255251373103	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 121
+turtle 70	0.0	false	random-min	patch 1 9	0.0	0.0	0.6539377877253232	patch 1 9	0.0
+67	-1	30.0	null	null	5.3284118926387665	-1.5868389410850594	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 21	0.0	false	random-min	patch 5 -2	0.0	0.0	0.5277844558437579	patch 5 -2	0.0
+68	-1	152.0	null	null	4.509799268421653	-6.892657290128041	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 28
+turtle 3
+turtle 110	0.0	false	random-min	patch 4 -6	0.0	0.0	1.0279748691976818	patch 4 -6	0.0
+69	-1	140.0	null	null	-6.204922784588826	7.102568050454989	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -6 7	0.0	0.0	0.22915835707600868	patch -6 7	0.0
+70	-1	316.0	null	null	1.4862153554190698	10.159808409487983	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 87	0.0	false	random-min	patch 2 9	0.0	0.0	1.268514961569708	patch 2 9	0.0
+71	-1	167.0	null	null	-6.749455378721533	1.7532396339394143	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 56	0.0	false	random-min	patch -7 3	0.0	0.0	1.2716855026424954	patch -7 3	0.0
+72	-1	244.0	null	null	-3.9542950280773965	-1.3339736807456688	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 145
+turtle 130
+turtle 100	0.0	false	random-min	patch -3 -1	0.0	0.0	1.0110476843571965	patch -3 -1	0.0
+73	-1	9.0	null	null	-0.09571870346318154	-8.02943834335371	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 59
+turtle 115	0.0	false	random-min	patch 0 -9	0.0	0.0	0.9752702187315381	patch 0 -9	0.0
+74	-1	60.0	null	null	-1.48269217210616	3.1745398838548997	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 53
+turtle 44
+turtle 48
+turtle 37
+turtle 147	0.0	false	random-min	patch -2 3	0.0	0.0	0.5459593023809786	patch -2 3	0.0
+75	-1	316.0	null	null	6.972479224171083	5.228131173277751	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 139
+turtle 81
+turtle 88	0.0	false	random-min	patch 8 5	0.0	0.0	1.0525411046515674	patch 8 5	0.0
+76	-1	78.0	null	null	-3.7998387777877545	-0.9024033866065078	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 8
+turtle 141
+turtle 95
+turtle 129
+turtle 72	0.0	false	random-min	patch -5 -1	0.0	0.0	1.2041229415005221	patch -5 -1	0.0
+77	-1	112.0	null	null	-0.01339413072802731	7.1752608741231345	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 57
+turtle 65
+turtle 125	0.0	false	random-min	patch -1 8	0.0	0.0	1.2859182583018414	patch -1 8	0.0
+78	-1	104.0	null	null	2.2005145679136247	-6.651192220824501	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 64
+turtle 144
+turtle 128	0.0	false	random-min	patch 1 -6	0.0	0.0	1.3657549327149372	patch 1 -6	0.0
+79	-1	19.0	null	null	2.058992094763343	8.945484139752018	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 66
+turtle 87	0.0	false	random-min	patch 2 8	0.0	0.0	0.9473227146897627	patch 2 8	0.0
+80	-1	195.0	null	null	-5.24435794857216	3.3122043831531567	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 16
+turtle 24
+turtle 14	0.0	false	random-min	patch -5 4	0.0	0.0	0.7299134315685143	patch -5 4	0.0
+81	-1	184.0	null	null	8.004088419376721	3.1840687705150392	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 139	0.0	false	random-min	patch 8 4	0.0	0.0	0.8159414724242418	patch 8 4	0.0
+82	-1	106.0	null	null	8.620985334980166	0.44589918890942354	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 18
+turtle 114
+turtle 35
+turtle 39	0.0	false	random-min	patch 8 1	0.0	0.0	0.8322562676914264	patch 8 1	0.0
+83	-1	156.0	null	null	-5.212978432098874	-7.1322308133713985	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 85
+turtle 20	0.0	false	random-min	patch -6 -6	0.0	0.0	1.3788943262952407	patch -6 -6	0.0
+84	-1	151.0	null	null	4.631612451156377	-9.348245890279133	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 124
+turtle 34
+turtle 2
+turtle 3	0.0	false	random-min	patch 4 -8	0.0	0.0	1.4888590494436795	patch 4 -8	0.0
+85	-1	223.0	null	null	-4.820580387428634	-6.001188574908762	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 117
+turtle 96	0.0	false	random-min	patch -4 -5	0.0	0.0	1.2945001872384434	patch -4 -5	0.0
+86	-1	295.0	null	null	1.3796055552177358	-3.0789116666507055	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 118
+turtle 122
+turtle 19	0.0	false	random-min	patch 2 -4	0.0	0.0	1.1105372505903954	patch 2 -4	0.0
+87	-1	60.0	null	null	3.784028852963937	8.83684002839955	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 79	0.0	false	random-min	patch 3 8	0.0	0.0	1.1467355734482585	patch 3 8	0.0
+88	-1	320.0	null	null	6.390015146251095	5.125929228386439	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 139
+turtle 142
+turtle 81
+turtle 75	0.0	false	random-min	patch 7 4	0.0	0.0	1.2805460355402905	patch 7 4	0.0
+89	-1	126.0	null	null	7.759254703375227	-6.170545504537808	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 12
+turtle 46	0.0	false	random-min	patch 7 -6	0.0	0.0	0.7781731643506213	patch 7 -6	0.0
+90	-1	185.0	null	null	8.733653322848054	-5.090600660334337	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 33	0.0	false	random-min	patch 9 -4	0.0	0.0	1.1226532647044565	patch 9 -4	0.0
+91	-1	48.0	null	null	-3.153742100513802	-8.194173575059366	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 63	0.0	false	random-min	patch -4 -9	0.0	0.0	1.1685498104810914	patch -4 -9	0.0
+92	-1	122.0	null	null	-3.195943575515658	7.9768799343306815	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 101	0.0	false	random-min	patch -4 9	0.0	0.0	1.301261465859085	patch -4 9	0.0
+93	-1	44.0	null	null	7.435129880002815	-0.3237569273468138	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 18	0.0	false	random-min	patch 7 -1	0.0	0.0	0.8041409738240471	patch 7 -1	0.0
+94	-1	234.0	null	null	3.9678407087984917	6.489349861156427	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 4 6	0.0	0.0	0.4904054512588514	patch 4 6	0.0
+95	-1	17.0	null	null	-5.745322018226206	-0.7452914514394195	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 123
+turtle 10
+turtle 141
+turtle 76	0.0	false	random-min	patch -6 -2	0.0	0.0	1.2802946599245704	patch -6 -2	0.0
+96	-1	307.0	null	null	-3.1329545079387024	-5.374094569086221	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 36
+turtle 40
+turtle 49	0.0	false	random-min	patch -2 -6	0.0	0.0	1.2943506192318952	patch -2 -6	0.0
+97	-1	191.0	null	null	-8.760115503259225	-0.7041769742439953	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 45	0.0	false	random-min	patch -9 0	0.0	0.0	0.7439151717985076	patch -9 0	0.0
+98	-1	233.0	null	null	-1.4321843869890314	0.9319226917607044	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 105
+turtle 44
+turtle 48	0.0	false	random-min	patch -1 2	0.0	0.0	1.152203315709855	patch -1 2	0.0
+99	-1	245.0	null	null	5.450384754712176	-2.7217771223507574	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 4
+turtle 26
+turtle 67
+turtle 93	0.0	false	random-min	patch 6 -2	0.0	0.0	0.9072150418736096	patch 6 -2	0.0
+100	-1	131.43556431213756	null	null	-2.1961271980829484	0.3326560850414082	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -3 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 53	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 6
+...... count(): 6
+...... capacity: 7
+...... agents: 
+turtle 72
+turtle 108
+turtle 53
+turtle 7
+turtle 44
+turtle 74	1.044777192751752	patch -3 1	0.0
+101	-1	288.99543782220815	null	null	-3.446233275610169	9.241670731597466	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -3 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 65
+turtle 113
+turtle 125	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 65
+turtle 92
+turtle 113
+turtle 125	0.5074730325570369	patch -3 9	0.0
+102	-1	96.45951511578886	null	null	10.577377713354965	0.06069200532490644	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 10 0	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 30
+turtle 82	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 6
+turtle 114
+turtle 30
+turtle 82
+turtle 39	0.5805588199221214	patch 10 0	0.0
+103	-1	174.4506093323697	null	null	1.1217219791645179	-0.10623539777249102	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 1 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 52
+turtle 105
+turtle 143	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 52
+turtle 105
+turtle 98
+turtle 143	1.112911944179138	patch 1 1	0.0
+104	-1	15.67052430234935	null	null	-6.159298690257433	-4.2379997686569375	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -6 -5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 83
+turtle 20	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 6
+...... count(): 6
+...... capacity: 7
+...... agents: 
+turtle 43
+turtle 149
+turtle 83
+turtle 117
+turtle 0
+turtle 20	0.7784731371631358	patch -6 -5	0.0
+105	-1	229.98635413443105	null	null	-0.5045791688039093	0.7109422350767253	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 0 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 143	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 103
+turtle 98
+turtle 48
+turtle 143
+turtle 116	0.5815105579895202	patch 0 1	0.0
+106	-1	129.5245204523858	null	null	2.904229907836803	-8.466001597993653	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 2 -8	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 59
+turtle 60
+turtle 128
+turtle 78	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 6
+...... count(): 6
+...... capacity: 7
+...... agents: 
+turtle 59
+turtle 60
+turtle 144
+turtle 128
+turtle 78
+turtle 28	1.0172458972928775	patch 2 -8	0.0
+107	-1	355.0	null	null	4.262435130052613	9.195200470098191	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 4 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 87	0.3270709724391433	patch 4 9	0.0
+108	-1	209.09309882640213	null	null	-1.6548459853381876	0.029878338856318742	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -1 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 105
+turtle 44
+turtle 98	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 6
+...... count(): 6
+...... capacity: 7
+...... agents: 
+turtle 42
+turtle 100
+turtle 105
+turtle 44
+turtle 98
+turtle 48	1.1704526055905542	patch -1 1	0.0
+109	-1	114.06818818509919	null	null	5.940803894961988	3.5496870148357194	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 5 4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 41
+turtle 38	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 6
+...... count(): 6
+...... capacity: 7
+...... agents: 
+turtle 132
+turtle 142
+turtle 41
+turtle 139
+turtle 38
+turtle 88	1.043021453941966	patch 5 4	0.0
+110	-1	160.42442423588545	null	null	3.675306203965488	-4.678731671875025	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 3 -4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 86
+turtle 21	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 119
+turtle 86
+turtle 21
+turtle 19
+turtle 67	0.9574524278106687	patch 3 -4	0.0
+111	-1	281.0239976237187	null	null	-10.18155147493355	2.7833969286779188	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -9 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 134
+turtle 13	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 134
+turtle 13	1.20124134894858	patch -9 3	0.0
+112	-1	293.23177592320917	null	null	-7.853526393552497	6.970409666869633	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -7 7	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 140
+turtle 69	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 14
+turtle 140
+turtle 69	0.8540391632153046	patch -7 7	0.0
+113	-1	329.0222151609214	null	null	-2.572171235688407	9.515869400409349	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -2 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 92
+turtle 65
+turtle 125	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 57
+turtle 92
+turtle 65
+turtle 101
+turtle 125	0.7703902655329308	patch -2 9	0.0
+114	-1	280.6788778512564	null	null	8.043850746541471	-0.2526934201677004	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 9 0	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 6
+turtle 30
+turtle 102	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 6
+turtle 30
+turtle 102
+turtle 82	0.9889769256587091	patch 9 0	0.0
+115	-1	232.4766313605129	null	null	-2.085515294656435	-8.627146590028083	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -1 -8	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 73
+turtle 64
+turtle 36	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 7
+...... count(): 7
+...... capacity: 8
+...... agents: 
+turtle 63
+turtle 91
+turtle 73
+turtle 64
+turtle 36
+turtle 144
+turtle 47	1.2536571701693007	patch -1 -8	0.0
+116	-1	208.55146156950036	null	null	1.943991663994487	2.23563077571639	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 2 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 41	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 143
+turtle 41
+turtle 38
+turtle 146	0.7664184527619585	patch 2 3	0.0
+117	-1	41.77770174766181	null	null	-4.016509282694299	-4.7626857695925064	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -5 -6	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 83
+turtle 85	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 7
+...... count(): 7
+...... capacity: 8
+...... agents: 
+turtle 43
+turtle 40
+turtle 83
+turtle 85
+turtle 20
+turtle 96
+turtle 104	1.580569674451389	patch -5 -6	0.0
+118	-1	232.26635610760025	null	null	0.629558362034391	-5.10366300266221	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 1 -4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 119
+turtle 86	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 119
+turtle 86
+turtle 122	1.1641731102306088	patch 1 -4	0.0
+119	-1	308.7025363677724	null	null	1.5840546719428032	-4.5802205885460365	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 2 -5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 78
+turtle 110	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 128
+turtle 78
+turtle 118
+turtle 110	0.5909528493993789	patch 2 -5	0.0
+120	-1	262.0	null	null	-7.22211963573193	4.464466511031355	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -7 4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 13
+turtle 14	0.5148458725165476	patch -7 4	0.0
+121	-1	274.1809310583756	null	null	-0.8024388067754874	10.327110876023093	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 0 10	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 70	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 70	0.8665503815888974	patch 0 10	0.0
+122	-1	202.65529485130122	null	null	2.20703308551459	-2.7113458093189218	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 3 -2	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 19
+turtle 55	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 86
+turtle 21
+turtle 19
+turtle 55	1.065274325187697	patch 3 -2	0.0
+123	-1	73.0	null	null	-5.653116939701592	-2.6184349639618274	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -6 -3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 7
+...... count(): 7
+...... capacity: 8
+...... agents: 
+turtle 104
+turtle 22
+turtle 137
+turtle 8
+turtle 10
+turtle 141
+turtle 95	0.5156740581499141	patch -6 -3	0.0
+124	-1	221.0222861496028	null	null	3.337228927532247	-9.62552526772972	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 4 -9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 84
+turtle 106
+turtle 2
+turtle 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 84
+turtle 106
+turtle 2
+turtle 3	0.9113437085251613	patch 4 -9	0.0
+125	-1	63.692554160838654	null	null	-0.20819659709802796	9.012449823680463	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -1 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 65	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 57
+turtle 77
+turtle 65
+turtle 113
+turtle 121	0.7919012734910945	patch -1 9	0.0
+126	-1	181.44566894026457	null	null	-2.8186366582016706	4.823911733882471	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -3 6	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 54
+turtle 15	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 54
+turtle 15
+turtle 57	1.1899900299782318	patch -3 6	0.0
+127	-1	185.60843481837082	null	null	6.0107614270050576	-4.1403101380102125	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 6 -3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 4
+turtle 26
+turtle 67
+turtle 99	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 6
+...... count(): 6
+...... capacity: 7
+...... agents: 
+turtle 27
+turtle 12
+turtle 4
+turtle 26
+turtle 67
+turtle 99	1.140360916184019	patch 6 -3	0.0
+128	-1	281.3717485870877	null	null	2.3555324189649793	-7.029193737619384	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 3 -7	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 106
+turtle 84
+turtle 28
+turtle 3
+turtle 68	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 8
+...... count(): 8
+...... capacity: 9
+...... agents: 
+turtle 124
+turtle 106
+turtle 84
+turtle 34
+turtle 2
+turtle 28
+turtle 3
+turtle 68	0.6451284657502878	patch 3 -7	0.0
+129	-1	313.0366291555316	null	null	-4.681664465267666	-0.6509260154476456	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -4 -1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 8
+turtle 145
+turtle 76
+turtle 72	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 8
+turtle 145
+turtle 141
+turtle 76
+turtle 72	0.7658453433297809	patch -4 -1	0.0
+130	-1	11.5428609325852	null	null	-1.6852830309710711	-0.687358390300897	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -2 -2	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 145
+turtle 29
+turtle 42	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 145
+turtle 29
+turtle 42
+turtle 108	1.349842496778127	patch -2 -2	0.0
+131	-1	247.69222664313764	null	null	-1.165181906576825	-3.4954339830875654	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 0 -3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 1
+turtle 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 49
+turtle 1
+turtle 86
+turtle 29
+turtle 9	1.266137317597114	patch 0 -3	0.0
+132	-1	167.68188130523083	null	null	5.087775633362671	2.1718512947578956	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 5 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 38
+turtle 41
+turtle 109
+turtle 142	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 38
+turtle 41
+turtle 109
+turtle 142	0.8327873917191542	patch 5 3	0.0
+133	-1	247.0	null	null	0.9848728220836166	5.946692024577629	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 1 6	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 135
+turtle 146	0.055412740009369604	patch 1 6	0.0
+134	-1	350.1150802196179	null	null	-8.847755935594371	1.876058356478318	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -9 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 97
+turtle 45	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 97
+turtle 45
+turtle 111	0.889188674636737	patch -9 1	0.0
+135	-1	9.52830005351393	null	null	-0.01814304745265946	4.807870189690724	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 0 4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 48	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 48	0.8080738911521617	patch 0 4	0.0
+136	-1	344.26114371683457	null	null	4.740264960091526	0.5001263936808795	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 5 0	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 67	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 67
+turtle 55
+turtle 93
+turtle 18	0.5635500870486124	patch 5 0	0.0
+137	-1	279.78140789917154	null	null	-3.903927718527074	-3.491323891028383	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -3 -4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 49	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 96
+turtle 49
+turtle 145	1.0372254837594697	patch -3 -4	0.0
+138	-1	150.0509087780166	null	null	-0.42750652646021026	-5.770287008814951	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -1 -5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 49
+turtle 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 47
+turtle 49
+turtle 1
+turtle 131	0.9597347827367405	patch -1 -5	0.0
+139	-1	340.34016002036776	null	null	7.017500265222026	3.9940329142801474	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 7 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 35
+turtle 31
+turtle 81
+turtle 142	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 35
+turtle 39
+turtle 31
+turtle 81
+turtle 142	0.9941869512094413	patch 7 3	0.0
+140	-1	12.362369041895363	null	null	-6.203167415518905	6.490862328938962	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -6 6	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 120
+turtle 14	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 120
+turtle 80
+turtle 14
+turtle 69	0.5312464820589529	patch -6 6	0.0
+141	-1	145.76663848500334	null	null	-5.817861454875381	-0.8832993218032462	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -6 0	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 45
+turtle 17	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 95
+turtle 62
+turtle 76
+turtle 45
+turtle 17	0.9018825541711003	patch -6 0	0.0
+142	-1	188.35175666807692	null	null	5.820669774435275	2.600142002730812	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 6 4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 109
+turtle 139	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 6
+...... count(): 6
+...... capacity: 7
+...... agents: 
+turtle 132
+turtle 31
+turtle 109
+turtle 139
+turtle 88
+turtle 75	1.4112978928346762	patch 6 4	0.0
+143	-1	177.84987173065826	null	null	1.1698608868337548	2.116643983318679	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 1 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 116
+turtle 135	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 105
+turtle 48
+turtle 116
+turtle 135
+turtle 41	0.8995390892468429	patch 1 3	0.0
+144	-1	51.68363118089894	null	null	1.4024692178518303	-6.81822192289402	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 1 -7	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 73
+turtle 64	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 8
+...... count(): 8
+...... capacity: 9
+...... agents: 
+turtle 59
+turtle 60
+turtle 73
+turtle 64
+turtle 128
+turtle 78
+turtle 47
+turtle 138	0.4416160556802839	patch 1 -7	0.0
+145	-1	120.24481469142688	null	null	-2.3428214758495227	-2.5535488075201207	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -3 -2	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 8
+turtle 72	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 137
+turtle 8
+turtle 76
+turtle 72
+turtle 42	0.8592437924777503	patch -3 -2	0.0
+146	-1	76.00948305044085	null	null	2.238376861469569	4.825258037340507	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 1 5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 143
+turtle 133	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 143
+turtle 116
+turtle 135
+turtle 41
+turtle 133	1.2506446355929057	patch 1 5	0.0
+147	-1	147.97323608866702	null	null	-1.6339457542871658	3.7184590879114623	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -2 5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 15
+turtle 126	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 74
+turtle 24
+turtle 15
+turtle 126
+turtle 54	1.33279511559771	patch -2 5	0.0
+148	-1	83.27255973946922	null	null	9.482168705020575	2.7778773321258985	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 8 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 35
+turtle 139
+turtle 31	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 39
+turtle 35
+turtle 139
+turtle 31
+turtle 81	1.4987203040347044	patch 8 3	0.0
+149	-1	163.68614416882883	null	null	-4.805342832628654	-7.63615272157049	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -5 -7	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 43
+turtle 83
+turtle 117
+turtle 85	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 6
+...... count(): 6
+...... capacity: 7
+...... agents: 
+turtle 58
+turtle 43
+turtle 40
+turtle 83
+turtle 117
+turtle 85	0.6652681399034357	patch -5 -7	0.0
+0	-1	252.0	null	null	-9.66149856577682	-6.789687123573924	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -8 -5	0.0	0.0	12.231811677907642	patch -10 -7	20.0
+1	-1	100.0	null	null	0.8324311964159784	-7.420902542214906	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -1 -4	0.0	0.0	17.844269950801984	patch 1 -7	20.0
+2	-1	134.0	null	null	8.254571007164131	-7.762552431774485	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 6 -8	0.0	0.0	17.749812434164554	patch 8 -8	20.0
+3	-1	222.0	null	null	4.808247045265523	-8.453388663427969	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 84
+turtle 89	0.0	false	random-min	patch 4 -7	0.0	0.0	20.65869209235107	patch 5 -8	20.0
+4	-1	115.0	null	null	9.387899120861277	-3.7778054973947834	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 34	0.0	false	random-min	patch 6 -4	0.0	0.0	24.16793991614523	patch 8 -3	20.0
+5	-1	331.0	null	null	-6.425120946273864	9.01032439773447	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -6 8	0.0	0.0	9.601047811865216	patch -6 9	20.0
+6	-1	40.0	null	null	8.319967796480501	2.9494541569522577	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 132
+turtle 81
+turtle 67	0.0	false	random-min	patch 9 -2	0.0	0.0	19.31397446351062	patch 8 2	20.0
+7	-1	199.0	null	null	-1.6303988937176113	4.787624947209952	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 133
+turtle 77
+turtle 147	0.0	false	random-min	patch -4 3	0.0	0.0	21.849912907695224	patch -1 6	20.0
+8	-1	197.0	null	null	-3.122066277220249	-5.790299573127533	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 123
+turtle 137	0.0	false	random-min	patch -4 -2	0.0	0.0	20.787051203734997	patch -3 -5	20.0
+9	-1	308.0	null	null	-1.1566179183789904	1.4972611872522732	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 44
+turtle 143	0.0	false	random-min	patch 0 -2	0.0	0.0	22.10177470069852	patch 0 1	20.0
+10	-1	87.0	null	null	-3.1247061839568757	0.17104983719737168	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 42
+turtle 95	0.0	false	random-min	patch -7 -2	0.0	0.0	22.31939334390141	patch -4 0	20.0
+11	-1	187.0	null	null	-9.41030053761887	-5.01920338580985	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 85	0.0	false	random-min	patch -9 -4	0.0	0.0	15.691485779405197	patch -9 -4	20.0
+12	-1	8.0	null	null	13.413736813755397	-5.824141596331869	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 7 -5	0.0	0.0	19.592940597038385	patch 13 -6	20.0
+13	-1	308.0	null	null	-8.996505369519312	0.7382355749602093	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -8 3	0.0	0.0	18.17765400894023	patch -9 1	20.0
+14	-1	270.0	null	null	-4.24621936287747	3.3232648979704944	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 22
+turtle 15	0.0	false	random-min	patch -6 4	0.0	0.0	22.359243991937362	patch -3 3	20.0
+15	-1	313.0	null	null	-2.69282561038497	3.857696928457674	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 14
+turtle 98
+turtle 133	0.0	false	random-min	patch -3 5	0.0	0.0	18.000698904705555	patch -2 3	20.0
+16	-1	275.0	null	null	-7.007964230215412	5.341064193962208	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 112	0.0	false	random-min	patch -5 3	0.0	0.0	15.129772055801368	patch -6 5	20.0
+17	-1	278.0	null	null	-9.015994649746709	-0.9330846924067893	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 97
+turtle 130	0.0	false	random-min	patch -6 1	0.0	0.0	20.61720927225371	patch -8 -1	20.0
+18	-1	168.0	null	null	4.91507707089027	-0.9764586208080837	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 6 1	0.0	0.0	18.146821336890273	patch 5 -1	20.0
+19	-1	330.0	null	null	0.6098720918982155	-0.46450224789670447	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 138	0.0	false	random-min	patch 2 -2	0.0	0.0	20.863444714109306	patch 1 -1	20.0
+20	-1	41.0	null	null	-5.274380777357409	-3.5866132934435413	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 49	0.0	false	random-min	patch -7 -5	0.0	0.0	20.838270706536303	patch -6 -4	20.0
+21	-1	326.0	null	null	3.258171839060329	-4.872783525893502	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 127	0.0	false	random-min	patch 4 -3	0.0	0.0	22.195753110296632	patch 4 -6	20.0
+22	-1	104.0	null	null	-3.9744840255648346	3.7125239685820897	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 80
+turtle 69	0.0	false	random-min	patch -7 -3	0.0	0.0	21.24473807458946	patch -5 4	20.0
+23	-1	302.0	null	null	-12.789109043717446	-0.21803228574505162	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 76
+turtle 141	0.0	false	random-min	patch -9 -1	0.0	0.0	13.603185896169668	patch -12 -1	20.0
+24	-1	277.0	null	null	-3.8965421119243246	6.116599127945446	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -4 5	0.0	0.0	20.217428999212313	patch -4 6	20.0
+25	-1	344.0	null	null	-11.24566222982591	-2.3787054142105393	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 76	0.0	false	random-min	patch -9 -3	0.0	0.0	11.143093135826032	patch -11 -3	20.0
+26	-1	296.0	null	null	8.978908058927944	-1.8876152842748857	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 30	0.0	false	random-min	patch 7 -2	0.0	0.0	19.698011011544793	patch 10 -2	20.0
+27	-1	111.0	null	null	7.149175218367567	-6.724823188539011	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 32
+turtle 61	0.0	false	random-min	patch 5 -5	0.0	0.0	24.46740395438765	patch 6 -6	20.0
+28	-1	219.0	null	null	5.130879799191755	-4.482684374928273	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 3 -6	0.0	0.0	20.366108035152244	patch 5 -4	20.0
+29	-1	294.0	null	null	-6.247666755910858	-0.6669371986130337	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 52
+turtle 42
+turtle 95	0.0	false	random-min	patch -1 -2	0.0	0.0	22.69400743524326	patch -5 -1	20.0
+30	-1	6.0	null	null	10.586910172231573	-1.88205120659223	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 8 0	0.0	0.0	15.59262686113622	patch 11 -2	20.0
+31	-1	298.0	null	null	5.5037445057112215	-3.0660252091756686	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 34	0.0	false	random-min	patch 7 2	0.0	0.0	21.679402114103237	patch 6 -4	20.0
+32	-1	296.0	null	null	6.702953823763824	-5.679994012423808	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 27
+turtle 61	0.0	false	random-min	patch 7 -7	0.0	0.0	21.089826207542057	patch 8 -6	20.0
+33	-1	138.0	null	null	14.709733054706867	-6.907843556649624	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 8 -2	0.0	0.0	15.551915464812302	patch 15 -7	20.0
+34	-1	27.0	null	null	7.808524637238169	-3.6301592518834265	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 5 -8	0.0	0.0	20.71106584658301	patch 8 -4	20.0
+35	-1	291.0	null	null	7.6367477082077935	5.6063037373408875	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 9 3	0.0	0.0	19.541973217778946	patch 8 6	20.0
+36	-1	263.0	null	null	0.3247031476019072	-5.379796824847204	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 78	0.0	false	random-min	patch -2 -7	0.0	0.0	18.152410304409745	patch 1 -5	20.0
+37	-1	253.0	null	null	3.806747564482455	2.5266266230187457	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 132
+turtle 88	0.0	false	random-min	patch -3 4	0.0	0.0	24.339628041300145	patch 5 3	20.0
+38	-1	11.0	null	null	4.485514723471012	8.58970918347642	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 146
+turtle 54	0.0	false	random-min	patch 4 4	0.0	0.0	15.643967649409067	patch 4 8	20.0
+39	-1	22.0	null	null	9.362039810217588	6.716903584492602	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 9 1	0.0	0.0	15.819766767519237	patch 9 7	20.0
+40	-1	156.0	null	null	-6.646186064052659	-6.189015602066383	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 51
+turtle 20	0.0	false	random-min	patch -3 -6	0.0	0.0	18.666660410835643	patch -7 -5	20.0
+41	-1	283.0	null	null	2.993138051773758	5.254619972180637	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 88	0.0	false	random-min	patch 3 4	0.0	0.0	18.96537698562691	patch 4 5	20.0
+42	-1	230.0	null	null	-4.175560178638019	-0.7836330617310078	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 95
+turtle 10	0.0	false	random-min	patch -1 -1	0.0	0.0	23.198065844416057	patch -3 0	20.0
+43	-1	201.0	null	null	-6.293728690134645	-8.373155471695362	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -6 -7	0.0	0.0	14.89500181257767	patch -6 -8	20.0
+44	-1	164.0	null	null	0.21355083280514886	1.07220246978068	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 100
+turtle 9
+turtle 143	0.0	false	random-min	patch -2 1	0.0	0.0	19.634685699205736	patch 0 2	20.0
+45	-1	210.0	null	null	-10.252914549770646	1.5731567759502132	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -8 0	0.0	0.0	16.82151376663895	patch -10 2	20.0
+46	-1	65.0	null	null	10.234131950288152	-6.863035878823219	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 7 -4	0.0	0.0	17.717299685708472	patch 10 -7	20.0
+47	-1	293.0	null	null	-1.1115730815436962	-4.2152109879555395	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 36	0.0	false	random-min	patch -1 -7	0.0	0.0	21.90511194235275	patch 0 -5	20.0
+48	-1	205.0	null	null	-8.04532092369288	4.007764170267881	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 71
+turtle 112	0.0	false	random-min	patch 0 2	0.0	0.0	21.87163660055959	patch -8 5	20.0
+49	-1	194.0	null	null	-5.462245474202035	-5.997520265657793	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 51
+turtle 20	0.0	false	random-min	patch -2 -4	0.0	0.0	20.49944166797925	patch -5 -5	20.0
+50	-1	323.0	null	null	1.0184326737395006	6.594557201343072	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 41	0.0	false	random-min	patch 6 7	0.0	0.0	10.807549879903506	patch 2 6	20.0
+51	-1	30.0	null	null	-6.426576904591871	-5.135990024412347	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 40	0.0	false	random-min	patch -8 -4	0.0	0.0	19.19159021889371	patch -7 -6	20.0
+52	-1	149.0	null	null	-4.208869379440336	-3.133440157832851	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 62
+turtle 72
+turtle 64	0.0	false	random-min	patch 2 0	0.0	0.0	23.604619388537476	patch -5 -2	20.0
+53	-1	27.0	null	null	3.6671958031765506	-2.554401409333991	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 59
+turtle 122	0.0	false	random-min	patch -4 1	0.0	0.0	21.179392362176113	patch 3 -3	20.0
+54	-1	352.0	null	null	3.0019408928401545	7.236439863050968	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -3 7	0.0	0.0	20.27003724723249	patch 3 7	20.0
+55	-1	0.0	null	null	3.857733122496396	1.6621502900735035	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 116	0.0	false	random-min	patch 3 -1	0.0	0.0	19.26540610412337	patch 4 1	20.0
+56	-1	107.0	null	null	-5.499400584227498	2.1458799727329616	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 129	0.0	false	random-min	patch -6 3	0.0	0.0	23.08169509310054	patch -6 2	20.0
+57	-1	184.0	null	null	-3.2570303771219993	6.615247396733489	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 147	0.0	false	random-min	patch -2 7	0.0	0.0	18.66393423778597	patch -3 8	20.0
+58	-1	158.0	null	null	-8.357505649422045	-7.790240111496334	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -3 -7	0.0	0.0	16.846141637727516	patch -8 -8	20.0
+59	-1	155.0	null	null	3.1773203278523114	-5.545709205723544	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 21
+turtle 78	0.0	false	random-min	patch 1 -9	0.0	0.0	21.49661997451054	patch 3 -5	20.0
+60	-1	181.0	null	null	-1.69072911713931	-9.179621271290175	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 1 -8	0.0	0.0	16.34521102483929	patch -2 -9	20.0
+61	-1	241.0	null	null	6.970618658259978	-6.0507620042339	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 32	0.0	false	random-min	patch 5 -7	0.0	0.0	21.333099306010187	patch 8 -6	20.0
+62	-1	288.0	null	null	-6.326612449029467	-2.582029368037836	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 20
+turtle 72
+turtle 52	0.0	false	random-min	patch -8 -1	0.0	0.0	22.212429689148337	patch -5 -3	20.0
+63	-1	216.0	null	null	-4.292632076994528	-12.40682465946744	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -3 -8	0.0	0.0	13.557876362411193	patch -4 -12	20.0
+64	-1	48.0	null	null	-3.2469371394796447	-1.1079543801971021	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 72
+turtle 52
+turtle 42	0.0	false	random-min	patch 0 -7	0.0	0.0	21.963860787984693	patch -4 -2	20.0
+65	-1	2.0	null	null	-0.7370901974574198	8.335150318283933	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -2 8	0.0	0.0	15.795783739525612	patch -1 8	20.0
+66	-1	222.0	null	null	0.04574017467847091	8.638867810669728	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 74	0.0	false	random-min	patch 1 9	0.0	0.0	13.945229480303166	patch 1 9	20.0
+67	-1	16.0	null	null	8.267357983362059	2.973182035457821	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 6
+turtle 81	0.0	false	random-min	patch 5 -2	0.0	0.0	18.24453416584075	patch 8 2	20.0
+68	-1	7.0	null	null	4.184075618818317	-7.360220847992058	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 3
+turtle 89	0.0	false	random-min	patch 4 -6	0.0	0.0	16.754663802228578	patch 4 -8	20.0
+69	-1	314.0	null	null	-5.660731767874109	4.42004497662464	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 126
+turtle 80
+turtle 14
+turtle 22	0.0	false	random-min	patch -6 7	0.0	0.0	17.19873055310298	patch -5 4	20.0
+70	-1	206.0	null	null	4.657250327067632	8.942271788819887	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 38	0.0	false	random-min	patch 2 9	0.0	0.0	13.4850767021733	patch 5 10	20.0
+71	-1	57.0	null	null	-7.048671425701685	6.483294029720981	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 16
+turtle 120	0.0	false	random-min	patch -7 3	0.0	0.0	18.979865211528136	patch -8 6	20.0
+72	-1	18.0	null	null	-3.753372853936134	-1.582711662674881	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 137
+turtle 52	0.0	false	random-min	patch -3 -1	0.0	0.0	19.82204228963534	patch -4 -3	20.0
+73	-1	129.0	null	null	-0.23333475575468554	-10.317456777319379	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 0 -9	0.0	0.0	16.162696206573933	patch 0 -10	20.0
+74	-1	318.0	null	null	0.8799909130673335	7.898272063176959	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 50
+turtle 54	0.0	false	random-min	patch -2 3	0.0	0.0	20.934476112161292	patch 2 7	20.0
+75	-1	166.0	null	null	8.929002846179626	4.060629879694795	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 8 5	0.0	0.0	10.128778372347844	patch 9 4	20.0
+76	-1	151.0	null	null	-10.62153363056429	-2.1241000976214375	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 141	0.0	false	random-min	patch -5 -1	0.0	0.0	19.02808105378527	patch -11 -1	20.0
+77	-1	240.0	null	null	-0.2539535462631054	5.742932021534903	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -1 8	0.0	0.0	18.7127864480429	patch 0 6	20.0
+78	-1	45.0	null	null	2.3856446150167927	-3.1858906112626957	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 96	0.0	false	random-min	patch 1 -6	0.0	0.0	20.982438944408404	patch 2 -4	20.0
+79	-1	308.0	null	null	2.305689291726728	8.698674696019967	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 2 8	0.0	0.0	13.49925280721046	patch 2 9	20.0
+80	-1	94.0	null	null	-5.291989789273628	3.394268041109113	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 56
+turtle 69	0.0	false	random-min	patch -5 4	0.0	0.0	18.795607787114243	patch -6 3	20.0
+81	-1	299.0	null	null	7.411770999906488	2.626244789127285	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 6
+turtle 67
+turtle 93	0.0	false	random-min	patch 8 4	0.0	0.0	18.56842949797011	patch 8 2	20.0
+82	-1	126.0	null	null	12.3899974844181	1.2368722186431684	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 8 1	0.0	0.0	13.524993026707552	patch 12 1	20.0
+83	-1	80.0	null	null	-2.58376336626407	-7.8034417477614975	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -6 -6	0.0	0.0	15.538997206882362	patch -3 -8	20.0
+84	-1	277.0	null	null	5.047513305994939	-8.091825217168996	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 3	0.0	false	random-min	patch 4 -8	0.0	0.0	14.153619139931095	patch 6 -8	20.0
+85	-1	185.0	null	null	-8.621495315968023	-4.160417916387954	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 11
+turtle 97	0.0	false	random-min	patch -4 -5	0.0	0.0	20.047457582577866	patch -9 -3	20.0
+86	-1	193.0	null	null	2.4856610643126977	-7.306699635199335	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 2 -4	0.0	0.0	19.331492859125376	patch 2 -7	20.0
+87	-1	355.0	null	null	3.349392651161248	10.738252270570339	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 3 8	0.0	0.0	11.59347395976902	patch 3 11	20.0
+88	-1	122.0	null	null	5.645948990049879	3.5547849143268646	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 132	0.0	false	random-min	patch 7 4	0.0	0.0	19.745505947067933	patch 5 4	20.0
+89	-1	262.0	null	null	4.090003225600985	-7.219117796072514	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 3
+turtle 84
+turtle 127
+turtle 27	0.0	false	random-min	patch 7 -6	0.0	0.0	18.955653440242266	patch 5 -7	20.0
+90	-1	102.0	null	null	8.231144262985778	-9.643263775877935	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 9 -4	0.0	0.0	16.630600508426028	patch 8 -10	20.0
+91	-1	217.0	null	null	-4.342436743625781	-7.585737424648149	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 8	0.0	false	random-min	patch -4 -9	0.0	0.0	17.34047412053661	patch -4 -7	20.0
+92	-1	268.0	null	null	-4.7689682724506515	9.401930551008896	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -4 9	0.0	0.0	11.023303249277498	patch -5 9	20.0
+93	-1	128.0	null	null	9.486756366114507	1.1774893351117344	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 6
+turtle 67	0.0	false	random-min	patch 7 -1	0.0	0.0	15.914663989010295	patch 9 2	20.0
+94	-1	37.0	null	null	6.791479539283888	10.154070837198983	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 4 6	0.0	0.0	13.742408528349786	patch 7 10	20.0
+95	-1	302.0	null	null	-5.5222609082128695	0.7240620128157446	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 42
+turtle 126	0.0	false	random-min	patch -6 -2	0.0	0.0	20.996048535142695	patch -5 0	20.0
+96	-1	31.0	null	null	1.1076288995057078	-3.606842385112474	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 47
+turtle 36
+turtle 78	0.0	false	random-min	patch -2 -6	0.0	0.0	23.683698113918346	patch 1 -4	20.0
+97	-1	29.0	null	null	-8.314201380843619	-1.7271571455104169	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 85	0.0	false	random-min	patch -9 0	0.0	0.0	21.792584580303096	patch -9 -3	20.0
+98	-1	275.0	null	null	-1.5065324729027174	3.1061276898700965	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 44
+turtle 15	0.0	false	random-min	patch -1 2	0.0	0.0	19.951079604366424	patch -1 3	20.0
+99	-1	22.0	null	null	7.506254643044442	-1.8168200110238644	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 31
+turtle 34
+turtle 4	0.0	false	random-min	patch 6 -2	0.0	0.0	21.83142212143628	patch 7 -3	20.0
+100	-1	291.93399324051757	null	null	-1.6830242703919145	1.6234131127873284	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -3 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 9
+turtle 44	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 9
+turtle 44	21.999600424837297	patch -1 1	20.0
+101	-1	297.2315424834526	null	null	-3.414972092643799	11.134586174543944	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -3 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 140	15.47571374040996	patch -3 11	20.0
+102	-1	51.66286200155764	null	null	12.394554516889812	-0.5644141018543178	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 10 0	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 82	12.683358849668904	patch 12 -1	20.0
+103	-1	192.49200441190408	null	null	1.9911799792591554	-0.04215268192749544	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 1 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 116	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 44
+turtle 55
+turtle 143
+turtle 116	18.9723007955867	patch 2 1	20.0
+104	-1	84.12377906487473	null	null	-2.3944713813346636	-1.3371152198165082	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -6 -5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 72
+turtle 64
+turtle 42	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 7
+...... count(): 7
+...... capacity: 8
+...... agents: 
+turtle 72
+turtle 52
+turtle 64
+turtle 110
+turtle 29
+turtle 10
+turtle 42	21.0979409664178	patch -3 -1	20.0
+105	-1	246.14091267902523	null	null	-1.9265129373355365	-0.6861609053674773	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 0 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 138
+turtle 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 104
+turtle 138
+turtle 100
+turtle 9	19.23154202087976	patch -1 0	20.0
+106	-1	335.45470731508004	null	null	4.488680307131132	-10.072634213150794	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 2 -8	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 3	14.288790106163777	patch 4 -10	20.0
+107	-1	203.24993102905796	null	null	4.907332211605122	10.941971163281412	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 4 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	13.646511476245626	patch 5 12	20.0
+108	-1	191.23383589766058	null	null	1.169516297999726	3.5265961928529044	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -1 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 50	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 135
+turtle 50	24.202487188909927	patch 1 5	20.0
+109	-1	297.1319941125901	null	null	5.759908821768181	6.568053569343994	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 5 4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 146	17.725193291937487	patch 6 7	20.0
+110	-1	156.48841719316306	null	null	-1.5633332383181748	-3.2456926866101714	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 3 -4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 137
+turtle 104
+turtle 138	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 137
+turtle 104
+turtle 105
+turtle 138	21.756748069000313	patch -2 -2	20.0
+111	-1	293.71109387988304	null	null	-11.651341227520527	4.012998800477253	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -9 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 134	17.178553767831815	patch -12 4	20.0
+112	-1	65.0178360392672	null	null	-6.204899963518897	6.72255306654724	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -7 7	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 71	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 16
+turtle 71	6.090836728289908	patch -7 6	20.0
+113	-1	130.92853025753044	null	null	-1.6446627493200356	9.599552482696556	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -2 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 65
+turtle 121	15.09867457365418	patch -2 10	20.0
+114	-1	31.42579148578261	null	null	9.277729254295703	-0.1580884659335322	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 9 0	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 99
+turtle 26	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 99
+turtle 26
+turtle 136	21.04081379417861	patch 9 -1	20.0
+115	-1	109.11515553167561	null	null	-2.6137673547942053	-10.68630358030497	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -1 -8	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 60	17.020494394402927	patch -3 -11	20.0
+116	-1	108.92472727727608	null	null	3.368066982683472	1.5786577693944213	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 2 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 143	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 103
+turtle 55
+turtle 143
+turtle 37
+turtle 135	19.243154449958677	patch 2 2	20.0
+117	-1	180.33994088362584	null	null	-4.357136329384054	-10.063269203133794	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -5 -6	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 91	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 149
+turtle 91	23.114474986398882	patch -4 -9	20.0
+118	-1	24.33662219431187	null	null	2.1221131214113247	-2.138045745083232	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 1 -4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 96
+turtle 78	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 96
+turtle 78
+turtle 131	22.0406538396324	patch 2 -3	20.0
+119	-1	194.9041662069668	null	null	-0.7944472732586261	-6.8729438754076355	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 2 -5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 47	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 47
+turtle 36	19.40194588972481	patch -1 -6	20.0
+120	-1	124.76679306570384	null	null	-8.509742539327698	5.699118087839004	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -7 4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	13.633094010801972	patch -9 6	20.0
+121	-1	37.73471462661951	null	null	-0.7115461130865024	10.849139455135887	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 0 10	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 113
+turtle 125	12.847695997716974	patch -1 11	20.0
+122	-1	62.21685282148201	null	null	5.0113930770992345	-1.8461917932082077	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 3 -2	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 53	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 53
+turtle 18	18.310886115020608	patch 4 -2	20.0
+123	-1	85.07719673587576	null	null	-1.5582240326554175	-5.655604006794028	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -6 -3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 8	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 8	21.22740941271342	patch -3 -6	20.0
+124	-1	346.4497946798202	null	null	2.2224224880215147	-9.060274870412936	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 4 -9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 128
+turtle 86	16.61634086487916	patch 2 -9	20.0
+125	-1	12.498424135055302	null	null	1.0944696113502346	11.094495203678358	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -1 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 66
+turtle 121	11.069293986577758	patch 1 11	20.0
+126	-1	210.23360075327514	null	null	-5.432900722404407	1.427278206874992	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -3 6	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 56
+turtle 145
+turtle 80
+turtle 14	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 56
+turtle 145
+turtle 80
+turtle 14
+turtle 22	21.191233400761682	patch -5 2	20.0
+127	-1	153.163003478375	null	null	3.8908656529553984	-6.366056921495898	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 6 -3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 21
+turtle 59	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 21
+turtle 59
+turtle 28	22.794670743698497	patch 3 -5	20.0
+128	-1	298.9352748763258	null	null	0.3490582609836276	-8.867254570101302	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 3 -7	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 73
+turtle 124
+turtle 1	13.695500611016326	patch 0 -9	20.0
+129	-1	215.79436438610975	null	null	-6.899241857012083	0.20454973434887969	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -4 -1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 56	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 29
+turtle 95
+turtle 126
+turtle 56	20.193740824942935	patch -6 1	20.0
+130	-1	302.84082104850233	null	null	-7.284593205742371	-1.6588299051140285	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -2 -2	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 62	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 20
+turtle 62
+turtle 97
+turtle 17
+turtle 29	22.155010781003927	patch -6 -2	20.0
+131	-1	253.29545153111258	null	null	0.022127274128856844	-2.6063418504937337	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 0 -3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 118
+turtle 19	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 78
+turtle 118
+turtle 19	17.470407345012323	patch 1 -2	20.0
+132	-1	153.13580384598936	null	null	6.315649280698223	2.232686561170075	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 5 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 88	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 81
+turtle 88	17.381701593247392	patch 6 3	20.0
+133	-1	331.41359896774435	null	null	-2.0645655860145182	4.618065268795009	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 1 6	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 15
+turtle 98	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 14
+turtle 15
+turtle 98	14.067613080540921	patch -2 4	20.0
+134	-1	199.73997879684828	null	null	-9.955841644509707	3.2683349350733146	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -9 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 45
+turtle 111	18.352713114753715	patch -10 3	20.0
+135	-1	318.31703199175286	null	null	2.2004336796079773	4.330593183751743	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 0 4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 37	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 37
+turtle 108
+turtle 41	19.604225919850077	patch 3 4	20.0
+136	-1	332.79445892775266	null	null	6.576344091748186	-0.007840111186747434	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 5 0	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 99	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 99
+turtle 142	21.347348826296628	patch 7 -1	20.0
+137	-1	263.0403801408644	null	null	-3.6624545939890547	-3.5019308166548613	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -3 -4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 110	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 72
+turtle 52
+turtle 110	19.8169637299295	patch -3 -3	20.0
+138	-1	105.89834739743259	null	null	-0.29553787261361997	-1.5428261100136114	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -1 -5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 104
+turtle 105	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 131
+turtle 104
+turtle 105	22.045694673808807	patch -1 -1	20.0
+139	-1	54.81289207670443	null	null	7.586163719627493	4.922802140610005	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 7 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 88	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 132
+turtle 81
+turtle 88
+turtle 35	17.897717791939254	patch 7 4	20.0
+140	-1	349.50080064617146	null	null	-5.099676876406387	11.186413668388044	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -6 6	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 92
+turtle 101	13.595667509983528	patch -5 11	20.0
+141	-1	226.02922539090707	null	null	-10.746343947655753	0.11819614503183506	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -6 0	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 13
+turtle 45	16.584375119258922	patch -11 0	20.0
+142	-1	248.96401463529895	null	null	6.041200525741564	0.6837408735009118	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 6 4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 136	22.025526097058115	patch 6 1	20.0
+143	-1	185.38518314692158	null	null	0.9666212997725325	1.3742506005179982	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 1 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 108	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 44
+turtle 108	20.798803058558725	patch 1 2	20.0
+144	-1	4.19697741407964	null	null	-0.7217182417670193	-11.36243847417429	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 1 -7	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	19.00861794110178	patch -1 -12	20.0
+145	-1	322.3415245911524	null	null	-3.5028369630451297	2.321266542173169	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -3 -2	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 10
+turtle 100	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 10
+turtle 100	22.819208818598128	patch -3 2	20.0
+146	-1	252.56299844422296	null	null	4.037499609839667	6.027061424244782	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 1 5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 109	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 109	19.2358981944731	patch 5 6	20.0
+147	-1	220.10208101986143	null	null	-2.26655671648854	6.518984323174051	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -2 5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 65	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 7
+turtle 57
+turtle 65	19.94040486270025	patch -2 7	20.0
+148	-1	90.23566467510011	null	null	11.148472029090403	2.6239427432696454	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 8 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 82	13.677273371670974	patch 11 3	20.0
+149	-1	280.3348455608153	null	null	-5.437463594980353	-10.6490312097331	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -5 -7	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 117	16.515386022831315	patch -5 -11	20.0
+0	-1	268.0	null	null	-8.559581190295042	-7.565900280228155	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 43	0.0	false	random-min	patch -8 -5	0.0	0.0	26.875595846371723	patch -8 -8	40.0
+1	-1	138.0	null	null	2.6571674257848983	-9.056079063224546	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 3
+turtle 86	0.0	false	random-min	patch -1 -4	0.0	0.0	32.52782335040068	patch 2 -8	40.0
+2	-1	309.0	null	null	9.11048072413527	-7.760103382883561	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 6 -8	0.0	0.0	25.562278235037507	patch 9 -8	40.0
+3	-1	170.0	null	null	2.7486727533751254	-7.552778566481594	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 86
+turtle 18	0.0	false	random-min	patch 4 -7	0.0	0.0	36.923138369052275	patch 3 -7	40.0
+4	-1	238.0	null	null	8.737518232101687	-4.375787039376573	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 99
+turtle 31	0.0	false	random-min	patch 6 -4	0.0	0.0	34.09544245439445	patch 10 -4	40.0
+5	-1	136.0	null	null	-5.756829889074381	10.019569419281954	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -6 8	0.0	0.0	20.21068835138234	patch -6 10	40.0
+6	-1	350.0	null	null	12.39393567739367	6.763124791627617	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 9 -2	0.0	0.0	36.02435578688365	patch 12 7	40.0
+7	-1	222.0	null	null	-0.8863401380701764	2.6438984504464536	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 15	0.0	false	random-min	patch -4 3	0.0	0.0	44.51085443673909	patch 0 3	40.0
+8	-1	224.0	null	null	-8.186549829532408	-5.204105152858226	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 43
+turtle 97	0.0	false	random-min	patch -4 -2	0.0	0.0	40.78164567760277	patch -7 -4	40.0
+9	-1	174.0	null	null	-1.4319399342299164	-3.290699018124765	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 10	0.0	false	random-min	patch 0 -2	0.0	0.0	43.9807035247317	patch -2 -2	40.0
+10	-1	59.0	null	null	-1.851523036371415	-1.3241140591214595	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 9	0.0	false	random-min	patch -7 -2	0.0	0.0	45.16846941274886	patch -3 -2	40.0
+11	-1	57.0	null	null	-9.38064705858024	-3.6197765765347008	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -9 -4	0.0	0.0	31.403118597903564	patch -9 -4	40.0
+12	-1	8.0	null	null	13.413736813755397	-5.824141596331869	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 7 -5	0.0	0.0	28.584143613257588	patch 13 -6	40.0
+13	-1	231.0	null	null	-13.375426766768074	-3.956999320088425	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -8 3	0.0	0.0	33.612479148878286	patch -13 -4	40.0
+14	-1	217.0	null	null	-6.645613119306894	3.536716382618077	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -6 4	0.0	0.0	43.00539006364092	patch -7 4	40.0
+15	-1	231.0	null	null	-0.8327641572087299	3.9826473831821776	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 7	0.0	false	random-min	patch -3 5	0.0	0.0	37.10749662929185	patch 0 5	40.0
+16	-1	16.0	null	null	-6.081312943424353	7.76525069069557	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -5 3	0.0	0.0	28.373162549455987	patch -6 8	40.0
+17	-1	336.0	null	null	-7.801332673450403	-2.7145895592196503	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -6 1	0.0	0.0	38.240999806530716	patch -8 -3	40.0
+18	-1	9.0	null	null	2.995115583543308	-4.117929143149343	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 21
+turtle 59	0.0	false	random-min	patch 6 1	0.0	0.0	38.19940138124675	patch 3 -5	40.0
+19	-1	169.0	null	null	-0.6264387064246076	0.35818947991812533	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 52
+turtle 7	0.0	false	random-min	patch 2 -2	0.0	0.0	41.189792596053195	patch -1 1	40.0
+20	-1	240.0	null	null	-3.3446494662146704	-3.4241830321065847	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -7 -5	0.0	0.0	40.931749130573245	patch -3 -3	40.0
+21	-1	342.0	null	null	3.293454221494361	-4.994091509876371	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 3
+turtle 89
+turtle 18	0.0	false	random-min	patch 4 -3	0.0	0.0	43.19300816101031	patch 4 -6	40.0
+22	-1	253.0	null	null	-8.919874933541903	1.1180292948031	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 51
+turtle 45	0.0	false	random-min	patch -7 -3	0.0	0.0	40.23717913315872	patch -8 1	40.0
+23	-1	302.0	null	null	-12.789109043717446	-0.21803228574505162	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -9 -1	0.0	0.0	19.669917242421356	patch -13 0	40.0
+24	-1	69.0	null	null	1.5827672040298124	4.165253300340369	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -4 5	0.0	0.0	38.342769421555786	patch 2 4	40.0
+25	-1	255.0	null	null	-11.91577573943372	-1.4690235591059992	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -9 -3	0.0	0.0	24.327593476238196	patch -12 -1	40.0
+26	-1	82.0	null	null	10.277385719668688	1.1820697975812864	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 7 -2	0.0	0.0	31.286977865347257	patch 10 1	40.0
+27	-1	25.0	null	null	8.62437409036033	-5.359836951541022	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 61
+turtle 32
+turtle 96	0.0	false	random-min	patch 5 -5	0.0	0.0	38.4072937521798	patch 8 -6	40.0
+28	-1	244.0	null	null	4.981582747085986	-4.734048093925946	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 53
+turtle 136	0.0	false	random-min	patch 3 -6	0.0	0.0	37.025840304514865	patch 6 -4	40.0
+29	-1	266.0	null	null	-6.918650269202555	0.715712446559899	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 110
+turtle 80
+turtle 45	0.0	false	random-min	patch -1 -2	0.0	0.0	39.20189776539863	patch -6 1	40.0
+30	-1	61.0	null	null	12.915809195169066	-0.3406458158200354	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 8 0	0.0	0.0	23.566499955609032	patch 13 0	40.0
+31	-1	342.0	null	null	9.423852609906154	-1.9237566289002128	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 99	0.0	false	random-min	patch 7 2	0.0	0.0	33.953962894744194	patch 10 -3	40.0
+32	-1	32.0	null	null	7.669165842514878	-6.623120634823425	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 61
+turtle 96	0.0	false	random-min	patch 7 -7	0.0	0.0	34.56589014104251	patch 7 -7	40.0
+33	-1	138.0	null	null	14.709733054706867	-6.907843556649624	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 8 -2	0.0	0.0	21.642817190527428	patch 15 -7	40.0
+34	-1	212.0	null	null	1.8678494176433267	-3.1051538549630013	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 5 -8	0.0	0.0	37.60539475622389	patch 2 -3	40.0
+35	-1	134.0	null	null	7.916948377746797	4.55763389221112	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 9 3	0.0	0.0	37.54841867027018	patch 8 5	40.0
+36	-1	272.0	null	null	-2.2429701968689697	-6.879214002241577	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -2 -7	0.0	0.0	37.80350381968315	patch -2 -7	40.0
+37	-1	72.0	null	null	4.089784621147296	2.5222779521484284	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 41
+turtle 88	0.0	false	random-min	patch -3 4	0.0	0.0	47.62740111886235	patch 3 2	40.0
+38	-1	106.0	null	null	7.999333608801796	7.944175531207806	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 4 4	0.0	0.0	30.813212850920614	patch 8 8	40.0
+39	-1	171.0	null	null	10.655638222354458	2.6594752396446633	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 9 1	0.0	0.0	31.843826176177988	patch 11 3	40.0
+40	-1	278.0	null	null	-2.9945283105380476	-4.988359186512468	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -3 -6	0.0	0.0	30.962221523826173	patch -3 -5	40.0
+41	-1	243.0	null	null	2.293904090100931	0.8913150992858523	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 88
+turtle 37	0.0	false	random-min	patch 3 4	0.0	0.0	37.15808425412836	patch 3 1	40.0
+42	-1	169.0	null	null	-6.2052143195033915	-1.7925577207670855	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 126	0.0	false	random-min	patch -1 -1	0.0	0.0	40.675805477783356	patch -6 -1	40.0
+43	-1	174.0	null	null	-6.987952992562195	-6.315805599192093	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 8
+turtle 97	0.0	false	random-min	patch -6 -7	0.0	0.0	28.507281187238775	patch -7 -5	40.0
+44	-1	79.0	null	null	7.2748307809126	5.949262123624391	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 55	0.0	false	random-min	patch -2 1	0.0	0.0	42.47328543512241	patch 6 6	40.0
+45	-1	67.0	null	null	-6.124036856498856	2.2605647578502963	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 51
+turtle 110
+turtle 80	0.0	false	random-min	patch -8 0	0.0	0.0	31.226911030607088	patch -7 2	40.0
+46	-1	176.0	null	null	10.843253486674817	-5.599417967886834	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 7 -4	0.0	0.0	28.3958178492902	patch 11 -6	40.0
+47	-1	318.0	null	null	-1.3933604704847795	-8.128062481825125	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -1 -7	0.0	0.0	38.33525971169078	patch -1 -8	40.0
+48	-1	335.0	null	null	-8.56091878715116	4.8621020842266045	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 0 2	0.0	0.0	31.528463826409958	patch -9 5	40.0
+49	-1	49.0	null	null	-4.483421392231347	-2.387777611268145	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -2 -4	0.0	0.0	38.360531005912364	patch -4 -2	40.0
+50	-1	214.0	null	null	3.197248587616188	6.345829785427466	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 6 7	0.0	0.0	25.330616994569084	patch 3 6	40.0
+51	-1	314.0	null	null	-7.836171908105963	1.167164265361846	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 42
+turtle 29
+turtle 45	0.0	false	random-min	patch -8 -4	0.0	0.0	37.54982136568561	patch -7 0	40.0
+52	-1	316.0	null	null	-1.4796528618313873	2.5651366761951904	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 19	0.0	false	random-min	patch 2 0	0.0	0.0	44.318412357234045	patch -1 2	40.0
+53	-1	114.0	null	null	6.564504512980013	-4.172049972699586	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 28	0.0	false	random-min	patch -4 1	0.0	0.0	43.58526318515715	patch 6 -4	40.0
+54	-1	169.0	null	null	0.9158841395236778	7.852778877771248	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 79	0.0	false	random-min	patch -3 7	0.0	0.0	39.516175391510004	patch 1 9	40.0
+55	-1	270.0	null	null	5.297524844323731	5.76134846684987	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 81
+turtle 44	0.0	false	random-min	patch 3 -1	0.0	0.0	34.33935387382401	patch 6 6	40.0
+56	-1	203.0	null	null	-9.280168266117698	2.7643048596159456	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -6 3	0.0	0.0	40.8834902171171	patch -9 3	40.0
+57	-1	337.0	null	null	-1.4313348603766047	6.858770400388663	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 77
+turtle 98	0.0	false	random-min	patch -2 7	0.0	0.0	36.148325975584555	patch -1 6	40.0
+58	-1	225.0	null	null	-9.757449580663584	-7.173410400106216	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -3 -7	0.0	0.0	29.839728013907518	patch -10 -7	40.0
+59	-1	63.0	null	null	4.091424218557814	-3.3516120903634876	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 21
+turtle 18
+turtle 68	0.0	false	random-min	patch 1 -9	0.0	0.0	42.24802229958863	patch 3 -4	40.0
+60	-1	345.0	null	null	-1.4383630896537998	-10.049124395098461	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 1 -8	0.0	0.0	28.50098338600353	patch -1 -10	40.0
+61	-1	101.0	null	null	7.028875712413599	-7.016868086256985	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 32	0.0	false	random-min	patch 5 -7	0.0	0.0	38.54109717232941	patch 6 -7	40.0
+62	-1	210.0	null	null	-4.4940231754890405	-8.919610180380353	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 117	0.0	false	random-min	patch -8 -1	0.0	0.0	42.02318730938168	patch -4 -8	40.0
+63	-1	120.0	null	null	-5.302826644296226	-11.096806437836396	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -3 -8	0.0	0.0	24.089984436197014	patch -5 -11	40.0
+64	-1	183.0	null	null	-3.0266049782416706	3.873615386900347	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 77	0.0	false	random-min	patch 0 -7	0.0	0.0	39.473619520046064	patch -3 5	40.0
+65	-1	112.0	null	null	0.4615138644814629	12.131323030394764	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -2 8	0.0	0.0	29.44999903501954	patch 0 12	40.0
+66	-1	212.0	null	null	-5.19336472743896	3.6282201059372934	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 104	0.0	false	random-min	patch 1 9	0.0	0.0	34.734998168384884	patch -5 4	40.0
+67	-1	300.0	null	null	6.162120742201701	2.331347035342193	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 132	0.0	false	random-min	patch 5 -2	0.0	0.0	33.12394058588162	patch 7 2	40.0
+68	-1	215.0	null	null	3.5066568060539156	-3.8134846552209596	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 59	0.0	false	random-min	patch 4 -6	0.0	0.0	35.290443603202874	patch 4 -3	40.0
+69	-1	291.0	null	null	-7.795947597756362	6.35543987258975	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 108	0.0	false	random-min	patch -6 7	0.0	0.0	36.81181987312224	patch -7 6	40.0
+70	-1	38.0	null	null	6.743207528669287	10.354386050611382	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 2 9	0.0	0.0	23.77989540423135	patch 7 10	40.0
+71	-1	317.0	null	null	-11.543439233553725	6.020601258135963	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -7 3	0.0	0.0	29.111616154981338	patch -12 6	40.0
+72	-1	358.0	null	null	-4.860890133970578	-5.691712772432437	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -3 -1	0.0	0.0	36.02617156474308	patch -5 -6	40.0
+73	-1	320.0	null	null	-3.7645089965536664	-10.458228284092637	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 115	0.0	false	random-min	patch 0 -9	0.0	0.0	30.31437968524055	patch -3 -11	40.0
+74	-1	255.0	null	null	-0.8314880584907368	9.176932751070689	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -2 3	0.0	0.0	39.59383169758878	patch -1 9	40.0
+75	-1	37.0	null	null	8.356108496275315	6.027089074465941	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 8 5	0.0	0.0	23.693374778917693	patch 8 6	40.0
+76	-1	268.0	null	null	-11.780998871729576	-4.219145916459861	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -5 -1	0.0	0.0	34.049283349539536	patch -12 -4	40.0
+77	-1	326.0	null	null	-2.2689831759732324	5.686516486303872	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 15
+turtle 57	0.0	false	random-min	patch -1 8	0.0	0.0	38.41452575559592	patch -2 5	40.0
+78	-1	204.0	null	null	0.10642587731563657	-3.439944956944256	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 1 -6	0.0	0.0	40.82092090833511	patch 0 -3	40.0
+79	-1	227.0	null	null	0.8925423149073242	7.687512604199069	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 54	0.0	false	random-min	patch 2 8	0.0	0.0	32.54767166705207	patch 2 8	40.0
+80	-1	178.0	null	null	-6.1371065414052985	1.7132224666510507	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 45
+turtle 110
+turtle 14	0.0	false	random-min	patch -5 4	0.0	0.0	38.004350890835234	patch -6 3	40.0
+81	-1	210.0	null	null	5.749984017199996	3.7359363681341886	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 44	0.0	false	random-min	patch 8 4	0.0	0.0	36.75205065543145	patch 6 5	40.0
+82	-1	41.0	null	null	11.383068290170911	4.902784818938424	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 8 1	0.0	0.0	28.92687653195335	patch 11 5	40.0
+83	-1	246.0	null	null	-1.2438694031336506	-6.023250190550574	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 137	0.0	false	random-min	patch -6 -6	0.0	0.0	30.767133572251396	patch 0 -6	40.0
+84	-1	322.0	null	null	4.410074735714105	-9.661360719607035	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 4 -8	0.0	0.0	27.24471147172506	patch 4 -10	40.0
+85	-1	318.0	null	null	-10.077903468848985	-0.07587703706530313	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 130	0.0	false	random-min	patch -4 -5	0.0	0.0	33.13118459176456	patch -9 -1	40.0
+86	-1	19.0	null	null	2.013192658032747	-7.4512260609279535	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 1	0.0	false	random-min	patch 2 -4	0.0	0.0	35.51488269974629	patch 2 -8	40.0
+87	-1	355.0	null	null	3.349392651161248	10.738252270570339	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 3 8	0.0	0.0	20.324730422548434	patch 3 11	40.0
+88	-1	175.0	null	null	4.399995008723414	2.1432802358857828	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 37
+turtle 116	0.0	false	random-min	patch 7 4	0.0	0.0	37.271379781330815	patch 4 3	40.0
+89	-1	131.0	null	null	4.275808048522627	-6.379184612189201	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 7 -6	0.0	0.0	37.07940835185186	patch 4 -6	40.0
+90	-1	39.0	null	null	7.2191475320163745	-9.427656203782952	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 9 -4	0.0	0.0	27.413704566033687	patch 7 -9	40.0
+91	-1	286.0	null	null	-10.220517440185773	-5.388866391584173	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -4 -9	0.0	0.0	32.69702474143467	patch -10 -5	40.0
+92	-1	168.0	null	null	-4.561056581632892	8.42378295027509	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch -4 9	0.0	0.0	22.167925812600735	patch -5 8	40.0
+93	-1	240.0	null	null	9.621366933991789	4.417292217796723	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 7 -1	0.0	0.0	29.86959873972744	patch 10 4	40.0
+94	-1	72.0	null	null	8.437194426038038	9.743748031235281	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	0.0	true	random-min	patch 4 6	0.0	0.0	24.980362135037556	patch 8 10	40.0
+95	-1	55.0	null	null	-2.3752024161259553	1.081391506831494	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 145
+turtle 138
+turtle 103	0.0	false	random-min	patch -6 -2	0.0	0.0	38.35086978947873	patch -3 1	40.0
+96	-1	204.0	null	null	7.5147145144123195	-7.380215772280919	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 61
+turtle 32
+turtle 27	0.0	false	random-min	patch -2 -6	0.0	0.0	44.56074030936606	patch 8 -6	40.0
+97	-1	91.0	null	null	-6.826969346766772	-4.245800210655941	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 8	0.0	false	random-min	patch -9 0	0.0	0.0	41.405538651255966	patch -8 -4	40.0
+98	-1	108.0	null	null	-0.41103864087758457	6.945415655521075	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 57	0.0	false	random-min	patch -1 2	0.0	0.0	39.15383108956592	patch -1 7	40.0
+99	-1	267.0	null	null	8.450536797079222	-3.066889782348702	null	circle		9.9	Turtle	false	1.0	1.0	up	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 31	0.0	false	random-min	patch 6 -2	0.0	0.0	35.48664425939809	patch 9 -3	40.0
+100	-1	103.1371539343092	null	null	4.209919052840782	-0.41047638057100677	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -3 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 118
+turtle 143	37.681330307464926	patch 4 0	40.0
+101	-1	315.313031648756	null	null	-4.9620583555765565	12.382119652300224	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -3 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 140	25.19742432976718	patch -5 12	40.0
+102	-1	72.09182347718115	null	null	13.203546825298163	2.375350385284914	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 10 0	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 114	30.11819468657829	patch 13 2	40.0
+103	-1	267.426741932503	null	null	-3.615772053072237	1.7473864375675854	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 1 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 95
+turtle 52	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 5
+...... count(): 5
+...... capacity: 6
+...... agents: 
+turtle 138
+turtle 95
+turtle 104
+turtle 52
+turtle 7	33.182833641983976	patch -3 2	40.0
+104	-1	284.6755937380783	null	null	-4.843938282513926	3.209293624486045	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -6 -5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 103
+turtle 64	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 103
+turtle 66
+turtle 64	40.7447518800916	patch -4 3	40.0
+105	-1	278.48392125177884	null	null	-0.12044906458398474	-0.3095111457296785	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 0 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 19	36.76056406625758	patch 0 0	40.0
+106	-1	219.43621212222496	null	null	3.3332576646544267	-10.970611323244766	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 2 -8	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 127
+turtle 84	23.742715647250172	patch 3 -11	40.0
+107	-1	357.64706004269806	null	null	4.866277204134086	11.941128051043066	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 4 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 87	17.373153661057994	patch 5 12	40.0
+108	-1	325.8774690062306	null	null	-5.881013251176413	6.2730858982127575	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -1 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 69
+turtle 16	42.52569291088624	patch -6 6	40.0
+109	-1	337.9249665672643	null	null	6.365082894606574	7.305121484110942	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 5 4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 55
+turtle 44
+turtle 38	33.270229946350064	patch 6 7	40.0
+110	-1	94.01362074506648	null	null	-4.89653834596632	1.9003067918052228	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 3 -4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 80
+turtle 45	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 6
+...... count(): 6
+...... capacity: 7
+...... agents: 
+turtle 29
+turtle 80
+turtle 45
+turtle 104
+turtle 14
+turtle 66	41.730504406255264	patch -6 2	40.0
+111	-1	110.42406218722601	null	null	-12.274750098266324	4.3710073132664995	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -9 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 134
+turtle 71	28.71805905497142	patch -12 4	40.0
+112	-1	240.9718655045682	null	null	-7.190887192664277	9.223737681035015	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -7 7	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 16
+turtle 5	15.530291947419073	patch -7 9	40.0
+113	-1	171.1856291170202	null	null	-1.6043586787453574	10.719608942202445	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -2 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	28.908966273034068	patch -2 12	40.0
+114	-1	114.97552032387466	null	null	11.917900513991418	1.2447337207129392	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 9 0	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 30
+turtle 26
+turtle 102
+turtle 39	29.74194554558637	patch 12 1	40.0
+115	-1	129.06250654542782	null	null	-3.8894786088297457	-12.243868345061493	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -1 -8	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 63
+turtle 73	30.46419552062528	patch -4 -12	40.0
+116	-1	84.22344978175965	null	null	3.878842323093523	4.397530721181539	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 2 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 37
+turtle 81
+turtle 55	35.18848191839703	patch 4 4	40.0
+117	-1	66.24505809186394	null	null	-2.3821689186188726	-8.91999820634962	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -5 -6	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 73
+turtle 62	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 73
+turtle 60
+turtle 62	35.29490866550407	patch -3 -9	40.0
+118	-1	199.35986533926513	null	null	2.315254627044683	-0.6728307393372254	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 1 -4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 100
+turtle 41	40.20575584033955	patch 2 -1	40.0
+119	-1	283.6648865292693	null	null	1.350673485649922	-10.48859642599701	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 2 -5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 124
+turtle 128
+turtle 131
+turtle 1	31.67539693213502	patch 1 -10	40.0
+120	-1	123.60573724506298	null	null	-10.121399497627003	6.501069084243047	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -7 4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 134
+turtle 71	26.21888731234844	patch -10 7	40.0
+121	-1	23.683401029554147	null	null	-0.21088987466252623	13.544010518163615	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 0 10	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 65	24.005917019063684	patch 0 14	40.0
+122	-1	79.60091417736771	null	null	7.753271364723273	-1.1044549398218202	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 3 -2	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 143	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 143	35.067949950044316	patch 7 -1	40.0
+123	-1	299.23874483216105	null	null	-5.44891354454309	-7.2391824129885665	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -6 -3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 62	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 62	39.17297385053984	patch -5 -8	40.0
+124	-1	204.82465050585648	null	null	1.5536661786030004	-12.38658336494171	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 4 -9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 144
+turtle 128
+turtle 119	29.0389604266638	patch 2 -12	40.0
+125	-1	52.983653112592265	null	null	1.811021619835389	10.699898473623357	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -1 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 87
+turtle 65	16.006125034402395	patch 2 11	40.0
+126	-1	113.78763637103953	null	null	-5.0605684676117075	-0.47577313477832817	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -3 6	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 42
+turtle 51
+turtle 29	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 42
+turtle 51
+turtle 29
+turtle 80	41.67401858283175	patch -6 0	40.0
+127	-1	335.2766904576405	null	null	5.218209766195678	-11.048911657755168	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 6 -3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 106
+turtle 84	36.97359917374861	patch 5 -11	40.0
+128	-1	177.31001585600313	null	null	0.013287611398369023	-11.484867831047433	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 3 -7	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 144
+turtle 124
+turtle 119	25.593722947216932	patch 0 -11	40.0
+129	-1	243.86424158275628	null	null	-6.209339132215727	-3.234632057764024	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -4 -1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 49	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 49	39.287547683476966	patch -5 -3	40.0
+130	-1	179.8430207457494	null	null	-10.071156921388473	-2.5382898597258388	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -2 -2	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 85	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 25
+turtle 85	37.798036420868726	patch -10 -2	40.0
+131	-1	121.57987430358662	null	null	0.0485737088039504	-9.01444826951806	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 0 -3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 47	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 60
+turtle 47	40.14882252157309	patch -1 -8	40.0
+132	-1	193.77490632316312	null	null	6.763342837428213	0.7512191471152728	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 5 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 142
+turtle 67	37.8999690884554	patch 7 1	40.0
+133	-1	327.77924565560375	null	null	-2.801780283812557	7.719400473854711	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 1 6	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 98
+turtle 92
+turtle 147	29.42220940122302	patch -3 8	40.0
+134	-1	320.889454770469	null	null	-10.72455462537923	4.719611399929863	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -9 1	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 111
+turtle 71
+turtle 120	30.02902067332281	patch -11 5	40.0
+135	-1	145.83264389737474	null	null	1.4661559933291763	6.021445086858968	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 0 4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 98
+turtle 54
+turtle 79	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 98
+turtle 54
+turtle 79	38.040326533286574	patch 1 7	40.0
+136	-1	81.78232640846613	null	null	7.963221661824442	-3.4313831087142956	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch 5 0	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 53	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 53
+turtle 4
+turtle 99	38.735455197948994	patch 7 -4	40.0
+137	-1	180.8026971985339	null	null	-1.4602616461022444	-5.312144210653161	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -3 -4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 9	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 83
+turtle 40
+turtle 9
+turtle 78	38.145663379803146	patch -1 -4	40.0
+138	-1	11.459204265906806	null	null	-2.1312373415634527	1.0121660041752067	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -1 -5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 10
+turtle 145
+turtle 95	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 4
+...... count(): 4
+...... capacity: 5
+...... agents: 
+turtle 10
+turtle 145
+turtle 19
+turtle 95	40.740223395223026	patch -2 0	40.0
+139	-1	58.229495735278306	null	null	9.503042391428894	7.806422089053442	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 7 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 38	32.54342224816512	patch 10 8	40.0
+140	-1	58.86843433675551	null	null	-4.077670668394162	11.03376516827409	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -6 6	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 5
+turtle 101	22.877809520871043	patch -4 11	40.0
+141	-1	325.99217185903217	null	null	-11.305650114685921	0.9471573090932289	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -6 0	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 23
+turtle 85	23.442789285959105	patch -11 1	40.0
+142	-1	84.62708394673962	null	null	8.614760237312414	0.7070439032526423	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 6 4	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 132
+turtle 26	40.950807675110994	patch 9 1	40.0
+143	-1	99.64648133725768	null	null	5.710452833528493	-1.4793486082331055	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 1 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 100	37.93617195330752	patch 6 -1	40.0
+144	-1	1.196139130748179	null	null	-0.1369585091264658	-12.999405447464293	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 1 -7	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 2
+...... count(): 2
+...... capacity: 3
+...... agents: 
+turtle 124
+turtle 128	34.03560374794235	patch 0 -13	40.0
+145	-1	89.81029129252943	null	null	-2.926732575896852	-0.4687078896290634	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	false	open-min-max	patch -3 -2	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 126	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 49
+turtle 126
+turtle 138	41.14173889450469	patch -4 0	40.0
+146	-1	61.03749556237108	null	null	4.166783396273109	9.247427676522593	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 1 5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 87	33.07504834064555	patch 4 9	40.0
+147	-1	66.46368818951169	null	null	-2.6369408819765994	9.261862643438306	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -2 5	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 3
+...... count(): 3
+...... capacity: 4
+...... agents: 
+turtle 133
+turtle 74
+turtle 113	33.3069986786223	patch -3 9	40.0
+148	-1	245.5074668649561	null	null	13.793350628731032	6.062742169231789	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch 8 3	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 6	30.58396724003663	patch 14 6	40.0
+149	-1	151.65773482067277	null	null	-6.380364468667435	-9.718308335691875	null	circle		9.9	Turtle	false	1.0	1.0	up	0.0	0.0	true	open-min-max	patch -5 -7	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 0
+...... count(): 0
+...... capacity: 1
+...... agents: 	AgentSet
+...... type: class org.nlogo.agent.Turtle
+...... size: 1
+...... count(): 1
+...... capacity: 2
+...... agents: 
+turtle 63	32.15253955584233	patch -6 -10	40.0

@@ -1,0 +1,159 @@
+__includes[ "base.nls" ]
+globals[
+  cov-matrix
+  av-variance-x
+  av-variance-y
+  av-variance-heading
+  times
+  recording
+  frames
+]
+
+to init-base-vars
+ ; set recording 0
+    set times 0
+  set av-variance-x 0
+  set av-variance-y 0
+  set av-variance-heading 0
+end
+
+to start-movie 
+
+  if recording != 1[
+    movie-start "out.mov"
+    set frames 0
+  ]
+  set recording 1
+end
+
+to stop-movie
+  set recording -1
+  movie-close
+end
+
+to-report get-frames
+  report frames
+end
+to new-image-view
+ if recording = 1 [ movie-grab-view
+   set frames (frames + 1)
+   show frames
+ ] 
+end
+to new-image-in-movie
+ if recording = 1 [ movie-grab-interface] 
+end
+
+to do-end-go
+  do-plot
+  new-image-in-movie
+end
+to do-plot
+
+ ;   plot-vars
+    
+  ;  plot-covars
+    
+    plot-histograms
+ end
+to plot-histograms
+  let n count turtles
+  let num-bars min (list ( ( n ) / 10 ) 50) 
+  set num-bars max (list num-bars 10)
+   let ref (num-bars - 1) * n * n / (3 * (num-bars + 1 ) * num-bars * num-bars)
+
+  plot-histogram "Histogram X" [xcor] of turtles (max[pxcor] of patches + 1) (min [pxcor] of patches - 1) num-bars ref
+  plot-histogram "Histogram Y" [ycor] of turtles (max[pxcor] of patches + 1) (min [pycor] of patches - 1) num-bars ref
+  plot-histogram "Histogram Heading" [heading] of turtles 360 0 num-bars ref
+  set-current-plot "Histogram Variance"
+  set-current-plot-pen "ref"
+  plot ref
+;;  let max-value (n - 1) * n / (num-bars * num-bars)
+;  plot max-value * max-value * ( n + 1) / (12 * (n - 1))
+;  set max-value n / num-bars
+
+end
+
+to plot-histogram [graph-name var-list max-value min-value num-bars ref]
+  set-current-plot graph-name
+  set-histogram-num-bars num-bars
+  set-plot-x-range min-value max-value
+  histogram var-list
+  let histogram-list create-histogram-list var-list max-value min-value num-bars
+  set-current-plot "Histogram Coefficient"
+  set-current-plot-pen graph-name
+  let total sum histogram-list
+  ;let coefficient abs ( (max histogram-list * num-bars) - total) / total 
+  let coefficient (max histogram-list * num-bars) / total 
+  ;plot coefficient
+  ;;plot variance histogram-list
+  let variance-histo variance histogram-list
+  plot abs(variance-histo) / ref
+  set-current-plot "Histogram Variance"
+  set-current-plot-pen graph-name
+  plot variance-histo
+end
+
+to plot-covars
+  let n count turtles
+ ; plot-covar "Covariance X Y" [xcor] of turtles  [ycor] of turtles (max[pxcor] of patches - min [pxcor] of patches + 1) (max[pycor] of patches - min [pycor] of patches + 1) n
+ ; plot-covar "Covariance X Heading" [xcor] of turtles  [heading] of turtles (max[pxcor] of patches - min [pxcor] of patches + 1) (360) n
+  ;plot-covar "Covariance Y Heading" [ycor] of turtles  [heading] of turtles (max[pxcor] of patches - min [pxcor] of patches + 1) (360) n
+  
+end
+;to plot-covar [graph-name var-list-1 var-list-2 delta-1 delta-2 n]
+ ;   set-current-plot graph-name
+ ;   set-current-plot-pen "cov"
+ ;   let cov statistics:covariance var-list-1 var-list-2
+ ;   plot cov
+ ;   let cov-ref (n + 1)*(delta-1 * delta-2)/ (12 * (n - 1))
+ ;   set-current-plot-pen "cov-ref"
+ ;   plot cov-ref
+ ;   set-current-plot "Coefficient covariance"
+ ;   set-plot-y-range 0 1.5
+  ;    set-current-plot-pen graph-name
+  ;  plot abs(abs(cov) - abs(cov-ref)) / abs(cov-ref)
+;end
+to-report number-in-interval [var-list max-val min-val]
+  report length ( filter [? >= min-val and ? <= max-val] var-list)
+end
+to-report create-histogram-list [var-list max-val min-val num-bars]
+  let delta ( (max-val - min-val) / num-bars )
+  let l0 n-values (num-bars - 1) [min-val + (? * delta)]
+  let l1 n-values (num-bars - 1) [min-val + ((? + 1) * delta)]
+  let last-index length l1 - 1
+  set l1 replace-item  last-index l1 max-val 
+  let result (map [number-in-interval var-list ?2 ?1] l0 l1)
+  report result
+end
+
+
+to plot-vars
+  let n count turtles
+  set times times + 1
+  set av-variance-X plot-var "Variance X" [xcor] of turtles max[pxcor] of patches min [pxcor] of patches n av-variance-X times
+  set av-variance-Y plot-var "Variance Y" [ycor] of turtles max[pycor] of patches min [pycor] of patches n av-variance-Y times
+  set av-variance-heading plot-var "Variance Heading" [heading] of turtles 360 0 n av-variance-heading times
+  
+end
+to-report plot-var [graph-name var-list max-val min-val n av-var times_]
+    set-current-plot graph-name
+    set-current-plot-pen "var"
+    let var variance var-list
+    plot var
+    let delta max-val - min-val
+    let var-ref (n + 1)*(delta * delta)/ (12 * (n - 1))
+    set-current-plot-pen "var-ref"
+    plot var-ref
+    
+        let av ( av-var * (times - 1) ) + var
+    set av av / times
+    set-current-plot-pen "av"
+    plot av
+
+    set-current-plot "Coefficient"
+  set-plot-y-range 0 1.5
+      set-current-plot-pen graph-name
+    plot abs(var - var-ref) / var-ref
+    report av
+end

@@ -1,0 +1,1423 @@
+# who domain nbr-cv nbr-cv-init time time-init list-company-size nego-time-init nego-time-total wait-time-init wait-time-total
+101 Automatique 10 10 0 0 0 13 0 26 0 
+228 Automatique 10 10 0 0 0 21 0 42 0 
+34 Micro & Electronique 10 10 0 0 0 25 0 45 0 
+113 Micro & Electronique 11 11 0 0 0 39 0 45 0 
+250 Micro & Electronique 7 7 0 0 0 24 0 45 0 
+73 Micro & Electronique 11 11 0 0 0 14 0 28 0 
+219 Automatique 11 11 0 0 0 21 0 42 0 
+142 Finance 14 14 0 0 0 28 0 45 0 
+50 Informatique 15 15 0 0 0 25 0 45 0 
+82 Telecomunication 9 9 0 0 0 13 0 26 0 
+69 Informatique 12 12 0 0 0 20 0 40 0 
+203 Finance 12 12 0 0 0 27 0 45 0 
+99 Energie 11 11 0 0 0 17 0 34 0 
+229 Micro & Electronique 9 9 0 0 0 23 0 45 0 
+2 Micro & Electronique 9 9 0 0 0 27 0 45 0 
+105 Finance 10 10 0 0 0 23 0 45 0 
+91 Energie 14 14 0 0 0 21 0 42 0 
+223 Energie 16 16 0 0 0 23 0 45 0 
+226 Energie 7 7 0 0 0 19 0 38 0 
+181 Finance 8 8 0 0 0 33 0 45 0 
+48 Energie 15 15 0 0 0 24 0 45 0 
+178 Informatique 11 11 0 0 0 33 0 45 0 
+249 Finance 10 10 0 0 0 19 0 38 0 
+136 Automatique 5 5 0 0 0 28 0 45 0 
+186 Informatique 15 15 0 0 0 24 0 45 0 
+205 Automatique 10 10 0 0 0 34 0 45 0 
+39 Automatique 11 11 0 0 0 34 0 45 0 
+107 Micro & Electronique 11 11 0 0 0 32 0 45 0 
+82 Telecomunication 9 9 -1 0 0 13 0 26 0 
+105 Finance 10 10 -1 0 0 23 0 45 0 
+48 Energie 15 15 -1 0 0 24 0 45 0 
+205 Automatique 10 10 -1 0 0 34 0 45 0 
+178 Informatique 11 11 -1 0 0 33 0 45 0 
+142 Finance 14 14 -1 0 0 28 0 45 0 
+203 Finance 12 12 -1 0 0 27 0 45 0 
+228 Automatique 10 10 -1 0 0 21 0 42 0 
+181 Finance 8 8 -1 0 0 33 0 45 0 
+229 Micro & Electronique 9 9 -1 0 0 23 0 45 0 
+50 Informatique 15 15 -1 0 0 25 0 45 0 
+2 Micro & Electronique 9 9 -1 0 0 27 0 45 0 
+136 Automatique 5 5 -1 0 0 28 0 45 0 
+249 Finance 10 10 -1 0 0 19 0 38 0 
+91 Energie 14 14 -1 0 0 21 0 42 0 
+107 Micro & Electronique 11 11 -1 0 0 32 0 45 0 
+113 Micro & Electronique 11 11 -1 0 0 39 0 45 0 
+226 Energie 7 7 -1 0 0 19 0 38 0 
+99 Energie 11 11 -1 0 0 17 0 34 0 
+73 Micro & Electronique 11 11 -1 0 0 14 0 28 0 
+39 Automatique 11 11 -1 0 0 34 0 45 0 
+186 Informatique 15 15 -1 0 0 24 0 45 0 
+34 Micro & Electronique 10 10 -1 0 0 25 0 45 0 
+219 Automatique 11 11 -1 0 0 21 0 42 0 
+69 Informatique 12 12 -1 0 0 20 0 40 0 
+250 Micro & Electronique 7 7 -1 0 0 24 0 45 0 
+101 Automatique 10 10 -1 0 0 13 0 26 0 
+223 Energie 16 16 -1 0 0 23 0 45 0 
+228 Automatique 10 10 -2 0 0 21 0 42 0 
+101 Automatique 10 10 -2 0 0 13 0 26 0 
+91 Energie 14 14 -2 0 0 21 0 42 0 
+250 Micro & Electronique 7 7 -2 0 0 24 0 45 0 
+34 Micro & Electronique 10 10 -2 0 0 25 0 45 0 
+205 Automatique 10 10 -2 0 0 34 0 45 0 
+2 Micro & Electronique 9 9 -2 0 0 27 0 45 0 
+99 Energie 11 11 -2 0 0 17 0 34 0 
+186 Informatique 15 15 -2 0 0 24 0 45 0 
+107 Micro & Electronique 11 11 -2 0 0 32 0 45 0 
+178 Informatique 11 11 -2 0 0 33 0 45 0 
+181 Finance 8 8 -2 0 0 33 0 45 0 
+136 Automatique 5 5 -2 0 0 28 0 45 0 
+50 Informatique 15 15 -2 0 0 25 0 45 0 
+249 Finance 10 10 -2 0 0 19 0 38 0 
+48 Energie 15 15 -2 0 0 24 0 45 0 
+113 Micro & Electronique 11 11 -2 0 0 39 0 45 0 
+203 Finance 12 12 -2 0 0 27 0 45 0 
+69 Informatique 12 12 -2 0 0 20 0 40 0 
+223 Energie 16 16 -2 0 0 23 0 45 0 
+142 Finance 14 14 -2 0 0 28 0 45 0 
+229 Micro & Electronique 9 9 -2 0 0 23 0 45 0 
+39 Automatique 11 11 -2 0 0 34 0 45 0 
+219 Automatique 11 11 -2 0 0 21 0 42 0 
+82 Telecomunication 9 9 -2 0 0 13 0 26 0 
+226 Energie 7 7 -2 0 0 19 0 38 0 
+73 Micro & Electronique 11 11 -2 0 0 14 0 28 0 
+105 Finance 10 10 -2 0 0 23 0 45 0 
+223 Energie 16 16 -3 0 0 23 0 45 0 
+69 Informatique 12 12 -3 0 0 20 0 40 0 
+50 Informatique 15 15 -3 0 0 25 0 45 0 
+113 Micro & Electronique 11 11 -3 0 0 39 0 45 0 
+91 Energie 14 14 -3 0 0 21 0 42 0 
+101 Automatique 10 10 -3 0 0 13 0 26 0 
+228 Automatique 10 10 -3 0 0 21 0 42 0 
+219 Automatique 11 11 -3 0 0 21 0 42 0 
+226 Energie 7 7 -3 0 0 19 0 38 0 
+73 Micro & Electronique 11 11 -3 0 0 14 0 28 0 
+186 Informatique 15 15 -3 0 0 24 0 45 0 
+142 Finance 14 14 -3 0 0 28 0 45 0 
+2 Micro & Electronique 9 9 -3 0 0 27 0 45 0 
+250 Micro & Electronique 7 7 -3 0 0 24 0 45 0 
+181 Finance 8 8 -3 0 0 33 0 45 0 
+48 Energie 15 15 -3 0 0 24 0 45 0 
+178 Informatique 11 11 -3 0 0 33 0 45 0 
+34 Micro & Electronique 10 10 -3 0 0 25 0 45 0 
+249 Finance 10 10 -3 0 0 19 0 38 0 
+99 Energie 11 11 -3 0 0 17 0 34 0 
+107 Micro & Electronique 11 11 -3 0 0 32 0 45 0 
+203 Finance 12 12 -3 0 0 27 0 45 0 
+105 Finance 10 10 -3 0 0 23 0 45 0 
+82 Telecomunication 9 9 -3 0 0 13 0 26 0 
+39 Automatique 11 11 -3 0 0 34 0 45 0 
+136 Automatique 5 5 -3 0 0 28 0 45 0 
+205 Automatique 10 10 -3 0 0 34 0 45 0 
+229 Micro & Electronique 9 9 -3 0 0 23 0 45 0 
+178 Informatique 11 11 -4 0 0 33 0 45 0 
+186 Informatique 15 15 -4 0 0 24 0 45 0 
+107 Micro & Electronique 11 11 -4 0 0 32 0 45 0 
+2 Micro & Electronique 9 9 -4 0 0 27 0 45 0 
+250 Micro & Electronique 7 7 -4 0 0 24 0 45 0 
+225 Automatique 10 10 0 4 0 18 0 36 0 
+99 Energie 11 11 -4 0 0 17 0 34 0 
+113 Micro & Electronique 11 11 -4 0 0 39 0 45 0 
+73 Micro & Electronique 11 11 -4 0 0 14 0 28 0 
+34 Micro & Electronique 10 10 -4 0 0 25 0 45 0 
+142 Finance 14 14 -4 0 0 28 0 45 0 
+91 Energie 14 14 -4 0 0 21 0 42 0 
+219 Automatique 11 11 -4 0 0 21 0 42 0 
+228 Automatique 10 10 -4 0 0 21 0 42 0 
+249 Finance 10 10 -4 0 0 19 0 38 0 
+50 Informatique 15 15 -4 0 0 25 0 45 0 
+157 Telecomunication 11 11 0 4 0 22 0 44 0 
+181 Finance 8 8 -4 0 0 33 0 45 0 
+203 Finance 12 12 -4 0 0 27 0 45 0 
+223 Energie 16 16 -4 0 0 23 0 45 0 
+48 Energie 15 15 -4 0 0 24 0 45 0 
+105 Finance 10 10 -4 0 0 23 0 45 0 
+82 Telecomunication 9 9 -4 0 0 13 0 26 0 
+205 Automatique 10 10 -4 0 0 34 0 45 0 
+39 Automatique 11 11 -4 0 0 34 0 45 0 
+101 Automatique 10 10 -4 0 0 13 0 26 0 
+229 Micro & Electronique 9 9 -4 0 0 23 0 45 0 
+69 Informatique 12 12 -4 0 0 20 0 40 0 
+226 Energie 7 7 -4 0 0 19 0 38 0 
+136 Automatique 5 5 -4 0 0 28 0 45 0 
+223 Energie 16 16 -5 0 0 23 0 45 0 
+203 Finance 12 12 -5 0 0 27 0 45 0 
+50 Informatique 15 15 -5 0 0 25 0 45 0 
+157 Telecomunication 11 11 -1 4 0 22 0 44 0 
+107 Micro & Electronique 11 11 -5 0 0 32 0 45 0 
+219 Automatique 11 11 -5 0 0 21 0 42 0 
+205 Automatique 10 10 -5 0 0 34 0 45 0 
+136 Automatique 5 5 -5 0 0 28 0 45 0 
+178 Informatique 11 11 -5 0 0 33 0 45 0 
+99 Energie 11 11 -5 0 0 17 0 34 0 
+113 Micro & Electronique 11 11 -5 0 0 39 0 45 0 
+82 Telecomunication 9 9 -5 0 0 13 0 26 0 
+181 Finance 8 8 -5 0 0 33 0 45 0 
+229 Micro & Electronique 9 9 -5 0 0 23 0 45 0 
+91 Energie 14 14 -5 0 0 21 0 42 0 
+225 Automatique 10 10 -1 4 0 18 0 36 0 
+69 Informatique 12 12 -5 0 0 20 0 40 0 
+226 Energie 7 7 -5 0 0 19 0 38 0 
+250 Micro & Electronique 7 7 -5 0 0 24 0 45 0 
+228 Automatique 10 10 -5 0 0 21 0 42 0 
+39 Automatique 11 11 -5 0 0 34 0 45 0 
+249 Finance 10 10 -5 0 0 19 0 38 0 
+101 Automatique 10 10 -5 0 0 13 0 26 0 
+34 Micro & Electronique 10 10 -5 0 0 25 0 45 0 
+2 Micro & Electronique 9 9 -5 0 0 27 0 45 0 
+186 Informatique 15 15 -5 0 0 24 0 45 0 
+105 Finance 10 10 -5 0 0 23 0 45 0 
+142 Finance 14 14 -5 0 0 28 0 45 0 
+73 Micro & Electronique 11 11 -5 0 0 14 0 28 0 
+48 Energie 15 15 -5 0 0 24 0 45 0 
+136 Automatique 5 5 -6 0 0 28 0 45 0 
+223 Energie 16 16 -6 0 0 23 0 45 0 
+228 Automatique 10 10 -6 0 0 21 0 42 0 
+107 Micro & Electronique 11 11 -6 0 0 32 0 45 0 
+99 Energie 11 11 -6 0 0 17 0 34 0 
+226 Energie 7 7 -6 0 0 19 0 38 0 
+219 Automatique 11 11 -6 0 0 21 0 42 0 
+142 Finance 14 14 -6 0 0 28 0 45 0 
+132 Telecomunication 11 11 0 6 0 28 0 45 0 
+82 Telecomunication 9 9 -6 0 0 13 0 26 0 
+181 Finance 8 8 -6 0 0 33 0 45 0 
+39 Automatique 11 11 -6 0 0 34 0 45 0 
+178 Informatique 11 11 -6 0 0 33 0 45 0 
+250 Micro & Electronique 7 7 -6 0 0 24 0 45 0 
+34 Micro & Electronique 10 10 -6 0 0 25 0 45 0 
+105 Finance 10 10 -6 0 1 23 0 45 0 
+48 Energie 15 15 -6 0 0 24 0 45 0 
+225 Automatique 10 10 -2 4 0 18 0 36 0 
+101 Automatique 10 10 -6 0 0 13 0 26 0 
+50 Informatique 15 15 -6 0 0 25 0 45 0 
+203 Finance 12 12 -6 0 0 27 0 45 0 
+205 Automatique 10 10 -6 0 0 34 0 45 0 
+73 Micro & Electronique 11 11 -6 0 0 14 0 28 0 
+91 Energie 14 14 -6 0 0 21 0 42 0 
+186 Informatique 15 15 -6 0 0 24 0 45 0 
+229 Micro & Electronique 9 9 -6 0 0 23 0 45 0 
+69 Informatique 12 12 -6 0 0 20 0 40 0 
+249 Finance 10 10 -6 0 0 19 0 38 0 
+157 Telecomunication 11 11 -2 4 0 22 0 44 0 
+113 Micro & Electronique 11 11 -6 0 0 39 0 45 0 
+2 Micro & Electronique 9 9 -6 0 0 27 0 45 0 
+142 Finance 14 14 -7 0 0 28 0 45 0 
+48 Energie 15 15 -7 0 0 24 0 45 0 
+113 Micro & Electronique 11 11 -7 0 0 39 0 45 0 
+39 Automatique 11 11 -7 0 0 34 0 45 0 
+69 Informatique 12 12 -7 0 0 20 0 40 0 
+107 Micro & Electronique 11 11 -7 0 0 32 0 45 0 
+101 Automatique 10 10 -7 0 0 13 0 26 0 
+229 Micro & Electronique 9 9 -7 0 0 23 0 45 0 
+105 Finance 10 10 -7 0 1 23 0 45 0 
+186 Informatique 15 15 -7 0 0 24 0 45 0 
+223 Energie 16 16 -7 0 0 23 0 45 0 
+82 Telecomunication 9 9 -7 0 0 13 0 26 0 
+225 Automatique 10 10 -3 4 0 18 0 36 0 
+136 Automatique 5 5 -7 0 0 28 0 45 0 
+178 Informatique 11 11 -7 0 0 33 0 45 0 
+203 Finance 12 12 -7 0 0 27 0 45 0 
+132 Telecomunication 11 11 -1 6 1 28 0 45 0 
+249 Finance 10 10 -7 0 0 19 0 38 0 
+2 Micro & Electronique 9 9 -7 0 0 27 0 45 0 
+219 Automatique 11 11 -7 0 0 21 0 42 0 
+226 Energie 7 7 -7 0 0 19 0 38 0 
+34 Micro & Electronique 10 10 -7 0 0 25 0 45 0 
+73 Micro & Electronique 11 11 -7 0 0 14 0 28 0 
+91 Energie 14 14 -7 0 0 21 0 42 0 
+205 Automatique 10 10 -7 0 0 34 0 45 0 
+228 Automatique 10 10 -7 0 0 21 0 42 0 
+99 Energie 11 11 -7 0 0 17 0 34 0 
+50 Informatique 15 15 -7 0 0 25 0 45 0 
+250 Micro & Electronique 7 7 -7 0 0 24 0 45 0 
+181 Finance 8 8 -7 0 0 33 0 45 0 
+157 Telecomunication 11 11 -3 4 0 22 0 44 0 
+101 Automatique 10 10 -8 0 0 13 0 26 0 
+223 Energie 16 16 -8 0 1 23 0 45 0 
+111 Micro & Electronique 13 13 0 8 0 23 0 45 0 
+157 Telecomunication 11 11 -4 4 0 22 0 44 0 
+109 Micro & Electronique 16 16 0 8 1 12 0 24 0 
+136 Automatique 5 5 -8 0 0 28 0 45 0 
+50 Informatique 15 15 -8 0 0 25 0 45 0 
+39 Automatique 11 11 -8 0 0 34 0 45 0 
+113 Micro & Electronique 11 11 -8 0 0 39 0 45 0 
+250 Micro & Electronique 7 7 -8 0 0 24 0 45 0 
+105 Finance 10 10 -8 0 1 23 0 45 0 
+132 Telecomunication 11 11 -2 6 1 28 0 45 0 
+186 Informatique 15 15 -8 0 0 24 0 45 0 
+2 Micro & Electronique 9 9 -8 0 0 27 0 45 0 
+226 Energie 7 7 -8 0 0 19 0 38 0 
+91 Energie 14 14 -8 0 0 21 0 42 0 
+107 Micro & Electronique 11 11 -8 0 0 32 0 45 0 
+69 Informatique 12 12 -8 0 0 20 0 40 0 
+142 Finance 14 14 -8 0 0 28 0 45 0 
+48 Energie 15 15 -8 0 1 24 0 45 0 
+205 Automatique 10 10 -8 0 0 34 0 45 0 
+34 Micro & Electronique 10 10 -8 0 0 25 0 45 0 
+203 Finance 12 12 -8 0 0 27 0 45 0 
+181 Finance 8 8 -8 0 0 33 0 45 0 
+225 Automatique 10 10 -4 4 0 18 0 36 0 
+249 Finance 10 10 -8 0 0 19 0 38 0 
+228 Automatique 10 10 -8 0 0 21 0 42 0 
+178 Informatique 11 11 -8 0 0 33 0 45 0 
+82 Telecomunication 9 9 -8 0 0 13 0 26 0 
+229 Micro & Electronique 9 9 -8 0 1 23 0 45 0 
+73 Micro & Electronique 11 11 -8 0 0 14 0 28 0 
+219 Automatique 11 11 -8 0 0 21 0 42 0 
+99 Energie 11 11 -8 0 0 17 0 34 0 
+111 Micro & Electronique 13 13 -1 8 0 23 0 45 0 
+186 Informatique 15 15 -9 0 0 24 0 45 0 
+48 Energie 15 15 -9 0 1 24 0 45 0 
+205 Automatique 10 10 -9 0 0 34 0 45 0 
+136 Automatique 5 5 -9 0 0 28 0 45 0 
+107 Micro & Electronique 11 11 -9 0 0 32 0 45 0 
+181 Finance 8 8 -9 0 0 33 0 45 0 
+219 Automatique 11 11 -9 0 0 21 0 42 0 
+50 Informatique 15 15 -9 0 0 25 0 45 0 
+113 Micro & Electronique 11 11 -9 0 0 39 0 45 0 
+105 Finance 10 10 -9 0 1 23 0 45 0 
+157 Telecomunication 11 11 -5 4 0 22 0 44 0 
+99 Energie 11 11 -9 0 0 17 0 34 0 
+249 Finance 10 10 -9 0 0 19 0 38 0 
+229 Micro & Electronique 9 9 -9 0 1 23 0 45 0 
+109 Micro & Electronique 16 16 -1 8 1 12 0 24 0 
+82 Telecomunication 9 9 -9 0 0 13 0 26 0 
+73 Micro & Electronique 11 11 -9 0 0 14 0 28 0 
+225 Automatique 10 10 -5 4 0 18 0 36 0 
+228 Automatique 10 10 -9 0 0 21 0 42 0 
+250 Micro & Electronique 7 7 -9 0 0 24 0 45 0 
+226 Energie 7 7 -9 0 0 19 0 38 0 
+132 Telecomunication 11 11 -3 6 1 28 0 45 0 
+2 Micro & Electronique 9 9 -9 0 0 27 0 45 0 
+142 Finance 14 14 -9 0 1 28 0 45 0 
+91 Energie 14 14 -9 0 0 21 0 42 0 
+34 Micro & Electronique 10 10 -9 0 0 25 0 45 0 
+178 Informatique 11 11 -9 0 0 33 0 45 0 
+69 Informatique 12 12 -9 0 0 20 0 40 0 
+223 Energie 16 16 -9 0 1 23 0 45 0 
+203 Finance 12 12 -9 0 0 27 0 45 0 
+39 Automatique 11 11 -9 0 0 34 0 45 0 
+101 Automatique 10 10 -9 0 0 13 0 26 0 
+142 Finance 14 14 -10 0 1 28 0 45 0 
+226 Energie 7 7 -10 0 0 19 0 38 0 
+225 Automatique 10 10 -6 4 0 18 0 36 0 
+113 Micro & Electronique 11 11 -10 0 0 39 0 45 0 
+105 Finance 10 10 -10 0 1 23 0 45 0 
+39 Automatique 11 11 -10 0 0 34 0 45 0 
+2 Micro & Electronique 9 9 -10 0 0 27 0 45 0 
+229 Micro & Electronique 9 9 -10 0 1 23 0 45 0 
+91 Energie 14 14 -10 0 0 21 0 42 0 
+50 Informatique 15 15 -10 0 0 25 0 45 0 
+223 Energie 16 16 -10 0 1 23 0 45 0 
+99 Energie 11 11 -10 0 0 17 0 34 0 
+34 Micro & Electronique 10 10 -10 0 0 25 0 45 0 
+82 Telecomunication 9 9 -10 0 0 13 0 26 0 
+48 Energie 15 15 -10 0 1 24 0 45 0 
+136 Automatique 5 5 -10 0 0 28 0 45 0 
+250 Micro & Electronique 7 7 -10 0 0 24 0 45 0 
+109 Micro & Electronique 16 16 -2 8 1 12 0 24 0 
+111 Micro & Electronique 13 13 -2 8 0 23 0 45 0 
+228 Automatique 10 10 -10 0 0 21 0 42 0 
+101 Automatique 10 10 -10 0 0 13 0 26 0 
+69 Informatique 12 12 -10 0 0 20 0 40 0 
+203 Finance 12 12 -10 0 0 27 0 45 0 
+107 Micro & Electronique 11 11 -10 0 0 32 0 45 0 
+186 Informatique 15 15 -10 0 0 24 0 45 0 
+178 Informatique 11 11 -10 0 0 33 0 45 0 
+205 Automatique 10 10 -10 0 0 34 0 45 0 
+73 Micro & Electronique 11 11 -10 0 0 14 0 28 0 
+181 Finance 8 8 -10 0 0 33 0 45 0 
+132 Telecomunication 11 11 -4 6 1 28 0 45 0 
+157 Telecomunication 11 11 -6 4 0 22 0 44 0 
+219 Automatique 11 11 -10 0 0 21 0 42 0 
+249 Finance 10 10 -10 0 0 19 0 38 0 
+132 Telecomunication 11 11 -5 6 1 28 0 45 0 
+178 Informatique 11 11 -11 0 0 33 0 45 0 
+219 Automatique 11 11 -11 0 0 21 0 42 0 
+2 Micro & Electronique 9 9 -11 0 0 27 0 45 0 
+105 Finance 10 10 -11 0 1 23 0 45 0 
+39 Automatique 11 11 -11 0 0 34 0 45 0 
+249 Finance 10 10 -11 0 0 19 0 38 0 
+228 Automatique 10 10 -11 0 0 21 0 42 0 
+225 Automatique 10 10 -7 4 0 18 0 36 0 
+109 Micro & Electronique 16 16 -3 8 1 12 0 24 0 
+48 Energie 15 15 -11 0 1 24 0 45 0 
+223 Energie 16 16 -11 0 1 23 0 45 0 
+69 Informatique 12 12 -11 0 0 20 0 40 0 
+107 Micro & Electronique 11 11 -11 0 0 32 0 45 0 
+250 Micro & Electronique 7 7 -11 0 0 24 0 45 0 
+73 Micro & Electronique 11 11 -11 0 0 14 0 28 0 
+50 Informatique 15 15 -11 0 0 25 0 45 0 
+91 Energie 14 14 -11 0 0 21 0 42 0 
+205 Automatique 10 10 -11 0 0 34 0 45 0 
+157 Telecomunication 11 11 -7 4 0 22 0 44 0 
+186 Informatique 15 15 -11 0 0 24 0 45 0 
+136 Automatique 5 5 -11 0 0 28 0 45 0 
+142 Finance 14 14 -11 0 1 28 0 45 0 
+113 Micro & Electronique 11 11 -11 0 0 39 0 45 0 
+111 Micro & Electronique 13 13 -3 8 0 23 0 45 0 
+181 Finance 8 8 -11 0 0 33 0 45 0 
+82 Telecomunication 9 9 -11 0 0 13 0 26 0 
+99 Energie 11 11 -11 0 0 17 0 34 0 
+226 Energie 7 7 -11 0 0 19 0 38 0 
+229 Micro & Electronique 9 9 -11 0 1 23 0 45 0 
+34 Micro & Electronique 10 10 -11 0 0 25 0 45 0 
+203 Finance 12 12 -11 0 0 27 0 45 0 
+101 Automatique 10 10 -11 0 1 13 0 26 0 
+205 Automatique 10 10 -12 0 0 34 0 45 0 
+186 Informatique 15 15 -12 0 0 24 0 45 0 
+132 Telecomunication 11 11 -6 6 1 28 0 45 0 
+69 Informatique 12 12 -12 0 0 20 0 40 0 
+73 Micro & Electronique 11 11 -12 0 0 14 0 28 0 
+91 Energie 14 14 -12 0 0 21 0 42 0 
+50 Informatique 15 15 -12 0 0 25 0 45 0 
+229 Micro & Electronique 9 9 -12 0 1 23 0 45 0 
+34 Micro & Electronique 10 10 -12 0 0 25 0 45 0 
+105 Finance 10 10 -12 0 1 23 0 45 0 
+203 Finance 12 12 -12 0 1 27 0 45 0 
+250 Micro & Electronique 7 7 -12 0 0 24 0 45 0 
+157 Telecomunication 11 11 -8 4 0 22 0 44 0 
+113 Micro & Electronique 11 11 -12 0 1 39 0 45 0 
+48 Energie 15 15 -12 0 1 24 0 45 0 
+107 Micro & Electronique 11 11 -12 0 0 32 0 45 0 
+228 Automatique 10 10 -12 0 0 21 0 42 0 
+136 Automatique 5 5 -12 0 0 28 0 45 0 
+142 Finance 14 14 -12 0 1 28 0 45 0 
+177 Finance 8 8 0 12 1 20 0 40 0 
+219 Automatique 11 11 -12 0 0 21 0 42 0 
+226 Energie 7 7 -12 0 0 19 0 38 0 
+2 Micro & Electronique 9 9 -12 0 0 27 0 45 0 
+99 Energie 11 11 -12 0 0 17 0 34 0 
+111 Micro & Electronique 13 13 -4 8 0 23 0 45 0 
+181 Finance 8 8 -12 0 0 33 0 45 0 
+178 Informatique 11 11 -12 0 0 33 0 45 0 
+249 Finance 10 10 -12 0 0 19 0 38 0 
+82 Telecomunication 9 9 -12 0 0 13 0 26 0 
+109 Micro & Electronique 16 16 -4 8 1 12 0 24 0 
+223 Energie 16 16 -12 0 1 23 0 45 0 
+39 Automatique 11 11 -12 0 0 34 0 45 0 
+101 Automatique 10 10 -12 0 1 13 0 26 0 
+225 Automatique 10 10 -8 4 0 18 0 36 0 
+91 Energie 14 14 -13 0 0 21 0 42 0 
+181 Finance 8 8 -13 0 0 33 0 45 0 
+229 Micro & Electronique 9 9 -13 0 1 23 0 45 0 
+101 Automatique 10 10 -13 0 1 13 0 26 0 
+225 Automatique 10 10 -9 4 0 18 0 36 0 
+105 Finance 10 10 -13 0 1 23 0 45 0 
+50 Informatique 15 15 -13 0 0 25 0 45 0 
+142 Finance 14 14 -13 0 1 28 0 45 0 
+132 Telecomunication 11 11 -7 6 1 28 0 45 0 
+136 Automatique 5 5 -13 0 0 28 0 45 0 
+203 Finance 12 12 -13 0 1 27 0 45 0 
+178 Informatique 11 11 -13 0 0 33 0 45 0 
+226 Energie 7 7 -13 0 0 19 0 38 0 
+82 Telecomunication 9 9 -13 0 0 13 0 26 0 
+99 Energie 11 11 -13 0 0 17 0 34 0 
+228 Automatique 10 10 -13 0 0 21 0 42 0 
+109 Micro & Electronique 16 16 -5 8 1 12 0 24 0 
+219 Automatique 11 11 -13 0 0 21 0 42 0 
+107 Micro & Electronique 11 11 -13 0 0 32 0 45 0 
+48 Energie 15 15 -13 0 1 24 0 45 0 
+186 Informatique 15 15 -13 0 0 24 0 45 0 
+39 Automatique 11 11 -13 0 0 34 0 45 0 
+205 Automatique 10 10 -13 0 1 34 0 45 0 
+249 Finance 10 10 -13 0 0 19 0 38 0 
+2 Micro & Electronique 9 9 -13 0 0 27 0 45 0 
+73 Micro & Electronique 11 11 -13 0 0 14 0 28 0 
+69 Informatique 12 12 -13 0 0 20 0 40 0 
+34 Micro & Electronique 10 10 -13 0 1 25 0 45 0 
+250 Micro & Electronique 7 7 -13 0 0 24 0 45 0 
+157 Telecomunication 11 11 -9 4 0 22 0 44 0 
+113 Micro & Electronique 11 11 -13 0 1 39 0 45 0 
+177 Finance 8 8 -1 12 1 20 0 40 0 
+223 Energie 16 16 -13 0 1 23 0 45 0 
+111 Micro & Electronique 13 13 -5 8 0 23 0 45 0 
+69 Informatique 12 12 -14 0 0 20 0 40 0 
+177 Finance 8 8 -2 12 1 20 0 40 0 
+225 Automatique 10 10 -10 4 0 18 0 36 0 
+99 Energie 11 11 -14 0 0 17 0 34 0 
+157 Telecomunication 11 11 -10 4 0 22 0 44 0 
+203 Finance 12 12 -14 0 1 27 0 45 0 
+82 Telecomunication 9 9 -14 0 0 13 0 26 0 
+101 Automatique 10 10 -14 0 1 13 0 26 0 
+109 Micro & Electronique 16 16 -6 8 1 12 0 24 0 
+142 Finance 14 14 -14 0 1 28 0 45 0 
+113 Micro & Electronique 11 11 -14 0 1 39 0 45 0 
+111 Micro & Electronique 13 13 -6 8 0 23 0 45 0 
+48 Energie 15 15 -14 0 1 24 0 45 0 
+2 Micro & Electronique 9 9 -14 0 0 27 0 45 0 
+226 Energie 7 7 -14 0 0 19 0 38 0 
+73 Micro & Electronique 11 11 -14 0 0 14 0 28 0 
+136 Automatique 5 5 -14 0 1 28 0 45 0 
+39 Automatique 11 11 -14 0 0 34 0 45 0 
+122 Telecomunication 15 15 0 14 0 17 0 34 0 
+250 Micro & Electronique 7 7 -14 0 0 24 0 45 0 
+107 Micro & Electronique 11 11 -14 0 0 32 0 45 0 
+91 Energie 14 14 -14 0 0 21 0 42 0 
+178 Informatique 11 11 -14 0 0 33 0 45 0 
+228 Automatique 10 10 -14 0 0 21 0 42 0 
+105 Finance 10 10 -14 0 1 23 0 45 0 
+181 Finance 8 8 -14 0 0 33 0 45 0 
+34 Micro & Electronique 10 10 -14 0 1 25 0 45 0 
+50 Informatique 15 15 -14 0 0 25 0 45 0 
+249 Finance 10 10 -14 0 0 19 0 38 0 
+223 Energie 16 16 -14 0 1 23 0 45 0 
+229 Micro & Electronique 9 9 -14 0 1 23 0 45 0 
+205 Automatique 10 10 -14 0 1 34 0 45 0 
+132 Telecomunication 11 11 -8 6 1 28 0 45 0 
+219 Automatique 11 11 -14 0 0 21 0 42 0 
+186 Informatique 15 15 -14 0 0 24 0 45 0 
+228 Automatique 10 10 -15 0 1 21 0 42 0 
+223 Energie 16 16 -15 0 1 23 0 45 0 
+111 Micro & Electronique 13 13 -7 8 0 23 0 45 0 
+82 Telecomunication 9 9 -15 0 0 13 0 26 0 
+157 Telecomunication 11 11 -11 4 0 22 0 44 0 
+69 Informatique 12 12 -15 0 0 20 0 40 0 
+99 Energie 11 11 -15 0 0 17 0 34 0 
+203 Finance 12 12 -15 0 1 27 0 45 0 
+186 Informatique 15 15 -15 0 0 24 0 45 0 
+73 Micro & Electronique 11 11 -15 0 0 14 0 28 0 
+48 Energie 15 15 -15 0 1 24 0 45 0 
+136 Automatique 5 5 -15 0 1 28 0 45 0 
+50 Informatique 15 15 -15 0 0 25 0 45 0 
+91 Energie 14 14 -15 0 0 21 0 42 0 
+39 Automatique 11 11 -15 0 0 34 0 45 0 
+205 Automatique 10 10 -15 0 1 34 0 45 0 
+219 Automatique 11 11 -15 0 0 21 0 42 0 
+2 Micro & Electronique 9 9 -15 0 0 27 0 45 0 
+107 Micro & Electronique 11 11 -15 0 0 32 0 45 0 
+177 Finance 8 8 -3 12 1 20 0 40 0 
+109 Micro & Electronique 16 16 -7 8 1 12 0 24 0 
+249 Finance 10 10 -15 0 0 19 0 38 0 
+181 Finance 8 8 -15 0 0 33 0 45 0 
+178 Informatique 11 11 -15 0 0 33 0 45 0 
+229 Micro & Electronique 9 9 -15 0 1 23 0 45 0 
+113 Micro & Electronique 11 11 -15 0 1 39 0 45 0 
+250 Micro & Electronique 7 7 -15 0 0 24 0 45 0 
+101 Automatique 10 10 -15 0 1 13 0 26 0 
+142 Finance 14 14 -15 0 1 28 0 45 0 
+105 Finance 10 10 -15 0 1 23 0 45 0 
+132 Telecomunication 11 11 -9 6 1 28 0 45 0 
+225 Automatique 10 10 -11 4 0 18 0 36 0 
+226 Energie 7 7 -15 0 0 19 0 38 0 
+122 Telecomunication 15 15 -1 14 0 17 0 34 0 
+34 Micro & Electronique 10 10 -15 0 1 25 0 45 0 
+50 Informatique 15 15 -16 0 0 25 0 45 0 
+113 Micro & Electronique 11 11 -16 0 1 39 0 45 0 
+157 Telecomunication 11 11 -12 4 0 22 0 44 0 
+249 Finance 10 10 -16 0 0 19 0 38 0 
+69 Informatique 12 12 -16 0 0 20 0 40 0 
+91 Energie 14 14 -16 0 0 21 0 42 0 
+2 Micro & Electronique 9 9 -16 0 0 27 0 45 0 
+186 Informatique 15 15 -16 0 0 24 0 45 0 
+229 Micro & Electronique 9 9 -16 0 1 23 0 45 0 
+73 Micro & Electronique 11 11 -16 0 0 14 0 28 0 
+223 Energie 16 16 -16 0 1 23 0 45 0 
+250 Micro & Electronique 7 7 -16 0 0 24 0 45 0 
+228 Automatique 10 10 -16 0 1 21 0 42 0 
+101 Automatique 10 10 -16 0 1 13 0 26 0 
+109 Micro & Electronique 16 16 -8 8 1 12 0 24 0 
+34 Micro & Electronique 10 10 -16 0 1 25 0 45 0 
+48 Energie 15 15 -16 0 1 24 0 45 0 
+107 Micro & Electronique 11 11 -16 0 0 32 0 45 0 
+203 Finance 12 12 -16 0 1 27 0 45 0 
+225 Automatique 10 10 -12 4 0 18 0 36 0 
+205 Automatique 10 10 -16 0 1 34 0 45 0 
+132 Telecomunication 11 11 -10 6 1 28 0 45 0 
+136 Automatique 5 5 -16 0 1 28 0 45 0 
+177 Finance 8 8 -4 12 1 20 0 40 0 
+82 Telecomunication 9 9 -16 0 0 13 0 26 0 
+181 Finance 8 8 -16 0 0 33 0 45 0 
+219 Automatique 11 11 -16 0 0 21 0 42 0 
+39 Automatique 11 11 -16 0 1 34 0 45 0 
+99 Energie 11 11 -16 0 0 17 0 34 0 
+122 Telecomunication 15 15 -2 14 0 17 0 34 0 
+178 Informatique 11 11 -16 0 0 33 0 45 0 
+111 Micro & Electronique 13 13 -8 8 0 23 0 45 0 
+226 Energie 7 7 -16 0 0 19 0 38 0 
+142 Finance 14 14 -16 0 1 28 0 45 0 
+105 Finance 10 10 -16 0 1 23 0 45 0 
+113 Micro & Electronique 11 11 -17 0 1 39 0 45 0 
+111 Micro & Electronique 13 13 -9 8 1 23 0 45 0 
+250 Micro & Electronique 7 7 -17 0 0 24 0 45 0 
+73 Micro & Electronique 11 11 -17 0 0 14 0 28 0 
+205 Automatique 10 10 -17 0 1 34 0 45 0 
+105 Finance 10 10 -17 0 1 23 0 45 0 
+48 Energie 15 15 -17 0 1 24 0 45 0 
+107 Micro & Electronique 11 11 -17 0 0 32 0 45 0 
+181 Finance 8 8 -17 0 0 33 0 45 0 
+34 Micro & Electronique 10 10 -17 0 1 25 0 45 0 
+109 Micro & Electronique 15 16 -9 8 1 28 12 56 0 
+39 Automatique 11 11 -17 0 1 34 0 45 0 
+178 Informatique 11 11 -17 0 0 33 0 45 0 
+2 Micro & Electronique 9 9 -17 0 0 27 0 45 0 
+69 Informatique 12 12 -17 0 0 20 0 40 0 
+142 Finance 14 14 -17 0 1 28 0 45 0 
+136 Automatique 5 5 -17 0 1 28 0 45 0 
+99 Energie 11 11 -17 0 0 17 0 34 0 
+229 Micro & Electronique 9 9 -17 0 1 23 0 45 0 
+91 Energie 14 14 -17 0 0 21 0 42 0 
+157 Telecomunication 11 11 -13 4 0 22 0 44 0 
+122 Telecomunication 15 15 -3 14 0 17 0 34 0 
+101 Automatique 10 10 -17 0 1 13 0 26 0 
+249 Finance 10 10 -17 0 0 19 0 38 0 
+226 Energie 7 7 -17 0 0 19 0 38 0 
+228 Automatique 10 10 -17 0 1 21 0 42 0 
+219 Automatique 11 11 -17 0 0 21 0 42 0 
+82 Telecomunication 9 9 -17 0 0 13 0 26 0 
+203 Finance 12 12 -17 0 1 27 0 45 0 
+50 Informatique 15 15 -17 0 0 25 0 45 0 
+223 Energie 16 16 -17 0 1 23 0 45 0 
+177 Finance 8 8 -5 12 1 20 0 40 0 
+186 Informatique 15 15 -17 0 0 24 0 45 0 
+132 Telecomunication 11 11 -11 6 1 28 0 45 0 
+225 Automatique 10 10 -13 4 0 18 0 36 0 
+69 Informatique 12 12 -18 0 0 20 0 40 0 
+225 Automatique 10 10 -14 4 0 18 0 36 0 
+249 Finance 10 10 -18 0 0 19 0 38 0 
+39 Automatique 11 11 -18 0 1 34 0 45 0 
+113 Micro & Electronique 11 11 -18 0 1 39 0 45 0 
+34 Micro & Electronique 10 10 -18 0 1 25 0 45 0 
+226 Energie 7 7 -18 0 0 19 0 38 0 
+122 Telecomunication 15 15 -4 14 0 17 0 34 0 
+111 Micro & Electronique 13 13 -10 8 1 23 0 45 0 
+228 Automatique 10 10 -18 0 1 21 0 42 0 
+223 Energie 16 16 -18 0 1 23 0 45 0 
+99 Energie 11 11 -18 0 0 17 0 34 0 
+48 Energie 15 15 -18 0 1 24 0 45 0 
+107 Micro & Electronique 11 11 -18 0 0 32 0 45 0 
+136 Automatique 5 5 -18 0 1 28 0 45 0 
+174 Telecomunication 14 14 0 18 0 27 0 45 0 
+101 Automatique 10 10 -18 0 1 13 0 26 0 
+82 Telecomunication 9 9 -18 0 0 13 0 26 0 
+73 Micro & Electronique 11 11 -18 0 0 14 0 28 0 
+205 Automatique 10 10 -18 0 1 34 0 45 0 
+250 Micro & Electronique 7 7 -18 0 0 24 0 45 0 
+105 Finance 10 10 -18 0 1 23 0 45 0 
+132 Telecomunication 11 11 -12 6 1 28 0 45 0 
+109 Micro & Electronique 15 16 -10 8 1 28 12 56 0 
+181 Finance 8 8 -18 0 0 33 0 45 0 
+2 Micro & Electronique 9 9 -18 0 0 27 0 45 0 
+230 Telecomunication 10 10 0 18 0 24 0 45 0 
+186 Informatique 15 15 -18 0 0 24 0 45 0 
+219 Automatique 11 11 -18 0 0 21 0 42 0 
+50 Informatique 15 15 -18 0 0 25 0 45 0 
+229 Micro & Electronique 9 9 -18 0 1 23 0 45 0 
+91 Energie 14 14 -18 0 0 21 0 42 0 
+157 Telecomunication 11 11 -14 4 0 22 0 44 0 
+142 Finance 14 14 -18 0 1 28 0 45 0 
+203 Finance 12 12 -18 0 1 27 0 45 0 
+177 Finance 8 8 -6 12 1 20 0 40 0 
+178 Informatique 11 11 -18 0 0 33 0 45 0 
+157 Telecomunication 11 11 -15 4 0 22 0 44 0 
+91 Energie 14 14 -19 0 0 21 0 42 0 
+69 Informatique 12 12 -19 0 0 20 0 40 0 
+178 Informatique 11 11 -19 0 0 33 0 45 0 
+219 Automatique 11 11 -19 0 0 21 0 42 0 
+223 Energie 16 16 -19 0 1 23 0 45 0 
+205 Automatique 10 10 -19 0 1 34 0 45 0 
+107 Micro & Electronique 11 11 -19 0 0 32 0 45 0 
+105 Finance 10 10 -19 0 1 23 0 45 0 
+136 Automatique 5 5 -19 0 1 28 0 45 0 
+101 Automatique 10 10 -19 0 1 13 0 26 0 
+249 Finance 10 10 -19 0 0 19 0 38 0 
+142 Finance 14 14 -19 0 1 28 0 45 0 
+250 Micro & Electronique 7 7 -19 0 0 24 0 45 0 
+99 Energie 11 11 -19 0 0 17 0 34 0 
+186 Informatique 15 15 -19 0 0 24 0 45 0 
+229 Micro & Electronique 9 9 -19 0 1 23 0 45 0 
+50 Informatique 15 15 -19 0 0 25 0 45 0 
+82 Telecomunication 9 9 -19 0 0 13 0 26 0 
+111 Micro & Electronique 13 13 -11 8 1 23 0 45 0 
+225 Automatique 10 10 -15 4 1 18 0 36 0 
+122 Telecomunication 15 15 -5 14 0 17 0 34 0 
+132 Telecomunication 11 11 -13 6 1 28 0 45 0 
+226 Energie 7 7 -19 0 0 19 0 38 0 
+48 Energie 15 15 -19 0 1 24 0 45 0 
+203 Finance 12 12 -19 0 1 27 0 45 0 
+228 Automatique 10 10 -19 0 1 21 0 42 0 
+34 Micro & Electronique 10 10 -19 0 1 25 0 45 0 
+73 Micro & Electronique 11 11 -19 0 1 14 0 28 0 
+113 Micro & Electronique 11 11 -19 0 1 39 0 45 0 
+39 Automatique 11 11 -19 0 1 34 0 45 0 
+174 Telecomunication 14 14 -1 18 0 27 0 45 0 
+109 Micro & Electronique 15 16 -11 8 1 28 12 56 0 
+181 Finance 8 8 -19 0 0 33 0 45 0 
+2 Micro & Electronique 9 9 -19 0 0 27 0 45 0 
+230 Telecomunication 10 10 -1 18 0 24 0 45 0 
+177 Finance 8 8 -7 12 1 20 0 40 0 
+39 Automatique 11 11 -20 0 1 34 0 45 0 
+113 Micro & Electronique 11 11 -20 0 1 39 0 45 0 
+122 Telecomunication 15 15 -6 14 0 17 0 34 0 
+48 Energie 15 15 -20 0 1 24 0 45 0 
+82 Telecomunication 9 9 -20 0 0 13 0 26 0 
+186 Informatique 15 15 -20 0 0 24 0 45 0 
+249 Finance 10 10 -20 0 0 19 0 38 0 
+228 Automatique 10 10 -20 0 1 21 0 42 0 
+226 Energie 7 7 -20 0 0 19 0 38 0 
+223 Energie 16 16 -20 0 1 23 0 45 0 
+111 Micro & Electronique 13 13 -12 8 1 23 0 45 0 
+101 Automatique 10 10 -20 0 1 13 0 26 0 
+109 Micro & Electronique 15 16 -12 8 1 28 12 56 0 
+107 Micro & Electronique 11 11 -20 0 0 32 0 45 0 
+99 Energie 11 11 -20 0 0 17 0 34 0 
+2 Micro & Electronique 9 9 -20 0 0 27 0 45 0 
+132 Telecomunication 11 11 -14 6 1 28 0 45 0 
+106 Energie 10 10 0 20 0 40 0 45 0 
+69 Informatique 12 12 -20 0 0 20 0 40 0 
+91 Energie 14 14 -20 0 0 21 0 42 0 
+157 Telecomunication 11 11 -16 4 0 22 0 44 0 
+136 Automatique 5 5 -20 0 1 28 0 45 0 
+177 Finance 8 8 -8 12 1 20 0 40 0 
+73 Micro & Electronique 11 11 -20 0 1 14 0 28 0 
+23 Energie 13 13 0 20 1 17 0 34 0 
+250 Micro & Electronique 7 7 -20 0 0 24 0 45 0 
+105 Finance 10 10 -20 0 1 23 0 45 0 
+230 Telecomunication 10 10 -2 18 0 24 0 45 0 
+218 Energie 11 11 0 20 0 14 0 28 0 
+205 Automatique 10 10 -20 0 1 34 0 45 0 
+142 Finance 14 14 -20 0 1 28 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+226 Energie 7 7 -21 0 0 19 0 38 0 
+99 Energie 11 11 -21 0 0 17 0 34 0 
+181 Finance 8 8 -20 0 0 33 0 45 0 
+177 Finance 8 8 -9 12 1 20 0 40 0 
+228 Automatique 10 10 -21 0 1 21 0 42 0 
+73 Micro & Electronique 11 11 -21 0 1 14 0 28 0 
+174 Telecomunication 14 14 -2 18 0 27 0 45 0 
+101 Automatique 10 10 -21 0 1 13 0 26 0 
+264 0 0 0 0 0 0 0 0 0 0 
+157 Telecomunication 11 11 -17 4 0 22 0 44 0 
+178 Informatique 11 11 -20 0 0 33 0 45 0 
+219 Automatique 11 11 -20 0 0 21 0 42 0 
+203 Finance 12 12 -20 0 1 27 0 45 0 
+50 Informatique 15 15 -20 0 0 25 0 45 0 
+132 Telecomunication 11 11 -15 6 1 28 0 45 0 
+106 Energie 10 10 -1 20 0 40 0 45 0 
+39 Automatique 11 11 -21 0 1 34 0 45 0 
+249 Finance 10 10 -21 0 0 19 0 38 0 
+2 Micro & Electronique 9 9 -21 0 1 27 0 45 0 
+226 Energie 7 7 -22 0 0 19 0 38 0 
+136 Automatique 5 5 -21 0 1 28 0 45 0 
+228 Automatique 10 10 -22 0 1 21 0 42 0 
+177 Finance 8 8 -10 12 1 20 0 40 0 
+73 Micro & Electronique 11 11 -22 0 1 14 0 28 0 
+99 Energie 11 11 -22 0 0 17 0 34 0 
+181 Finance 8 8 -21 0 0 33 0 45 0 
+229 Micro & Electronique 9 9 -20 0 1 23 0 45 0 
+23 Energie 13 13 -1 20 1 17 0 34 0 
+230 Telecomunication 10 10 -3 18 0 24 0 45 0 
+218 Energie 11 11 -1 20 0 14 0 28 0 
+109 Micro & Electronique 15 16 -13 8 1 28 12 56 0 
+91 Energie 14 14 -21 0 0 21 0 42 0 
+44 Informatique 13 13 0 22 1 27 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+264 0 0 0 0 0 0 0 0 0 0 
+132 Telecomunication 11 11 -16 6 1 28 0 45 0 
+186 Informatique 15 15 -21 0 0 24 0 45 0 
+225 Automatique 10 10 -16 4 1 18 0 36 0 
+2 Micro & Electronique 9 9 -22 0 1 27 0 45 0 
+203 Finance 12 12 -21 0 1 27 0 45 0 
+177 Finance 8 8 -11 12 1 20 0 40 0 
+249 Finance 10 10 -22 0 0 19 0 38 0 
+91 Energie 14 14 -22 0 0 21 0 42 0 
+219 Automatique 11 11 -21 0 0 21 0 42 0 
+264 0 0 0 0 0 0 0 0 0 0 
+228 Automatique 10 10 -23 0 1 21 0 42 0 
+174 Telecomunication 14 14 -3 18 0 27 0 45 0 
+223 Energie 16 16 -21 0 1 23 0 45 0 
+142 Finance 14 14 -21 0 1 28 0 45 0 
+69 Informatique 12 12 -21 0 0 20 0 40 0 
+136 Automatique 5 5 -22 0 1 28 0 45 0 
+122 Telecomunication 15 15 -7 14 0 17 0 34 0 
+226 Energie 7 7 -23 0 0 19 0 38 0 
+44 Informatique 13 13 -1 22 1 27 0 45 0 
+249 Finance 10 10 -23 0 0 19 0 38 0 
+113 Micro & Electronique 11 11 -21 0 1 39 0 45 0 
+203 Finance 12 12 -22 0 1 27 0 45 0 
+107 Micro & Electronique 11 11 -21 0 0 32 0 45 0 
+111 Micro & Electronique 13 13 -13 8 1 23 0 45 0 
+229 Micro & Electronique 9 9 -21 0 1 23 0 45 0 
+250 Micro & Electronique 7 7 -21 0 0 24 0 45 0 
+219 Automatique 11 11 -22 0 1 21 0 42 0 
+109 Micro & Electronique 15 16 -14 8 1 28 12 56 0 
+205 Automatique 10 10 -21 0 1 34 0 45 0 
+2 Micro & Electronique 9 9 -23 0 1 27 0 45 0 
+50 Informatique 15 15 -21 0 0 25 0 45 0 
+105 Finance 10 10 -21 0 1 23 0 45 0 
+186 Informatique 15 15 -22 0 0 24 0 45 0 
+91 Energie 14 14 -23 0 0 21 0 42 0 
+48 Energie 15 15 -21 0 1 24 0 45 0 
+157 Telecomunication 11 11 -18 4 0 22 0 44 0 
+34 Micro & Electronique 10 10 -20 0 1 25 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+106 Energie 10 10 -2 20 0 40 0 45 0 
+73 Micro & Electronique 11 11 -23 0 1 14 0 28 0 
+157 Telecomunication 11 11 -19 4 0 22 0 44 0 
+174 Telecomunication 14 14 -4 18 0 27 0 45 0 
+250 Micro & Electronique 7 7 -22 0 0 24 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+23 Energie 13 13 -2 20 1 17 0 34 0 
+249 Finance 10 10 -24 0 0 19 0 38 0 
+48 Energie 15 15 -22 0 1 24 0 45 0 
+107 Micro & Electronique 11 11 -22 0 0 32 0 45 0 
+132 Telecomunication 11 11 -17 6 1 28 0 45 0 
+203 Finance 12 12 -23 0 1 27 0 45 0 
+99 Energie 11 11 -23 0 0 17 0 34 0 
+113 Micro & Electronique 11 11 -22 0 1 39 0 45 0 
+105 Finance 10 10 -22 0 1 23 0 45 0 
+101 Automatique 10 10 -22 0 1 13 0 26 0 
+142 Finance 14 14 -22 0 1 28 0 45 0 
+82 Telecomunication 9 9 -21 0 0 13 0 26 0 
+229 Micro & Electronique 9 9 -22 0 1 23 0 45 0 
+2 Micro & Electronique 9 9 -24 0 1 27 0 45 0 
+250 Micro & Electronique 7 7 -23 0 0 24 0 45 0 
+111 Micro & Electronique 13 13 -14 8 1 23 0 45 0 
+205 Automatique 10 10 -22 0 1 34 0 45 0 
+223 Energie 16 16 -22 0 1 23 0 45 0 
+73 Micro & Electronique 11 11 -24 0 1 14 0 28 0 
+69 Informatique 12 12 -22 0 0 20 0 40 0 
+228 Automatique 10 10 -24 0 1 21 0 42 0 
+226 Energie 7 7 -24 0 0 19 0 38 0 
+178 Informatique 11 11 -21 0 0 33 0 45 0 
+225 Automatique 10 10 -17 4 1 18 0 36 0 
+157 Telecomunication 11 11 -20 4 0 22 0 44 0 
+44 Informatique 13 13 -2 22 1 27 0 45 0 
+50 Informatique 15 15 -22 0 0 25 0 45 0 
+177 Finance 7 8 -12 12 1 18 20 36 0 
+219 Automatique 11 11 -23 0 1 21 0 42 0 
+109 Micro & Electronique 15 16 -15 8 1 28 12 56 0 
+264 0 0 0 0 0 0 0 0 0 0 
+73 Micro & Electronique 11 11 -25 0 1 14 0 28 0 
+225 Automatique 10 10 -18 4 1 18 0 36 0 
+69 Informatique 12 12 -23 0 0 20 0 40 0 
+50 Informatique 15 15 -23 0 0 25 0 45 0 
+106 Energie 10 10 -3 20 0 40 0 45 0 
+122 Telecomunication 15 15 -8 14 0 17 0 34 0 
+111 Micro & Electronique 13 13 -15 8 1 23 0 45 0 
+249 Finance 10 10 -25 0 0 19 0 38 0 
+107 Micro & Electronique 11 11 -23 0 0 32 0 45 0 
+99 Energie 11 11 -24 0 1 17 0 34 0 
+44 Informatique 13 13 -3 22 1 27 0 45 0 
+228 Automatique 10 10 -25 0 1 21 0 42 0 
+177 Finance 7 8 -13 12 1 18 20 36 0 
+132 Telecomunication 11 11 -18 6 1 28 0 45 0 
+223 Energie 16 16 -23 0 1 23 0 45 0 
+157 Telecomunication 11 11 -21 4 0 22 0 44 0 
+205 Automatique 10 10 -23 0 1 34 0 45 0 
+142 Finance 14 14 -23 0 1 28 0 45 0 
+230 Telecomunication 10 10 -4 18 0 24 0 45 0 
+218 Energie 11 11 -2 20 0 14 0 28 0 
+186 Informatique 15 15 -23 0 0 24 0 45 0 
+39 Automatique 11 11 -22 0 1 34 0 45 0 
+174 Telecomunication 14 14 -5 18 0 27 0 45 0 
+203 Finance 12 12 -24 0 1 27 0 45 0 
+82 Telecomunication 9 9 -22 0 0 13 0 26 0 
+136 Automatique 5 5 -23 0 1 28 0 45 0 
+48 Energie 15 15 -23 0 1 24 0 45 0 
+178 Informatique 11 11 -22 0 0 33 0 45 0 
+23 Energie 13 13 -3 20 1 17 0 34 0 
+109 Micro & Electronique 15 16 -16 8 1 28 12 56 0 
+113 Micro & Electronique 11 11 -23 0 1 39 0 45 0 
+219 Automatique 11 11 -24 0 1 21 0 42 0 
+226 Energie 7 7 -25 0 0 19 0 38 0 
+34 Micro & Electronique 10 10 -21 0 1 25 0 45 0 
+91 Energie 14 14 -24 0 0 21 0 42 0 
+101 Automatique 9 10 -23 0 1 31 13 62 0 
+250 Micro & Electronique 7 7 -24 0 0 24 0 45 0 
+105 Finance 10 10 -23 0 1 23 0 45 0 
+181 Finance 8 8 -22 0 0 33 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+113 Micro & Electronique 11 11 -24 0 1 39 0 45 0 
+23 Energie 13 13 -4 20 1 17 0 34 0 
+264 0 0 0 0 0 0 0 0 0 0 
+223 Energie 16 16 -24 0 1 23 0 45 0 
+111 Micro & Electronique 13 13 -16 8 1 23 0 45 0 
+99 Energie 11 11 -25 0 1 17 0 34 0 
+264 0 0 0 0 0 0 0 0 0 0 
+44 Informatique 13 13 -4 22 1 27 0 45 0 
+250 Micro & Electronique 7 7 -25 0 0 24 0 45 0 
+219 Automatique 11 11 -25 0 1 21 0 42 0 
+181 Finance 8 8 -23 0 0 33 0 45 0 
+73 Micro & Electronique 11 11 -26 0 1 14 0 28 0 
+178 Informatique 11 11 -23 0 0 33 0 45 0 
+113 Micro & Electronique 11 11 -25 0 1 39 0 45 0 
+230 Telecomunication 10 10 -5 18 0 24 0 45 0 
+69 Informatique 12 12 -24 0 0 20 0 40 0 
+39 Automatique 11 11 -23 0 1 34 0 45 0 
+132 Telecomunication 11 11 -19 6 1 28 0 45 0 
+107 Micro & Electronique 11 11 -24 0 0 32 0 45 0 
+218 Energie 11 11 -3 20 0 14 0 28 0 
+112 Energie 9 9 0 26 1 26 0 45 0 
+226 Energie 7 7 -26 0 1 19 0 38 0 
+223 Energie 16 16 -25 0 1 23 0 45 0 
+48 Energie 15 15 -24 0 1 24 0 45 0 
+249 Finance 10 10 -26 0 0 19 0 38 0 
+264 0 0 0 0 0 0 0 0 0 0 
+101 Automatique 9 10 -24 0 1 31 13 62 0 
+73 Micro & Electronique 11 11 -27 0 1 14 0 28 0 
+229 Micro & Electronique 9 9 -23 0 1 23 0 45 0 
+157 Telecomunication 11 11 -22 4 0 22 0 44 0 
+107 Micro & Electronique 11 11 -25 0 0 32 0 45 0 
+109 Micro & Electronique 15 16 -17 8 1 28 12 56 0 
+264 0 0 0 0 0 0 0 0 0 0 
+2 Micro & Electronique 9 9 -25 0 1 27 0 45 0 
+122 Telecomunication 15 15 -9 14 0 17 0 34 0 
+203 Finance 12 12 -25 0 1 27 0 45 0 
+82 Telecomunication 9 9 -23 0 0 13 0 26 0 
+101 Automatique 9 10 -25 0 1 31 13 62 0 
+50 Informatique 15 15 -24 0 0 25 0 45 0 
+218 Energie 11 11 -4 20 0 14 0 28 0 
+226 Energie 7 7 -27 0 1 19 0 38 0 
+181 Finance 8 8 -24 0 0 33 0 45 0 
+39 Automatique 11 11 -24 0 1 34 0 45 0 
+69 Informatique 12 12 -25 0 1 20 0 40 0 
+249 Finance 10 10 -27 0 0 19 0 38 0 
+225 Automatique 10 10 -19 4 1 18 0 36 0 
+73 Micro & Electronique 11 11 -28 0 1 14 0 28 0 
+99 Energie 11 11 -26 0 1 17 0 34 0 
+177 Finance 7 8 -14 12 1 18 20 36 0 
+105 Finance 10 10 -24 0 1 23 0 45 0 
+250 Micro & Electronique 7 7 -26 0 0 24 0 45 0 
+48 Energie 15 15 -25 0 1 24 0 45 0 
+223 Energie 16 16 -26 0 1 23 0 45 0 
+34 Micro & Electronique 10 10 -22 0 1 25 0 45 0 
+186 Informatique 15 15 -24 0 0 24 0 45 0 
+228 Automatique 10 10 -26 0 1 21 0 42 0 
+132 Telecomunication 11 11 -20 6 1 28 0 45 0 
+23 Energie 12 13 -5 20 1 22 17 44 0 
+44 Informatique 13 13 -5 22 1 27 0 45 0 
+91 Energie 14 14 -25 0 1 21 0 42 0 
+229 Micro & Electronique 9 9 -24 0 1 23 0 45 0 
+111 Micro & Electronique 13 13 -17 8 1 23 0 45 0 
+174 Telecomunication 14 14 -6 18 0 27 0 45 0 
+142 Finance 14 14 -24 0 1 28 0 45 0 
+109 Micro & Electronique 15 16 -18 8 1 28 12 56 0 
+178 Informatique 11 11 -24 0 0 33 0 45 0 
+136 Automatique 5 5 -24 0 1 28 0 45 0 
+107 Micro & Electronique 11 11 -26 0 0 32 0 45 0 
+157 Telecomunication 11 11 -23 4 0 22 0 44 0 
+106 Energie 10 10 -4 20 0 40 0 45 0 
+112 Energie 9 9 -1 26 1 26 0 45 0 
+219 Automatique 11 11 -26 0 1 21 0 42 0 
+205 Automatique 10 10 -24 0 1 34 0 45 0 
+230 Telecomunication 10 10 -6 18 0 24 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+111 Micro & Electronique 13 13 -18 8 1 23 0 45 0 
+39 Automatique 11 11 -25 0 1 34 0 45 0 
+225 Automatique 10 10 -20 4 1 18 0 36 0 
+106 Energie 10 10 -5 20 0 40 0 45 0 
+174 Telecomunication 14 14 -7 18 1 27 0 45 0 
+136 Automatique 5 5 -25 0 1 28 0 45 0 
+2 Micro & Electronique 9 9 -26 0 1 27 0 45 0 
+48 Energie 15 15 -26 0 1 24 0 45 0 
+122 Telecomunication 15 15 -10 14 0 17 0 34 0 
+113 Micro & Electronique 11 11 -26 0 1 39 0 45 0 
+181 Finance 8 8 -25 0 0 33 0 45 0 
+228 Automatique 10 10 -27 0 1 21 0 42 0 
+178 Informatique 11 11 -25 0 0 33 0 45 0 
+132 Telecomunication 11 11 -21 6 1 28 0 45 0 
+177 Finance 7 8 -15 12 1 18 20 36 0 
+107 Micro & Electronique 11 11 -27 0 0 32 0 45 0 
+44 Informatique 13 13 -6 22 1 27 0 45 0 
+109 Micro & Electronique 15 16 -19 8 1 28 12 56 0 
+218 Energie 11 11 -5 20 0 14 0 28 0 
+101 Automatique 9 10 -26 0 1 31 13 62 0 
+219 Automatique 11 11 -27 0 1 21 0 42 0 
+223 Energie 16 16 -27 0 1 23 0 45 0 
+105 Finance 10 10 -25 0 1 23 0 45 0 
+69 Informatique 12 12 -26 0 1 20 0 40 0 
+264 0 0 0 0 0 0 0 0 0 0 
+34 Micro & Electronique 10 10 -23 0 1 25 0 45 0 
+107 Micro & Electronique 11 11 -28 0 0 32 0 45 0 
+113 Micro & Electronique 11 11 -27 0 1 39 0 45 0 
+230 Telecomunication 10 10 -7 18 0 24 0 45 0 
+48 Energie 15 15 -27 0 1 24 0 45 0 
+249 Finance 10 10 -28 0 0 19 0 38 0 
+157 Telecomunication 11 11 -24 4 0 22 0 44 0 
+132 Telecomunication 11 11 -22 6 1 28 0 45 0 
+109 Micro & Electronique 15 16 -20 8 1 28 12 56 0 
+223 Energie 16 16 -28 0 1 23 0 45 0 
+73 Micro & Electronique 11 11 -29 0 1 14 0 28 0 
+174 Telecomunication 14 14 -8 18 1 27 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+178 Informatique 11 11 -26 0 0 33 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+228 Automatique 10 10 -28 0 1 21 0 42 0 
+34 Micro & Electronique 10 10 -24 0 1 25 0 45 0 
+23 Energie 12 13 -6 20 1 22 17 44 0 
+186 Informatique 15 15 -25 0 0 24 0 45 0 
+157 Telecomunication 11 11 -25 4 0 22 0 44 0 
+106 Energie 10 10 -6 20 0 40 0 45 0 
+226 Energie 7 7 -28 0 1 19 0 38 0 
+112 Energie 9 9 -2 26 1 26 0 45 0 
+113 Micro & Electronique 11 11 -28 0 1 39 0 45 0 
+122 Telecomunication 15 15 -11 14 0 17 0 34 0 
+2 Micro & Electronique 9 9 -27 0 1 27 0 45 0 
+177 Finance 7 8 -16 12 1 18 20 36 0 
+99 Energie 11 11 -27 0 1 17 0 34 0 
+50 Informatique 15 15 -25 0 0 25 0 45 0 
+218 Energie 11 11 -6 20 0 14 0 28 0 
+44 Informatique 13 13 -7 22 1 27 0 45 0 
+107 Micro & Electronique 11 11 -29 0 0 32 0 45 0 
+230 Telecomunication 10 10 -8 18 0 24 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+225 Automatique 10 10 -21 4 1 18 0 36 0 
+112 Energie 9 9 -3 26 1 26 0 45 0 
+157 Telecomunication 11 11 -26 4 0 22 0 44 0 
+142 Finance 14 14 -25 0 1 28 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+113 Micro & Electronique 11 11 -29 0 1 39 0 45 0 
+250 Micro & Electronique 7 7 -27 0 0 24 0 45 0 
+73 Micro & Electronique 11 11 -30 0 1 14 0 28 0 
+82 Telecomunication 9 9 -24 0 0 13 0 26 0 
+2 Micro & Electronique 9 9 -28 0 1 27 0 45 0 
+178 Informatique 11 11 -27 0 0 33 0 45 0 
+112 Energie 8 9 -4 26 1 39 26 78 0 
+264 0 0 0 0 0 0 0 0 0 0 
+107 Micro & Electronique 11 11 -30 0 0 32 0 45 0 
+113 Micro & Electronique 11 11 -30 0 1 39 0 45 0 
+44 Informatique 13 13 -8 22 1 27 0 45 0 
+2 Micro & Electronique 9 9 -29 0 1 27 0 45 0 
+219 Automatique 11 11 -28 0 1 21 0 42 0 
+111 Micro & Electronique 13 13 -19 8 1 23 0 45 0 
+48 Energie 15 15 -28 0 1 24 0 45 0 
+34 Micro & Electronique 10 10 -25 0 1 25 0 45 0 
+177 Finance 7 8 -17 12 1 18 20 36 0 
+101 Automatique 9 10 -27 0 1 31 13 62 0 
+122 Telecomunication 15 15 -12 14 0 17 0 34 0 
+205 Automatique 10 10 -25 0 1 34 0 45 0 
+225 Automatique 10 10 -22 4 1 18 0 36 0 
+132 Telecomunication 11 11 -23 6 1 28 0 45 0 
+226 Energie 7 7 -29 0 1 19 0 38 0 
+136 Automatique 5 5 -26 0 1 28 0 45 0 
+230 Telecomunication 10 10 -9 18 0 24 0 45 0 
+229 Micro & Electronique 9 9 -25 0 1 23 0 45 0 
+50 Informatique 15 15 -26 0 0 25 0 45 0 
+203 Finance 12 12 -26 0 1 27 0 45 0 
+39 Automatique 11 11 -26 0 1 34 0 45 0 
+250 Micro & Electronique 7 7 -28 0 0 24 0 45 0 
+23 Energie 12 13 -7 20 1 22 17 44 0 
+223 Energie 16 16 -29 0 1 23 0 45 0 
+112 Energie 8 9 -5 26 1 39 26 78 0 
+109 Micro & Electronique 15 16 -21 8 1 28 12 56 0 
+142 Finance 14 14 -26 0 1 28 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+178 Informatique 11 11 -28 0 0 33 0 45 0 
+109 Micro & Electronique 15 16 -22 8 1 28 12 56 0 
+203 Finance 12 12 -27 0 1 27 0 45 0 
+219 Automatique 11 11 -29 0 1 21 0 42 0 
+39 Automatique 11 11 -27 0 1 34 0 45 0 
+157 Telecomunication 11 11 -27 4 0 22 0 44 0 
+91 Energie 14 14 -26 0 1 21 0 42 0 
+99 Energie 11 11 -28 0 1 17 0 34 0 
+122 Telecomunication 15 15 -13 14 0 17 0 34 0 
+174 Telecomunication 14 14 -9 18 1 27 0 45 0 
+112 Energie 8 9 -6 26 1 39 26 78 0 
+250 Micro & Electronique 7 7 -29 0 1 24 0 45 0 
+107 Micro & Electronique 11 11 -31 0 0 32 0 45 0 
+181 Finance 8 8 -26 0 1 33 0 45 0 
+106 Energie 10 10 -7 20 0 40 0 45 0 
+23 Energie 12 13 -8 20 1 22 17 44 0 
+111 Micro & Electronique 13 13 -20 8 1 23 0 45 0 
+230 Telecomunication 10 10 -10 18 1 24 0 45 0 
+223 Energie 16 16 -30 0 1 25 23 50 0 
+229 Micro & Electronique 9 9 -26 0 1 23 0 45 0 
+44 Informatique 13 13 -9 22 1 27 0 45 0 
+34 Micro & Electronique 10 10 -26 0 1 25 0 45 0 
+105 Finance 10 10 -26 0 1 23 0 45 0 
+132 Telecomunication 11 11 -24 6 1 28 0 45 0 
+177 Finance 7 8 -18 12 1 18 20 36 0 
+136 Automatique 5 5 -27 0 1 28 0 45 0 
+205 Automatique 10 10 -26 0 1 34 0 45 0 
+249 Finance 10 10 -29 0 0 19 0 38 0 
+142 Finance 14 14 -27 0 1 28 0 45 0 
+69 Informatique 12 12 -27 0 1 20 0 40 0 
+228 Automatique 10 10 -29 0 1 21 0 42 0 
+101 Automatique 9 10 -28 0 1 31 13 62 0 
+82 Telecomunication 9 9 -25 0 0 13 0 26 0 
+73 Micro & Electronique 11 11 -31 0 1 14 0 28 0 
+50 Informatique 15 15 -27 0 0 25 0 45 0 
+225 Automatique 10 10 -23 4 1 18 0 36 0 
+113 Micro & Electronique 11 11 -31 0 1 39 0 45 0 
+48 Energie 15 15 -29 0 1 24 0 45 0 
+226 Energie 7 7 -30 0 1 19 0 38 0 
+218 Energie 11 11 -7 20 0 14 0 28 0 
+264 0 0 0 0 0 0 0 0 0 0 
+44 Informatique 13 13 -10 22 1 27 0 45 0 
+249 Finance 10 10 -30 0 0 19 0 38 0 
+230 Telecomunication 10 10 -11 18 1 24 0 45 0 
+219 Automatique 11 11 -30 0 1 21 0 42 0 
+223 Energie 16 16 -31 0 1 25 23 50 0 
+142 Finance 14 14 -28 0 1 28 0 45 0 
+178 Informatique 11 11 -29 0 0 33 0 45 0 
+157 Telecomunication 11 11 -28 4 0 22 0 44 0 
+91 Energie 14 14 -27 0 1 21 0 42 0 
+122 Telecomunication 15 15 -14 14 0 17 0 34 0 
+101 Automatique 9 10 -29 0 1 31 13 62 0 
+205 Automatique 10 10 -27 0 1 34 0 45 0 
+69 Informatique 12 12 -28 0 1 20 0 40 0 
+34 Micro & Electronique 10 10 -27 0 1 25 0 45 0 
+225 Automatique 10 10 -24 4 1 18 0 36 0 
+136 Automatique 5 5 -28 0 1 28 0 45 0 
+106 Energie 10 10 -8 20 1 40 0 45 0 
+177 Finance 7 8 -19 12 1 18 20 36 0 
+226 Energie 7 7 -31 0 1 19 0 38 0 
+39 Automatique 11 11 -28 0 1 34 0 45 0 
+186 Informatique 15 15 -26 0 0 24 0 45 0 
+181 Finance 8 8 -27 0 1 33 0 45 0 
+113 Micro & Electronique 11 11 -32 0 1 39 0 45 0 
+73 Micro & Electronique 11 11 -32 0 1 14 0 28 0 
+132 Telecomunication 11 11 -25 6 1 28 0 45 0 
+82 Telecomunication 9 9 -26 0 0 13 0 26 0 
+50 Informatique 15 15 -28 0 0 25 0 45 0 
+218 Energie 11 11 -8 20 0 14 0 28 0 
+107 Micro & Electronique 11 11 -32 0 0 32 0 45 0 
+23 Energie 12 13 -9 20 1 22 17 44 0 
+48 Energie 15 15 -30 0 1 24 0 45 0 
+111 Micro & Electronique 13 13 -21 8 1 23 0 45 0 
+229 Micro & Electronique 9 9 -27 0 1 23 0 45 0 
+112 Energie 8 9 -7 26 1 39 26 78 0 
+109 Micro & Electronique 15 16 -23 8 1 28 12 56 0 
+250 Micro & Electronique 7 7 -30 0 1 24 0 45 0 
+2 Micro & Electronique 9 9 -30 0 1 27 0 45 0 
+203 Finance 12 12 -28 0 1 27 0 45 0 
+174 Telecomunication 14 14 -10 18 1 27 0 45 0 
+105 Finance 10 10 -27 0 1 23 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+186 Informatique 15 15 -27 0 0 24 0 45 0 
+107 Micro & Electronique 11 11 -33 0 0 32 0 45 0 
+23 Energie 12 13 -10 20 1 22 17 44 0 
+82 Telecomunication 9 9 -27 0 0 13 0 26 0 
+142 Finance 14 14 -29 0 1 28 0 45 0 
+91 Energie 14 14 -28 0 1 21 0 42 0 
+178 Informatique 11 11 -30 0 0 33 0 45 0 
+39 Automatique 11 11 -29 0 1 34 0 45 0 
+223 Energie 16 16 -32 0 1 25 23 50 0 
+109 Micro & Electronique 15 16 -24 8 1 28 12 56 0 
+44 Informatique 13 13 -11 22 1 27 0 45 0 
+219 Automatique 11 11 -31 0 1 21 0 42 0 
+187 Energie 9 9 0 34 1 26 0 45 0 
+50 Informatique 15 15 -29 0 0 25 0 45 0 
+226 Energie 7 7 -32 0 1 19 0 38 0 
+48 Energie 15 15 -31 0 1 36 24 72 0 
+34 Micro & Electronique 10 10 -28 0 1 25 0 45 0 
+229 Micro & Electronique 9 9 -28 0 1 23 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+106 Energie 10 10 -9 20 1 40 0 45 0 
+99 Energie 11 11 -29 0 1 17 0 34 0 
+39 Automatique 11 11 -30 0 1 34 0 45 0 
+230 Telecomunication 10 10 -12 18 1 24 0 45 0 
+34 Micro & Electronique 10 10 -29 0 1 25 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+249 Finance 10 10 -31 0 0 19 0 38 0 
+264 0 0 0 0 0 0 0 0 0 0 
+264 0 0 0 0 0 0 0 0 0 0 
+111 Micro & Electronique 13 13 -22 8 1 23 0 45 0 
+228 Automatique 10 10 -30 0 1 21 0 42 0 
+203 Finance 12 12 -29 0 1 27 0 45 0 
+181 Finance 8 8 -28 0 1 33 0 45 0 
+73 Micro & Electronique 11 11 -33 0 1 14 0 28 0 
+223 Energie 16 16 -33 0 1 25 23 50 0 
+136 Automatique 5 5 -29 0 1 28 0 45 0 
+50 Informatique 15 15 -30 0 0 25 0 45 0 
+39 Automatique 11 11 -31 0 1 34 0 45 0 
+105 Finance 10 10 -28 0 1 35 23 70 0 
+109 Micro & Electronique 15 16 -25 8 1 28 12 56 0 
+186 Informatique 15 15 -28 0 0 24 0 45 0 
+69 Informatique 12 12 -29 0 1 20 0 40 0 
+99 Energie 11 11 -30 0 1 17 0 34 0 
+250 Micro & Electronique 7 7 -31 0 1 24 0 45 0 
+122 Telecomunication 15 15 -15 14 0 17 0 34 0 
+230 Telecomunication 10 10 -13 18 1 24 0 45 0 
+34 Micro & Electronique 10 10 -30 0 1 25 0 45 0 
+101 Automatique 9 10 -30 0 1 31 13 62 0 
+23 Energie 12 13 -11 20 1 22 17 44 0 
+218 Energie 11 11 -9 20 0 14 0 28 0 
+157 Telecomunication 11 11 -29 4 0 22 0 44 0 
+106 Energie 10 10 -10 20 1 40 0 45 0 
+142 Finance 14 14 -30 0 1 28 0 45 0 
+48 Energie 15 15 -32 0 1 36 24 72 0 
+187 Energie 9 9 -1 34 1 26 0 45 0 
+174 Telecomunication 14 14 -11 18 1 27 0 45 0 
+229 Micro & Electronique 9 9 -29 0 1 23 0 45 0 
+44 Informatique 13 13 -12 22 1 27 0 45 0 
+219 Automatique 11 11 -32 0 1 21 0 42 0 
+205 Automatique 10 10 -28 0 1 34 0 45 0 
+82 Telecomunication 9 9 -28 0 0 13 0 26 0 
+178 Informatique 11 11 -31 0 0 33 0 45 0 
+2 Micro & Electronique 9 9 -31 0 1 27 0 45 0 
+113 Micro & Electronique 11 11 -33 0 1 39 0 45 0 
+177 Finance 7 8 -20 12 1 18 20 36 0 
+107 Micro & Electronique 11 11 -34 0 0 32 0 45 0 
+91 Energie 14 14 -29 0 1 21 0 42 0 
+132 Telecomunication 11 11 -26 6 1 28 0 45 0 
+249 Finance 10 10 -32 0 0 19 0 38 0 
+226 Energie 7 7 -33 0 1 19 0 38 0 
+112 Energie 8 9 -8 26 1 39 26 78 0 
+264 0 0 0 0 0 0 0 0 0 0 
+105 Finance 10 10 -29 0 1 35 23 70 0 
+111 Micro & Electronique 13 13 -23 8 1 23 0 45 0 
+69 Informatique 12 12 -30 0 1 20 0 40 0 
+99 Energie 11 11 -31 0 1 17 0 34 0 
+82 Telecomunication 9 9 -29 0 0 13 0 26 0 
+50 Informatique 15 15 -31 0 0 25 0 45 0 
+91 Energie 14 14 -30 0 1 21 0 42 0 
+136 Automatique 5 5 -30 0 1 28 0 45 0 
+73 Micro & Electronique 11 11 -34 0 1 14 0 28 0 
+228 Automatique 10 10 -31 0 1 21 0 42 0 
+122 Telecomunication 15 15 -16 14 0 17 0 34 0 
+2 Micro & Electronique 9 9 -32 0 1 27 0 45 0 
+225 Automatique 10 10 -25 4 1 18 0 36 0 
+157 Telecomunication 11 11 -30 4 0 22 0 44 0 
+106 Energie 10 10 -11 20 1 40 0 45 0 
+44 Informatique 13 13 -13 22 1 27 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+229 Micro & Electronique 8 9 -30 0 1 24 23 48 0 
+7 Micro & Electronique 13 13 0 32 0 31 0 45 0 
+101 Automatique 9 10 -31 0 1 31 13 62 0 
+2 Micro & Electronique 9 9 -33 0 1 27 0 45 0 
+186 Informatique 15 15 -29 0 0 24 0 45 0 
+219 Automatique 11 11 -33 0 1 21 0 42 0 
+122 Telecomunication 15 15 -17 14 0 17 0 34 0 
+223 Energie 16 16 -34 0 1 25 23 50 0 
+109 Micro & Electronique 15 16 -26 8 2 28 12 56 0 
+178 Informatique 11 11 -32 0 0 33 0 45 0 
+73 Micro & Electronique 11 11 -35 0 1 14 0 28 0 
+264 0 0 0 0 0 0 0 0 0 0 
+250 Micro & Electronique 7 7 -32 0 1 24 0 45 0 
+44 Informatique 13 13 -14 22 1 27 0 45 0 
+142 Finance 14 14 -31 0 1 28 0 45 0 
+132 Telecomunication 11 11 -27 6 1 28 0 45 0 
+48 Energie 15 15 -33 0 1 36 24 72 0 
+106 Energie 10 10 -12 20 1 40 0 45 0 
+23 Energie 12 13 -12 20 1 22 17 44 0 
+82 Telecomunication 9 9 -30 0 0 13 0 26 0 
+181 Finance 8 8 -29 0 1 33 0 45 0 
+249 Finance 10 10 -33 0 0 19 0 38 0 
+223 Energie 16 16 -35 0 1 25 23 50 0 
+177 Finance 7 8 -21 12 1 18 20 36 0 
+112 Energie 8 9 -9 26 1 39 26 78 0 
+264 0 0 0 0 0 0 0 0 0 0 
+113 Micro & Electronique 11 11 -34 0 1 39 0 45 0 
+111 Micro & Electronique 13 13 -24 8 1 23 0 45 0 
+219 Automatique 11 11 -34 0 1 21 0 42 0 
+103 Micro & Electronique 11 11 0 36 1 8 20 16 0 
+178 Informatique 11 11 -33 0 0 33 0 45 0 
+186 Informatique 15 15 -30 0 0 24 0 45 0 
+69 Informatique 12 12 -31 0 1 20 0 40 0 
+112 Energie 8 9 -10 26 1 39 26 78 0 
+142 Finance 14 14 -32 0 1 28 0 45 0 
+181 Finance 8 8 -30 0 1 33 0 45 0 
+132 Telecomunication 10 11 -28 6 1 34 28 68 0 
+7 Micro & Electronique 13 13 -1 32 0 31 0 45 0 
+101 Automatique 9 10 -32 0 1 31 13 62 0 
+109 Micro & Electronique 15 16 -27 8 2 28 12 56 0 
+105 Finance 10 10 -30 0 1 35 23 70 0 
+225 Automatique 10 10 -26 4 1 18 0 36 0 
+203 Finance 12 12 -30 0 1 27 0 45 0 
+82 Telecomunication 9 9 -31 0 1 13 0 26 0 
+226 Energie 7 7 -34 0 1 19 0 38 0 
+177 Finance 7 8 -22 12 1 18 20 36 0 
+187 Energie 9 9 -2 34 1 26 0 45 0 
+228 Automatique 10 10 -32 0 1 21 0 42 0 
+91 Energie 14 14 -31 0 1 21 0 42 0 
+106 Energie 10 10 -13 20 1 40 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+174 Telecomunication 14 14 -12 18 1 27 0 45 0 
+230 Telecomunication 10 10 -14 18 1 24 0 45 0 
+249 Finance 10 10 -34 0 0 19 0 38 0 
+45 Automatique 12 12 0 34 0 13 0 26 0 
+228 Automatique 10 10 -33 0 1 21 0 42 0 
+44 Informatique 13 13 -15 22 1 27 0 45 0 
+186 Informatique 15 15 -31 0 0 24 0 45 0 
+219 Automatique 11 11 -35 0 1 21 0 42 0 
+113 Micro & Electronique 11 11 -35 0 1 39 0 45 0 
+82 Telecomunication 9 9 -32 0 1 13 0 26 0 
+223 Energie 16 16 -36 0 1 25 23 50 0 
+122 Telecomunication 15 15 -18 14 0 17 0 34 0 
+101 Automatique 9 10 -33 0 1 31 13 62 0 
+105 Finance 10 10 -31 0 1 35 23 70 0 
+91 Energie 14 14 -32 0 1 21 0 42 0 
+106 Energie 10 10 -14 20 1 40 0 45 0 
+187 Energie 9 9 -3 34 1 26 0 45 0 
+111 Micro & Electronique 13 13 -25 8 1 23 0 45 0 
+205 Automatique 10 10 -29 0 1 34 0 45 0 
+2 Micro & Electronique 9 9 -34 0 1 27 0 45 0 
+73 Micro & Electronique 11 11 -36 0 1 14 0 28 0 
+226 Energie 7 7 -35 0 1 19 0 38 0 
+50 Informatique 15 15 -32 0 0 25 0 45 0 
+136 Automatique 5 5 -31 0 1 28 0 45 0 
+203 Finance 12 12 -31 0 1 27 0 45 0 
+103 Micro & Electronique 11 11 -1 36 1 8 20 16 0 
+69 Informatique 12 12 -32 0 1 20 0 40 0 
+177 Finance 7 8 -23 12 1 18 20 36 0 
+99 Energie 11 11 -32 0 1 17 0 34 0 
+132 Telecomunication 10 11 -29 6 1 34 28 68 0 
+229 Micro & Electronique 8 9 -31 0 1 24 23 48 0 
+157 Telecomunication 11 11 -31 4 0 22 0 44 0 
+225 Automatique 10 10 -27 4 1 18 0 36 0 
+250 Micro & Electronique 7 7 -33 0 1 24 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+112 Energie 8 9 -11 26 1 39 26 78 0 
+99 Energie 11 11 -33 0 1 17 0 34 0 
+113 Micro & Electronique 11 11 -36 0 1 39 0 45 0 
+2 Micro & Electronique 9 9 -35 0 1 27 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+107 Micro & Electronique 11 11 -35 0 0 32 0 45 0 
+44 Informatique 13 13 -16 22 1 27 0 45 0 
+48 Energie 15 15 -34 0 1 36 24 72 0 
+136 Automatique 5 5 -32 0 1 28 0 45 0 
+99 Energie 11 11 -34 0 1 17 0 34 0 
+103 Micro & Electronique 11 11 -2 36 1 8 20 16 0 
+157 Telecomunication 11 11 -32 4 0 22 0 44 0 
+229 Micro & Electronique 8 9 -32 0 1 24 23 48 0 
+174 Telecomunication 14 14 -13 18 1 27 0 45 0 
+45 Automatique 12 12 -1 34 0 13 0 26 0 
+2 Micro & Electronique 9 9 -36 0 1 27 0 45 0 
+225 Automatique 10 10 -28 4 1 18 0 36 0 
+82 Telecomunication 9 9 -33 0 1 13 0 26 0 
+122 Telecomunication 15 15 -19 14 0 17 0 34 0 
+105 Finance 10 10 -32 0 1 35 23 70 0 
+39 Automatique 11 11 -32 0 1 34 0 45 0 
+69 Informatique 12 12 -33 0 1 20 0 40 0 
+264 0 0 0 0 0 0 0 0 0 0 
+250 Micro & Electronique 7 7 -34 0 1 24 0 45 0 
+106 Energie 10 10 -15 20 1 40 0 45 0 
+178 Informatique 11 11 -34 0 0 33 0 45 0 
+228 Automatique 10 10 -34 0 1 21 0 42 0 
+219 Automatique 11 11 -36 0 1 21 0 42 0 
+73 Micro & Electronique 11 11 -37 0 1 14 0 28 0 
+107 Micro & Electronique 11 11 -36 0 1 32 0 45 0 
+48 Energie 15 15 -35 0 1 36 24 72 0 
+230 Telecomunication 10 10 -15 18 1 24 0 45 0 
+205 Automatique 10 10 -30 0 1 34 0 45 0 
+101 Automatique 9 10 -34 0 1 31 13 62 0 
+69 Informatique 12 12 -34 0 1 20 0 40 0 
+34 Micro & Electronique 10 10 -31 0 1 25 0 45 0 
+132 Telecomunication 10 11 -30 6 1 34 28 68 0 
+99 Energie 11 11 -35 0 1 17 0 34 0 
+226 Energie 7 7 -36 0 1 19 0 38 0 
+218 Energie 11 11 -10 20 0 14 0 28 0 
+23 Energie 12 13 -13 20 1 22 17 44 0 
+44 Informatique 13 13 -17 22 1 27 0 45 0 
+105 Finance 10 10 -33 0 1 35 23 70 0 
+157 Telecomunication 11 11 -33 4 1 22 0 44 0 
+82 Telecomunication 9 9 -34 0 1 13 0 26 0 
+203 Finance 12 12 -32 0 1 27 0 45 0 
+2 Micro & Electronique 9 9 -37 0 1 27 0 45 0 
+225 Automatique 10 10 -29 4 1 18 0 36 0 
+229 Micro & Electronique 8 9 -33 0 1 24 23 48 0 
+223 Energie 16 16 -37 0 1 25 23 50 0 
+111 Micro & Electronique 13 13 -26 8 1 23 0 45 0 
+177 Finance 7 8 -24 12 1 18 20 36 0 
+7 Micro & Electronique 13 13 -2 32 0 31 0 45 0 
+103 Micro & Electronique 11 11 -3 36 1 8 20 16 0 
+136 Automatique 5 5 -33 0 1 28 0 45 0 
+39 Automatique 11 11 -33 0 1 34 0 45 0 
+187 Energie 9 9 -4 34 1 26 0 45 0 
+113 Micro & Electronique 11 11 -37 0 1 39 0 45 0 
+91 Energie 14 14 -33 0 1 21 0 42 0 
+45 Automatique 12 12 -2 34 0 13 0 26 0 
+50 Informatique 15 15 -33 0 0 25 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+122 Telecomunication 15 15 -20 14 0 17 0 34 0 
+187 Energie 9 9 -5 34 1 32 26 64 0 
+99 Energie 11 11 -36 0 1 17 0 34 0 
+229 Micro & Electronique 8 9 -34 0 1 24 23 48 0 
+132 Telecomunication 10 11 -31 6 1 34 28 68 0 
+157 Telecomunication 11 11 -34 4 1 22 0 44 0 
+186 Informatique 15 15 -32 0 0 24 0 45 0 
+2 Micro & Electronique 9 9 -38 0 1 27 0 45 0 
+44 Informatique 13 13 -18 22 1 27 0 45 0 
+50 Informatique 15 15 -34 0 0 25 0 45 0 
+250 Micro & Electronique 7 7 -35 0 1 24 0 45 0 
+174 Telecomunication 14 14 -14 18 1 27 0 45 0 
+218 Energie 11 11 -11 20 0 14 0 28 0 
+249 Finance 10 10 -35 0 0 19 0 38 0 
+69 Informatique 12 12 -35 0 1 20 0 40 0 
+23 Energie 12 13 -14 20 1 22 17 44 0 
+226 Energie 7 7 -37 0 1 19 0 38 0 
+103 Micro & Electronique 11 11 -4 36 1 8 20 16 0 
+203 Finance 12 12 -33 0 1 27 0 45 0 
+223 Energie 16 16 -38 0 1 25 23 50 0 
+177 Finance 7 8 -25 12 1 18 20 36 0 
+111 Micro & Electronique 13 13 -27 8 1 23 0 45 0 
+181 Finance 8 8 -31 0 1 33 0 45 0 
+73 Micro & Electronique 11 11 -38 0 1 14 0 28 0 
+7 Micro & Electronique 13 13 -3 32 0 31 0 45 0 
+178 Informatique 11 11 -35 0 0 33 0 45 0 
+113 Micro & Electronique 11 11 -38 0 1 39 0 45 0 
+45 Automatique 12 12 -3 34 0 13 0 26 0 
+136 Automatique 5 5 -34 0 1 28 0 45 0 
+205 Automatique 10 10 -31 0 1 34 0 45 0 
+230 Telecomunication 10 10 -16 18 1 24 0 45 0 
+109 Micro & Electronique 15 16 -28 8 2 28 12 56 0 
+142 Finance 14 14 -33 0 1 28 0 45 0 
+228 Automatique 10 10 -35 0 1 26 21 52 0 
+112 Energie 8 9 -12 26 1 39 26 78 0 
+91 Energie 14 14 -34 0 1 21 0 42 0 
+264 0 0 0 0 0 0 0 0 0 0 
+112 Energie 8 9 -13 26 1 39 26 78 0 
+205 Automatique 10 10 -32 0 1 34 0 45 0 
+82 Telecomunication 9 9 -35 0 1 13 0 26 0 
+101 Automatique 9 10 -35 0 1 31 13 62 0 
+50 Informatique 15 15 -35 0 0 25 0 45 0 
+132 Telecomunication 10 11 -32 6 1 34 28 68 0 
+186 Informatique 15 15 -33 0 0 24 0 45 0 
+136 Automatique 5 5 -35 0 1 28 0 45 0 
+223 Energie 16 16 -39 0 1 25 23 50 0 
+181 Finance 8 8 -32 0 1 33 0 45 0 
+218 Energie 11 11 -12 20 0 14 0 28 0 
+122 Telecomunication 15 15 -21 14 0 17 0 34 0 
+229 Micro & Electronique 8 9 -35 0 1 24 23 48 0 
+157 Telecomunication 11 11 -35 4 1 22 0 44 0 
+219 Automatique 11 11 -37 0 1 21 0 42 0 
+111 Micro & Electronique 13 13 -28 8 1 23 0 45 0 
+264 0 0 0 0 0 0 0 0 0 0 
+105 Finance 10 10 -34 0 1 35 23 70 0 
+157 Telecomunication 11 11 -36 4 1 22 0 44 0 
+73 Micro & Electronique 11 11 -39 0 1 14 0 28 0 
+132 Telecomunication 10 11 -33 6 1 34 28 68 0 
+177 Finance 7 8 -26 12 1 18 20 36 0 
+44 Informatique 13 13 -19 22 1 27 0 45 0 
+218 Energie 11 11 -13 20 0 14 0 28 0 
+48 Energie 15 15 -36 0 1 36 24 72 0 
+178 Informatique 11 11 -36 0 0 33 0 45 0 
+34 Micro & Electronique 10 10 -32 0 1 25 0 45 0 
+107 Micro & Electronique 11 11 -37 0 1 32 0 45 0 
+122 Telecomunication 15 15 -22 14 0 17 0 34 0 
+230 Telecomunication 10 10 -17 18 1 24 0 45 0 
+103 Micro & Electronique 11 11 -5 36 1 8 20 16 0 
+181 Finance 8 8 -33 0 1 33 0 45 0 
+91 Energie 14 14 -35 0 1 21 0 42 0 
+50 Informatique 15 15 -36 0 0 25 0 45 0 
+229 Micro & Electronique 8 9 -36 0 1 24 23 48 0 
+2 Micro & Electronique 9 9 -39 0 1 27 0 45 0 
+111 Micro & Electronique 13 13 -29 8 1 23 0 45 0 
+249 Finance 10 10 -36 0 0 19 0 38 0 
+113 Micro & Electronique 11 11 -39 0 1 39 0 45 0 
+99 Energie 11 11 -37 0 1 17 0 34 0 
+23 Energie 12 13 -15 20 1 22 17 44 0 
+264 0 0 0 0 0 0 0 0 0 0 
+45 Automatique 12 12 -4 34 0 13 0 26 0 
+142 Finance 14 14 -34 0 1 28 0 45 0 
+109 Micro & Electronique 15 16 -29 8 2 28 12 56 0 
+187 Energie 9 9 -6 34 1 32 26 64 0 
+181 Finance 8 8 -34 0 1 33 0 45 0 
+122 Telecomunication 15 15 -23 14 0 17 0 34 0 
+249 Finance 10 10 -37 0 0 19 0 38 0 
+63 Automatique 8 8 0 44 1 24 20 48 0 
+186 Informatique 15 15 -34 0 0 24 0 45 0 
+48 Energie 15 15 -37 0 1 36 24 72 0 
+2 Micro & Electronique 9 9 -40 0 1 27 0 45 0 
+73 Micro & Electronique 11 11 -40 0 1 14 0 28 0 
+174 Telecomunication 14 14 -15 18 1 27 0 45 0 
+39 Automatique 11 11 -34 0 1 34 0 45 0 
+226 Energie 7 7 -38 0 1 19 0 38 0 
+157 Telecomunication 11 11 -37 4 1 22 0 44 0 
+205 Automatique 10 10 -33 0 1 34 0 45 0 
+218 Energie 11 11 -14 20 0 14 0 28 0 
+225 Automatique 10 10 -30 4 1 18 0 36 0 
+264 0 0 0 0 0 0 0 0 0 0 

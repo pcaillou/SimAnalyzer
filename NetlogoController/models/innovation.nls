@@ -1,0 +1,125 @@
+innovations-own[
+ root? ; Suis je le pere de la dispersion ?
+ id-graph ; Numero utilise pour tracer le graph de dispersion
+ where-is-market ; Ou suis je situe ?
+ who-is-my-father ; De quelle innovation suis je le clone ?
+ who-is-my-father-root ; De quelle innovation suis je le fils spirituel.
+ date-of-root-innovation ; La date d'apparition de l'innovation pere spirituel.
+ life-of-innovation ; durée de vie des innovations
+ date-of-innovation
+ deep-of-diffusion ;profondeur de diffusion d'une innovation
+ pop-at-time; la population de la ville au moment de la creation
+ next-jump? ; Autorisation de copie
+ dead? ; est ce que l'innovation sert encore
+]
+
+;; Tout les pas de temps, pour toutes les innovations, on decremente leur duree de vie de 1
+;; + si l'innovation a atteint sa durée de vie max, alors on empeche sa prochaine recopie
+to-report set-new-lifetime-innovation [choicediffusion maxjump]
+
+ask innovations [
+  
+  ;;On demande aux innovations de s'auto limité par ville en fonction de leur vie
+  if choicediffusion = "All-limited"
+  [
+    set life-of-innovation life-of-innovation - 1 
+  
+    if life-of-innovation = 0
+    [
+      set dead? true
+      ;Si on veut avoir un rapport contenant les innovations (morte ou vivantes), alors on doit garder les objets jusqu'a la fin de la simulation malheureusement ...
+      ;Sinon on peut les tuer avec l'instruction
+      ;die
+    ]
+  ]
+  
+  if (deep-of-diffusion >= maxjump and maxjump != -1)
+  [
+    set next-jump? false 
+  ]
+]
+
+report innovations with [dead? = false]
+
+end
+
+
+;/**
+;* Creation d'une nouvelle innovation, cad d'un nouvel agent innovation
+;* @param market Le marche d'origine de l'innovation
+;*/
+
+to-report new-object-innovation [market]
+  
+  let innovation-temp nobody
+  
+   hatch-innovations 1 [
+        set root? true
+        set next-jump? true
+        set dead? false
+        
+        set who-is-my-father-root self
+        set date-of-root-innovation ticks
+ 
+        ;c'est moche mais pas le choix.
+        set innovation-temp self
+        
+        set life-of-innovation g-initial-innovation-life
+        set date-of-innovation ticks
+        set where-is-market market
+        set who-is-my-father nobody
+        set pop-at-time (get-pop-of-my-city market)
+        set color blue
+        set shape "box"
+        set hidden? true
+        set size 1
+        set deep-of-diffusion 1
+        set id-graph g-counter-innovation
+        ]
+  
+   report innovation-temp
+end
+
+
+
+;/**
+;* Une innovation se diffuse, par adoption, on duplique donc l'innovation existante 
+;* dans une nouvelle innovation ayant comme parent l'innovation venant d'etre adoptee
+;*
+;* @param newFather L'agent innovation qui vient d'etre adopte
+;* @param newMarket L'agent market qui va recevoir l'innovation fille
+;*/
+
+to-report diffuse-innovation [ originMarket newFather newMarket]
+ 
+  let innovation-temp nobody
+    
+   hatch-innovations 1 [
+     
+        ;c'est moche mais pas le choix.
+        set innovation-temp self
+        set life-of-innovation g-initial-innovation-life
+        set dead? false
+                
+        set who-is-my-father-root [who-is-my-father-root] of newFather 
+        set date-of-root-innovation [date-of-root-innovation] of newFather 
+        
+        set date-of-innovation ticks
+        ;La population au moment ou j'ai copié l'innovation
+        set pop-at-time (get-pop-of-my-city newMarket)
+        
+        set root? false
+        set where-is-market newMarket
+        set who-is-my-father newFather
+        set color red
+        set shape "box"
+        set hidden? true
+        set size 1
+        setxy [xcor] of newMarket [ycor] of  newMarket
+        set deep-of-diffusion ([deep-of-diffusion] of newFather + 1)
+        set id-graph g-counter-innovation
+        
+        ]
+   
+   report innovation-temp
+end

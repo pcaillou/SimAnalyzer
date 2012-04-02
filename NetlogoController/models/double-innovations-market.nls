@@ -1,0 +1,235 @@
+
+double-market-innovations-own[
+ where-is-house ; Ou suis je situe ?
+ open?
+ inov?
+ delay-copy
+ delay-inov
+ last-date-creation
+ last-date-copy
+ nb-innovation-copy
+ nb-innovation-mine
+ probability-sucess-adoption
+ innovate-market? ;;La ville est elle innovante a un instant t ?
+]
+
+;; --------------------------------------------
+;; INITIALISATION SPECIFIQUE DU MARCHE
+;; --------------------------------------------
+
+to init-double-market-innovation [agents-cities netchoice]
+  
+    let agent-market-temp nobody
+    
+    ask agents-cities[
+      new-double-market-innovation self
+    ]
+    
+    ask double-market-innovations
+    [
+    
+      create-network netchoice
+    ]
+    
+end
+
+;; --------------------------------------------
+;; VERIFICATION SPECIFIQUE DE LETAT INNOVATION 
+;; --------------------------------------------
+
+to check-double-specific-inovate-market [market]
+  
+  ifelse open? = false or inov? = false 
+    [
+      
+      set innovate-market? true
+    ][
+
+  set innovate-market? false
+    ]
+  
+end
+
+;; --------------------------------------------
+;; VERIFICATION SPECIFIQUE DES DOUBLES COMPTEURS
+;; --------------------------------------------
+
+to check-double-specific-market-delay 
+    
+    ask double-market-innovations  [
+     
+     ifelse (delay-copy > 0)
+      [set delay-copy (delay-copy - 1)]
+      [
+        ;ON n'actionne l'interrupteur que si on est fermé
+        if open? = false [
+        openclose-market self ]
+      ]
+      
+      ifelse (delay-inov > 0)
+      [set delay-inov (delay-inov - 1)]
+      [
+        ;ON n'actionne l'interrupteur que si on est fermé
+        if inov? = false [
+          openclose-innov self
+        ]
+      ]
+    ]
+end
+
+to openclose-market [market]
+
+ifelse open? = true [ 
+  set open? false
+  set delay-copy g-delay-for-copy]
+[ set open? true]
+
+end
+
+to openclose-innov [market]
+
+ifelse inov? = true [ 
+  set inov? false
+  set delay-inov g-delay-for-creation]
+[ set inov? true]
+
+end
+
+to new-double-market-innovation [city-here]
+ 
+   hatch-double-market-innovations 1 [
+      
+        set where-is-house city-here
+        set open? true
+        set inov? true
+        set delay-copy 0
+        set delay-inov 0
+       
+        set color blue
+       
+        if [class] of where-is-house = 1 [ set color red]
+        if [class] of where-is-house = 2 [ set color yellow]
+        if [class] of where-is-house = 3 [ set color green]
+        
+        set innovate-market? false
+         
+        set shape "box"
+        set hidden? false
+        set size 1
+        set last-date-creation []
+        set last-date-copy[]
+        set nb-innovation-copy 0
+        set nb-innovation-mine 0
+        set probability-sucess-adoption g-probability-sucess-adoption
+        ]
+   
+end
+
+
+;; --------------------------------------------
+;; RECUPERATION SPECIFIQUE DU VOISINNAGE
+;; --------------------------------------------
+
+to-report get-double-neighbours [origin-market state-door]
+  
+  ;; On est deja dans un ask origin-market, donc pas besoin de le respecifier
+  let agentset-neighbours link-neighbors with [ open? = state-door]
+  
+  report agentset-neighbours
+  
+end
+
+;; --------------------------------------------
+;; CHOIX TYPE / COPY CREATE INNOVATIONS
+;; --------------------------------------------
+
+to double-innovation-copy [destination-market origin-market]
+  
+  ;;Utilise t on un objet innovation ?
+  ifelse g-add-object-innovation? = true
+  [
+    let copie? false
+    ; renvoie un argument qui nous indique si la copie est faisable !
+    set copie? (new-common-object-copy destination-market origin-market)
+    ;; + le comportement specifique !
+    ;on modifie le status du market true > false
+    ifelse copie? = true [
+    ;show "la copie c'est bien passé !"
+    openclose-market destination-market ]
+    [show "il n'ya pas eu de copie"]
+    
+  ]
+  [ 
+    new-double-specific-copy destination-market
+    ;;ON ferme a la copie pendant un délai
+    openclose-market destination-market
+  ]
+   
+end
+
+
+to double-innovation-create [market]
+  
+   ;;Utilise t on un objet innovation ?
+  ifelse g-add-object-innovation? = true
+  [
+    new-common-object-create market 
+    ;; + le comportement specifique !
+    openclose-innov market
+  ]
+  [
+    new-double-specific-create market
+    ;;ON ferme a linnovation pendant un délai
+    openclose-innov market
+  ]
+end
+
+;; --------------------------------------------
+;; FONCTION SPECIFIQUE / COPY CREATE INNOVATIONS
+;; --------------------------------------------
+
+to new-double-specific-copy [destination-market]
+      
+ 
+    
+    update-counter-copy-innovation 
+    apply-innovation-to-house destination-market
+
+end
+
+
+to new-double-specific-create [market]
+
+
+
+    ;on modifie le status du market true > false
+    update-counter-create-innovation
+    apply-innovation-to-house market
+    
+    
+end
+
+
+;; --------------------------------------------
+;; FONCTION SPECIFIQUE ESSAI INNOVATION
+;; --------------------------------------------
+
+to try-double-specific-innovate
+  
+  ask double-market-innovations with [inov? = true] [
+    
+    let probability-incr-innovation random-float 1
+    let p-binomial 0
+    
+    ask where-is-house [
+      set p-binomial binomial ((1 / 2) * (population * (population - 1 ))) g-probability-sucess-interaction
+    ]
+    
+    If (probability-incr-innovation <= p-binomial)
+    [
+      double-innovation-create self
+    ]
+  ]
+  
+end
+

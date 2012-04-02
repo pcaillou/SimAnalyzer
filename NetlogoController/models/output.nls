@@ -1,0 +1,309 @@
+;******************************************
+;WRITE COMPONENT
+;******************************************
+
+to test-file
+    
+    let file user-new-file
+    if is-string? file
+  [
+    ;; If the file already exists, we begin by deleting it, otherwise
+    ;; new data would be appended to the old contents.
+    if file-exists? file
+      [ file-delete file ]
+    file-open file
+    ;; record the initial turtle data
+  ]
+end
+
+
+to init-csv
+
+  let file "output_rank.csv"
+  if is-string? file
+  [
+    ;; If the file already exists, we begin by deleting it, otherwise
+    ;; new data would be appended to the old contents.
+    if file-exists? file
+      [  file-close 
+         file-delete file ]
+    file-open file
+    ;; record the initial turtle data
+  ]
+  file-print "v_idn, v_exp, v_ticks, v_seed, v_cinnov, v_minnov, v_pop,v_ress,v_perco"
+  
+  file-close
+  
+end
+
+to insert-csv 
+  let file "output_rank.csv"
+  file-open file
+  
+  ask cities[
+    let nb-innovation-c-for-this-market 0
+    let nb-innovation-m-for-this-market 0
+    
+    ask get-specific-market with [where-is-house = myself] [
+      set nb-innovation-c-for-this-market nb-innovation-copy
+      set nb-innovation-m-for-this-market nb-innovation-mine
+
+    ]
+    
+    file-print (word ""id","g-name-exp","ticks","g-random-seed","nb-innovation-c-for-this-market", "nb-innovation-m-for-this-market", "last list-population", "last list-resource", "percolation-index" " ) 
+  ]
+  
+  file-close
+  end
+
+to write-to-file
+;
+;;FORMAT GML A IMPLEMENTER ? 
+;;http://graphml.graphdrawing.org/
+;
+;; FORMAT PAJEK EN SORTIE DE FICHIER
+;; http://gephi.org/users/supported-graph-formats/pajek-net-format/
+;; PACKAGE IGRAPH et script LECTURE R du fichier .net au FORMAT pajek
+;
+;;CREATION MANUELLE GRAPH DIRECTEMENT AVEC COUPLAGE R+NETLOGO
+;;http://igraph.sourceforge.net/igraphbook/igraphbook-creating.html#id2569368
+;
+;;g <- read.graph("d:/karate2.net", format="pajek")
+;;> CairoPNG(width=25000,height=25000,file="d:/test.png")
+;;> plot(g, layout=layout.fruchterman.reingold.grid, vertex.size = 0.05, vertex.label = NA,edge.color="black",vertex.color="red" )
+;;>  dev.off()
+;
+
+  let file user-new-file
+  if is-string? file
+  [
+    ;; If the file already exists, we begin by deleting it, otherwise
+    ;; new data would be appended to the old contents.
+    if file-exists? file
+      [ file-delete file ]
+    file-open file
+    ;; record the initial turtle data
+  ]
+  
+  file-print (word "*vertices " (count innovations) )
+   foreach sort-by [[id-graph] of ?1 < [id-graph] of ?2] innovations [
+    ask ? [
+      file-print (word  [id-graph] of ? " \"innovation " ? "\"" )
+    ]
+   ]
+;   
+  file-print (word "*edges")
+;  ;; use SORT so the turtles print their data in order by who number,
+;  ;; rather than in random order
+  let count-son 0
+      
+  foreach sort-by [[id-graph] of ?1 < [id-graph] of ?2] innovations [
+    ask ? [
+      ; Compte le nombre de liens pour la boucle
+      let who-root ?
+      let agent-son innovations with [[who-is-my-father] of who-root = self]
+      
+      set count-son 0
+      ;;show word ">> Je suis le p�re > " who-root
+      ;;show word ">>>>>> Fils Total ? > " count agent-son
+      
+      foreach sort-by [[id-graph] of ?1 < [id-graph] of ?2] agent-son [
+        ask ?
+        [
+           set count-son count-son + 1
+           ;show word ">>>>>>>>>> Fils - " count-son
+           ;show word ">>>>>>>>>> Fils - name > " ?
+           ;show word ">>>>>>>>>> Fils - father > " who-root
+           ;show "/"
+           ;show "/"
+          file-print (word [id-graph] of who-root " " [id-graph] of ? )
+          
+        ]
+    ; show  " ------------"
+      ]
+    ]
+  ]
+  file-print ""  ;; blank line
+  file-close
+end
+
+to force-close
+ file-close  
+end
+
+to write-to-file-xml
+;
+;;FORMAT GML A IMPLEMENTER ? 
+;;http://graphml.graphdrawing.org/
+;
+;; FORMAT PAJEK EN SORTIE DE FICHIER
+;; hhttp://gexf.net/format/data.html
+  let xmlfile "innovations.gexf"
+
+  if is-string? xmlfile
+  [
+    ;; If the file already exists, we begin by deleting it, otherwise
+    ;; new data would be appended to the old contents.
+    if file-exists? xmlfile
+      [ file-delete xmlfile ]
+    file-open xmlfile
+    ;; record the initial turtle data
+  ]
+ file-print ("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
+ file-print ("<gexf xmlns=\"http://www.gexf.net/1.1draft\" xmlns:viz=\"http://www.gexf.net/1.1draft/viz\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.gexf.net/1.1draft http://www.gexf.net/1.1draft/gexf.xsd\" version=\"1.1\"> " )
+
+ file-print ("<meta lastmodifieddate=\"2009-03-20\">")
+ file-print ("<creator>Gephi.org</creator>")
+ file-print ("<description>Innovation</description>")
+ file-print ("</meta>")
+ file-print ("<graph mode = \"dynamic\" defaultedgetype=\"directed\">")
+ file-print ("<attributes class=\"node\"> ")
+  file-print ("<attribute id=\"0\" title=\"root\" type=\"boolean\"/> ")
+ file-print ("<attribute id=\"1\" title=\"deepness\" type=\"integer\"/> ")
+ file-print ("<attribute id=\"2\" title=\"market\" type=\"string\"/> ")
+ file-print ("<attribute id=\"3\" title=\"market-root\" type=\"string\"/> ")
+  file-print ("<attribute id=\"4\" title=\"inov-root\" type=\"string\"/> ")
+  file-print ("<attribute id=\"5\" title=\"inov-father\" type=\"string\"/> ")
+  file-print ("<attribute id=\"6\" title=\"pop-at-time\" type=\"integer\"/> ")
+  file-print ("<attribute id=\"7\" title=\"x\" type=\"float\"/> ")
+  file-print ("<attribute id=\"8\" title=\"y\" type=\"float\"/> ")
+  file-print ("<attribute id=\"9\" title=\"marketclass\" type=\"string\"/> ")
+ file-print ("</attributes>")
+  file-print ("<attributes class=\"edge\"> ")
+  file-print ("<attribute id=\"0\" title=\"length\" type=\"float\"/> ")
+ file-print ("</attributes>")
+ file-print ("<nodes>")
+        
+   foreach sort-by [[id-graph] of ?1 < [id-graph] of ?2] innovations [
+    ask ? [
+      ifelse [who-is-my-father] of ? != nobody
+      [
+        ask [who-is-my-father] of ? [
+          
+          ;Pour le moment on filtre avec l'attribut deep of difusion !, car les liens ne marche pas pour les hierarchies :(
+          ;file-print (word  "<node id=\"" [id-graph] of ? "\" label =\"innovation " ? "\" pid = \"" [id-graph] of self"\"  >" )
+          file-print (word  "<node id=\"" [id-graph] of ? "\" label =\"innovation " ? "\" start = \"" [date-of-innovation] of ?"\" end =\""ticks"\">" )
+          file-print ("<attvalues>")
+          file-print (word "<attvalue for=\"0\" value =\""[root?] of ?"\" />")
+          file-print (word "<attvalue for=\"1\" value =\""[deep-of-diffusion] of ?"\" />")
+          file-print (word "<attvalue for=\"2\" value =\"" [where-is-market] of ? "\" />")
+          ask [who-is-my-father-root] of ?
+          [ 
+            file-print (word "<attvalue for=\"3\" value =\"" [where-is-market] of self "\" />")
+          ]
+          file-print (word "<attvalue for=\"4\" value =\"" [who-is-my-father-root] of ? "\" />")
+          file-print (word "<attvalue for=\"5\" value =\"" [who-is-my-father] of ? "\" />")
+          file-print (word "<attvalue for=\"6\" value =\"" [pop-at-time] of ?"\" />")
+           file-print (word "<attvalue for=\"7\" value =\"" [xcor] of ([where-is-market] of ?)"\" />")
+          file-print (word "<attvalue for=\"8\" value =\"" [ycor] of ([where-is-market] of ?)"\" />")
+          file-print (word "<attvalue for=\"9\" value =\"" [class] of ([where-is-house] of ([where-is-market] of ?))"\" />")
+          
+          file-print ("</attvalues>")
+          ;;Taille et pop de la ville a l'instant t de la creation
+          file-print (word "<viz:size value=\"" [pop-at-time] of ? "\"></viz:size>")
+          ;file-print (word "<viz:position x=\""[xcor] of ([where-is-market] of ?) "\" y=\"" [ycor] of ([where-is-market] of ?) "\"></viz:position>")
+          file-print ("</node>")
+        ]
+      ][
+          file-print (word  "<node id=\"" [id-graph] of ? "\" label =\"innovation " ? "\" start = \"" [date-of-innovation] of ?"\" end =\""ticks"\">" )
+          file-print ("<attvalues>")
+          file-print (word "<attvalue for=\"0\" value =\""[root?] of ?"\" />")
+          file-print (word "<attvalue for=\"1\" value =\""[deep-of-diffusion] of ?"\" />")
+          file-print (word "<attvalue for=\"2\" value =\"" [where-is-market] of ?"\" />")
+          ask [who-is-my-father-root] of ?
+          [ 
+            file-print (word "<attvalue for=\"3\" value =\"" [where-is-market] of self"\" />")
+          ]
+          file-print (word "<attvalue for=\"4\" value =\"" [who-is-my-father-root] of ? "\" />")
+          file-print (word "<attvalue for=\"5\" value =\"" [who-is-my-father] of ? "\" />")
+          file-print (word "<attvalue for=\"6\" value =\"" [pop-at-time] of ?"\" />")
+          file-print (word "<attvalue for=\"7\" value =\"" [xcor] of ([where-is-market] of ?)"\" />")
+          file-print (word "<attvalue for=\"8\" value =\"" [ycor] of ([where-is-market] of ?)"\" />")
+          file-print (word "<attvalue for=\"9\" value =\"" [class] of ([where-is-house] of ([where-is-market] of ?))"\" />")
+          file-print ("</attvalues>")
+          ;;Taille et pop de la ville a l'instant t de la creation
+          file-print (word "<viz:size value=\"" [pop-at-time] of ? "\"></viz:size>")
+          ;file-print (word "<viz:position x=\""[xcor] of ([where-is-market] of ?) "\" y=\"" [ycor] of ([where-is-market] of ?) "\"></viz:position>")
+          file-print ("</node>")
+      ]
+    ]
+   ] 
+        
+ file-print ("</nodes>")     
+  file-print ("<edges>")       
+        
+  let count-son 0
+  let linkvalue nobody
+   let count-total-edge 0   
+  foreach sort-by [[id-graph] of ?1 < [id-graph] of ?2] innovations [
+    
+    ask ? [
+      ; Compte le nombre de liens pour la boucle
+      let who-root ?
+      let agent-son innovations with [[who-is-my-father] of who-root = self]
+      
+      set count-son 0
+      ;show word ">> Je suis le pere > " who-root
+      ;show word ">>>>>> Fils Total ? > " count agent-son
+      
+      
+      foreach sort-by [[id-graph] of ?1 < [id-graph] of ?2] agent-son [
+        ask ?
+        [
+           set count-son count-son + 1
+           
+           ;show word ">>>>>>>>>> Fils - " count-son
+           ;show word ">>>>>>>>>> Fils - name > " ?
+           ;show word ">>>>>>>>>> Fils - father > " who-root
+           ;show "/"
+           ;show "/"
+           file-print (word  "<edge id=\"" count-total-edge "\" source = \"" [id-graph] of who-root "\" target =\""[id-graph] of ? "\" >" )
+           file-print ("<attvalues>")
+         
+           (ask [where-is-market] of ? [ set linkvalue link-with [where-is-market] of who-root])
+           ifelse linkvalue != nobody 
+           [
+           file-print (word "<attvalue for=\"0\" value =\""[[distance other-end] of end1] of linkvalue"\" />")
+           ][
+           file-print (word "<attvalue for=\"0\" value =\"0\" />")
+           ]
+           
+           file-print ("</attvalues>")
+           file-print ("</edge>")
+          set count-total-edge count-total-edge + 1 
+        ]
+     ;show  " ------------"
+      ]
+    ]
+  ]
+  
+  file-print ("</edges>") 
+   file-print ("</graph>") 
+  file-print ("</gexf>") 
+
+ file-print ""  ;; blank line
+  file-close
+end
+
+
+
+to print-init-situation
+  
+  let file "init-situation.txt"
+  if is-string? file
+  [
+    ;; If the file already exists, we begin by deleting it, otherwise
+    ;; new data would be appended to the old contents.
+    if file-exists? file
+      [  file-close
+         file-delete file ]
+    file-open file
+    ;; record the initial turtle data
+  ]
+  
+ask cities [file-print  (word "[" id " " xcor " " ycor " " population " " own-resource-available " " own-resource-max " " percolation-index " " class "]" )]
+
+file-close
+
+end
+

@@ -1,0 +1,4 @@
+XCOR  HEADING  Class label  SHAPE  
+true  false  true  false  
+Average  Maximum  empty  empty  
+XCOR  HEADING  Class label  SHAPE  
