@@ -5,34 +5,34 @@
  */
 package logs;
 
-import java.awt.Color;
-import java.awt.EventQueue;
+//AD import java.awt.Color;
+//AD import java.awt.EventQueue;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
+//AD import java.util.ArrayList;
+//AD import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
+//AD import java.util.Iterator;
 import java.util.Map;
 import java.util.StringTokenizer;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
+//AD import java.util.concurrent.ExecutorService;
+//AD import java.util.concurrent.Executors;
+//AD import java.util.concurrent.ThreadPoolExecutor;
 
-import netlogo.NetLogoSimulationController;
+//AD import netlogo.NetLogoSimulationController;
 
 import observer.SimulationInterface;
 import observer.SimulationSensor;
 import observer.SimulationUpdater;
 
-import org.nlogo.api.CompilerException;
+//AD import org.nlogo.api.CompilerException;
 import org.ujmp.core.Matrix;
-import org.ujmp.core.doublematrix.*;
+//AD import org.ujmp.core.doublematrix.*;
 import org.ujmp.core.MatrixFactory;
 import org.ujmp.core.calculation.Calculation.Ret;
-import org.ujmp.core.enums.DB;
+//AD import org.ujmp.core.enums.DB;
 import org.ujmp.core.enums.FileFormat;
-import org.ujmp.core.enums.ValueType;
+//AD import org.ujmp.core.enums.ValueType;
 import org.ujmp.core.exceptions.MatrixException;
 
 

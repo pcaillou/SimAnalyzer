@@ -8,9 +8,9 @@ package netlogo;
 import java.util.List;
 
 
-import org.nlogo.api.AgentException;
-import org.nlogo.agent.Turtle;
-import org.nlogo.api.CompilerException;
+// AD import org.nlogo.api.AgentException;
+//AD import org.nlogo.agent.Turtle;
+//AD import org.nlogo.api.CompilerException;
 
 import controller.SimulationController;
 

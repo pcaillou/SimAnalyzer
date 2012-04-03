@@ -7,14 +7,14 @@
 package clustering;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+// AD import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import observer.SimulationInterface;
-import observer.event.ObserverEvent;
-import observer.Observer;
+// AD import observer.event.ObserverEvent;
+// AD import observer.Observer;
 
 import org.ujmp.core.Matrix;
 import org.ujmp.core.calculation.Calculation.Ret;
@@ -124,7 +124,7 @@ public class DoubleClustererObserver extends ClustererObserver {
 				data.setAsLong(clusterId, i, classLabelColumn);
 			}
 
-			List<ArrayList<Long>> lrows=new ArrayList();
+			List<ArrayList<Long>> lrows=new ArrayList<ArrayList<Long>>();
 			nbcint=clusterltint.size();
 			for (int j=0; j<clusterltint.size(); j++)
 			{
@@ -136,7 +136,7 @@ public class DoubleClustererObserver extends ClustererObserver {
 				lrows.get(clusterId.intValue()).add((long)i);
 			}
 			c.subclusterer=new ArrayList<Clusterer>();
-			clusterlist=new ArrayList();
+			clusterlist=new ArrayList<List<Cluster>>();
 			clusterlt=new ArrayList<Cluster>();
 			for (int j=0; j<nbcint; j++)
 			{
@@ -169,7 +169,7 @@ public class DoubleClustererObserver extends ClustererObserver {
 					data.setAsLong(clusterId, i, classLabelColumn);
 				}
 
-				List<ArrayList<Long>> lrows=new ArrayList();
+				List<ArrayList<Long>> lrows=new ArrayList<ArrayList<Long>>();
 				nbcint=clusterltint.size();
 				for (int j=0; j<clusterltint.size(); j++)
 				{
@@ -180,7 +180,7 @@ public class DoubleClustererObserver extends ClustererObserver {
 					Long clusterId = data.getAsLong(i,classLabelColumn);
 					lrows.get(clusterId.intValue()).add((long)i);
 				}
-				clusterlist=new ArrayList();
+				clusterlist=new ArrayList<List<Cluster>>();
 				clusterlt=new ArrayList<Cluster>();
 				for (int j=0; j<nbcint; j++)
 				{

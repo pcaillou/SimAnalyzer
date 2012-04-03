@@ -10,10 +10,11 @@ import org.apache.commons.math.stat.descriptive.moment.Variance;
 import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
 import org.ujmp.core.calculation.Calculation.Ret;
-import org.ujmp.core.exceptions.MatrixException;
+//AD import org.ujmp.core.exceptions.MatrixException;
 
 import clustering.Cluster;
 
+@SuppressWarnings("deprecation")
 public class Vtest{
 	public static Matrix VtestM(Cluster clu, Matrix mg)
 	{
@@ -27,6 +28,8 @@ public class Vtest{
     	m.setAsDouble(clu.getSize(), 2, 0);
 		return m;
 	}
+	
+	@SuppressWarnings("all")
 	public static double[] Vtest(Cluster clu, Matrix mg)
 	{
 /*			long idColumn = mg.getColumnForLabel(SimulationInterface.ID_C_NAME);
@@ -82,6 +85,7 @@ public class Vtest{
 		long idColumn = mg.getColumnForLabel(SimulationInterface.ID_C_NAME);
 		long n = mg.getRowCount();
 		long ng = clu.getSize();
+		@SuppressWarnings("unused")
 		int pops=0;
 		double[] va = new double[(int) mg.getColumnCount()];
 		double[] vag = new double[(int) mg.getColumnCount()];
@@ -151,7 +155,7 @@ public class Vtest{
 	    }
 	    if (type==1)
 	    {
-	    	clu.ticklist=new ArrayList();
+	    	clu.ticklist=new ArrayList<Long>();
 	    	clu.ticklist.add(SimulationController.currenttick);
 	    	clu.vtests=vtest;
 	    	clu.avg=nmg;
@@ -347,6 +351,7 @@ public class Vtest{
 	    
 	    return vtest;
 	}
+	@SuppressWarnings("unused")
 	public static double[] Vtestaddzeropop(Cluster cib, Matrix mg)
 	{
 		Variance varcalc=new Variance();

@@ -6,46 +6,46 @@
  */
 package logs;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
+//AD import java.awt.GridBagConstraints;
+//AD import java.awt.GridBagLayout;
+//AD import java.awt.event.ActionEvent;
+//AD import java.awt.event.ActionListener;
+//AD import java.io.File;
+//AD import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+//AD import javax.swing.ButtonGroup;
+//AD import javax.swing.JButton;
+//AD import javax.swing.JFrame;
+//AD import javax.swing.JLabel;
 
 //import Logs.SimAnalyzer.ShowClusterlt;
 
-import netlogo.NetLogoClustersUpdater;
-import netlogo.NetLogoSensor;
+//AD import netlogo.NetLogoClustersUpdater;
+//AD import netlogo.NetLogoSensor;
 
 import org.ujmp.core.Matrix;
-import org.ujmp.core.MatrixFactory;
-import org.ujmp.core.calculation.Calculation.Ret;
-import org.ujmp.core.enums.DB;
-import org.ujmp.core.enums.FileFormat;
+//AD import org.ujmp.core.MatrixFactory;
+//AD import org.ujmp.core.calculation.Calculation.Ret;
+//AD import org.ujmp.core.enums.DB;
+//AD import org.ujmp.core.enums.FileFormat;
 
 import clustering.Cluster;
-import clustering.Clusterer;
-import clustering.ClustererObserver;
+//AD import clustering.Clusterer;
+//AD import clustering.ClustererObserver;
 import controller.SimulationController;
-import observer.Observer;
+//AD import observer.Observer;
 import observer.SimulationInterface;
-import statistic.LastObserver;
-import statistic.SlidingMeanObserver;
-import statistic.GlobalObserver;
-import statistic.DirectObserver;
+//AD import statistic.LastObserver;
+//AD import statistic.SlidingMeanObserver;
+//AD import statistic.GlobalObserver;
+//AD import statistic.DirectObserver;
 
 
 public class LogsSimulationController extends SimulationController {
 	public static Matrix DataMatrix = null;
-	public static List<List<Cluster>> clusterltarray = new ArrayList();
+	public static List<List<Cluster>> clusterltarray = new ArrayList<List<Cluster>>();
 	public static int MODEL_FILE_NAME_INDEX = 0;
 	public static int CLUSTERER_INDEX = 1;
 	public static int MAX_TICKS_INDEX = 2;
@@ -59,6 +59,7 @@ public class LogsSimulationController extends SimulationController {
 	public static int TIMECOL_INDEX = 10;
 	public static int STARTCLUSTCOL_INDEX = 11;
 	public static int ENDCLUSTCOL_INDEX = 12;
+	@SuppressWarnings("unused")
 	private LogsSensor LogsSensor = new LogsSensor();
 	public static Object []getDefaultParams(){
 		Object [] params= new Object[13];
@@ -84,6 +85,7 @@ public class LogsSimulationController extends SimulationController {
 		Sensor = new LogsSensor();
 	}
 
+	@SuppressWarnings("unused")
 	public SimulationInterface initInterface(Object... params)
 	{
 		LogsInterface si = new LogsInterface(new LogsSensor(), new LogsClustersUpdater());

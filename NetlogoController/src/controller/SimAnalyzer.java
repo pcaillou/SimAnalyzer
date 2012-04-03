@@ -1,12 +1,12 @@
 package controller;
 
 
-import clustering.Cluster;
+//AD import clustering.Cluster;
 import clustering.Clusterer;
-import clustering.Indexes;
+//AD import clustering.Indexes;
 import clustering.WekaClusterer;
 import logs.*;
-import controller.*;
+//AD import controller.*;
 
 import java.awt.event.*;
 
@@ -15,33 +15,33 @@ import javax.swing.*;
 
 import netlogo.NetLogoSimulationController;
 
-import org.nlogo.app.App;
+//AD import org.nlogo.app.App;
 import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
-import org.ujmp.core.calculation.Calculation.Ret;
+//AD import org.ujmp.core.calculation.Calculation.Ret;
 import org.ujmp.core.enums.DB;
 import org.ujmp.core.enums.FileFormat;
-import org.ujmp.core.enums.ValueType;
+//AD import org.ujmp.core.enums.ValueType;
 import org.ujmp.core.exceptions.MatrixException;
 
-import statistic.distribution.VariableDistribution;
+//AD import statistic.distribution.VariableDistribution;
 
 import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
+//AD import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 
 import java.awt.*;
 import java.io.*;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
+//AD import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
+//AD import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collection;
+//AD import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+//AD import java.util.regex.Matcher;
+//AD import java.util.regex.Pattern;
 
 
 //
@@ -52,6 +52,8 @@ import java.util.regex.Pattern;
 public class SimAnalyzer extends JFrame
 		implements ActionListener, ItemListener
 {
+	private static final long serialVersionUID = 1L;
+	
 	static boolean startnetlogo;
 	static boolean startlogs;
 	static boolean restartnetlogo;
@@ -78,10 +80,16 @@ public class SimAnalyzer extends JFrame
 	static File myDataFile = null;
 	static List<WekaClusterer> wcl = new ArrayList<WekaClusterer>();
 
-	static Vector vjf = new Vector();
-	static Vector vc1 = new Vector();
-	static Vector vc2 = new Vector();
-	static Vector vcb = new Vector();
+	// AD /*
+	static Vector<Object> vjf = new Vector<Object>();
+	static Vector<Object> vc1 = new Vector<Object>();
+	static Vector<Object> vc2 = new Vector<Object>();
+	static Vector<Object> vcb = new Vector<Object>();
+	// */
+	// AD static Vector vjf = new Vector();
+	// AD static Vector vc1 = new Vector();
+	// AD static Vector vc2 = new Vector();
+	// AD static Vector vcb = new Vector();
 	static int columnCount = 5;
 	static JButton jbt1,jbt2,jbt3,jbt4,jbt5;
 	static Boolean view = false;
@@ -523,7 +531,8 @@ public class SimAnalyzer extends JFrame
 			}	
 		}		
     }
-	
+
+	@SuppressWarnings("unused")
 	public synchronized void actionPerformed(ActionEvent evt)
 	{
 		Object src = evt.getSource();
@@ -1017,6 +1026,8 @@ public class SimAnalyzer extends JFrame
 	
 	class CreateProject extends JFrame implements ActionListener
 	{	
+		private static final long serialVersionUID = 1L;
+		
 		JLabel l;
 		JTextField tf;
 		JButton jbt;
@@ -1075,6 +1086,8 @@ public class SimAnalyzer extends JFrame
 	
 	class OpenProject extends JFrame 
 	{
+		private static final long serialVersionUID = 1L;
+
 		public OpenProject() {
 			JFileChooser fileChooser = new JFileChooser("projects/");
 			fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
@@ -1085,6 +1098,7 @@ public class SimAnalyzer extends JFrame
 				String filename = fileChooser.getName(fileChooser.getSelectedFile());
 				prname = filename.split("\\.")[0];
 				ShowProject sp = new ShowProject();
+				@SuppressWarnings("unused")
 				WindowListener l = new WindowAdapter()
 				{
 					public void windowClosing(WindowEvent e)
@@ -1101,6 +1115,8 @@ public class SimAnalyzer extends JFrame
 	
 	class ShowProject extends JFrame implements ActionListener
 	{
+		private static final long serialVersionUID = 1L;
+		
 		JLabel l, l0,lt,  l1, l2,l2b, l3, l4, l5,  l6,  l7,l8,l9,l10;
 		JTextField l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
 		JButton jbtdm, jbtOK, jbtsim;
@@ -1380,6 +1396,8 @@ public class SimAnalyzer extends JFrame
 		
 	class GetData extends JFrame implements ActionListener
 	{	
+		private static final long serialVersionUID = 1L;
+		
 		JLabel l, l0, l1, l2,l2b, l3,l4,l5,l6,l7,l8,l9,l10;
 		JTextField tf1, tf2, tf2b,tf3,tf4,tf5,tf6,tf7,tf8,tf9,tf10;
 		JButton jbtOK, jbtsim;
@@ -1521,6 +1539,8 @@ public class SimAnalyzer extends JFrame
 				
 		class GetDataLog extends JFrame implements ActionListener
 		{	
+			private static final long serialVersionUID = 1L;
+			
 			JLabel l, l0, l1, l2,l2b, l3,l4,l5,l6,l7,l8,l9,l10;
 			JTextField tf1, tf2, tf2b,tf3,tf4,tf5,tf6,tf7,tf8,tf9,tf10;
 			JButton jbtOK, jbtsim;
@@ -1662,6 +1682,8 @@ public class SimAnalyzer extends JFrame
 	
 	class SaveData extends JFrame implements ActionListener
 	{
+		private static final long serialVersionUID = 1L;
+		
 		JLabel l;
 		JButton jbtOK;
 		public SaveData()

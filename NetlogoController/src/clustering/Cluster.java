@@ -150,7 +150,8 @@ public class Cluster {
 		setId(id);
 		tickinit=SimulationController.currenttick;
 		idtickinit=0;
-		ticklist=new ArrayList();
+		// AD ticklist=new ArrayList(); /* code original
+		ticklist=new ArrayList<Long>(); // */
 		this.update(data, componentsIds);
 		agm=new AgModel(cl,this);
 	}

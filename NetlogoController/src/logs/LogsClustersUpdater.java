@@ -8,9 +8,9 @@ package logs;
 import java.util.List;
 
 
-import org.nlogo.api.AgentException;
-import org.nlogo.agent.Turtle;
-import org.nlogo.api.CompilerException;
+// AD import org.nlogo.api.AgentException;
+//AD import org.nlogo.agent.Turtle;
+//AD import org.nlogo.api.CompilerException;
 
 import clustering.SimulationClustersUpdater;
 import clustering.Cluster;
@@ -23,7 +23,7 @@ public class LogsClustersUpdater extends SimulationClustersUpdater{
 		for(Cluster c: clustersSet){
 			
 			Long clusterId = c.getId();
-			for(Long id: c.getComponentIds()){
+			for(@SuppressWarnings("unused") Long id: c.getComponentIds()){
 				int color = (int)(((double)org.nlogo.api.Color.getColorNamesArray().length *clusterId)/(clustersNumber+1));
 				color =color %org.nlogo.api.Color.getColorNamesArray().length;
 //				System.out.println("Color : " + color + "Max color : " +org.nlogo.api.Color.getColorNamesArray().length);

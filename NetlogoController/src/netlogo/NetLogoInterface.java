@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+// AD import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
+//AD import java.util.concurrent.ExecutorService;
+//AD import java.util.concurrent.Executors;
+//AD import java.util.concurrent.ThreadPoolExecutor;
 
 
 import observer.SimulationInterface;
@@ -37,7 +37,8 @@ import org.nlogo.window.*;
 
 public class NetLogoInterface extends SimulationInterface {
 	public static World myworld;
-	public static ArrayList varnames;
+	// AD public static ArrayList varnames; /* code original
+	public static ArrayList<String> varnames; // */
 	public NetLogoInterface(SimulationSensor simulationSensor,
 			SimulationUpdater simulationUpdater) {
 		super(simulationSensor, simulationUpdater);
@@ -260,7 +261,7 @@ public class NetLogoInterface extends SimulationInterface {
 		if(set.isEmpty())
 			System.out.println("no World during init!!");
 		myworld=((Patch)set.iterator().next()).world();
-		varnames=new ArrayList();
+		varnames=new ArrayList<String>();
 		int nbt=getProgram().turtlesOwn().size();
 		int startingvar=0;
 		if (nbt>0)
@@ -275,9 +276,10 @@ public class NetLogoInterface extends SimulationInterface {
 		if (nbb>0)
 		{
 			String brname;
-			Iterator it=getProgram().breeds().entrySet().iterator();
+			Iterator<?> it=getProgram().breeds().entrySet().iterator();
 			while (it.hasNext())
 			{
+				@SuppressWarnings("rawtypes")
 				Map.Entry pairs = (Map.Entry)it.next();
 				brname=(String)pairs.getKey();
 				System.out.println("breed:"+brname);
@@ -297,7 +299,7 @@ public class NetLogoInterface extends SimulationInterface {
 		
 	}
 	public static Procedure getGoProcedure() throws CompilerException{
-        Iterator proc =getWorkspace().getProcedures().entrySet().iterator();
+        Iterator<?> proc =getWorkspace().getProcedures().entrySet().iterator();
         while(proc.hasNext()){
         	Procedure procedure = (Procedure)proc.next();
         	if(procedure.name.equals("GO") || procedure.name.equals("go"))
@@ -536,7 +538,7 @@ public class NetLogoInterface extends SimulationInterface {
 				init(null);
 			}
 			iterate(50);
-			Iterator implicitVariables = Arrays.asList(AgentVariables.getImplicitTurtleVariables(true)).iterator();
+			Iterator<String> implicitVariables = Arrays.asList(AgentVariables.getImplicitTurtleVariables(true)).iterator();
 			System.out.println("Init implicit variables");
 			while(implicitVariables.hasNext()){
 				Object next = implicitVariables.next();
@@ -576,6 +578,7 @@ public class NetLogoInterface extends SimulationInterface {
 			}
 			Patch p = getPatch(0.2, 0.3);
 			System.out.println("Patch at 0.2 0.3 :" + p); 
+			@SuppressWarnings("unused")
 			World w = getTurtle(0).world();
 			
 			implicitVariables = Arrays.asList(AgentVariables.getImplicitTurtleVariables(true)).iterator();
@@ -600,7 +603,7 @@ public class NetLogoInterface extends SimulationInterface {
 				System.out.println( varName + "(" +next.getClass() +")" + indexOfPatchVariable(varName));
 			}
 			System.out.println("values for : " + getTurtleVariableName(0));
-			Iterator iterator = getValuesOfTurtlesVariable(0).iterator(); 
+			Iterator<?> iterator = getValuesOfTurtlesVariable(0).iterator(); 
 			while(iterator.hasNext()){
 				System.out.println(iterator.next());
 			}

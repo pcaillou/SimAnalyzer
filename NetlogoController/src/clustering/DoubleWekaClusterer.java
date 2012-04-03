@@ -12,7 +12,7 @@ import org.ujmp.core.Matrix;
 import weka.clusterers.NumberOfClustersRequestable;
 import weka.core.Instance;
 import weka.core.Instances;
-import clustering.Clusterer;
+// AD import clustering.Clusterer;
 
 public class DoubleWekaClusterer extends DoubleClusterer {
 	public enum WekaClustererType {

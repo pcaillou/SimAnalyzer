@@ -1,47 +1,47 @@
 package controller;
 
-import java.awt.BorderLayout;
-import java.awt.Choice;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+// AD import java.awt.BorderLayout;
+// AD import java.awt.Choice;
+// AD import java.awt.Color;
+// AD import java.awt.FlowLayout;
+// AD import java.awt.GridBagConstraints;
+// AD import java.awt.GridBagLayout;
+// AD import java.awt.GridLayout;
+// AD import java.awt.event.ActionEvent;
+// AD import java.awt.event.ActionListener;
+// AD import java.awt.event.WindowAdapter;
+// AD import java.awt.event.WindowEvent;
+// AD import java.awt.event.WindowListener;
+// AD import java.io.BufferedReader;
+// AD import java.io.File;
+// AD import java.io.FileReader;
+// AD import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.ScrollPaneLayout;
+// AD import javax.swing.ButtonGroup;
+// AD import javax.swing.JButton;
+// AD import javax.swing.JCheckBox;
+// AD import javax.swing.JFrame;
+// AD import javax.swing.JLabel;
+// AD import javax.swing.JPanel;
+// AD import javax.swing.JRadioButton;
+// AD import javax.swing.JScrollPane;
+// AD import javax.swing.JTextField;
+// AD import javax.swing.ScrollPaneLayout;
 
-import netlogo.NetLogoSimulationController;
+//AD import netlogo.NetLogoSimulationController;
 
-import observer.SimulationInterface;
+//AD import observer.SimulationInterface;
 
 import org.ujmp.core.Matrix;
-import org.ujmp.core.MatrixFactory;
+//AD import org.ujmp.core.MatrixFactory;
 import org.ujmp.core.calculation.Calculation.Ret;
-import org.ujmp.core.exceptions.MatrixException;
+//AD import org.ujmp.core.exceptions.MatrixException;
 
-import controller.SimAnalyzer.OpenProject;
+//AD import controller.SimAnalyzer.OpenProject;
 
 
 import clustering.Cluster;
@@ -63,7 +63,7 @@ public class AgModel
 	{
 		clustinit=cl;
 		clusterer=cler;
-		clustHistDef=new ArrayList();
+		clustHistDef=new ArrayList<Cluster>();
 		clustHistDef.add(cl);
 		
 	}
@@ -73,6 +73,7 @@ public class AgModel
 		Matrix mbase,mbaseavg;
 		Matrix mtemp;
 		double sco,div;
+		@SuppressWarnings("unused")
 		double scodef,divdef;
 		mbase=clustinit.vtestsm;
 		mbaseavg=clustinit.avgsm;
@@ -122,6 +123,7 @@ public class AgModel
 			scorevardef[i]=sco;
 		}
 		scorestabdesc=0;
+		@SuppressWarnings("unused")
 		int nbvarninit;
 		for (int i=3; i<mbase.getRowCount();i++)
 		{

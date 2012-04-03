@@ -1,24 +1,24 @@
 package controller;
 
 import java.awt.BorderLayout;
-import java.awt.Choice;
+// AD import java.awt.Choice;
 import java.awt.Color;
-import java.awt.FlowLayout;
+//AD import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+//AD import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+//AD import java.awt.event.WindowAdapter;
+//AD import java.awt.event.WindowEvent;
+//AD import java.awt.event.WindowListener;
+//AD import java.io.BufferedReader;
+//AD import java.io.File;
+//AD import java.io.FileReader;
+//AD import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
+//AD import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.ButtonGroup;
@@ -29,18 +29,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.ScrollPaneLayout;
+//AD import javax.swing.JTextField;
+//AD import javax.swing.ScrollPaneLayout;
 
-import netlogo.NetLogoSimulationController;
-import controller.SimAnalyzer;
+//AD import netlogo.NetLogoSimulationController;
+//AD import controller.SimAnalyzer;
 
-import observer.SimulationInterface;
+//AD import observer.SimulationInterface;
 
 import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
 import org.ujmp.core.calculation.Calculation.Ret;
-import org.ujmp.core.exceptions.MatrixException;
+//AD import org.ujmp.core.exceptions.MatrixException;
 
 import clustering.Cluster;
 import org.jfree.chart.ChartFactory;
@@ -53,25 +53,27 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
-import org.jfree.chart.renderer.category.StatisticalBarRenderer;
+//AD import org.jfree.chart.renderer.category.StatisticalBarRenderer;
 import org.jfree.chart.renderer.category.StatisticalLineAndShapeRenderer;
 import org.jfree.chart.renderer.xy.XYErrorRenderer;
-import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.data.category.CategoryDataset;
+//AD import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+//AD import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.statistics.DefaultStatisticalCategoryDataset;
-import org.jfree.data.statistics.StatisticalCategoryDataset;
-import org.jfree.data.xy.XYDataset;
+//AD import org.jfree.data.statistics.StatisticalCategoryDataset;
+//AD import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYIntervalSeries;
 import org.jfree.data.xy.XYIntervalSeriesCollection;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
-import org.jfree.experimental.chart.swt.ChartComposite;
+//AD import org.jfree.data.xy.XYSeries;
+//AD import org.jfree.data.xy.XYSeriesCollection;
+//AD import org.jfree.experimental.chart.swt.ChartComposite;
 
-import weka.core.matrix.Maths;
+//AD import weka.core.matrix.Maths;
 
 public class FAgModel extends JFrame implements ActionListener
 {
+	private static final long serialVersionUID = 1L;
+	
 	JLabel l1,l2,l3,l4,l5,l6;
 	GridBagConstraints gbcg=new GridBagConstraints();
 	GridBagLayout gbg=new GridBagLayout();
@@ -106,7 +108,8 @@ public class FAgModel extends JFrame implements ActionListener
 	int v1,v2;
 	int colbase;
 	boolean created=false;
-	
+
+	@SuppressWarnings({"deprecation", "unused"})
 	public FAgModel(AgModel agmd)
 	{	
 		agm=agmd;
@@ -544,7 +547,9 @@ public class FAgModel extends JFrame implements ActionListener
         XYIntervalSeries series3 = new XYIntervalSeries("Avg");
         
 		// column keys...
+		@SuppressWarnings("unused")
 		String category1 = "1";
+		@SuppressWarnings("unused")
 		String category2 = "2";
 
 		for(int j=0;j<mbase.getColumnCount();j++)

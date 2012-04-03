@@ -16,9 +16,6 @@ import weka.core.Instances;
 
 public class WekaWrapper  {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8166335287481996621L;
 
 	public static Instance sampleToInstanceWrapper(Matrix input, long sampleRow, Double sampleWeight, 
@@ -75,5 +72,9 @@ public class WekaWrapper  {
 			result.addElement(a);
 		}
 		return result;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 }

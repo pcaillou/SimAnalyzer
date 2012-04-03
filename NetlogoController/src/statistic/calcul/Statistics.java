@@ -8,7 +8,7 @@ package statistic.calcul;
 
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.HashSet;
+//AD import java.util.HashSet;
 import java.util.Hashtable;
 
 import org.ujmp.core.Matrix;
@@ -113,6 +113,7 @@ public class Statistics {
 		double maxHist = histogram[1][i];
 		double maxValue = histogram[0][i];
 		double initValue = maxValue;
+		@SuppressWarnings("unused")
 		double limitValue = histogram[0][histogram[0].length -1];
 		for(; histogram[0][i] - initValue < (entropy_ris); i++){
 			if(maxHist <= histogram[1][i]){

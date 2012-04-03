@@ -6,41 +6,41 @@ a * @author Javier Gil-Quijano
  */
 package netlogo;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
+// AD import java.awt.event.WindowAdapter;
+//AD import java.awt.event.WindowEvent;
+//AD import java.awt.event.WindowListener;
+//AD import java.awt.GridBagConstraints;
+//AD import java.awt.GridBagLayout;
+//AD import java.awt.event.ActionEvent;
+//AD import java.awt.event.ActionListener;
+//AD import java.io.File;
+//AD import java.lang.reflect.InvocationTargetException;
+//AD import java.util.ArrayList;
+//AD import java.util.List;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+//AD import javax.swing.ButtonGroup;
+//AD import javax.swing.JButton;
+//AD import javax.swing.JFrame;
+//AD import javax.swing.JLabel;
 
-import logs.LogsSimulationController;
+//AD import logs.LogsSimulationController;
 
-import org.nlogo.api.CompilerException;
-import org.ujmp.core.Matrix;
-import org.ujmp.core.MatrixFactory;
-import org.ujmp.core.calculation.Calculation.Ret;
+//AD import org.nlogo.api.CompilerException;
+//AD import org.ujmp.core.Matrix;
+//AD import org.ujmp.core.MatrixFactory;
+//AD import org.ujmp.core.calculation.Calculation.Ret;
 
-import clustering.Cluster;
-import clustering.Clusterer;
-import clustering.ClustererObserver;
+//AD import clustering.Cluster;
+//AD import clustering.Clusterer;
+//AD import clustering.ClustererObserver;
 import controller.SimulationController;
-import observer.Observer;
+//AD import observer.Observer;
 import observer.SimulationInterface;
-import statistic.InitParamObserver;
-import statistic.LastObserver;
-import statistic.SlidingMeanObserver;
-import statistic.GlobalObserver;
-import statistic.DirectObserver;
+//AD import statistic.InitParamObserver;
+//AD import statistic.LastObserver;
+//AD import statistic.SlidingMeanObserver;
+//AD import statistic.GlobalObserver;
+//AD import statistic.DirectObserver;
 
 
 public class NetLogoSimulationController extends SimulationController {
@@ -74,7 +74,6 @@ public class NetLogoSimulationController extends SimulationController {
 		
 	}
 	
-	@SuppressWarnings("null")
 	public void runSimulation(Object... params) throws Exception {
 		super.runSimulation(params);
 	}

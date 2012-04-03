@@ -10,8 +10,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+// AD import java.util.regex.Matcher;
+//AD import java.util.regex.Pattern;
 
 
 import javax.swing.ButtonGroup;
@@ -31,6 +31,8 @@ import clustering.Cluster;
 
 public class ShowClusterlt extends JFrame
 {
+	private static final long serialVersionUID = 1L;
+	
 	JLabel l1,l2;
 	GridBagConstraints gbc=new GridBagConstraints();
 	GridBagLayout gb=new GridBagLayout();
@@ -97,6 +99,7 @@ public class ShowClusterlt extends JFrame
 	    {
 	    	public void actionPerformed(ActionEvent e) {
 	    		GlobalDesc gbd = new GlobalDesc(clt, t, n, vtest, dataMatrix);
+				@SuppressWarnings("unused")
 				WindowListener l = new WindowAdapter()
 				{
 					public void windowClosing(WindowEvent e)
@@ -127,7 +130,8 @@ public class ShowClusterlt extends JFrame
     	    		if(jrb.get(i).isSelected())
     	    		{
     	    			IndividualDesc idd = new IndividualDesc(clt, t, i, n, vtest, dataMatrix);
-    					WindowListener l = new WindowAdapter()
+    					@SuppressWarnings("unused")
+						WindowListener l = new WindowAdapter()
     					{
     						public void windowClosing(WindowEvent e)
     						{
@@ -145,6 +149,8 @@ public class ShowClusterlt extends JFrame
 	}
 	class GlobalDesc extends JFrame
 	{
+		private static final long serialVersionUID = 1L;
+		
 		JLabel l1,l2,l3,l4;
 		GridBagConstraints gbc=new GridBagConstraints();
 		GridBagLayout gb=new GridBagLayout();
@@ -153,6 +159,8 @@ public class ShowClusterlt extends JFrame
 		JScrollPane jsp = new JScrollPane(jp);
 		ButtonGroup group = new ButtonGroup();
 		Matrix mt;
+		
+		@SuppressWarnings("deprecation")
 		public GlobalDesc(List<Cluster> clt, int t, int n, double[][] vtest, Matrix dataMatrix)
 		{	
 			setTitle("Global cluster descritpiton(Vtest tick = "+t+")");    
@@ -262,6 +270,8 @@ public class ShowClusterlt extends JFrame
 
 	class IndividualDesc extends JFrame
 	{
+		private static final long serialVersionUID = 1L;
+		
 		JLabel l1,l2,l3;
 		GridBagConstraints gbc=new GridBagConstraints();
 		GridBagLayout gb=new GridBagLayout();

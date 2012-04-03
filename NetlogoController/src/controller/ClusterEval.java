@@ -1,7 +1,7 @@
 package controller;
 
 import java.awt.BorderLayout;
-import java.awt.Choice;
+// AD import java.awt.Choice;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -12,10 +12,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+// AD import java.io.BufferedReader;
+// AD import java.io.File;
+// AD import java.io.FileReader;
+// AD import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -23,31 +23,33 @@ import java.util.regex.Pattern;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
+// AD import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.ScrollPaneLayout;
+// AD import javax.swing.ScrollPaneLayout;
 
 import netlogo.NetLogoSimulationController;
 
-import observer.SimulationInterface;
+// AD import observer.SimulationInterface;
 
 import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
 import org.ujmp.core.calculation.Calculation.Ret;
-import org.ujmp.core.exceptions.MatrixException;
+// AD import org.ujmp.core.exceptions.MatrixException;
 
-import controller.SimAnalyzer.OpenProject;
+// AD import controller.SimAnalyzer.OpenProject;
 
 
 import clustering.Cluster;
 
 public class ClusterEval extends JFrame 
 {
+	private static final long serialVersionUID = 1L;
+	
 	JLabel l1,l2,l3,l4,l5,l6;
 	GridBagConstraints gbc=new GridBagConstraints();
 	GridBagLayout gb=new GridBagLayout();
@@ -62,6 +64,7 @@ public class ClusterEval extends JFrame
 	JPanel jp = new JPanel(gb);
 	JScrollPane jsp = new JScrollPane(jp);
 	Matrix m;
+	@SuppressWarnings("deprecation")
 	public ClusterEval(final List<List<Cluster>> cltarray, final List<List<Cluster>> cltarray2, final List<Integer> tl, final List<Matrix> ml,List<double[][]> vtest, final Matrix cltmg)
 	{	
 		setTitle("Cluster evaluation");    
@@ -244,7 +247,8 @@ public class ClusterEval extends JFrame
 					if(jrb1.get(i).isSelected())
 					{
 						HistoryPo hp = new HistoryPo(lc.get(i), ml, i, tll.get(i), tl, cltmg);
-    					WindowListener l = new WindowAdapter()
+    					@SuppressWarnings("unused")
+						WindowListener l = new WindowAdapter()
     					{
     						public void windowClosing(WindowEvent e)
     						{
@@ -334,7 +338,8 @@ public class ClusterEval extends JFrame
 							}
 						}
 						HistoryDe hd = new HistoryDe(clut, i, tll, mll,cltmg,size);
-    					WindowListener l = new WindowAdapter()
+    					@SuppressWarnings("unused")
+						WindowListener l = new WindowAdapter()
     					{
     						public void windowClosing(WindowEvent e)
     						{
@@ -387,7 +392,9 @@ public class ClusterEval extends JFrame
 		{
 			public void actionPerformed(ActionEvent e) {
 				try {
+					@SuppressWarnings("unused")
 					List<Cluster> lc = new ArrayList<Cluster>();
+					@SuppressWarnings("unused")
 					List<Integer> tll = new ArrayList<Integer>();
 					int nj=0;
 					for(int i=0;i<cltarray.size();i++)
@@ -403,7 +410,9 @@ public class ClusterEval extends JFrame
 								SimulationController.noclusttarget=j;
 								SimulationController.typeReRun=0;
 								SimulationController.datamatclust=cltmg;
+								@SuppressWarnings("unused")
 								ReRunParam p = new ReRunParam();
+								@SuppressWarnings("unused")
 								WindowListener l = new WindowAdapter()
 								{
 									public void windowClosing(WindowEvent e)
@@ -432,7 +441,9 @@ public class ClusterEval extends JFrame
 		{
 			public void actionPerformed(ActionEvent e) {
 				try {
+					@SuppressWarnings("unused")
 					List<Cluster> lc = new ArrayList<Cluster>();
+					@SuppressWarnings("unused")
 					List<Integer> tll = new ArrayList<Integer>();
 					int nj=0;
 					for(int i=0;i<cltarray.size();i++)
@@ -455,7 +466,9 @@ public class ClusterEval extends JFrame
 								
 								SimulationController.clustpopprop=(double)cltarray.get(i).get(j).getSize()/(double)nbagt;
 								SimulationController.datamatclust=cltmg;
+								@SuppressWarnings("unused")
 								ReRunParam p = new ReRunParam();
+								@SuppressWarnings("unused")
 								WindowListener l = new WindowAdapter()
 								{
 									public void windowClosing(WindowEvent e)
@@ -485,6 +498,8 @@ public class ClusterEval extends JFrame
 	
 	class HistoryPo extends JFrame
 	{
+		private static final long serialVersionUID = 1L;
+		
 		JLabel l1,l2,l3,l4,l5;
 		GridBagConstraints gbc=new GridBagConstraints();
 		GridBagLayout gb=new GridBagLayout();
@@ -492,6 +507,8 @@ public class ClusterEval extends JFrame
 		JButton jbs = new JButton("Show matrix");
 		JScrollPane jsp = new JScrollPane(jp);
 		Matrix m;
+		
+		@SuppressWarnings("deprecation")
 		public HistoryPo(Cluster clu, List<Matrix> ml, int n, int t, List<Integer> tl, Matrix cltmg)
 		{
 			setTitle("Cluster evolution by population(Cluster"+(n+1)+")");    
@@ -642,6 +659,8 @@ public class ClusterEval extends JFrame
 	
 	class HistoryDe extends JFrame 
 	{
+		private static final long serialVersionUID = 1L;
+		
 		JLabel l1,l2,l3,l4,l5;
 		GridBagConstraints gbc=new GridBagConstraints();
 		GridBagLayout gb=new GridBagLayout();
@@ -651,6 +670,7 @@ public class ClusterEval extends JFrame
 		ButtonGroup group = new ButtonGroup();
 		List<JRadioButton> jrb = new ArrayList<JRadioButton>(); 
 		Matrix m; 
+		@SuppressWarnings("deprecation")
 		public HistoryDe(List<List<Cluster>> cltarray, int cn, List<Integer> tl, List<Matrix> ml, Matrix cltmg, int size)
 		{	
 			setTitle("Cluster evolution by definition(Clusterer"+cn+")");    
@@ -808,6 +828,8 @@ public class ClusterEval extends JFrame
 }
 class ReRunParam extends JFrame implements ActionListener
 {
+	private static final long serialVersionUID = 1L;
+	
 	JLabel l, l0,lt,  l1, l2, l3, l4, l5,  l6,  l7;
 	JTextField l0t, lgname, lvmin, lvmax, lvstep, lnbxp, l06,  l07;
 	JButton jbCancel, jbtOK;
@@ -871,6 +893,7 @@ class ReRunParam extends JFrame implements ActionListener
 
 	public void actionPerformed(ActionEvent e) {
 		Object src=e.getSource();
+		@SuppressWarnings("unused")
 		Matrix m = NetLogoSimulationController.DataMatrix;
 		if (src.equals(jbCancel))
 		{

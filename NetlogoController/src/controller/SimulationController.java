@@ -12,12 +12,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+// AD import java.util.regex.Matcher;
+//AD import java.util.regex.Pattern;
 
-import netlogo.NetLogoClustersUpdater;
-import netlogo.NetLogoInterface;
-import netlogo.NetLogoSensor;
+//AD import netlogo.NetLogoClustersUpdater;
+//AD import netlogo.NetLogoInterface;
+//AD import netlogo.NetLogoSensor;
 
 import org.nlogo.api.CompilerException;
 import org.ujmp.core.Matrix;
@@ -104,6 +104,7 @@ public abstract class SimulationController {
 	
 	public abstract SimulationInterface initInterface(Object... params);
 
+	@SuppressWarnings("deprecation")
 	public void reRunBoucle(Object... params) throws Exception
 	{
 		int stepglob=0;
@@ -127,7 +128,7 @@ public abstract class SimulationController {
            	{
            		si.setGlobalVariable(glovvarrerun, globvarcurrent);
            	}
-       		for (int st=0; st<this.nbsteprerun;st++)
+       		for (int st=0; st<SimulationController.nbsteprerun;st++)
        		{
             	reRunInit(params);	       			
        		}
@@ -136,11 +137,11 @@ public abstract class SimulationController {
     			StabMat.setAsDouble(globvarcurrent, 0,stepglob);
        			double dist=0;
        			double temp=0;
-           		for (int st=0; st<this.nbsteprerun;st++)
+           		for (int st=0; st<SimulationController.nbsteprerun;st++)
            		{
            		 temp=Math.abs(ResMat.getAsDouble(j,0)-ResMat.getAsDouble(j,ResMat.getColumnCount()-1-st));	
            		 temp=1-temp/Math.max(Math.abs(ResMat.getAsDouble(j,0)), Math.abs(ResMat.getAsDouble(j,ResMat.getColumnCount()-1-st)));
-           		 dist=dist+temp/this.nbsteprerun;
+           		 dist=dist+temp/SimulationController.nbsteprerun;
            		}
        			StabMat.setAsDouble(dist, j,stepglob);
        		}
@@ -174,9 +175,11 @@ public abstract class SimulationController {
 		
 	}
 	
+	@SuppressWarnings({ "unchecked", "unused" })
 	public void reRunInit(Object... params) throws Exception
 	{
 		clearObservers();
+		
 		
 		List<Clusterer>  wclloc = (List<Clusterer>)getParameter(CLUSTERER_INDEX, params);
 		
@@ -214,7 +217,7 @@ public abstract class SimulationController {
             {
             	long[] ids=si.getAgentsId();
             	int nba=ids.length;
-            	int nbv=this.clusterTarget.vtests.length;
+            	int nbv=SimulationController.clusterTarget.vtests.length;
             	int nbc=(int)(nba*clustpopprop);
 				System.out.println("nbc "+nbc+" nbv "+nbv+" nba "+nba);
             	for (int i=0; i<nbc; i++)
@@ -222,7 +225,7 @@ public abstract class SimulationController {
             		long ida=ids[i];
             	    for (int j=0; j<nbv; j++)
             	    {
-            	    	if (Math.abs(this.clusterTarget.vtests[j])>2)
+            	    	if (Math.abs(SimulationController.clusterTarget.vtests[j])>2)
             	    	{
 //            				Pattern p = Pattern.compile("T0");
 //            				Matcher m = p.matcher(datamatclust.getColumnLabel(j));
@@ -236,14 +239,14 @@ public abstract class SimulationController {
             				{
             					String ni=nv.substring(2);
             					double valv=rand.nextGaussian();
-            					valv=valv*Math.sqrt(this.clusterTarget.stderr[j]);
-            					valv=valv+this.clusterTarget.avg[j];
+            					valv=valv*Math.sqrt(SimulationController.clusterTarget.stderr[j]);
+            					valv=valv+SimulationController.clusterTarget.avg[j];
             					Object var=si.getAgentVariable((int)ida, ni);
             					if (!ni.contains("-1"))
 //            					if(var != null && var instanceof Double)
             					{
                 					si.setAgentVariable((int)ida, ni, valv);
-                					System.out.println(ni+" v "+valv+" ida "+ida+" avg "+this.clusterTarget.avg[j]+" std "+this.clusterTarget.stderr[j]);
+                					System.out.println(ni+" v "+valv+" ida "+ida+" avg "+SimulationController.clusterTarget.avg[j]+" std "+SimulationController.clusterTarget.stderr[j]);
             						
             					}
             					else
@@ -351,11 +354,12 @@ public abstract class SimulationController {
 			        cltsize += clt.size(); 
 					if ((nt==steptarget)&(typeReRun==0))
 					{
-						Matrix m=Vtest.VtestM(clt.get(this.noclusttarget),mg);
-						m.setAsDouble(this.globvarcurrent, 0,0);
+						Matrix m=Vtest.VtestM(clt.get(SimulationController.noclusttarget),mg);
+						m.setAsDouble(SimulationController.globvarcurrent, 0,0);
 						ResMat=ResMat.appendHorizontally(m);	
 //						mn.showGUI();
 //						ResMat.showGUI();
+						@SuppressWarnings("deprecation")
 						Matrix ResFil=ResMat.copy();
 						for (int i=(int)ResFil.getRowCount()-1; i>0; i--)
 						{
@@ -373,10 +377,11 @@ public abstract class SimulationController {
 					if ((nt==steptarget)&(typeReRun==1))
 					{
 						Matrix m=Vtest.VtestM(targettemp,mg);
-						m.setAsDouble(this.globvarcurrent, 0,0);
+						m.setAsDouble(SimulationController.globvarcurrent, 0,0);
 						ResMat=ResMat.appendHorizontally(m);	
 //						mn.showGUI();
 //						ResMat.showGUI();
+						@SuppressWarnings("deprecation")
 						Matrix ResFil=ResMat.copy();
 						for (int i=(int)ResFil.getRowCount()-1; i>0; i--)
 						{
@@ -460,6 +465,7 @@ public abstract class SimulationController {
 	
 	}
 
+	@SuppressWarnings("unchecked")
 	public void runSimulation(Object... params) throws Exception
 	{
 		clearObservers();
@@ -620,6 +626,7 @@ public abstract class SimulationController {
 			        ShowClusterlt scl = new ShowClusterlt(clt, tick, cltsize, vtest, mg);
 			        cltsize += clt.size(); 
 			        
+					@SuppressWarnings("unused")
 					WindowListener l = new WindowAdapter()
 					{
 						public void windowClosing(WindowEvent e)
@@ -665,6 +672,7 @@ public abstract class SimulationController {
 			{
 	        ClusterEval ctel = new ClusterEval(clusterltarray,clusterltarray2, ticklist, MatrixList, vtestlist, cltmg); 
 	        FAgModel fag=new FAgModel(clusterltarray.get(0).get(0).agm);
+			@SuppressWarnings("unused")
 			WindowListener l = new WindowAdapter()
 			{
 				public void windowClosing(WindowEvent e)

@@ -14,9 +14,9 @@ import observer.SimulationSensor;
 
 import org.nlogo.agent.Agent;
 import org.nlogo.agent.AgentSet;
-import org.nlogo.agent.ArrayAgentSet;
-import org.nlogo.agent.ArrayAgentSet.Iterator;
-import org.nlogo.agent.Turtle;
+// AD import org.nlogo.agent.ArrayAgentSet;
+// AD import org.nlogo.agent.ArrayAgentSet.Iterator;
+// AD import org.nlogo.agent.Turtle;
 import org.nlogo.api.CompilerException;
 import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;

@@ -1,28 +1,28 @@
 package logs;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.lang.reflect.Field;
+// AD import java.io.File;
+//AD import java.io.FileWriter;
+//AD import java.io.PrintWriter;
+//AD import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-import netlogo.NetLogoInterface;
+//AD import netlogo.NetLogoInterface;
 
-import org.nlogo.agent.Agent;
-import org.nlogo.api.AgentException;
-import org.nlogo.agent.AgentSet;
-import org.nlogo.agent.ArrayAgentSet.Iterator;
-import org.nlogo.agent.Patch;
-import org.nlogo.agent.Turtle;
-import org.nlogo.agent.World;
+//AD import org.nlogo.agent.Agent;
+//AD import org.nlogo.api.AgentException;
+//AD import org.nlogo.agent.AgentSet;
+//AD import org.nlogo.agent.ArrayAgentSet.Iterator;
+//AD import org.nlogo.agent.Patch;
+//AD import org.nlogo.agent.Turtle;
+//AD import org.nlogo.agent.World;
 import org.nlogo.api.AgentVariables;
-import org.nlogo.api.Argument;
-import org.nlogo.api.Context;
-import org.nlogo.api.ExtensionException;
+//AD import org.nlogo.api.Argument;
+//AD import org.nlogo.api.Context;
+//AD import org.nlogo.api.ExtensionException;
 
 import org.nlogo.api.CompilerException;
 
