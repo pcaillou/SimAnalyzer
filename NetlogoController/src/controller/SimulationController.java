@@ -37,6 +37,7 @@ import statistic.GlobalObserver;
 import statistic.InitParamObserver;
 import statistic.LastObserver;
 import statistic.SlidingMeanObserver;
+import statistic.GraphObserver;
 
 public abstract class SimulationController {
 	public static Matrix DataMatrix = null;
@@ -186,20 +187,22 @@ public abstract class SimulationController {
 		Long slidingWindowSize = new Long((long)(5.0));
 		SlidingMeanObserver smo = new SlidingMeanObserver(si, slidingWindowSize);
 		smo.setVisualizationRefresh(-1);
+		GraphObserver gro = new GraphObserver(si, slidingWindowSize);
+		gro.setVisualizationRefresh(-1);
 		InitParamObserver ino = new InitParamObserver(si, slidingWindowSize);
 		ino.setVisualizationRefresh(-1);
-
 		DirectObserver dio = new DirectObserver(si, slidingWindowSize);
-		smo.setVisualizationRefresh(-1);
-		LastObserver lasto = new LastObserver(si, slidingWindowSize);
+		dio.setVisualizationRefresh(-1);
 		
-
+		LastObserver lasto = new LastObserver(si, slidingWindowSize);
 		GlobalObserver go = new GlobalObserver(si, slidingWindowSize);
 		
 		dio.addListener(go);
 		dio.addListener(smo);
+		dio.addListener(gro);
 		dio.addListener(ino);
 		smo.addListener(go);
+		gro.addListener(go);
 		ino.addListener(go);
 		lasto.addListener(go);
 
@@ -482,12 +485,13 @@ public abstract class SimulationController {
 		
 		Long slidingWindowSize = new Long((long)5.0);
 		SlidingMeanObserver smo = new SlidingMeanObserver(si, slidingWindowSize);
-		smo.setVisualizationRefresh(-1);
+		smo.setVisualizationRefresh(-1);		
+		GraphObserver gro = new GraphObserver(si, slidingWindowSize);
+		gro.setVisualizationRefresh(-1);	
 		InitParamObserver ino = new InitParamObserver(si, slidingWindowSize);
 		ino.setVisualizationRefresh(-1);
-
 		DirectObserver dio = new DirectObserver(si, slidingWindowSize);
-		smo.setVisualizationRefresh(-1);
+		dio.setVisualizationRefresh(-1);
 		LastObserver lasto = new LastObserver(si, slidingWindowSize);
 		
 //		smo.addListener(co);
@@ -497,8 +501,10 @@ public abstract class SimulationController {
 		dio.addListener(go);
 		dio.addListener(smo);
 		dio.addListener(ino);
+		dio.addListener(gro);
 		smo.addListener(go);
 		ino.addListener(go);
+		gro.addListener(go);
 //		go.addListener(co);
 		lasto.addListener(go);
 
