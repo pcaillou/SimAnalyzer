@@ -1116,10 +1116,10 @@ public class SimAnalyzer extends JFrame
 	class ShowProject extends JFrame implements ActionListener
 	{
 		private static final long serialVersionUID = 1L;
-		
-		JLabel l, l0,lt,  l1, l2,l2b, l3, l4, l5,  l6,  l7,l8,l9,l10;
-		JTextField l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
-		JButton jbtdm, jbtOK, jbtsim;
+		int nblab;
+		JLabel[] l;//, l0,lt,  l1, l2,l2b, l3, l4, l5,  l6,  l7,l8,l9,l10;
+		JTextField[] ltf; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
+		JButton jbtdm, jbtOK, jbtsim, jbtsave;
 		public ShowProject() 
 		{
 			myDataFile = new File ("Data/"+prname+".csv");
@@ -1145,113 +1145,62 @@ public class SimAnalyzer extends JFrame
 				e1.printStackTrace();
 			}
 			BufferedReader br = new BufferedReader(fr);		  
-			l = new JLabel("Project name:");
-			panel_1.add(l);
-			l0 = new JLabel(prname);
-			panel_1.add(l0);
-		    lt = new JLabel("type (1:NeltLogo/2:Logs): "); 
-			panel_1.add(lt);  
+			int nblab=13;
+			l=new JLabel[nblab];
+			ltf=new JTextField[nblab];
+
+			l[0] = new JLabel("Project name:");
+			ltf[0] = new JTextField(prname);
+
+			int no=1;
+		    l[no] = new JLabel("type (1:NeltLogo/2:Logs): "); 
+		    no++;
+		    l[no] = new JLabel("model/file name: "); 
+		    no++;
+		    l[no] = new JLabel("Clustering step: ");  
+		    no++;
+		    l[no] = new JLabel("Update cluster every step: ");  
+		    no++;
+		    l[no] = new JLabel("Total number of step: ");  
+		    no++;
+		    l[no] = new JLabel("Agent column (LOGS): ");  
+		    no++;
+		    l[no] = new JLabel("Time column (LOGS): ");  
+		    no++;
+		    l[no] = new JLabel("First column clustering: ");  
+		    no++;
+		    l[no] = new JLabel("Last column clustering: ");  
+		    no++;
+		    l[no] = new JLabel("Double Clustering: ");  
+		    no++;
+		    l[no] = new JLabel("Follow clusters: ");  
+		    no++;
+		    l[no] = new JLabel("Recompute history: ");  
+			for (int i=1; i<nblab; i++)
+			{
 			try {
-				l0t = new JTextField(br.readLine());
+				ltf[i] = new JTextField(br.readLine());
 			} catch (IOException e) {
 				e.printStackTrace();
 			} 
-			panel_1.add(l0t);  
-		    l1 = new JLabel("model/fike name: "); 
-			panel_1.add(l1);  
-			try {
-				l01 = new JTextField(br.readLine());
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-			panel_1.add(l01);  
-		    l2 = new JLabel("Clustering step: ");  
-			panel_1.add(l2);  
-			try {
-				l02 = new JTextField(br.readLine());
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-			panel_1.add(l02);  
-		    l2b = new JLabel("Update cluster every step: ");  
-			panel_1.add(l2b);  
-			try {
-				l02b = new JTextField(br.readLine());
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-			panel_1.add(l02b);  
-			l3 = new JLabel("Total number of step: ");  
-			panel_1.add(l3);  
-			try {
-				l03 = new JTextField(br.readLine());
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-			panel_1.add(l03);  
-			l4 = new JLabel("Agent column (LOGS): ");  
-			panel_1.add(l4);  
-			try {
-				l04 = new JTextField(br.readLine());
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-			panel_1.add(l04);  
-			l5 = new JLabel("Time column (LOGS): ");  
-			panel_1.add(l5);  
-			try {
-				l05 = new JTextField(br.readLine());
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-			panel_1.add(l05);  
-			l6 = new JLabel("First column clustering: ");  
-			panel_1.add(l6);  
-			try {
-				l06 = new JTextField(br.readLine());
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-			panel_1.add(l06);  
-			l7 = new JLabel("Last column clustering: ");  
-			panel_1.add(l7);  
-			try {
-				l07 = new JTextField(br.readLine());
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-			panel_1.add(l07);  
-			l8 = new JLabel("Double Clustering: ");  
-			panel_1.add(l8);  
-			try {
-				l08 = new JTextField(br.readLine());
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-			panel_1.add(l08);  
-			l9 = new JLabel("Follow clusters: ");  
-			panel_1.add(l9);  
-			try {
-				l09 = new JTextField(br.readLine());
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-			panel_1.add(l09);  
-			l10 = new JLabel("Recompute history: ");  
-			panel_1.add(l10);  
-			try {
-				l010 = new JTextField(br.readLine());
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-			panel_1.add(l010);  
+			}
+			
+			for (int i=0; i<nblab; i++)
+			{
+				panel_1.add(l[i]);
+				panel_1.add(ltf[i]);				
+			}
+			
+			jbtsave = new JButton("Start new simulation (and save)");   
+			panel_1.add(jbtsave);   
+			jbtsave.addActionListener(this);
+			jbtsim = new JButton("Start new simulation (no save)");   
+			panel_1.add(jbtsim);   
+			jbtsim.addActionListener(this);
 			jbtdm = new JButton("Data matrix");   
 			panel_1.add(jbtdm);   
 			jbtdm.addActionListener(this);
-			jbtsim = new JButton("Start new simulation");   
-			panel_1.add(jbtsim);   
-			jbtsim.addActionListener(this);
-			jbtOK = new JButton("OK");   
+			jbtOK = new JButton("Cancel");   
 			panel_1.add(jbtOK);   
 			jbtOK.addActionListener(this);
 			setVisible(true);  			
@@ -1260,7 +1209,7 @@ public class SimAnalyzer extends JFrame
 		public void actionPerformed(ActionEvent e) {
 			Object src=e.getSource();
 			Matrix m = NetLogoSimulationController.DataMatrix;
-			if (src.equals(jbtOK) | src.equals(jbtdm))
+			if (src.equals(jbtdm))
 			{
 				menug.setEnabled(true);
 				for(int i=0;i<columnCount;i++)
@@ -1305,6 +1254,10 @@ public class SimAnalyzer extends JFrame
 					
 				}	
 			}
+			if (src.equals(jbtOK))
+			{
+				dispose();
+			}
 			if (src.equals(jbtdm))
 			{
 				if(myDataFile.exists()){
@@ -1326,7 +1279,7 @@ public class SimAnalyzer extends JFrame
 					for(int j=0;j<4;j++)
 						try {
 							l = br.readLine();
-						} catch (IOException e2) {
+					} catch (IOException e2) {
 							e2.printStackTrace();
 					}
 					String[] v2 = l.split("  ");	
@@ -1338,23 +1291,81 @@ public class SimAnalyzer extends JFrame
 					m.showGUI();
 				}
 			}
-			if (src.equals(jbtsim))
+			if (src.equals(jbtsave))
 			{
-				name = "models/"+l01.getText();
-				int typem=Integer.parseInt(l0t.getText());
-		        clusterstep = Integer.parseInt(l02.getText());
-		        updatestep = Integer.parseInt(l02b.getText());
-		        totalsteps = Integer.parseInt(l03.getText());
-		        agcol = Integer.parseInt(l04.getText());
-		        timecol = Integer.parseInt(l05.getText());
-		        startcol = Integer.parseInt(l06.getText());
-		        endcol = Integer.parseInt(l07.getText());
+				name = "models/"+ltf[2].getText();
+		        clusterstep = Integer.parseInt(ltf[2].getText());
+		        updatestep = Integer.parseInt(tf2b.getText());
+		        totalsteps = (int)(Integer.parseInt(tf3.getText())/clusterstep);
+		        agcol = Integer.parseInt(tf4.getText());
+		        timecol = Integer.parseInt(tf5.getText());
+		        startcol = Integer.parseInt(tf6.getText());
+		        endcol = Integer.parseInt(tf7.getText());
 		        followcluster=true;
 		        doubleclustering=true;
 		        computehistory=true;
-		        if (Integer.parseInt(l08.getText())==0) doubleclustering=false;
-		        if (Integer.parseInt(l09.getText())==0) followcluster=false;
-		        if (Integer.parseInt(l010.getText())==0) computehistory=false;
+		        if (Integer.parseInt(tf8.getText())==0) doubleclustering=false;
+		        if (Integer.parseInt(tf9.getText())==0) followcluster=false;
+		        if (Integer.parseInt(tf10.getText())==0) computehistory=false;
+				FileWriter fw = null;
+				try {
+					fw = new FileWriter("projects/"+prname+".config", false);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				BufferedWriter bw = new BufferedWriter(fw);
+				try {
+					String typel="2";
+					bw.write(typel);
+					bw.newLine();
+					bw.write(tf1.getText());
+					bw.newLine();
+					bw.write(tf2.getText());
+					bw.newLine();
+					bw.write(tf2b.getText());
+					bw.newLine();
+					bw.write(tf3.getText());
+					bw.newLine();
+					bw.write(tf4.getText());
+					bw.newLine();
+					bw.write(tf5.getText());
+					bw.newLine();
+					bw.write(tf6.getText());
+					bw.newLine();
+					bw.write(tf7.getText());
+					bw.newLine();
+					bw.write(tf8.getText());
+					bw.newLine();
+					bw.write(tf9.getText());
+					bw.newLine();
+					bw.write(tf10.getText());
+					bw.newLine();
+					bw.flush(); 
+					bw.close();
+					fw.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}		  	        
+				menus.setEnabled(true);		  
+		}
+			
+			if (src.equals(jbtsim)|src.equals(jbtsave))
+			{
+				name = "models/"+ltf[2].getText();
+				int typem=Integer.parseInt(ltf[1].getText());
+		        clusterstep = Integer.parseInt(ltf[3].getText());
+		        updatestep = Integer.parseInt(ltf[4].getText());
+		        totalsteps = Integer.parseInt(ltf[5].getText());
+		        agcol = Integer.parseInt(ltf[6].getText());
+		        timecol = Integer.parseInt(ltf[7].getText());
+		        startcol = Integer.parseInt(ltf[8].getText());
+		        endcol = Integer.parseInt(ltf[9].getText());
+		        followcluster=true;
+		        doubleclustering=true;
+		        computehistory=true;
+		        if (Integer.parseInt(ltf[10].getText())==0) doubleclustering=false;
+		        if (Integer.parseInt(ltf[11].getText())==0) followcluster=false;
+		        if (Integer.parseInt(ltf[12].getText())==0) computehistory=false;
 		        if (typem==1)
 		        {
 					startnetlogo=true;

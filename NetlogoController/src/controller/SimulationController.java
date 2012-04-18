@@ -501,10 +501,10 @@ public abstract class SimulationController {
 		dio.addListener(go);
 		dio.addListener(smo);
 		dio.addListener(ino);
-		dio.addListener(gro);
+//		dio.addListener(gro);
 		smo.addListener(go);
 		ino.addListener(go);
-		gro.addListener(go);
+//		gro.addListener(go);
 //		go.addListener(co);
 		lasto.addListener(go);
 
