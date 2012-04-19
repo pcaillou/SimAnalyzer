@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/lib/asm-all-3.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/lib/gluegen-rt-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/lib/jhotdraw-6.0b1.jar"/>
+	<classpathentry kind="lib" path="lib/lib/jmf-2.1.1e.jar"/>
+	<classpathentry kind="lib" path="lib/lib/jogl-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="lib/lib/mrjadapter-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/lib/parboiled-core-1.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/lib/parboiled-java-1.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/lib/pegdown-1.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/lib/picocontainer-2.13.6.jar"/>
+	<classpathentry kind="lib" path="lib/lib/quaqua-7.3.4.jar"/>
+	<classpathentry kind="lib" path="lib/lib/scala-library.jar"/>
+	<classpathentry kind="lib" path="lib/lib/swing-layout-7.3.4.jar"/>
+	<classpathentry kind="lib" path="lib/commons-math-2.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/commons-math-2.2-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-math-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/jcommon-1.0.17.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart-1.0.14-swt.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart-1.0.14.jar"/>
+	<classpathentry kind="lib" path="lib/junit.jar"/>
+	<classpathentry kind="lib" path="lib/lib.lib.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="lib/mysql.jar"/>
+	<classpathentry kind="lib" path="lib/NetLogo.jar"/>
+	<classpathentry kind="lib" path="lib/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
+	<classpathentry kind="lib" path="lib/swtgraphics2d.jar"/>
+	<classpathentry kind="lib" path="lib/ujmp-complete-0.2.5.jar"/>
+	<classpathentry kind="lib" path="lib/weka.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
