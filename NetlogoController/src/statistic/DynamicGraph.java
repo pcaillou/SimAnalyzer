@@ -10,7 +10,7 @@ import org.graphstream.graph.implementations.MultiGraph;
 import org.graphstream.ui.swingViewer.Viewer;
 
 /**
- * Graphe generique ou chaque arc a un poids de base, une date de creation, de suppression et un historique de modifications des poids
+ * Graphe generique ou chaque arc a un poids de base, une date de creation et de suppression
  * 
  * @author Destannes Alexandre
  *
@@ -177,7 +177,13 @@ public class DynamicGraph{
 	 */
 	public void setTimeDelete(Edge edge, long timeDelete)
 	{
-		long actualTimeDelete = getTimeCreation(edge);
+		long actualTimeDelete = getTimeDelete(edge);
+		
+		if (actualTimeDelete < getTimeCreation(edge))
+		{
+			System.err.println("Error : the new delete time is lower than the creation time");
+			return;
+		}
 		
 		if (actualTimeDelete >= timeDelete)
 		{
@@ -185,7 +191,7 @@ public class DynamicGraph{
 		}
 		else
 		{
-			if(!edgesExists(edge.getNode0(), edge.getNode1(),actualTimeDelete,timeDelete))
+			if(!edgesExists(edge.getNode0(), edge.getNode1(),timeDelete,actualTimeDelete))
 			{
 				edge.setAttribute(TIME_SUPPRESSION, timeDelete);
 			}
@@ -204,8 +210,15 @@ public class DynamicGraph{
 	public void setTimeCreation(Edge edge, long timeCreation)
 	{
 		long actualTimeCreation = getTimeCreation(edge);
+
 		
-		if (actualTimeCreation >= timeCreation)
+		if (actualTimeCreation > getTimeDelete(edge))
+		{
+			System.err.println("Error : the new creation time is upper than the delete time");
+			return;
+		}
+		
+		if (actualTimeCreation <= timeCreation)
 		{
 			edge.setAttribute(TIME_CREATION, timeCreation);
 		}
@@ -440,6 +453,39 @@ public class DynamicGraph{
 	}
 	
 	/**
+	 * Transforme l'arc en String
+	 * @param e
+	 * @return
+	 */
+	public String edgeToString(Edge e)
+	{
+		String result = LEFT_BRACE + e.getNode0().getId() + SEPARATOR + e.getNode1().getId();
+		
+		if (getTimeCreation(e) != 0 && getTimeDelete(e) != Long.MAX_VALUE)
+		{
+			result += SEPARATOR + getWeight(e) + SEPARATOR + getTimeCreation(e) + SEPARATOR + getTimeDelete(e);
+		}
+		else if (getWeight(e) != 0)
+		{
+			result += SEPARATOR + getWeight(e);
+		}
+		
+		result += RIGHT_BRACE;
+		
+		return result;
+	}
+	
+	/**
+	 * Transforme la node en String
+	 * @param n
+	 * @return
+	 */
+	public String nodeToString(Node n)
+	{
+		return LEFT_BRACE + n.getId() + RIGHT_BRACE;
+	}
+	
+	/**
 	 * Transforme le graphe en chaine en utilisant le separateur et les encadrant definit dans LEFT_BRACE, RIGHT_BRACE, SEPARATOR
 	 */
 	public String toString()
@@ -452,7 +498,8 @@ public class DynamicGraph{
 			{
 				result += SEPARATOR;
 			}
-			result += LEFT_BRACE + n.getId() + RIGHT_BRACE;
+			
+			result += nodeToString(n);
 		}
 		
 		for (Edge e : graph.getEachEdge())
@@ -462,25 +509,13 @@ public class DynamicGraph{
 				result += SEPARATOR;
 			}
 			
-			result += LEFT_BRACE + e.getNode0().getId() + SEPARATOR + e.getNode1().getId();
-			
-			if (getTimeCreation(e) != 0 && getTimeDelete(e) != Long.MAX_VALUE)
-			{
-				result += SEPARATOR + getWeight(e) + SEPARATOR + getTimeCreation(e) + SEPARATOR + getTimeDelete(e);
-			}
-			else if (getWeight(e) != 0)
-			{
-				result += SEPARATOR + getWeight(e);
-			}
-			
-			result += RIGHT_BRACE;
+			result += edgeToString(e);
 		}
 		result += RIGHT_BRACE;
 		
 		return result;
 	}
-	
-	
+
 	/************************************************************/
 	/************************ MODIFIEURS ************************/
 	/************************************************************/
