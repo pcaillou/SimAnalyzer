@@ -3,6 +3,7 @@ package controller;
 
 //AD import clustering.Cluster;
 import clustering.Clusterer;
+import statistic.*;
 //AD import clustering.Indexes;
 import clustering.WekaClusterer;
 import logs.*;
@@ -16,6 +17,8 @@ import javax.swing.*;
 import netlogo.NetLogoSimulationController;
 
 //AD import org.nlogo.app.App;
+import observer.Observer;
+
 import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
 //AD import org.ujmp.core.calculation.Calculation.Ret;
@@ -23,6 +26,8 @@ import org.ujmp.core.enums.DB;
 import org.ujmp.core.enums.FileFormat;
 //AD import org.ujmp.core.enums.ValueType;
 import org.ujmp.core.exceptions.MatrixException;
+
+import statistic.DirectObserver;
 
 //AD import statistic.distribution.VariableDistribution;
 
@@ -32,13 +37,16 @@ import com.mysql.jdbc.Statement;
 
 import java.awt.*;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.sql.DriverManager;
 //AD import java.sql.ResultSet;
 import java.sql.SQLException;
 //AD import java.text.DecimalFormat;
 import java.util.ArrayList;
 //AD import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 //AD import java.util.regex.Matcher;
 //AD import java.util.regex.Pattern;
@@ -53,6 +61,14 @@ public class SimAnalyzer extends JFrame
 		implements ActionListener, ItemListener
 {
 	private static final long serialVersionUID = 1L;
+	public final static int nbObserverMax=15;
+//	public String[] obsnames=new String[nbObserverMax];
+	public static String[] obstypes=new String[nbObserverMax];
+	public static String[][] obsparams=new String[nbObserverMax][Observer.nbparammax];
+
+	static ArrayList<String> ObsPossibleTypeList;
+	public static Map<String,String[]> obsParamNames;
+	public static Map<String,String[]> obsParamDefaultValues;
 	
 	static boolean startnetlogo;
 	static boolean startlogs;
@@ -97,9 +113,55 @@ public class SimAnalyzer extends JFrame
 	GridBagConstraints gbc=new GridBagConstraints();
 	GridBagLayout gb=new GridBagLayout();
 	
-	public SimAnalyzer()
+ SimAnalyzer()
 	{		
 		super(" SimAnalyzer "); 
+		Class c;
+		String[] pn,pnd;
+		ObsPossibleTypeList=new ArrayList<String>();
+		obsParamNames=new HashMap<String,String[]>();
+		obsParamDefaultValues=new HashMap<String,String[]>();
+		
+		ObsPossibleTypeList.add("None");		
+		obsParamNames.put("None", Observer.ParamNames);
+		obsParamDefaultValues.put("None", Observer.DefaultValues);
+
+		
+		c=DirectObserver.class;
+		pn=DirectObserver.ParamNames;		
+		pnd=DirectObserver.DefaultValues;		
+		ObsPossibleTypeList.add(c.getName());		
+		obsParamNames.put(c.getName(), pn);
+		obsParamDefaultValues.put(c.getName(), pnd);
+		
+		c=GlobalObserver.class;
+		pn=GlobalObserver.ParamNames;		
+		pnd=GlobalObserver.DefaultValues;		
+		ObsPossibleTypeList.add(c.getName());		
+		obsParamNames.put(c.getName(), pn);
+		obsParamDefaultValues.put(c.getName(), pnd);
+
+		c=LastObserver.class;
+		pn=LastObserver.ParamNames;		
+		pnd=LastObserver.DefaultValues;		
+		ObsPossibleTypeList.add(c.getName());		
+		obsParamNames.put(c.getName(), pn);
+		obsParamDefaultValues.put(c.getName(), pnd);
+
+		c=SlidingMeanObserver.class;
+		pn=SlidingMeanObserver.ParamNames;		
+		pnd=SlidingMeanObserver.DefaultValues;		
+		ObsPossibleTypeList.add(c.getName());		
+		obsParamNames.put(c.getName(), pn);
+		obsParamDefaultValues.put(c.getName(), pnd);
+		
+		c=InitParamObserver.class;
+		pn=InitParamObserver.ParamNames;		
+		pnd=InitParamObserver.DefaultValues;		
+		ObsPossibleTypeList.add(c.getName());		
+		obsParamNames.put(c.getName(), pn);
+		obsParamDefaultValues.put(c.getName(), pnd);
+		
 		restartnetlogo=false;
 		setJMenuBar(menubar);
 		menup.add(micp);
@@ -1113,13 +1175,264 @@ public class SimAnalyzer extends JFrame
 	    }
 	}
 	
+	class ObserversParameters extends JFrame implements ActionListener
+	{
+		private static final long serialVersionUID = 1L;
+		int nbobsmax=Observer.nbparammax;
+		int idobs;
+		ObserversConfig parent;
+		JLabel[] l;//, l0,lt,  l1, l2,l2b, l3, l4, l5,  l6,  l7,l8,l9,l10;
+		JTextField[] ltf; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
+//		JButton[] jbparams; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
+//		JComboBox<String>[] lcombo; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
+		JButton jbtOK, jbtcancel,jbtdefault;
+		public ObserversParameters(ObserversConfig par, int id) 
+		{
+			parent=par;
+			idobs=id;
+			params=new String[nbobsmax][Observer.nbparammax];
+			setTitle("Observer "+id+" parameters");  
+			setSize(500,350); 
+			setResizable(true);    
+			JPanel panel = new JPanel();  
+			FlowLayout flowLayout = new FlowLayout();  
+		    flowLayout.setHgap(10);  
+			flowLayout.setVgap(10);  
+			panel.setLayout(flowLayout);  
+			add(panel, BorderLayout.CENTER); 
+			JPanel panel_1 = new JPanel();  
+			GridLayout grid = new GridLayout(0, 2);  
+			grid.setHgap(10);  
+			grid.setVgap(15);  
+			panel_1.setLayout(grid);  
+			panel.add(panel_1);  
+			l=new JLabel[nbobsmax];
+			ltf=new JTextField[nbobsmax];
+
+			for (int i=0; i<nbobsmax; i++)
+			{
+				l[i]=new JLabel(""+SimAnalyzer.obsParamNames.get(par.lcombo[idobs].getSelectedItem().toString())[i]);
+//				try {
+//					l[i]=new JLabel(""+((Observer)(Class.forName(par.lcombo[idobs].getSelectedItem().toString()).newInstance())).ParamNames[i]);
+//				} catch (InstantiationException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (IllegalAccessException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (ClassNotFoundException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+				ltf[i]=new JTextField(parent.params[idobs][i]);
+				panel_1.add(l[i]);
+				panel_1.add(ltf[i]);
+			}
+			l[0].setEnabled(false);
+			l[1].setEnabled(false);
+
+			jbtOK = new JButton("Ok");   
+			panel_1.add(jbtOK);   
+			jbtOK.addActionListener(this);
+			jbtcancel = new JButton("Cancel");   
+			panel_1.add(jbtcancel);   
+			jbtcancel.addActionListener(this);
+			jbtdefault = new JButton("Default Values");   
+			panel_1.add(jbtdefault);   
+			jbtdefault.addActionListener(this);
+			pack();
+			setVisible(true);  			
+			
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			Object src=e.getSource();
+			Matrix m = NetLogoSimulationController.DataMatrix;
+			if (src.equals(jbtcancel))
+			{
+				dispose();
+			}
+			if (src.equals(jbtOK))
+			{
+				dispose();
+				for (int i=0; i<nbobsmax; i++)
+				{
+					parent.params[idobs][i]=ltf[i].getText();
+				}
+			}
+			if (src.equals(jbtdefault))
+			{
+				for (int i=0; i<nbobsmax; i++)
+				{
+					ltf[i].setText(SimAnalyzer.obsParamDefaultValues.get(parent.lcombo[idobs].getSelectedItem().toString())[i]);
+				}
+			}
+			
+		}
+	}
+			
+
+	
+	class ObserversConfig extends JFrame implements ActionListener
+	{
+		private static final long serialVersionUID = 1L;
+		int nbobsmax=SimAnalyzer.nbObserverMax;
+		String nomproj;
+		JLabel[] l;//, l0,lt,  l1, l2,l2b, l3, l4, l5,  l6,  l7,l8,l9,l10;
+//		JTextField[] ltf; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
+		JButton[] jbparams; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
+		JComboBox<String>[] lcombo; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
+		JButton jbtOK, jbtcancel;
+		String[][] params;
+		public ObserversConfig(int newtype, String nom) 
+		{
+			nomproj=nom;
+			params=new String[nbobsmax][Observer.nbparammax];
+			for (int i=0; i<nbobsmax; i++)
+			{
+				for (int j=0; j<Observer.nbparammax; j++)
+					params[i][j]=new String("");
+			}
+			params[0][1]="1";
+
+			setTitle("Data Processing - Obervers");  
+			setSize(500,350); 
+			setResizable(true);    
+			JPanel panel = new JPanel();  
+			FlowLayout flowLayout = new FlowLayout();  
+		    flowLayout.setHgap(10);  
+			flowLayout.setVgap(10);  
+			panel.setLayout(flowLayout);  
+			add(panel, BorderLayout.CENTER); 
+			JPanel panel_1 = new JPanel();  
+			GridLayout grid = new GridLayout(0, 3);  
+			grid.setHgap(10);  
+			grid.setVgap(15);  
+			panel_1.setLayout(grid);  
+			panel.add(panel_1);  
+			l=new JLabel[nbobsmax];
+//			ltf=new JTextField[nbobsmax];
+			lcombo=new JComboBox[nbobsmax];
+			jbparams=new JButton[nbobsmax];
+
+			for (int i=0; i<nbobsmax; i++)
+			{
+				l[i]=new JLabel("OBs ID:"+i);
+//				ltf[i]=new JTextField("Obs"+i);
+				lcombo[i]=new JComboBox(SimAnalyzer.ObsPossibleTypeList.toArray());
+				jbparams[i]=new JButton("Parameters");
+				panel_1.add(l[i]);
+//				panel_1.add(ltf[i]);
+				panel_1.add(lcombo[i]);
+				panel_1.add(jbparams[i]);
+				jbparams[i].addActionListener(this);
+			}
+			lcombo[0].setSelectedIndex(1);
+			lcombo[1].setSelectedIndex(2);
+			lcombo[2].setSelectedIndex(3);
+			lcombo[0].setEnabled(false);
+			lcombo[1].setEnabled(false);
+			lcombo[2].setEnabled(false);
+			jbtOK = new JButton("Ok");   
+			panel_1.add(jbtOK);   
+			jbtOK.addActionListener(this);
+			jbtcancel = new JButton("Cancel");   
+			panel_1.add(jbtcancel);   
+			jbtcancel.addActionListener(this);
+			pack();
+			setVisible(true);  			
+			
+		}
+		
+		public ObserversConfig(String nom) 
+		{
+			this(0,nom);
+			FileReader fr = null;
+			try {
+				fr = new FileReader("projects/"+nomproj+"obs.config");
+			BufferedReader br = new BufferedReader(fr);		  
+			for (int i=0; i<nbobsmax; i++)
+			{
+			try {
+	//			ltf[i].setText(br.readLine());
+				lcombo[i].setSelectedItem(br.readLine());
+				SimAnalyzer.obstypes[i]=lcombo[i].getSelectedItem().toString();
+				for (int j=0; j<Observer.nbparammax; j++)
+				{
+					params[i][j]=br.readLine();
+					SimAnalyzer.obsparams[i][j]=params[i][j];
+					
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} 
+			}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+	    }
+
+		public void actionPerformed(ActionEvent e) {
+			Object src=e.getSource();
+			for (int i=0; i<nbobsmax; i++)
+			{
+				if (src.equals(jbparams[i]))
+				{
+					ObserversParameters obp=new ObserversParameters(this,i);
+				}
+			}
+			if (src.equals(jbtcancel))
+			{
+				dispose();
+			}
+			if (src.equals(jbtOK))
+			{
+				FileWriter fw = null;
+				try {
+					fw = new FileWriter("projects/"+nomproj+"obs.config", false);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				BufferedWriter bw = new BufferedWriter(fw);
+				try {
+					for (int i=0; i<nbobsmax; i++)
+					{
+						if (lcombo[i].getSelectedIndex()>=0)
+						SimAnalyzer.obstypes[i]=lcombo[i].getSelectedItem().toString();
+						else
+							SimAnalyzer.obstypes[i]="";
+						
+						bw.write(SimAnalyzer.obstypes[i]);
+						bw.newLine();						
+						for (int j=0; j<Observer.nbparammax; j++)
+						{
+							bw.write(params[i][j]);
+							SimAnalyzer.obsparams[i][j]=params[i][j];
+							bw.newLine();													
+						}
+					}
+					bw.flush(); 
+					bw.close();
+					fw.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}		  	        
+				menus.setEnabled(true);		  
+				dispose();
+			}
+			
+		}
+	}
+			
+	
 	class ShowProject extends JFrame implements ActionListener
 	{
 		private static final long serialVersionUID = 1L;
-		int nblab;
 		JLabel[] l;//, l0,lt,  l1, l2,l2b, l3, l4, l5,  l6,  l7,l8,l9,l10;
 		JTextField[] ltf; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
+		int nblab;
 		JButton jbtdm, jbtOK, jbtsim, jbtsave;
+		ObserversConfig obsconf;
 		public ShowProject(int newtype) 
 		{
 			myDataFile = new File ("Data/"+prname+".csv");
@@ -1194,13 +1507,17 @@ public class SimAnalyzer extends JFrame
 			jbtsim = new JButton("Start new simulation (no save)");   
 			panel_1.add(jbtsim);   
 			jbtsim.addActionListener(this);
-			jbtdm = new JButton("Data matrix");   
+			jbtdm = new JButton("Observer Config");   
 			panel_1.add(jbtdm);   
 			jbtdm.addActionListener(this);
 			jbtOK = new JButton("Cancel");   
 			panel_1.add(jbtOK);   
 			jbtOK.addActionListener(this);
-			setVisible(true);  			
+			setVisible(true); 
+			 obsconf=new ObserversConfig(prname);
+			ltf[0].setEditable(false);
+			obsconf.setVisible(false);
+
 			
 		}
 		public ShowProject() 
@@ -1275,7 +1592,7 @@ public class SimAnalyzer extends JFrame
 			{
 				dispose();
 			}
-			if (src.equals(jbtdm))
+			if (false)
 			{
 				if(myDataFile.exists()){
 					try {
@@ -1308,6 +1625,12 @@ public class SimAnalyzer extends JFrame
 					m.showGUI();
 				}
 			}
+			if (src.equals(jbtdm))
+			{
+				obsconf.setVisible(true);
+
+//				ObserversConfig obsconf=new ObserversConfig(ltf[0].getText());
+			}
 			if (src.equals(jbtsave))
 			{
 /*				name = "models/"+ltf[2].getText();
@@ -1326,7 +1649,7 @@ public class SimAnalyzer extends JFrame
 		        if (Integer.parseInt(ltf[12].getText())==0) computehistory=false;*/
 				FileWriter fw = null;
 				try {
-					fw = new FileWriter("projects/"+ltf[0]+".config", false);
+					fw = new FileWriter("projects/"+ltf[0].getText()+".config", false);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}

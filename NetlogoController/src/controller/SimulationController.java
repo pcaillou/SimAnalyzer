@@ -183,29 +183,64 @@ public abstract class SimulationController {
 		
 		
 		List<Clusterer>  wclloc = (List<Clusterer>)getParameter(CLUSTERER_INDEX, params);
+		List<Observer> obs=new ArrayList<Observer>();
 		
+		for (int i=0; i<SimAnalyzer.nbObserverMax; i++)
+		{
+			String typ=SimAnalyzer.obstypes[i];
+			if (!typ.equals("None"))
+			{
+				Observer nobs=(Observer)(Class.forName(typ).newInstance());
+				nobs.setSimulationInterface(si);
+				nobs.paramvalues=SimAnalyzer.obsparams[i];
+				nobs.setParams(SimAnalyzer.obsparams[i]);
+				obs.add(i, nobs);
+			}
+			
+		}
 		Long slidingWindowSize = new Long((long)(5.0));
-		SlidingMeanObserver smo = new SlidingMeanObserver(si, slidingWindowSize);
-		smo.setVisualizationRefresh(-1);
-		GraphObserver gro = new GraphObserver(si, slidingWindowSize);
-		gro.setVisualizationRefresh(-1);
-		InitParamObserver ino = new InitParamObserver(si, slidingWindowSize);
-		ino.setVisualizationRefresh(-1);
-		DirectObserver dio = new DirectObserver(si, slidingWindowSize);
-		dio.setVisualizationRefresh(-1);
-		
-		LastObserver lasto = new LastObserver(si, slidingWindowSize);
-		GlobalObserver go = new GlobalObserver(si, slidingWindowSize);
-		
-		dio.addListener(go);
-		dio.addListener(smo);
-		dio.addListener(gro);
-		dio.addListener(ino);
-		smo.addListener(go);
-		gro.addListener(go);
-		ino.addListener(go);
-		lasto.addListener(go);
+		DirectObserver dio = (DirectObserver)obs.get(0);
+		LastObserver lasto = (LastObserver)obs.get(2);
+		GlobalObserver go = (GlobalObserver)obs.get(1);
 
+		
+		
+		if (obs.size()>0)
+		for (Observer ob:obs)
+		{
+			if (Integer.getInteger(ob.paramvalues[0])!=null)
+			{
+				int no=Integer.getInteger(ob.paramvalues[0]);
+				if (no!=2) obs.get(no).addListener(ob);
+			}
+			if (Integer.getInteger(ob.paramvalues[1])!=null)
+			{
+				int no=Integer.getInteger(ob.paramvalues[1]);
+				if (no!=2) obs.get(no).addListener(ob);
+			}
+			
+		}
+		
+//		
+//		SlidingMeanObserver smo = new SlidingMeanObserver(si, slidingWindowSize);
+//		smo.setVisualizationRefresh(-1);
+//		GraphObserver gro = new GraphObserver(si, slidingWindowSize);
+//		gro.setVisualizationRefresh(-1);
+//		InitParamObserver ino = new InitParamObserver(si, slidingWindowSize);
+//		ino.setVisualizationRefresh(-1);
+//		
+//		GlobalObserver go = new GlobalObserver(si, slidingWindowSize);
+//		
+//		dio.addListener(go);
+//		dio.addListener(smo);
+//		dio.addListener(gro);
+//		dio.addListener(ino);
+//		smo.addListener(go);
+//		gro.addListener(go);
+//		ino.addListener(go);
+//		
+		lasto.addListener(go);
+//
 		addObserver(dio);
 	
 		
@@ -474,6 +509,72 @@ public abstract class SimulationController {
 		clearObservers();
 		si = initInterface(params);
 		wcl = (List<Clusterer>)getParameter(CLUSTERER_INDEX, params);
+		List<Observer> obs=new ArrayList<Observer>();
+		
+		for (int i=0; i<SimAnalyzer.nbObserverMax; i++)
+		{
+			String typ=SimAnalyzer.obstypes[i];
+			if (typ!=null)
+			if (!typ.equals("None"))
+			{
+				Observer nobs=(Observer)(Class.forName(typ).newInstance());
+				nobs.setSimulationInterface(si);
+				nobs.paramvalues=SimAnalyzer.obsparams[i];
+				nobs.setParams(SimAnalyzer.obsparams[i]);
+				obs.add(i, nobs);
+			}
+			
+		}
+		Long slidingWindowSize = new Long((long)(5.0));
+		DirectObserver dio = (DirectObserver)obs.get(0);
+		LastObserver lasto = (LastObserver)obs.get(2);
+		GlobalObserver go = (GlobalObserver)obs.get(1);
+
+		
+		
+		if (obs.size()>0)
+		for (Observer ob:obs)
+		{
+			try {
+				int no=Integer.parseInt(ob.paramvalues[0]);
+				if (no!=2) obs .get(no).addListener(ob);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+	//			e.printStackTrace();
+			}
+			
+			try {
+				int noo=Integer.parseInt(ob.paramvalues[1]);
+				if (noo!=2) ob.addListener(obs.get(noo));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+	//			e.printStackTrace();
+			}
+	
+			
+		}
+		
+//		
+//		SlidingMeanObserver smo = new SlidingMeanObserver(si, slidingWindowSize);
+//		smo.setVisualizationRefresh(-1);
+//		GraphObserver gro = new GraphObserver(si, slidingWindowSize);
+//		gro.setVisualizationRefresh(-1);
+//		InitParamObserver ino = new InitParamObserver(si, slidingWindowSize);
+//		ino.setVisualizationRefresh(-1);
+//		
+//		GlobalObserver go = new GlobalObserver(si, slidingWindowSize);
+//		
+//		dio.addListener(go);
+//		dio.addListener(smo);
+//		dio.addListener(gro);
+//		dio.addListener(ino);
+//		smo.addListener(go);
+//		gro.addListener(go);
+//		ino.addListener(go);
+//		
+		lasto.addListener(go);
+//
+		addObserver(dio);
 		
 		
 //		Clusterer c = wcl.get(0);
@@ -483,33 +584,33 @@ public abstract class SimulationController {
 //		addObserver(co);
 
 		
-		Long slidingWindowSize = new Long((long)5.0);
-		SlidingMeanObserver smo = new SlidingMeanObserver(si, slidingWindowSize);
-		smo.setVisualizationRefresh(-1);		
-		GraphObserver gro = new GraphObserver(si, slidingWindowSize);
-		gro.setVisualizationRefresh(-1);	
-		InitParamObserver ino = new InitParamObserver(si, slidingWindowSize);
-		ino.setVisualizationRefresh(-1);
-		DirectObserver dio = new DirectObserver(si, slidingWindowSize);
-		dio.setVisualizationRefresh(-1);
-		LastObserver lasto = new LastObserver(si, slidingWindowSize);
-		
-//		smo.addListener(co);
-
-		GlobalObserver go = new GlobalObserver(si, slidingWindowSize);
-		
-		dio.addListener(go);
-		dio.addListener(smo);
-		dio.addListener(ino);
-//		dio.addListener(gro);
-		smo.addListener(go);
-		ino.addListener(go);
-//		gro.addListener(go);
-//		go.addListener(co);
-		lasto.addListener(go);
-
-//		addObserver(co);
-		addObserver(dio);
+//		Long slidingWindowSize = new Long((long)5.0);
+//		SlidingMeanObserver smo = new SlidingMeanObserver(si, slidingWindowSize);
+//		smo.setVisualizationRefresh(-1);		
+//		GraphObserver gro = new GraphObserver(si, slidingWindowSize);
+//		gro.setVisualizationRefresh(-1);	
+//		InitParamObserver ino = new InitParamObserver(si, slidingWindowSize);
+//		ino.setVisualizationRefresh(-1);
+//		DirectObserver dio = new DirectObserver(si, slidingWindowSize);
+//		dio.setVisualizationRefresh(-1);
+//		LastObserver lasto = new LastObserver(si, slidingWindowSize);
+//		
+////		smo.addListener(co);
+//
+//		GlobalObserver go = new GlobalObserver(si, slidingWindowSize);
+//		
+//		dio.addListener(go);
+//		dio.addListener(smo);
+//		dio.addListener(ino);
+////		dio.addListener(gro);
+//		smo.addListener(go);
+//		ino.addListener(go);
+////		gro.addListener(go);
+////		go.addListener(co);
+//		lasto.addListener(go);
+//
+////		addObserver(co);
+//		addObserver(dio);
 	
 		
 		 modelName = (String)getParameter(MODEL_FILE_NAME_INDEX, params);

@@ -26,6 +26,9 @@ public class GlobalObserver extends StatisticalObserver {
 		this.windowSize = windowSize;
 	}
 
+	public GlobalObserver() {
+		super();
+	}
 	public Matrix getGlobalMatrix() {
 		return global;
 	}

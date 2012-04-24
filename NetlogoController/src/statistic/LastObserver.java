@@ -26,6 +26,9 @@ public class LastObserver extends StatisticalObserver {
 		super(si);
 		this.windowSize = windowSize;
 	}
+	public LastObserver() {
+		super();
+	}
 
 	@Override
 	public synchronized void newDataAvailable(DataEvent de) throws Exception {
