@@ -487,6 +487,7 @@ public class DynamicGraph{
 	
 	/**
 	 * Transforme le graphe en chaine en utilisant le separateur et les encadrant definit dans LEFT_BRACE, RIGHT_BRACE, SEPARATOR
+	 * @return la chaine creee
 	 */
 	public String toString()
 	{
@@ -516,6 +517,27 @@ public class DynamicGraph{
 		return result;
 	}
 
+	/**
+	 * Transforme le graphe en tableau de String, chaque String contenant la declaration d'une node ou d'un arc
+	 * @return le tableau creee
+	 */
+	public Collection<String> toStringArray()
+	{
+		ArrayList<String> result = new ArrayList<String>();
+		
+		for (Node n : graph.getEachNode())
+		{
+			result.add(nodeToString(n));
+		}
+		
+		for (Edge e : graph.getEachEdge())
+		{
+			result.add(edgeToString(e));
+		}
+		
+		return result;
+	}
+	
 	/************************************************************/
 	/************************ MODIFIEURS ************************/
 	/************************************************************/
@@ -565,6 +587,67 @@ public class DynamicGraph{
 		return e;
 	}
 
+	/**
+	 * Ajoute un arc tout comme addEdge, mais decale les arcs pouvant le gener en decalant leur temps d'ajout / suppression
+	 * @param source : noeud source
+	 * @param target : noeud cible
+	 * @param timeAdd : temps auquel l'arc a ete cree
+	 * @param timeDel : temps auquel l'arc a ete detruit
+	 * @param poids : poids de l'arc
+	 * @return l'arc cree
+	 */
+	public Edge insertEdge(String source, String target, int poids, long timeAdd, long timeDel)
+	{
+		Node nsource = getNode(source), ntarget = getNode(target);
+		if (nsource == null)
+		{
+			nsource = addNode(source);
+		}
+		if (ntarget == null)
+		{
+			ntarget = addNode(target);
+		}
+		
+		/* on supprime ou decale les autres arcs */
+		if (edgesExists(nsource,ntarget,timeAdd,timeAdd))
+		{
+			for (Edge e : nsource.getEachLeavingEdge())
+			{
+				/* on ne regarde que les arcs qui peuvent poser probleme */
+				if (e.getOpposite(nsource).equals(ntarget) && getTimeDelete(e) >= timeAdd && getTimeCreation(e) <= timeDel)
+				{
+					if (getTimeDelete(e) <= timeDel)
+					{
+						if (getTimeCreation(e) >= timeAdd)
+						{
+							removeEdge(e.getId());
+						}
+						else
+						{
+							setTimeCreation(e,Math.min(timeAdd-1,getTimeCreation(e)));
+							setTimeDelete(e,timeAdd-1);
+						}
+					}
+					else
+					{
+						if (getTimeCreation(e) >= timeAdd)
+						{
+							setTimeDelete(e,Math.max(timeDel-1,getTimeDelete(e)));
+							setTimeCreation(e,timeDel+1);
+						}
+						else
+						{
+							setTimeCreation(e,Math.min(timeAdd-1,getTimeCreation(e)));
+							setTimeDelete(e,timeAdd-1);
+						}
+					}
+				}
+			}
+		}
+		
+		return addEdge(source, target, poids, timeAdd, timeDel);
+	}
+	
 	/**
 	 * Supprime l'arc demande /!\ attention : ne met pas a jour le temps de suppression mais supprime l'arc du graphe
 	 * @param id

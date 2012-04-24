@@ -59,7 +59,7 @@ public class GraphObserver extends StatisticalObserver  {
 		result.setColumnLabel(7, "gr_" + prefix + "_density");				// densite du graphe
 		result.setColumnLabel(8, "gr_" + prefix + "_ratioDensity");			// densite du graphe par rapport a t-1
 		result.setColumnLabel(9, "gr_" + prefix + "_indirectConnection");	// nombre de noeuds accessible - degre sortant
-		result.setColumnLabel(10, "gr_" + prefix + "_centrality");			// centralite d'un noeud par rapport a ceux visible
+		result.setColumnLabel(10, "gr_" + prefix + "_centrality");			// centralite d'un noeud par rapport a ceux atteignable
 		
 		/* on charge dans graphe les donnees recues et on recupere le temps actuel */
 		for (long i = data.getRowCount()-1 ; i >= 0  ; i--)
@@ -238,19 +238,12 @@ public class GraphObserver extends StatisticalObserver  {
 	
 	public void newDataAvailable(DataEvent de) throws Exception {
 		Matrix data = de.getData();
-		Matrix result = MatrixFactory.zeros(ValueType.STRING, data.getRowCount(), 1);
+		Matrix result = MatrixFactory.zeros(ValueType.STRING, data.getRowCount(), 0);
 		long idColumn = data.getColumnForLabel(SimulationInterface.ID_C_NAME),
 		     graphColumn = data.getColumnForLabel(LABEL_GRAPH),
 		     timeColumn = 1; //data.getColumnForLabel("0");
 		
 		long duration = System.nanoTime();
-		
-		for (int i = (int) (data.getRowCount() - 1) ; i >= 0  ; i--)
-		{
-			result.setAsString(data.getAsString(i,idColumn), i, 0);
-		}
-		
-		result.setColumnLabel(0, SimulationInterface.ID_C_NAME);
 	
 		/* on effectue le calcul pour chaque graphe (voir comment recuperer tout les id des graphes) */
 		Matrix tmpResult = getGraphResult(data, idColumn, graphColumn, timeColumn,"visit");
