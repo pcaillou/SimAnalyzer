@@ -69,7 +69,7 @@ public class GraphObserver extends StatisticalObserver  {
 			{
 				timeList.add(actualTime);
 			}
-			graph.loadFromString(data.getAsString(i,graphColumn), 0, actualTime, actualTime);
+			graph.loadFromString(data.getAsString(i,graphColumn), 0, actualTime, actualTime,true);
 		}
 
 		
