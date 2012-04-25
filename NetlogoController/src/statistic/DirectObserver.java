@@ -24,6 +24,9 @@ public class DirectObserver extends StatisticalObserver {
 		super(si);
 		this.windowSize = windowSize;
 	}
+	public DirectObserver() {
+		super();
+	}
 
 	@Override
 	public void newDataAvailable(DataEvent de) throws Exception {

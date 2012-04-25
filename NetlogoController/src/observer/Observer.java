@@ -17,6 +17,10 @@ import reporter.Reporter;
 
 public abstract class Observer implements ObserverListener{
 	public String name="";
+	public final static int nbparammax=20;
+	public static String[] ParamNames={"ListenTo","ObservedBy","","","","","","","","","","","","","","","","","",""};
+	public static String[] DefaultValues={"","","","","","","","","","","","","","","","","","","",""};
+	public String[] paramvalues=new String[nbparammax];
 	private List<ObserverListener> listeners = new ArrayList<ObserverListener>();
 	private SimulationInterface sdr = null;
 	
@@ -59,5 +63,10 @@ public abstract class Observer implements ObserverListener{
 	public abstract void processEvent(ObserverEvent oe) throws Exception;
 	
 	public abstract void observe(Object...params) throws Exception;
+	
+	public void setParams(String[] paramvals)
+	{
+		
+	}
 
 }

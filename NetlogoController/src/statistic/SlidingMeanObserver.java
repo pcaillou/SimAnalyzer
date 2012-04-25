@@ -19,6 +19,8 @@ import clustering.event.DataEvent;
 
 public class SlidingMeanObserver extends StatisticalObserver {
 	public final static String VarianceEvent = "VarianceEvent";
+	public static String[] ParamNames={"ListenTo","ObservedBy","SlidingWindow","","","","","","","","","","","","","","","","",""};
+	public static String[] DefaultValues={"0","1","3","","","","","","","","","","","","","","","","",""};
 	Long windowSize = (long)-1;
 	Matrix lastMeans = null;
 	long lasttic=-1;
@@ -27,7 +29,22 @@ public class SlidingMeanObserver extends StatisticalObserver {
 		super(si);
 		this.windowSize = windowSize;
 	}
+	public SlidingMeanObserver() {
+		super();
+	}
 
+	
+	public void setParams(String[] paramvals)
+	{
+		try {
+			this.windowSize=Long.parseLong(paramvals[2]);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	@Override
 	public void newDataAvailable(DataEvent de) throws Exception {
 		Matrix data = de.getData();

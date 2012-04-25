@@ -24,6 +24,9 @@ public class InitParamObserver extends StatisticalObserver {
 		super(si);
 		this.windowSize = (long)1;
 	}
+	public InitParamObserver() {
+		super();
+	}
 
 	@Override
 	public void newDataAvailable(DataEvent de) throws Exception {

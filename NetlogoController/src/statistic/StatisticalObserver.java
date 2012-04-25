@@ -22,7 +22,7 @@ public abstract class StatisticalObserver extends Observer {
 	private Matrix observations = null;
 	private int visualizationRefresh = -1;
 	private JFrame visualizationFrame = null;
-	private StatisticalObserver(){}
+	public StatisticalObserver(){}
 	public StatisticalObserver(SimulationInterface si){
 		this();
 		setSimulationInterface(si);
