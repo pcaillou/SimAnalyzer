@@ -10,7 +10,11 @@ globals[
   doingMovie;;
 ]
 to setup
-  clear-all
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   set doingMovie false;
   crt population
     [ set color yellow - 2 + random 7  ;; random shades look nice
@@ -206,6 +210,7 @@ GRAPHICS-WINDOW
 1
 1
 ticks
+30.0
 
 BUTTON
 39
@@ -222,6 +227,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 122
@@ -238,6 +244,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 9
@@ -248,7 +255,7 @@ population
 population
 1.0
 1000.0
-20
+203
 1.0
 1
 NIL
@@ -344,6 +351,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 101
@@ -360,15 +368,15 @@ NIL
 NIL
 NIL
 NIL
+1
 
 @#$#@#$#@
-WHAT IS IT?
------------
+## WHAT IS IT?
+
 This model is an attempt to mimic the flocking of birds.  (The resulting motion also resembles schools of fish.)  The flocks that appear in this model are not created or led in any way by special leader birds.  Rather, each bird is following exactly the same set of rules, from which flocks emerge.
 
+## HOW IT WORKS
 
-HOW IT WORKS
-------------
 The birds follow three rules: "alignment", "separation", and "cohesion".
 
 "Alignment" means that a bird tends to turn so that it is moving in the same direction that nearby birds are moving.
@@ -381,9 +389,8 @@ When two birds are too close, the "separation" rule overrides the other two, whi
 
 The three rules affect only the bird's heading.  Each bird always moves forward at the same constant speed.
 
+## HOW TO USE IT
 
-HOW TO USE IT
--------------
 First, determine the number of birds you want in the simulation and set the POPULATION slider to that value.  Press SETUP to create the birds, and press GO to have them start flying around.
 
 The default settings for the sliders will produce reasonably good flocking behavior.  However, you can play with them to get variations:
@@ -392,9 +399,8 @@ Three TURN-ANGLE sliders control the maximum angle a bird can turn as a result o
 
 VISION is the distance that each bird can see 360 degrees around it.
 
+## THINGS TO NOTICE
 
-THINGS TO NOTICE
-----------------
 Central to the model is the observation that flocks form without a leader.
 
 There are no random numbers used in this model, except to position the birds initially.  The fluid, lifelike behavior of the birds is produced entirely by deterministic rules.
@@ -405,18 +411,16 @@ After running the model for a while, all of the birds have approximately the sam
 
 Sometimes a bird breaks away from its flock.  How does this happen?  You may need to slow down the model or run it step by step in order to observe this phenomenon.
 
+## THINGS TO TRY
 
-THINGS TO TRY
--------------
 Play with the sliders to see if you can get tighter flocks, looser flocks, fewer flocks, more flocks, more or less splitting and joining of flocks, more or less rearranging of birds within flocks, etc.
 
 You can turn off a rule entirely by setting that rule's angle slider to zero.  Is one rule by itself enough to produce at least some flocking?  What about two rules?  What's missing from the resulting behavior when you leave out each rule?
 
 Will running the model for a long time produce a static flock?  Or will the birds never settle down to an unchanging formation?  Remember, there are no random numbers used in this model.
 
+## EXTENDING THE MODEL
 
-EXTENDING THE MODEL
--------------------
 Currently the birds can "see" all around them.  What happens if birds can only see in front of them?  The IN-CONE primitive can be used for this.
 
 Is there some way to get V-shaped flocks, like migrating geese?
@@ -429,45 +433,39 @@ What would happen if you gave the birds different velocities?  For example, you 
 
 Are there other interesting ways you can make the birds different from each other?  There could be random variation in the population, or you could have distinct "species" of bird.
 
+## NETLOGO FEATURES
 
-NETLOGO FEATURES
-----------------
 Notice the need for the SUBTRACT-HEADINGS primitive and special procedure for averaging groups of headings.  Just subtracting the numbers, or averaging the numbers, doesn't give you the results you'd expect, because of the discontinuity where headings wrap back to 0 once they reach 360.
 
+## RELATED MODELS
 
-RELATED MODELS
---------------
-Moths
+Moths  
 Flocking Vee Formation
 
+## CREDITS AND REFERENCES
 
-CREDITS AND REFERENCES
-----------------------
 This model is inspired by the Boids simulation invented by Craig Reynolds.  The algorithm we use here is roughly similar to the original Boids algorithm, but it is not the same.  The exact details of the algorithm tend not to matter very much -- as long as you have alignment, separation, and cohesion, you will usually get flocking behavior resembling that produced by Reynolds' original model.  Information on Boids is available at http://www.red3d.com/cwr/boids/.
 
+## HOW TO CITE
 
-HOW TO CITE
------------
-If you mention this model in an academic publication, we ask that you include these citations for the model itself and for the NetLogo software:
-- Wilensky, U. (1998).  NetLogo Flocking model.  http://ccl.northwestern.edu/netlogo/models/Flocking.  Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
+If you mention this model in an academic publication, we ask that you include these citations for the model itself and for the NetLogo software:  
+- Wilensky, U. (1998).  NetLogo Flocking model.  http://ccl.northwestern.edu/netlogo/models/Flocking.  Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.  
 - Wilensky, U. (1999). NetLogo. http://ccl.northwestern.edu/netlogo/. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
 
-In other publications, please use:
+In other publications, please use:  
 - Copyright 1998 Uri Wilensky. All rights reserved. See http://ccl.northwestern.edu/netlogo/models/Flocking for terms of use.
 
+## COPYRIGHT NOTICE
 
-COPYRIGHT NOTICE
-----------------
 Copyright 1998 Uri Wilensky. All rights reserved.
 
-Permission to use, modify or redistribute this model is hereby granted, provided that both of the following requirements are followed:
-a) this copyright notice is included.
+Permission to use, modify or redistribute this model is hereby granted, provided that both of the following requirements are followed:  
+a) this copyright notice is included.  
 b) this model will not be redistributed for profit without permission from Uri Wilensky. Contact Uri Wilensky for appropriate licenses for redistribution for profit.
 
 This model was created as part of the project: CONNECTED MATHEMATICS: MAKING SENSE OF COMPLEX PHENOMENA THROUGH BUILDING OBJECT-BASED PARALLEL MODELS (OBPML).  The project gratefully acknowledges the support of the National Science Foundation (Applications of Advanced Technologies Program) -- grant numbers RED #9552950 and REC #9632612.
 
 This model was converted to NetLogo as part of the projects: PARTICIPATORY SIMULATIONS: NETWORK-BASED DESIGN FOR SYSTEMS LEARNING IN CLASSROOMS and/or INTEGRATED SIMULATION AND MODELING ENVIRONMENT. The project gratefully acknowledges the support of the National Science Foundation (REPP & ROLE programs) -- grant numbers REC #9814682 and REC-0126227. Converted from StarLogoT to NetLogo, 2002.
-
 @#$#@#$#@
 default
 true
@@ -752,7 +750,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.1.3
+NetLogo 5.0RC8
 @#$#@#$#@
 set population 200
 setup
