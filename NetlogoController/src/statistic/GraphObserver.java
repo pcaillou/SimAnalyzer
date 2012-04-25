@@ -16,11 +16,12 @@ import observer.SimulationInterface;
 public class GraphObserver extends StatisticalObserver  {
 	long step = 1;
 	
-	public static String[] ParamNames={"ListenTo","ObservedBy","GraphColumnName","","","","","","","","","","","","","","","","",""};
+	public static String[] ParamNames={"ListenTo","ObservedBy","GraphColumnName","time (optional)","","","","","","","","","","","","","","","",""};
 	public static String[] DefaultValues={"0","1","3","","","","","","","","","","","","","","","","",""};
 	
 	/* temporaire le temps d'avoir les vrai constantes de label graph */
 	private String LABEL_GRAPH = "";
+	private String LABEL_TIME = "";
 	
 	private DynamicGraph graph = new DynamicGraph("GraphObserver");
 	
@@ -45,6 +46,7 @@ public class GraphObserver extends StatisticalObserver  {
 	{
 		try {
 			this.LABEL_GRAPH=paramvals[2];
+			this.LABEL_TIME=paramvals[3];
 		} catch (NumberFormatException e) {
 			System.err.println("Erreur lors de la recuperation des parametres");
 			e.printStackTrace();
@@ -56,34 +58,49 @@ public class GraphObserver extends StatisticalObserver  {
 		super();
 	}
 	
-	public Matrix getGraphResult(Matrix data, long idColumn, long graphColumn, long timeColumn,String prefix)
+	public Matrix getGraphResult(Matrix data, long idColumn, long graphColumn, long timeColumn,String sufix)
 	{
 		Matrix result = MatrixFactory.zeros(ValueType.STRING, data.getRowCount(), 11);
+		
+		/* temps pris par defaut si aucune colonne timeColumn specifiee */
+		long timeTick = SimulationController.currenttick;
 		
 		ArrayList<Long> timeList = new ArrayList<Long>();
 		
 		/* initialisation de la matrice */
-		result.setColumnLabel(0, "gr_" + prefix + "_correlation"); 			// correlation avec t-1
-		result.setColumnLabel(1, "gr_" + prefix + "_correlationFromStart"); // correlation avec t = 0
-		result.setColumnLabel(2, "gr_" + prefix + "_outDegree");			// degre sortant
-		result.setColumnLabel(3, "gr_" + prefix + "_inDegree");				// degre entrant
-		result.setColumnLabel(4, "gr_" + prefix + "_nbTotalEdges");			// nombre total d'arcs
-		result.setColumnLabel(5, "gr_" + prefix + "_diameter");				// diametre du graphe
-		result.setColumnLabel(6, "gr_" + prefix + "_radius");				// rayon du graphe
-		result.setColumnLabel(7, "gr_" + prefix + "_density");				// densite du graphe
-		result.setColumnLabel(8, "gr_" + prefix + "_ratioDensity");			// densite du graphe par rapport a t-1
-		result.setColumnLabel(9, "gr_" + prefix + "_indirectConnection");	// nombre de noeuds accessible - degre sortant
-		result.setColumnLabel(10, "gr_" + prefix + "_centrality");			// centralite d'un noeud par rapport a ceux atteignable
+		result.setColumnLabel(0, "gr_correlation_" + sufix); 		// correlation avec t-1
+		result.setColumnLabel(1, "gr_correlationFromStart" + sufix);// correlation avec t = 0
+		result.setColumnLabel(2, "gr_outDegree" + sufix);			// degre sortant
+		result.setColumnLabel(3, "gr_inDegree" + sufix);			// degre entrant
+		result.setColumnLabel(4, "gr_nbTotalEdges" + sufix);		// nombre total d'arcs
+		result.setColumnLabel(5, "gr_diameter" + sufix);			// diametre du graphe
+		result.setColumnLabel(6, "gr_radius" + sufix);				// rayon du graphe
+		result.setColumnLabel(7, "gr_density" + sufix);				// densite du graphe
+		result.setColumnLabel(8, "gr_ratioDensity" + sufix);		// densite du graphe par rapport a t-1
+		result.setColumnLabel(9, "gr_indirectConnection" + sufix);	// nombre de noeuds accessible - degre sortant
+		result.setColumnLabel(10, "gr_centrality" + sufix);			// centralite d'un noeud par rapport a ceux atteignable
 		
-		/* on charge dans graphe les donnees recues et on recupere le temps actuel */
+		/* on charge dans le graphe les donnees recues et on recupere le temps actuel */
 		for (long i = data.getRowCount()-1 ; i >= 0  ; i--)
 		{
-			long actualTime = data.getAsLong(i,timeColumn);
-			if (!timeList.contains(actualTime))
+			long actualTime = 0;
+			if (timeColumn == -1)
 			{
-				timeList.add(actualTime);
+				actualTime = timeTick;
+				if (!timeList.contains(actualTime))
+				{
+					timeList.add(actualTime);
+				}
 			}
-			graph.loadFromString(data.getAsString(i,graphColumn), 0, actualTime, actualTime,true);
+			else
+			{
+				actualTime = data.getAsLong(i,timeColumn);
+				if (!timeList.contains(actualTime))
+				{
+					timeList.add(actualTime);
+				}
+			}
+			graph.loadFromString(data.getAsString(i,graphColumn), 1, actualTime, actualTime, true);
 		}
 
 		
@@ -224,7 +241,15 @@ public class GraphObserver extends StatisticalObserver  {
 		/* on ajoute au resultat les nouvelles donnees */
 		for (int i = (int) (data.getRowCount() - 1) ; i >= 0  ; i--)
 		{
-			long time = data.getAsLong(i,timeColumn);
+			long time;
+			if (timeColumn != -1)
+			{
+				time = data.getAsLong(i,timeColumn);
+			}
+			else
+			{
+				time = timeTick;
+			}
 			int index = graph.getNode(data.getAsString(i,idColumn)).getIndex();
 			result.setAsDouble(correlationTabs.get(time)[index], i, 0);
 			result.setAsDouble(correlationFromStartTabs.get(time)[index], i, 1);
@@ -242,6 +267,11 @@ public class GraphObserver extends StatisticalObserver  {
 			
 		}
 		
+		for (long l : timeList)
+		{
+			graph.displayGraph(l);
+		}
+		
 		return result;
 	}
 	
@@ -250,12 +280,12 @@ public class GraphObserver extends StatisticalObserver  {
 		Matrix result = MatrixFactory.zeros(ValueType.STRING, data.getRowCount(), 0);
 		long idColumn = data.getColumnForLabel(SimulationInterface.ID_C_NAME),
 		     graphColumn = data.getColumnForLabel(LABEL_GRAPH),
-		     timeColumn = 1; //data.getColumnForLabel("0");
+		     timeColumn = data.getColumnForLabel(LABEL_TIME);
 		
 		long duration = System.nanoTime();
 	
 		/* on effectue le calcul pour chaque graphe (voir comment recuperer tout les id des graphes) */
-		Matrix tmpResult = getGraphResult(data, idColumn, graphColumn, timeColumn,"visit");
+		Matrix tmpResult = getGraphResult(data, idColumn, graphColumn, timeColumn,LABEL_GRAPH);
 		
 		/* on ajoute la matrice au resultat */
 		Matrix n2 = result.appendHorizontally(tmpResult);	
@@ -287,9 +317,6 @@ public class GraphObserver extends StatisticalObserver  {
 		
 		//data.showGUI();
 		//result.showGUI();
-
-		graph.displayGraph(step);
-		
 		//pause();
 		
 		/* on envoie le resultat */

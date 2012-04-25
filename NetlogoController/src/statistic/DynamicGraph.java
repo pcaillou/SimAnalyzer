@@ -752,41 +752,41 @@ public class DynamicGraph{
 				case 2 :
 					if (insert)
 					{
-						addEdge(graphContent.get(0),graphContent.get(1),weightDefault,timeStartDefault,timeEndDefault);
+						insertEdge(graphContent.get(0),graphContent.get(1),weightDefault,timeStartDefault,timeEndDefault);
 					}
 					else
 					{
-						insertEdge(graphContent.get(0),graphContent.get(1),weightDefault,timeStartDefault,timeEndDefault);
+						addEdge(graphContent.get(0),graphContent.get(1),weightDefault,timeStartDefault,timeEndDefault);
 					}
 					break;
 				case 3 :
 					if (insert)
 					{
-						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),timeStartDefault,timeEndDefault);
+						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),timeStartDefault,timeEndDefault);
 					}
 					else
 					{
-						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),timeStartDefault,timeEndDefault);
+						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),timeStartDefault,timeEndDefault);
 					}
 					break;
 				case 4 :
 					if (insert)
 					{
-						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),timeEndDefault);
+						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),timeEndDefault);
 					}
 					else
 					{
-						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),timeEndDefault);
+						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),timeEndDefault);
 					}
 					break;
 				case 5 :
 					if (insert)
 					{
-						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),Long.valueOf(graphContent.get(4)));
+						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),Long.valueOf(graphContent.get(4)));
 					}
 					else
 					{
-						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),Long.valueOf(graphContent.get(4)));
+						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),Long.valueOf(graphContent.get(4)));
 					}
 					break;
 				default :
