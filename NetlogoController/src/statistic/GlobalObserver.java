@@ -32,6 +32,7 @@ public class GlobalObserver extends StatisticalObserver {
 	public Matrix getGlobalMatrix() {
 		return global;
 	}
+	
 	public void newDataAvailable(DataEvent de) throws Exception {
 		Matrix data = de.getData();
 		Double time=(Double)getSimulationInterface().getSimulationSensor().getSimulationTimeStamp();

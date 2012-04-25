@@ -162,6 +162,13 @@ public class SimAnalyzer extends JFrame
 		obsParamNames.put(c.getName(), pn);
 		obsParamDefaultValues.put(c.getName(), pnd);
 		
+		c=GraphObserver.class;
+		pn=GraphObserver.ParamNames;		
+		pnd=GraphObserver.DefaultValues;		
+		ObsPossibleTypeList.add(c.getName());		
+		obsParamNames.put(c.getName(), pn);
+		obsParamDefaultValues.put(c.getName(), pnd);
+		
 		restartnetlogo=false;
 		setJMenuBar(menubar);
 		menup.add(micp);
@@ -1281,7 +1288,7 @@ public class SimAnalyzer extends JFrame
 		JLabel[] l;//, l0,lt,  l1, l2,l2b, l3, l4, l5,  l6,  l7,l8,l9,l10;
 //		JTextField[] ltf; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
 		JButton[] jbparams; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
-		JComboBox<String>[] lcombo; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
+		JComboBox[] lcombo; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
 		JButton jbtOK, jbtcancel;
 		String[][] params;
 		public ObserversConfig(int newtype, String nom) 
@@ -1364,11 +1371,13 @@ public class SimAnalyzer extends JFrame
 					
 				}
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.err.println("Error : " + e.getLocalizedMessage());
+				//e.printStackTrace();
 			} 
 			}
 			} catch (IOException e1) {
-				e1.printStackTrace();
+				System.err.println("Error : " + e1.getLocalizedMessage());
+				//e1.printStackTrace();
 			}
 	    }
 

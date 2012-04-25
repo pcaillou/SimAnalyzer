@@ -55,6 +55,7 @@ public abstract class SimulationController {
 	public static int GLOBAL_VARIABLES_VALUES_INDEX = 7;
 	public static int VARIANCE_REFRESH_INDEX = 8;
 
+	public static List<Matrix> MatrixList;
 	public static List<Matrix> input = new ArrayList<Matrix>();
 	public static int inputN;
 	public static boolean tf = false;
@@ -633,7 +634,7 @@ public abstract class SimulationController {
             List<List<Cluster>> clusterltarray = new ArrayList<List<Cluster>>();
             List<double[][]> vtestlist = new ArrayList<double[][]>();
             List<Integer> ticklist = new ArrayList<Integer>();
-            List<Matrix> MatrixList = new ArrayList<Matrix>();
+            MatrixList = new ArrayList<Matrix>();
             List<List<Cluster>> clusterltarray2 = new ArrayList<List<Cluster>>();
 			for(int tick=0; tick<=maxTicks; tick++){
 				currenttick=tick;

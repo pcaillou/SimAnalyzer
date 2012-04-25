@@ -8,15 +8,19 @@ import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
 import org.ujmp.core.calculation.Calculation.Ret;
 import org.ujmp.core.enums.ValueType;
+
+import controller.SimulationController;
 import clustering.event.DataEvent;
 import observer.SimulationInterface;
 
 public class GraphObserver extends StatisticalObserver  {
-	Long windowSize = (long)-1;
 	long step = 1;
 	
+	public static String[] ParamNames={"ListenTo","ObservedBy","GraphColumnName","","","","","","","","","","","","","","","","",""};
+	public static String[] DefaultValues={"0","1","3","","","","","","","","","","","","","","","","",""};
+	
 	/* temporaire le temps d'avoir les vrai constantes de label graph */
-	private static final String LABEL_GRAPH = "GraphNbVisitToday";
+	private String LABEL_GRAPH = "";
 	
 	private DynamicGraph graph = new DynamicGraph("GraphObserver");
 	
@@ -37,9 +41,19 @@ public class GraphObserver extends StatisticalObserver  {
 		}
 	}
 	
-	public GraphObserver(SimulationInterface si, long _windowSize) {
-		super(si);
-		windowSize = _windowSize;
+	public void setParams(String[] paramvals)
+	{
+		try {
+			this.LABEL_GRAPH=paramvals[2];
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public GraphObserver() {
+		super();
 	}
 	
 	public Matrix getGraphResult(Matrix data, long idColumn, long graphColumn, long timeColumn,String prefix)
@@ -228,11 +242,6 @@ public class GraphObserver extends StatisticalObserver  {
 			
 		}
 		
-		for (long time : timeList)
-		{
-			graph.displayGraph(time);
-		}
-		
 		return result;
 	}
 	
@@ -241,7 +250,6 @@ public class GraphObserver extends StatisticalObserver  {
 		Matrix result = MatrixFactory.zeros(ValueType.STRING, data.getRowCount(), 0);
 		long idColumn = data.getColumnForLabel(SimulationInterface.ID_C_NAME),
 		     graphColumn = data.getColumnForLabel(LABEL_GRAPH),
-		     classColumn = data.getColumnForLabel(SimulationInterface.CLASS_LABEL_C_NAME),
 		     timeColumn = 1; //data.getColumnForLabel("0");
 		
 		long duration = System.nanoTime();
@@ -262,17 +270,25 @@ public class GraphObserver extends StatisticalObserver  {
 		result.setLabel("GraphObserver");
 		
 		/* on met a jour les groupes de chaque node */
-		long max = data.getRowCount();
-		for (long i = 0 ; i < max  ; i++)
+
+		if (SimulationController.MatrixList.size() > 0)
 		{
-			graph.setGroup(graph.getNode(data.getAsString(i,idColumn)),data.getAsInt(i,classColumn));
+			Matrix m = SimulationController.MatrixList.get(SimulationController.MatrixList.size()-1);
+		    long classColumn = m.getColumnForLabel(SimulationInterface.CLASS_LABEL_C_NAME);	
+		    long idColumn2 = m.getColumnForLabel(SimulationInterface.ID_C_NAME);
+			long max = m.getRowCount();
+			for (long i = 0 ; i < max  ; i++)
+			{
+				graph.setGroup(graph.getNode(m.getAsString(i,idColumn2)),1+m.getAsInt(i,classColumn));
+			}
 		}
 		
-		data.showGUI();
+		//data.showGUI();
 		//result.showGUI();
+
 		graph.displayGraph(step);
 		
-		pause();
+		//pause();
 		
 		/* on envoie le resultat */
 		this.preventListeners(new DataEvent(result, de.getArguments()));
