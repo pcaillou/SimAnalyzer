@@ -264,6 +264,8 @@ public class GraphObserver extends StatisticalObserver  {
 			long nc=result.getColumnCount()-tmpResult.getColumnCount()+column;
 			result.setColumnLabel(nc, tmpResult.getColumnLabel(column));
 		}
+		
+		/* on calcule le temps qui a ete necessaire */
 		duration = System.nanoTime() - duration;
 		System.out.println("Step " + step + " realise en " + duration/1000000 + "ms");
 
