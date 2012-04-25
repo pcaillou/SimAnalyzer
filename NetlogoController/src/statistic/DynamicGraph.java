@@ -709,13 +709,18 @@ public class DynamicGraph{
 	}
 	
 	/**
-	 * Ajoute une node au graphe
+	 * Ajoute une node au graphe, si la node existe deja, elle n'est pas ajoutee
 	 * @param id
+	 * @return la node cree ou celle deja existante
 	 */
 	public Node addNode(String id)
 	{
-		Node n = graph.addNode(id);
-		n.addAttribute(GROUP, 0);
+		Node n = graph.getNode(id);
+		if (n == null)
+		{
+			n = graph.addNode(id);
+			n.addAttribute(GROUP, 0);
+		}
 		return n;
 	}
 	

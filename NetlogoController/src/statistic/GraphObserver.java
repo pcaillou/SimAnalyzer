@@ -46,9 +46,9 @@ public class GraphObserver extends StatisticalObserver  {
 		try {
 			this.LABEL_GRAPH=paramvals[2];
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
+			System.err.println("Erreur lors de la recuperation des parametres");
 			e.printStackTrace();
-		}
+			}
 		
 	}
 	
