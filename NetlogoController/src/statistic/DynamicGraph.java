@@ -26,11 +26,16 @@ public class DynamicGraph{
 	public static final String POIDS = "poids";
 	public static final String TIME_CREATION = "date_creation";
 	public static final String TIME_SUPPRESSION = "date_suppression";
+	public static final String GROUP = "group";
 	public static final String LABEL = "ui.label";
 	
-	public static final String CSS = "node{size: 12px, 12px;fill-mode:dyn-plain;fill-color:yellow,red;text-size:15px;text-style:bold;text-color:black;}"+
-							    "edge{shape:line;size:1px,1px;fill-mode:plain;fill-color:#7FC6BC;arrow-size:5px,5px;text-size:15px;text-style:bold;text-color:#4A1A2C;}";
-	
+	public static final String CSS = "edge{shape:line;size:1px,1px;fill-mode:plain;fill-color:#7FC6BC;arrow-size:5px,5px;text-size:15px;text-style:bold;text-color:#4A1A2C;}"+
+                                "node.a{size: 12px, 12px;fill-mode:dyn-plain;text-size:15px;text-style:bold;text-color:black;fill-color:red;}"+
+								"node.b{size: 12px, 12px;fill-mode:dyn-plain;text-size:15px;text-style:bold;text-color:black;fill-color:blue;}"+
+								"node.c{size: 12px, 12px;fill-mode:dyn-plain;text-size:15px;text-style:bold;text-color:black;fill-color:green;}"+
+								"node.d{size: 12px, 12px;fill-mode:dyn-plain;text-size:15px;text-style:bold;text-color:black;fill-color:purple;}"+
+								"node.e{size: 12px, 12px;fill-mode:dyn-plain;text-size:15px;text-style:bold;text-color:black;fill-color:pink;}"+
+								"node.f{size: 12px, 12px;fill-mode:dyn-plain;text-size:15px;text-style:bold;text-color:black;fill-color:black;}";
 	public static final char LEFT_BRACE =  '[';
 	public static final char RIGHT_BRACE = ']';
 	public static final char SEPARATOR =   ':';
@@ -41,7 +46,7 @@ public class DynamicGraph{
 	public HashMap<Long, int[][]> shortestPathsMatrixs;
 	
 	protected MultiGraph graph;
-
+	
 	/**
 	 * Indique si la valeur se trouve dans l'intervalle donne
 	 * @param value
@@ -55,11 +60,32 @@ public class DynamicGraph{
 	}
 	
 	/**
+	 * Retourne le tableau sous forme de chaine en utilisant le separateur et les encadrant definit dans LEFT_BRACE, RIGHT_BRACE, SEPARATOR
+	 * @param tab : la chaine sous forme de tableau {cell1,cell2,cell3,...}
+	 * @return la chaine au format "[cell1,cell2,cell3,...]"
+	 */
+	public static String tabToString(Collection<String> tab)
+	{
+		String result = LEFT_BRACE + "";
+		for(String s : tab)
+		{
+			if (result.length() > 1)
+			{
+				result += SEPARATOR;
+			}
+			result += s;
+		}
+		result += RIGHT_BRACE;
+		
+		return result;
+	}
+	
+	/**
 	 * Retourne la chaine sous forme de tableau en utilisant le separateur et les encadrant definit dans LEFT_BRACE, RIGHT_BRACE, SEPARATOR
 	 * @param tab : la chaine au format "[cell1,cell2,cell3,...]"
 	 * @return la chaine sous forme de tableau {cell1,cell2,cell3,...}
 	 */
-	private static ArrayList<String> stringToTab(String tab)
+	public static ArrayList<String> stringToTab(String tab)
 	{
 		Integer level = 0;
 		String buffer = "";
@@ -148,6 +174,27 @@ public class DynamicGraph{
 	public void setWeight(Edge edge, int weight)
 	{
 		edge.setAttribute(POIDS, weight);
+	}
+	
+	/**
+	 * Retourne le groupe de la node demandee
+	 * @param node
+	 * @return groupe de la node
+	 */
+	public int getGroup(Node node)
+	{
+		return node.getAttribute(GROUP);
+	}
+	
+	/**
+	 * Met a jour le groupe de la node donnee
+	 * Le groupe a pour unique utilitee de differencier les nodes lors de l'affichage
+	 * @param node
+	 * @param group
+	 */
+	public void setGroup(Node node, int group)
+	{
+		node.setAttribute(GROUP, group);
 	}
 	
 	/**
@@ -668,7 +715,7 @@ public class DynamicGraph{
 	public Node addNode(String id)
 	{
 		Node n = graph.addNode(id);
-		n.addAttribute(LABEL, id);
+		n.addAttribute(GROUP, 0);
 		return n;
 	}
 	
@@ -683,13 +730,14 @@ public class DynamicGraph{
 	public void loadFromString(String source, int weightDefault, long timeStartDefault, long timeEndDefault, boolean insert)
 	{
 		ArrayList<String> chaines = stringToTab(source);
+		
 		for(String s : chaines)
 		{
 			if (s.length() == 0)
 			{
 				continue;
 			}
-			
+
 			ArrayList<String> graphContent = stringToTab(s);
 			switch(graphContent.size())
 			{
@@ -762,7 +810,9 @@ public class DynamicGraph{
 		/* ajout des nodes */
 		for (Node n : graph.getEachNode())
 		{
-			result.addNode(n.getId()).setAttribute(LABEL, n.getId());
+			Node n2 = result.addNode(n.getId());
+			n2.setAttribute(LABEL, n.getId());
+			n2.setAttribute("ui.class", String.valueOf((char)('a' + getGroup(n))));
 		}
 		
 		/* ajout des arcs */

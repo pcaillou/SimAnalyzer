@@ -241,6 +241,7 @@ public class GraphObserver extends StatisticalObserver  {
 		Matrix result = MatrixFactory.zeros(ValueType.STRING, data.getRowCount(), 0);
 		long idColumn = data.getColumnForLabel(SimulationInterface.ID_C_NAME),
 		     graphColumn = data.getColumnForLabel(LABEL_GRAPH),
+		     classColumn = data.getColumnForLabel(SimulationInterface.CLASS_LABEL_C_NAME),
 		     timeColumn = 1; //data.getColumnForLabel("0");
 		
 		long duration = System.nanoTime();
@@ -260,11 +261,18 @@ public class GraphObserver extends StatisticalObserver  {
 
 		result.setLabel("GraphObserver");
 		
-		//data.showGUI();
-		//result.showGUI();
-		//graph.displayGraph(step);
+		/* on met a jour les groupes de chaque node */
+		long max = data.getRowCount();
+		for (long i = 0 ; i < max  ; i++)
+		{
+			graph.setGroup(graph.getNode(data.getAsString(i,idColumn)),data.getAsInt(i,classColumn));
+		}
 		
-		//pause();
+		data.showGUI();
+		//result.showGUI();
+		graph.displayGraph(step);
+		
+		pause();
 		
 		/* on envoie le resultat */
 		this.preventListeners(new DataEvent(result, de.getArguments()));
