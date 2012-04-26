@@ -11,6 +11,8 @@ import java.util.HashMap;
 import org.ujmp.core.Matrix;
 import org.ujmp.core.calculation.Calculation.Ret;
 
+import controller.SimulationController;
+
 import observer.SimulationInterface;
 import clustering.event.DataEvent;
 
@@ -42,6 +44,7 @@ public class GlobalObserver extends StatisticalObserver {
 			if (newglobal!=null)
 			{
 				global=newglobal;
+				SimulationController.updateVariableInfo(global);
 				this.preventListeners(new DataEvent(global, de.getArguments()));
 				newglobal=null;
 			}	

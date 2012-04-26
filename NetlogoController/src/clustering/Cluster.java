@@ -38,6 +38,17 @@ public class Cluster {
 	public Matrix stderrsmdef;
 	public Matrix avglobsm;
 	public Matrix stdglobsm;
+	public HashMap<String, VariableDistribution> globDistrib = new HashMap<String, VariableDistribution>();
+	public HashMap<String, VariableDistribution> popDistrib = new HashMap<String, VariableDistribution>();
+	public HashMap<String, VariableDistribution> defDistrib = new HashMap<String, VariableDistribution>();
+	public Matrix qvtestsm;
+	public Matrix qavgsm;
+	public Matrix qstderrsm;
+	public Matrix qvtestsmdef;
+	public Matrix qavgsmdef;
+	public Matrix qstderrsmdef;
+	public Matrix qavglobsm;
+	public Matrix qstdglobsm;
     public List<Long> ticklist = new ArrayList<Long>();
 	public AgModel agm;
 	public int idtickinit;
@@ -155,6 +166,18 @@ public class Cluster {
 		this.update(data, componentsIds);
 		agm=new AgModel(cl,this);
 	}
+	
+	public void updatedistrib(Matrix data, HashMap<String, VariableDistribution> distrib){		
+		distrib.clear();
+		long idColumn = data.getColumnForLabel(Cluster.ID_C_NAME);
+//		long classLabelColumn = data.getColumnForLabel(Cluster.CLASS_LABEL_C_NAME);
+		for(long column =0; column < data.getColumnCount(); column++){
+				String label = data.getColumnLabel(column);
+				VariableDistribution vd = VariableDistributionFactory.buildDistribution(data, column);
+				distrib.put(label, vd);			
+		}
+	}
+	
 	
 	public void update(Matrix data, Collection<Long> componentsIds){
 		

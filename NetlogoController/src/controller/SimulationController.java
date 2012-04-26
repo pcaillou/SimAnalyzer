@@ -86,6 +86,7 @@ public abstract class SimulationController {
 	public static Matrix StabMat;
 	public static boolean[] VClust;
 	public static boolean[] VInit;
+	public static boolean[] VQuali;
 	public static int nbVInit;
 	
 	public static Random rand=new Random();
@@ -175,6 +176,18 @@ public abstract class SimulationController {
 		}
 		ResFil.showGUI();					
 		
+	}
+	
+	public static void updateVariableInfo(Matrix data)
+	{
+		VQuali=new boolean[(int)data.getColumnCount()];
+		for(int i=0; i<data.getColumnCount(); i++){
+			VQuali[i]=false;
+			if (Double.isNaN(data.getAsDouble(0,i)))
+					System.out.println("var "+data.getColumnLabel(i)+" quali ");
+					VQuali[i]=true;
+		}
+	
 	}
 	
 	@SuppressWarnings({ "unchecked", "unused" })
