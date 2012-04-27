@@ -34,10 +34,10 @@ import observer.SimulationInterface;
 import observer.SimulationSensor;
 import statistic.DirectObserver;
 import statistic.GlobalObserver;
-import statistic.InitParamObserver;
+//import statistic.InitParamObserver;
 import statistic.LastObserver;
-import statistic.SlidingMeanObserver;
-import statistic.GraphObserver;
+//import statistic.SlidingMeanObserver;
+//import statistic.GraphObserver;
 
 public abstract class SimulationController {
 	public static Matrix DataMatrix = null;
@@ -526,6 +526,7 @@ public abstract class SimulationController {
 			}
 			
 		}
+		@SuppressWarnings("unused")
 		Long slidingWindowSize = new Long((long)(5.0));
 		DirectObserver dio = (DirectObserver)obs.get(0);
 		LastObserver lasto = (LastObserver)obs.get(2);

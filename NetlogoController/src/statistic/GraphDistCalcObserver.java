@@ -7,15 +7,15 @@
 package statistic;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+//import java.util.HashMap;
 
 import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
-import org.ujmp.core.calculation.Calculation.Ret;
+//import org.ujmp.core.calculation.Calculation.Ret;
 import org.ujmp.core.enums.ValueType;
 import org.ujmp.core.exceptions.MatrixException;
 
-import observer.SimulationInterface;
+//import observer.SimulationInterface;
 import clustering.Cluster;
 import clustering.event.DataEvent;
 
@@ -67,7 +67,8 @@ public class GraphDistCalcObserver extends StatisticalObserver {
 		dist=Math.sqrt(dist);
 		return dist;
 	}
-		
+
+	@SuppressWarnings("all")
 	public void newDataAvailable(DataEvent de) throws Exception {
 		Matrix data = de.getData();
 		Matrix distmat;

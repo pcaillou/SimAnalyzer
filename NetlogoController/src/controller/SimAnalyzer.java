@@ -37,7 +37,7 @@ import com.mysql.jdbc.Statement;
 
 import java.awt.*;
 import java.io.*;
-import java.lang.reflect.Array;
+//import java.lang.reflect.Array;
 import java.sql.DriverManager;
 //AD import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -116,6 +116,7 @@ public class SimAnalyzer extends JFrame
  SimAnalyzer()
 	{		
 		super(" SimAnalyzer "); 
+		@SuppressWarnings("rawtypes")
 		Class c;
 		String[] pn,pnd;
 		ObsPossibleTypeList=new ArrayList<String>();
@@ -1261,6 +1262,7 @@ public class SimAnalyzer extends JFrame
 
 		public void actionPerformed(ActionEvent e) {
 			Object src=e.getSource();
+			@SuppressWarnings("unused")
 			Matrix m = NetLogoSimulationController.DataMatrix;
 			if (src.equals(jbtcancel))
 			{
@@ -1394,6 +1396,7 @@ public class SimAnalyzer extends JFrame
 			{
 				if (src.equals(jbparams[i]))
 				{
+					@SuppressWarnings("unused")
 					ObserversParameters obp=new ObserversParameters(this,i);
 				}
 			}
@@ -1556,6 +1559,7 @@ public class SimAnalyzer extends JFrame
 			}
 	    }
 
+		@SuppressWarnings("unused")
 		public void actionPerformed(ActionEvent e) {
 			Object src=e.getSource();
 			Matrix m = NetLogoSimulationController.DataMatrix;
