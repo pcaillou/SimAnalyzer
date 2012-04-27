@@ -184,8 +184,11 @@ public abstract class SimulationController {
 		for(int i=0; i<data.getColumnCount(); i++){
 			VQuali[i]=false;
 			if (Double.isNaN(data.getAsDouble(0,i)))
-					System.out.println("var "+data.getColumnLabel(i)+" quali ");
-					VQuali[i]=true;
+			{
+				System.out.println("var "+data.getColumnLabel(i)+" quali ");
+				VQuali[i]=true;
+				
+			}
 		}
 	
 	}
@@ -642,7 +645,7 @@ public abstract class SimulationController {
 			si.getGlobalVariableName();
 			//NetLogoInterface.createUpdateProcedure("__UPDATE");
             int cltsize =1;      
-            Matrix cltmg = null;
+            Matrix concatenatedDataHistory = null;
             int x = 0;
             List<List<Cluster>> clusterltarray = new ArrayList<List<Cluster>>();
             List<double[][]> vtestlist = new ArrayList<double[][]>();
@@ -724,15 +727,15 @@ public abstract class SimulationController {
 					MatrixList.add(mg);
 					if(x==0)
 					{
-						cltmg = mg;
+						concatenatedDataHistory = mg;
 						x = 1;
 					}
 					else
-						cltmg = cltmg.appendVertically(mg);
+						concatenatedDataHistory = concatenatedDataHistory.appendVertically(mg);
 					if(tick==maxTicks)
 					{
 						DataMatrix.showGUI();
-						cltmg.showGUI();
+						concatenatedDataHistory.showGUI();
 					}
 					
 					if(tick >=0 && tick % ticksBetweenClustering == 0){						  
@@ -791,7 +794,7 @@ public abstract class SimulationController {
 			
 			if (SimAnalyzer.followcluster)
 			{
-	        ClusterEval ctel = new ClusterEval(clusterltarray,clusterltarray2, ticklist, MatrixList, vtestlist, cltmg); 
+	        ClusterEval ctel = new ClusterEval(clusterltarray,clusterltarray2, ticklist, MatrixList, vtestlist, concatenatedDataHistory); 
 	        FAgModel fag=new FAgModel(clusterltarray.get(0).get(0).agm);
 			@SuppressWarnings("unused")
 			WindowListener l = new WindowAdapter()

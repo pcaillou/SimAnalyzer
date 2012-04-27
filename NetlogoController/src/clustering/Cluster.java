@@ -38,9 +38,11 @@ public class Cluster {
 	public Matrix stderrsmdef;
 	public Matrix avglobsm;
 	public Matrix stdglobsm;
-	public HashMap<String, VariableDistribution> globDistrib = new HashMap<String, VariableDistribution>();
-	public HashMap<String, VariableDistribution> popDistrib = new HashMap<String, VariableDistribution>();
-	public HashMap<String, VariableDistribution> defDistrib = new HashMap<String, VariableDistribution>();
+	public ArrayList<HashMap<String,Integer>> globDistrib=new ArrayList();
+	public ArrayList<HashMap<String,Integer>> popDistrib=new ArrayList();
+	public ArrayList<HashMap<String,Integer>> defDistrib=new ArrayList();
+	public String[] qvtests;
+	public String[] qvtestsshort;
 	public Matrix qvtestsm;
 	public Matrix qavgsm;
 	public Matrix qstderrsm;
@@ -167,14 +169,14 @@ public class Cluster {
 		agm=new AgModel(cl,this);
 	}
 	
-	public void updatedistrib(Matrix data, HashMap<String, VariableDistribution> distrib){		
+	public void updatedistrib(Matrix data, ArrayList<VariableDistribution> distrib){		
 		distrib.clear();
 		long idColumn = data.getColumnForLabel(Cluster.ID_C_NAME);
 //		long classLabelColumn = data.getColumnForLabel(Cluster.CLASS_LABEL_C_NAME);
-		for(long column =0; column < data.getColumnCount(); column++){
+		for(int column =0; column < data.getColumnCount(); column++){
 				String label = data.getColumnLabel(column);
 				VariableDistribution vd = VariableDistributionFactory.buildDistribution(data, column);
-				distrib.put(label, vd);			
+				distrib.set(column, vd);			
 		}
 	}
 	
