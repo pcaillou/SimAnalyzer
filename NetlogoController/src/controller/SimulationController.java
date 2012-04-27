@@ -330,6 +330,8 @@ public abstract class SimulationController {
 				currenttick=tick;
 				if(tick >=0 && tick % ticksBetweenClustering == 0)
 				{
+					long duration = System.nanoTime();
+
 					List<Cluster> clt = new ArrayList<Cluster>();
 					int nt=tick/ticksBetweenClustering;
 
@@ -463,6 +465,7 @@ public abstract class SimulationController {
 					scl.setLocation(500,100);
 				    scl.pack() ;
 					scl.setVisible(true);*/
+					System.out.println("SimStep " + tick + " realise en " + duration/1000000 + "ms");
 				}
 					
 				si.repeat(1, updateProcedure);
@@ -656,7 +659,8 @@ public abstract class SimulationController {
 				currenttick=tick;
 				if(tick >=0 && tick % SimAnalyzer.updatestep == 0){						  
 //				if(tick >=0 && tick % ticksBetweenClustering == 0){						  
-					List<Cluster> clt = new ArrayList<Cluster>();
+					long duration = System.nanoTime();
+				List<Cluster> clt = new ArrayList<Cluster>();
 		            List<Observer> obslist = new ArrayList<Observer>();
 					for(int i=0;i<=(tick-tick%ticksBetweenClustering)/ticksBetweenClustering;i++)
 					{
@@ -762,12 +766,15 @@ public abstract class SimulationController {
 				    scl.pack() ;
 					scl.setVisible(true);
 					}
-				}
+					duration = System.nanoTime() - duration;
+				System.out.println("SimUpdateStep " + tick + " realise en " + duration/1000000 + "ms");
+			}
 				si.repeat(1, updateProcedure);
 			}
 			if (SimAnalyzer.computehistory)
 			{
-				Matrix subm;
+				long duration = System.nanoTime();
+			Matrix subm;
 				int noma=MatrixList.size();
 				for(int tick=maxTicks; tick>=0; tick--){
 					currenttick=tick;
@@ -788,8 +795,10 @@ public abstract class SimulationController {
 						
 					}
 				}
-				
-			}
+				duration = System.nanoTime() - duration;
+			
+				System.out.println("History realise en " + duration/1000000 + "ms");
+		}
 			
 			
 			if (SimAnalyzer.followcluster)

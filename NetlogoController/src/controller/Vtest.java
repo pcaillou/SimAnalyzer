@@ -95,6 +95,13 @@ public class Vtest{
 		String rest;
 		double vmax=1;
 		double vmin=-1;
+		if (dist==null)
+		{
+			res="null";
+			ress="n";
+			
+		}
+		else
 		if (dist.size()>0)
 		{
 			int n=0;
@@ -146,6 +153,7 @@ public class Vtest{
 		else
 		{
 			res="noMod";
+			ress="_";
 		}
 		rest=ress;
 		if (t==0)

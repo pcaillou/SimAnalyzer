@@ -70,7 +70,7 @@ public class ClusterEval extends JFrame implements ActionListener
 	Matrix m;
 	List<List<Cluster>> cltarrayll;
 
-	public void placenewcomp(int posx,int posy, GridBagConstraints gbc,JComponent comp)
+	public void placenewcomp(int posx,int posy, GridBagConstraints gbc,JComponent comp,JPanel jpa)
 	{
 		gbc.gridx=posx;
 		gbc.gridy=posy;
@@ -81,7 +81,7 @@ public class ClusterEval extends JFrame implements ActionListener
 		gbc.anchor=GridBagConstraints.WEST;
 //		gb.setConstraints(l1,gbc);
 //		getContentPane().add(l1);
-		jp.add(comp,gbc);
+		jpa.add(comp,gbc);
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -101,24 +101,24 @@ public class ClusterEval extends JFrame implements ActionListener
 		int vtdebx=1;
 		int vtdeby=0;
 		int posx=0;
-		int posy=vtdeby;
+		int posy=vtdeby+1;
 		
 		JLabel la = new JLabel("Score");
-		placenewcomp(posx,posy,gbc,la);
+		placenewcomp(posx,posy,gbc,la,jp);
 		posy++;
 
 		la = new JLabel("Cluster");
-		placenewcomp(posx,posy,gbc,la);
+		placenewcomp(posx,posy,gbc,la,jp);
 		posy++;
 		
 		la = new JLabel("size");
-		placenewcomp(posx,posy,gbc,la);
+		placenewcomp(posx,posy,gbc,la,jp);
 		posy++;
 		
 		for(int k=0;k<concatenatedDataHistory.getColumnCount();k++)
 		{
 				la = new JLabel(concatenatedDataHistory.getColumnLabel(k));
-				placenewcomp(posx,posy,gbc,la);
+				placenewcomp(posx,posy,gbc,la,jp);
 				posy++;
 		}
 		
@@ -143,21 +143,21 @@ public class ClusterEval extends JFrame implements ActionListener
 				id2.add(j);		
 				jb.addActionListener(this);
 				
-				placenewcomp(posx,posy,gbc,jb);
+				placenewcomp(posx,posy,gbc,jb,jp);
 				posy++;
 				
 				ct.agm.calcscores();
 				Long score = vt*cltarray.get(i).get(j).getSize();
 				la = new JLabel("Sc:d"+(int)(100*ct.agm.scorestabdesc)+" /p"+(int)(100*ct.agm.scorestabpop)+" ");
-				placenewcomp(posx,posy,gbc,la);
+				placenewcomp(posx,posy,gbc,la,jp);
 				posy++;
 
 				la = new JLabel("C"+(j+nm)+"(t="+ticklist.get(i)+") ");
-				placenewcomp(posx,posy,gbc,la);
+				placenewcomp(posx,posy,gbc,la,jp);
 				posy++;
 				
 				la = new JLabel("nb:"+cltarray.get(i).get(j).getSize());
-				placenewcomp(posx,posy,gbc,la);
+				placenewcomp(posx,posy,gbc,la,jp);
 				posy++;
 				HashMap<String,Double> vtq;
 				for(int k=0;k<concatenatedDataHistory.getColumnCount();k++)
@@ -167,7 +167,7 @@ public class ClusterEval extends JFrame implements ActionListener
 							la = new JLabel(ct.qvtestsshort[k]);
 							la.setToolTipText(ct.qvtests[k]);
 							la.setForeground(Color.magenta);
-						placenewcomp(posx,posy,gbc,la);
+						placenewcomp(posx,posy,gbc,la,jp);
 						posy++;
 						
 					}
@@ -178,7 +178,7 @@ public class ClusterEval extends JFrame implements ActionListener
 							la.setForeground(Color.blue);
 						if(vtestlist.get(i)[j][k]<-2.00)
 							la.setForeground(Color.red);
-						placenewcomp(posx,posy,gbc,la);
+						placenewcomp(posx,posy,gbc,la,jp);
 						posy++;
 					
 					}
@@ -456,8 +456,8 @@ public class ClusterEval extends JFrame implements ActionListener
 		JLabel l1,l2,l3,l4,l5;
 		GridBagConstraints gbc=new GridBagConstraints();
 		GridBagLayout gb=new GridBagLayout();
-		JPanel jp = new JPanel(gb);
 		JButton jbs = new JButton("Show matrix");
+		JPanel jp = new JPanel(gb);
 		JScrollPane jsp = new JScrollPane(jp);
 		Matrix m;
 		
@@ -475,23 +475,12 @@ public class ClusterEval extends JFrame implements ActionListener
 			int vtdeby=0;
 			int posx=0;
 			int posy=vtdeby;
-			
-			JLabel la = new JLabel("Score");
-			placenewcomp(posx,posy,gbc,la);
-			posy++;
-
-			la = new JLabel("Cluster");
-			placenewcomp(posx,posy,gbc,la);
-			posy++;
-			
-			la = new JLabel("size");
-			placenewcomp(posx,posy,gbc,la);
-			posy++;
+			JLabel la;
 			
 			for(int k=0;k<concatenatedDataHistory.getRowCount();k++)
 			{
 					la = new JLabel(concatenatedDataHistory.getRowLabel(k));
-					placenewcomp(posx,posy,gbc,la);
+					placenewcomp(posx,posy,gbc,la,jp);
 					posy++;
 			}
 			
@@ -505,24 +494,39 @@ public class ClusterEval extends JFrame implements ActionListener
 
 					for(int k=0;k<concatenatedDataHistory.getRowCount();k++)
 					{
-						if (SimulationController.VQuali[k])
+						if (k>2)
 						{
-								la = new JLabel(Vtest.genString((HashMap<String,Double>)qvtmat.getAsObject(i,k), 1));
-								la.setToolTipText(Vtest.genString((HashMap<String,Double>)qvtmat.getAsObject(i,k), 1));
+						if (SimulationController.VQuali[k-3])
+						{
+								la = new JLabel(Vtest.genString((HashMap<String,Double>)qvtmat.getAsObject(k,i), 1));
+								la.setToolTipText(Vtest.genString((HashMap<String,Double>)qvtmat.getAsObject(k,i), 0));
 								la.setForeground(Color.magenta);
-							placenewcomp(posx,posy,gbc,la);
+							placenewcomp(posx,posy,gbc,la,jp);
 							posy++;
 							
 						}
 						else
 						{
-							double vtv=vtmat.getAsDouble(i,k);
+							double vtv=vtmat.getAsDouble(k,i);
 							la = new JLabel(""+((int)(vtv*100))/(double)100);
 							if(vtv>2.00)
 								la.setForeground(Color.blue);
 							if(vtv<-2.00)
 								la.setForeground(Color.red);
-							placenewcomp(posx,posy,gbc,la);
+							placenewcomp(posx,posy,gbc,la,jp);
+							posy++;
+						
+						}
+						}
+						else
+						{
+							double vtv=vtmat.getAsDouble(k,i);
+							la = new JLabel(""+((int)(vtv*100))/(double)100);
+							if(vtv>2.00)
+								la.setForeground(Color.blue);
+							if(vtv<-2.00)
+								la.setForeground(Color.red);
+							placenewcomp(posx,posy,gbc,la,jp);
 							posy++;
 						
 						}
@@ -530,49 +534,12 @@ public class ClusterEval extends JFrame implements ActionListener
 					}
 					
 					posx++;
+					posy=vtdeby;
 					
 				
 			}
 			
 			
-			
-			
-			
-			
-			gbc.gridx=0;
-			gbc.gridy=0;
-			gbc.gridwidth=1;
-			gbc.gridheight=1;
-			gbc.weightx=10;
-			gbc.weighty=10;
-			gbc.anchor=GridBagConstraints.WEST;
-			jp.add(jbs,gbc);
-			jbs.addActionListener(new ActionListener()
-			{
-				public void actionPerformed(ActionEvent e) {
-					Matrix mn = null;
-					boolean first = true;
-	 				for(int i=0;i<m.getColumnCount();i++)
-					{
-						if(!m.selectColumns(Ret.NEW,i).isEmpty())
-						{
-							if(first)
-							{
-								first = false;
-								mn = m.selectColumns(Ret.NEW, i);
-							}
-							else
-							{
-								Matrix mn2 = mn.appendHorizontally(m.selectColumns(Ret.NEW,i));
-								mn = mn2.subMatrix(Ret.NEW, 0, 0, mn2.getRowCount()-1, mn2.getColumnCount()-1);
-							    mn.setColumnLabel(mn.getColumnCount()-1, m.getColumnLabel(i));
-							}
-						}
-					}
-	 				mn=mn.transpose(Ret.NEW);
-					mn.showGUI();
-				}
-			});
 			this.getContentPane().add(jsp);
 		}
 	}
