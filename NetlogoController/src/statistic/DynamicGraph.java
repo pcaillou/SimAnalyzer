@@ -45,6 +45,8 @@ public class DynamicGraph{
 	public HashMap<Long, int[][]> shortestPathsWeightMatrixs;
 	public HashMap<Long, int[][]> shortestPathsMatrixs;
 	
+	Integer autoGenerateEdgedId;
+	
 	protected MultiGraph graph;
 	
 	/**
@@ -134,6 +136,7 @@ public class DynamicGraph{
 		shortestPathsWeightMatrixs = new HashMap<Long, int[][]>();
 		weightsMatrixs = new HashMap<Long, int[][]>();
 		shortestPathsMatrixs = new HashMap<Long, int[][]>();
+		autoGenerateEdgedId = 1;
 	}
 	
 	/**
@@ -631,10 +634,15 @@ public class DynamicGraph{
 		}
 		
 		/* on ajoute l'arc */
-		Edge e = graph.addEdge(String.valueOf(graph.getEdgeCount()), source, target,true);
+		while (graph.getEdge("Arrow" + String.valueOf(autoGenerateEdgedId)) != null)
+		{
+			autoGenerateEdgedId++;
+		}
+		Edge e = graph.addEdge("Arrow" + String.valueOf(autoGenerateEdgedId), source, target,true);
 		e.addAttribute(POIDS, poids);
 		e.addAttribute(TIME_CREATION, timeAdd);
 		e.addAttribute(TIME_SUPPRESSION, timeDel);
+		autoGenerateEdgedId++;
 		return e;
 	}
 
@@ -662,38 +670,46 @@ public class DynamicGraph{
 		/* on supprime ou decale les autres arcs */
 		if (edgesExists(nsource,ntarget,timeAdd,timeAdd))
 		{
-			for (Edge e : nsource.getEachLeavingEdge())
+			boolean restartCheck;
+			do
 			{
-				/* on ne regarde que les arcs qui peuvent poser probleme */
-				if (e.getOpposite(nsource).equals(ntarget) && getTimeDelete(e) >= timeAdd && getTimeCreation(e) <= timeDel)
+				restartCheck = false; /* un restart est necessaire en cas de suppression d'arc */
+				for (Edge e : nsource.getEachLeavingEdge())
 				{
-					if (getTimeDelete(e) <= timeDel)
+					
+					if (e.getOpposite(nsource).equals(ntarget) && getTimeDelete(e) >= timeAdd && getTimeCreation(e) <= timeDel)
 					{
-						if (getTimeCreation(e) >= timeAdd)
+						if (getTimeDelete(e) <= timeDel)
 						{
-							removeEdge(e.getId());
+							if (getTimeCreation(e) >= timeAdd)
+							{
+								removeEdge(e);
+								restartCheck = true;
+								break;
+							}
+							else
+							{
+								setTimeCreation(e,Math.min(timeAdd-1,getTimeCreation(e)));
+								setTimeDelete(e,timeAdd-1);
+							}
 						}
 						else
 						{
-							setTimeCreation(e,Math.min(timeAdd-1,getTimeCreation(e)));
-							setTimeDelete(e,timeAdd-1);
-						}
-					}
-					else
-					{
-						if (getTimeCreation(e) >= timeAdd)
-						{
-							setTimeDelete(e,Math.max(timeDel-1,getTimeDelete(e)));
-							setTimeCreation(e,timeDel+1);
-						}
-						else
-						{
-							setTimeCreation(e,Math.min(timeAdd-1,getTimeCreation(e)));
-							setTimeDelete(e,timeAdd-1);
+							if (getTimeCreation(e) >= timeAdd)
+							{
+								setTimeDelete(e,Math.max(timeDel-1,getTimeDelete(e)));
+								setTimeCreation(e,timeDel+1);
+							}
+							else
+							{
+								setTimeCreation(e,Math.min(timeAdd-1,getTimeCreation(e)));
+								setTimeDelete(e,timeAdd-1);
+							}
 						}
 					}
 				}
 			}
+			while (restartCheck);
 		}
 		
 		return addEdge(source, target, poids, timeAdd, timeDel);
@@ -703,9 +719,9 @@ public class DynamicGraph{
 	 * Supprime l'arc demande /!\ attention : ne met pas a jour le temps de suppression mais supprime l'arc du graphe
 	 * @param id
 	 */
-	public void removeEdge(String id)
+	public void removeEdge(Edge e)
 	{
-		graph.removeEdge(id);
+		graph.removeEdge(e);
 	}
 	
 	/**
@@ -752,41 +768,41 @@ public class DynamicGraph{
 				case 2 :
 					if (insert)
 					{
-						insertEdge(graphContent.get(0),graphContent.get(1),weightDefault,timeStartDefault,timeEndDefault);
+						addEdge(graphContent.get(0),graphContent.get(1),weightDefault,timeStartDefault,timeEndDefault);
 					}
 					else
 					{
-						addEdge(graphContent.get(0),graphContent.get(1),weightDefault,timeStartDefault,timeEndDefault);
+						insertEdge(graphContent.get(0),graphContent.get(1),weightDefault,timeStartDefault,timeEndDefault);
 					}
 					break;
 				case 3 :
 					if (insert)
 					{
-						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),timeStartDefault,timeEndDefault);
+						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),timeStartDefault,timeEndDefault);
 					}
 					else
 					{
-						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),timeStartDefault,timeEndDefault);
+						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),timeStartDefault,timeEndDefault);
 					}
 					break;
 				case 4 :
 					if (insert)
 					{
-						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),timeEndDefault);
+						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),timeEndDefault);
 					}
 					else
 					{
-						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),timeEndDefault);
+						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),timeEndDefault);
 					}
 					break;
 				case 5 :
 					if (insert)
 					{
-						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),Long.valueOf(graphContent.get(4)));
+						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),Long.valueOf(graphContent.get(4)));
 					}
 					else
 					{
-						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),Long.valueOf(graphContent.get(4)));
+						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),Long.valueOf(graphContent.get(4)));
 					}
 					break;
 				default :
