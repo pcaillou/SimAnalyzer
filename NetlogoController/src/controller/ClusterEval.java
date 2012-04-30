@@ -162,7 +162,7 @@ public class ClusterEval extends JFrame implements ActionListener
 				HashMap<String,Double> vtq;
 				for(int k=0;k<concatenatedDataHistory.getColumnCount();k++)
 				{
-					if (SimulationController.VQuali[k])
+					if ((SimulationController.VQuali[k])&(SimAnalyzer.vtquali))
 					{
 							la = new JLabel(ct.qvtestsshort[k]);
 							la.setToolTipText(ct.qvtests[k]);

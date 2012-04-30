@@ -11,6 +11,7 @@ import org.apache.commons.math.stat.descriptive.moment.Variance;
 import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
 import org.ujmp.core.calculation.Calculation.Ret;
+import org.ujmp.core.doublematrix.DoubleMatrix;
 import org.ujmp.core.enums.ValueType;
 
 import statistic.distribution.VariableDistribution;
@@ -363,6 +364,7 @@ public class Vtest{
 
 	public static double[] Vtestglob(Cluster clu, Matrix mg,int type, Cluster cib)
 	{
+		if (SimAnalyzer.vtquali)
 		Vtestglobquali(clu,mg,type,cib);
 		Variance varcalc=new Variance();
 		Mean meancalc=new Mean();
@@ -397,7 +399,9 @@ public class Vtest{
 	    {
 	    	for(long j=0;j<n;j++)
     		{
-	    		if(mg.getAsLong(j,idColumn)==component)
+	    		String s=new String(""+component);
+	    		if(mg.getAsString(j,idColumn).equals(s))
+//	    		if(mg.getAsLong(j,idColumn)==component)
     			{
 	    			rows.add(j);
     			}
@@ -445,7 +449,7 @@ public class Vtest{
 	    	clu.vtests=vtest;
 	    	clu.avg=nmg;
 	    	clu.stderr=vag;
-			clu.vtestsm = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+			clu.vtestsm = MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);		    
 	    	clu.vtestsm.setRowLabel(1, "tick");
 	    	clu.vtestsm.setRowLabel(2, "size");
 	    	clu.vtestsm.setAsDouble(clu.getSize(), 2, 0);
@@ -455,7 +459,7 @@ public class Vtest{
 		    	clu.vtestsm.setRowLabel(j+3, mg.getColumnLabel(j));
 		    	clu.vtestsm.setAsDouble(vtest[j], j+3, 0);
 		    }
-			clu.avgsm = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+			clu.avgsm = MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);	    
 	    	clu.avgsm.setRowLabel(1, "tick");
 	    	clu.avgsm.setRowLabel(2, "size");
 	    	clu.avgsm.setAsDouble(clu.getSize(), 2, 0);
@@ -465,7 +469,7 @@ public class Vtest{
 		    	clu.avgsm.setRowLabel(j+3, mg.getColumnLabel(j));
 		    	clu.avgsm.setAsDouble(nmg[j], j+3, 0);
 		    }
-			clu.stderrsm = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+			clu.stderrsm =MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);		    
 	    	clu.stderrsm.setRowLabel(1, "tick");
 	    	clu.stderrsm.setRowLabel(2, "size");
 	    	clu.stderrsm.setAsDouble(clu.getSize(), 2, 0);
@@ -475,7 +479,7 @@ public class Vtest{
 		    	clu.stderrsm.setRowLabel(j+3, mg.getColumnLabel(j));
 		    	clu.stderrsm.setAsDouble(Math.sqrt(vag[j]), j+3, 0);
 		    }
-			clu.vtestsmdef = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+			clu.vtestsmdef =MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);	    
 	    	clu.vtestsmdef.setRowLabel(1, "tick");
 	    	clu.vtestsmdef.setRowLabel(2, "size");
 	    	clu.vtestsmdef.setAsDouble(clu.getSize(), 2, 0);
@@ -485,7 +489,7 @@ public class Vtest{
 		    	clu.vtestsmdef.setRowLabel(j+3, mg.getColumnLabel(j));
 		    	clu.vtestsmdef.setAsDouble(vtest[j], j+3, 0);
 		    }
-			clu.avgsmdef = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+			clu.avgsmdef =MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);	    
 	    	clu.avgsmdef.setRowLabel(1, "tick");
 	    	clu.avgsmdef.setRowLabel(2, "size");
 	    	clu.avgsmdef.setAsDouble(clu.getSize(), 2, 0);
@@ -495,7 +499,7 @@ public class Vtest{
 		    	clu.avgsmdef.setRowLabel(j+3, mg.getColumnLabel(j));
 		    	clu.avgsmdef.setAsDouble(nmg[j], j+3, 0);
 		    }
-			clu.stderrsmdef = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+			clu.stderrsmdef = MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);		    
 	    	clu.stderrsmdef.setRowLabel(1, "tick");
 	    	clu.stderrsmdef.setRowLabel(2, "size");
 	    	clu.stderrsmdef.setAsDouble(clu.getSize(), 2, 0);
@@ -505,7 +509,7 @@ public class Vtest{
 		    	clu.stderrsmdef.setRowLabel(j+3, mg.getColumnLabel(j));
 		    	clu.stderrsmdef.setAsDouble(Math.sqrt(vag[j]), j+3, 0);
 		    }
-			clu.avglobsm = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+			clu.avglobsm = MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);
 	    	clu.avglobsm.setRowLabel(1, "tick");
 	    	clu.avglobsm.setRowLabel(2, "size");
 	    	clu.avglobsm.setAsDouble(n, 2, 0);
@@ -515,7 +519,7 @@ public class Vtest{
 		    	clu.avglobsm.setRowLabel(j+3, mg.getColumnLabel(j));
 		    	clu.avglobsm.setAsDouble(nm[j], j+3, 0);
 		    }
-			clu.stdglobsm = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+			clu.stdglobsm = MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);
 	    	clu.stdglobsm.setRowLabel(1, "tick");
 	    	clu.stdglobsm.setRowLabel(2, "size");
 	    	clu.stdglobsm.setAsDouble(n, 2, 0);
@@ -537,11 +541,16 @@ public class Vtest{
 	    	{
 	    		cib.idtickinit++;
 	    	}
-			Matrix mn = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
-			Matrix mna = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
-			Matrix mns = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
-			Matrix mnag = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
-			Matrix mnsg = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+	    	Matrix mn=MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);
+			Matrix mna = MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);    
+			Matrix mns =MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);    
+			Matrix mnag =MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);	    
+			Matrix mnsg = MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);	    
+//			Matrix mn = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+//			Matrix mna = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+//			Matrix mns = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+//			Matrix mnag = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+//			Matrix mnsg = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
 		    for(int j=0;j<mg.getColumnCount();j++)
 		    {
 		    	mn.setAsDouble(vtest[j], j+3, 0);
@@ -582,11 +591,11 @@ public class Vtest{
 	    	// par pop
 //			cib.vtestsm.showGUI();
 //	    	cib.ticklist.add(SimulationController.currenttick);
-			Matrix mn = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
-			Matrix mna = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
-			Matrix mns = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
-			Matrix mnag = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
-			Matrix mnsg = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
+	    	Matrix mn=MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);
+			Matrix mna = MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);    
+			Matrix mns =MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);    
+			Matrix mnag =MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);	    
+			Matrix mnsg = MatrixFactory.dense(ValueType.DOUBLE, mg.getColumnCount()+3,1);	    
 		    for(int j=0;j<mg.getColumnCount();j++)
 		    {
 		    	mn.setAsDouble(vtest[j], j+3, 0);

@@ -660,6 +660,8 @@ public abstract class SimulationController {
 				if(tick >=0 && tick % SimAnalyzer.updatestep == 0){						  
 //				if(tick >=0 && tick % ticksBetweenClustering == 0){						  
 					long duration = System.nanoTime();
+					Clusterer.buildclustertime=0;
+					Clusterer.clustertime=0;
 				List<Cluster> clt = new ArrayList<Cluster>();
 		            List<Observer> obslist = new ArrayList<Observer>();
 					for(int i=0;i<=(tick-tick%ticksBetweenClustering)/ticksBetweenClustering;i++)
@@ -768,12 +770,16 @@ public abstract class SimulationController {
 					}
 					duration = System.nanoTime() - duration;
 				System.out.println("SimUpdateStep " + tick + " realise en " + duration/1000000 + "ms");
+				System.out.println("SimUpdateStep " + tick + " ClusterBuild " + Clusterer.buildclustertime/1000000 + "ms");
+				System.out.println("SimUpdateStep " + tick + " ClusterInst " + Clusterer.clustertime/1000000 + "ms");
 			}
 				si.repeat(1, updateProcedure);
 			}
 			if (SimAnalyzer.computehistory)
 			{
 				long duration = System.nanoTime();
+				Clusterer.buildclustertime=0;
+				Clusterer.clustertime=0;
 			Matrix subm;
 				int noma=MatrixList.size();
 				for(int tick=maxTicks; tick>=0; tick--){
@@ -798,6 +804,8 @@ public abstract class SimulationController {
 				duration = System.nanoTime() - duration;
 			
 				System.out.println("History realise en " + duration/1000000 + "ms");
+				System.out.println("History  ClusterBuild " + Clusterer.buildclustertime/1000000 + "ms");
+				System.out.println("History  ClusterInst " + Clusterer.clustertime/1000000 + "ms");
 		}
 			
 			

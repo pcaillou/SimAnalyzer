@@ -13,6 +13,7 @@ import java.util.List;
 
 
 import org.ujmp.core.Matrix;
+import org.ujmp.core.doublematrix.DoubleMatrix;
 
 import controller.AgModel;
 import controller.SimulationController;

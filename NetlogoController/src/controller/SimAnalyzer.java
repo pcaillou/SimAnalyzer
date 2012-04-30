@@ -76,6 +76,7 @@ public class SimAnalyzer extends JFrame
 	static boolean followcluster=true;
 	static boolean computehistory=true;
 	static boolean doubleclustering=false;
+	static boolean vtquali=false;
 	static String name;
 	public static Integer  clusterstep, totalsteps,updatestep;
 	public static  Integer  agcol, timecol, startcol, endcol;
