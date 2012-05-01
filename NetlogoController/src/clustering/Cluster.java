@@ -13,6 +13,7 @@ import java.util.List;
 
 
 import org.ujmp.core.Matrix;
+import org.ujmp.core.doublematrix.DenseDoubleMatrix2D;
 import org.ujmp.core.doublematrix.DoubleMatrix;
 
 import controller.AgModel;
@@ -31,14 +32,14 @@ public class Cluster {
 	public double[] vtests;
 	public double[] avg;
 	public double[] stderr;
-	public Matrix vtestsm;
-	public Matrix avgsm;
-	public Matrix stderrsm;
-	public Matrix vtestsmdef;
-	public Matrix avgsmdef;
-	public Matrix stderrsmdef;
-	public Matrix avglobsm;
-	public Matrix stdglobsm;
+	public DenseDoubleMatrix2D vtestsm;
+	public DenseDoubleMatrix2D avgsm;
+	public DenseDoubleMatrix2D stderrsm;
+	public DenseDoubleMatrix2D vtestsmdef;
+	public DenseDoubleMatrix2D avgsmdef;
+	public DenseDoubleMatrix2D stderrsmdef;
+	public DenseDoubleMatrix2D avglobsm;
+	public DenseDoubleMatrix2D stdglobsm;
 	public ArrayList<HashMap<String,Integer>> globDistrib=new ArrayList();
 	public ArrayList<HashMap<String,Integer>> popDistrib=new ArrayList();
 	public ArrayList<HashMap<String,Integer>> defDistrib=new ArrayList();
