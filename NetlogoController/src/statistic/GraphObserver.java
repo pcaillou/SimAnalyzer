@@ -98,22 +98,6 @@ public class GraphObserver extends StatisticalObserver  {
 		/* on charge dans le graphe les donnees recues et on recupere le temps actuel */
 		long actualTime = 0;
 		long minTime,maxTime;
-		if (TIME_CREATION_DEFAULT == -1)
-		{
-			minTime = actualTime;
-		}
-		else
-		{
-			minTime = TIME_CREATION_DEFAULT;
-		}
-		if (TIME_DELETE_DEFAULT == -1)
-		{
-			maxTime = actualTime;
-		}
-		else
-		{
-			maxTime = TIME_DELETE_DEFAULT;
-		}
 
 		for (long i = 0 ; i < rowCount  ; i++)
 		{		
@@ -133,6 +117,22 @@ public class GraphObserver extends StatisticalObserver  {
 				{
 					timeList.add(actualTime);
 				}
+			}
+			if (TIME_CREATION_DEFAULT == -1)
+			{
+				minTime = actualTime;
+			}
+			else
+			{
+				minTime = TIME_CREATION_DEFAULT;
+			}
+			if (TIME_DELETE_DEFAULT == -1)
+			{
+				maxTime = actualTime;
+			}
+			else
+			{
+				maxTime = TIME_DELETE_DEFAULT;
 			}
 			/* on ajoute les nouveaux noeuds */
 			if (graph.getNode(data.getAsString(i,idColumn)) == null)
