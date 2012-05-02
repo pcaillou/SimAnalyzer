@@ -96,11 +96,28 @@ public class GraphObserver extends StatisticalObserver  {
 		result.setColumnLabel(10, "gr_centrality" + sufix);			// centralite d'un noeud par rapport a ceux atteignable
 		
 		/* on charge dans le graphe les donnees recues et on recupere le temps actuel */
-		for (long i = 0 ; i < rowCount  ; i++)
+		long actualTime = 0;
+		long minTime,maxTime;
+		if (TIME_CREATION_DEFAULT == -1)
 		{
-			long actualTime = 0;
-			long minTime,maxTime;
+			minTime = actualTime;
+		}
+		else
+		{
+			minTime = TIME_CREATION_DEFAULT;
+		}
+		if (TIME_DELETE_DEFAULT == -1)
+		{
+			maxTime = actualTime;
+		}
+		else
+		{
+			maxTime = TIME_DELETE_DEFAULT;
+		}
 
+		for (long i = 0 ; i < rowCount  ; i++)
+		{		
+			/* on recupere le temps actuel */
 			if (timeColumn == -1)
 			{
 				actualTime = timeTick;
@@ -117,22 +134,10 @@ public class GraphObserver extends StatisticalObserver  {
 					timeList.add(actualTime);
 				}
 			}
-			
-			if (TIME_CREATION_DEFAULT == -1)
+			/* on ajoute les nouveaux noeuds */
+			if (graph.getNode(data.getAsString(i,idColumn)) == null)
 			{
-				minTime = actualTime;
-			}
-			else
-			{
-				minTime = TIME_CREATION_DEFAULT;
-			}
-			if (TIME_DELETE_DEFAULT == -1)
-			{
-				maxTime = actualTime;
-			}
-			else
-			{
-				maxTime = TIME_DELETE_DEFAULT;
+				graph.addNode(data.getAsString(i,idColumn));
 			}
 			graph.loadFromString(data.getAsString(i,graphColumn), WEIGHT_DEFAULT, minTime, maxTime, true);
 		}
@@ -284,6 +289,7 @@ public class GraphObserver extends StatisticalObserver  {
 			{
 				time = timeTick;
 			}
+			
 			int index = graph.getNode(data.getAsString(i,idColumn)).getIndex();
 			result.setAsDouble(correlationTabs.get(time)[index], i, 0);
 			result.setAsDouble(correlationFromStartTabs.get(time)[index], i, 1);
@@ -314,6 +320,20 @@ public class GraphObserver extends StatisticalObserver  {
 		     timeColumn = data.getColumnForLabel(LABEL_TIME);
 		
 		long duration = System.nanoTime();
+				
+		/* on met a jour les groupes de chaque node */
+
+		if (SimulationController.MatrixList.size() > 0)
+		{
+			Matrix m = SimulationController.MatrixList.get(SimulationController.MatrixList.size()-1);
+		    long classColumn = m.getColumnForLabel(SimulationInterface.CLASS_LABEL_C_NAME);	
+		    long idColumn2 = m.getColumnForLabel(SimulationInterface.ID_C_NAME);
+			long max = m.getRowCount();
+			for (long i = 0 ; i < max  ; i++)
+			{
+				graph.setGroup(graph.getNode(m.getAsString(i,idColumn2)),1+m.getAsInt(i,classColumn));
+			}
+		}
 		
 		/* on effectue le calcul pour chaque graphe (voir comment recuperer tout les id des graphes) */
 		Matrix tmpResult = getGraphResult(data, idColumn, graphColumn, timeColumn,LABEL_GRAPH);
@@ -328,23 +348,10 @@ public class GraphObserver extends StatisticalObserver  {
 		
 		/* on calcule le temps qui a ete necessaire */
 		duration = System.nanoTime() - duration;
-		System.out.println("Step " + step + " realise en " + duration/1000000 + "ms");
+		System.out.println("Graph_" + LABEL_GRAPH + " Step " + step + " realise en " + duration/1000000 + "ms");
 
 		result.setLabel("GraphObserver");
-		
-		/* on met a jour les groupes de chaque node */
 
-		if (SimulationController.MatrixList.size() > 0)
-		{
-			Matrix m = SimulationController.MatrixList.get(SimulationController.MatrixList.size()-1);
-		    long classColumn = m.getColumnForLabel(SimulationInterface.CLASS_LABEL_C_NAME);	
-		    long idColumn2 = m.getColumnForLabel(SimulationInterface.ID_C_NAME);
-			long max = m.getRowCount();
-			for (long i = 0 ; i < max  ; i++)
-			{
-				graph.setGroup(graph.getNode(m.getAsString(i,idColumn2)),1+m.getAsInt(i,classColumn));
-			}
-		}
 		
 		data.showGUI();
 		result.showGUI();
