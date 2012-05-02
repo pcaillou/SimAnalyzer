@@ -183,6 +183,7 @@ public abstract class SimulationController {
 		VQuali=new boolean[(int)data.getColumnCount()];
 		for(int i=0; i<data.getColumnCount(); i++){
 			VQuali[i]=false;
+			if (SimAnalyzer.vtquali)
 			if (Double.isNaN(data.getAsDouble(0,i)))
 			{
 				System.out.println("var "+data.getColumnLabel(i)+" quali ");
