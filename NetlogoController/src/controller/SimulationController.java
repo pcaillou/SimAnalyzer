@@ -86,6 +86,7 @@ public abstract class SimulationController {
 	public static Matrix StabMat;
 	public static boolean[] VClust;
 	public static boolean[] VInit;
+	public static boolean[] VQuali;
 	public static int nbVInit;
 	
 	public static Random rand=new Random();
@@ -175,6 +176,22 @@ public abstract class SimulationController {
 		}
 		ResFil.showGUI();					
 		
+	}
+	
+	public static void updateVariableInfo(Matrix data)
+	{
+		VQuali=new boolean[(int)data.getColumnCount()];
+		for(int i=0; i<data.getColumnCount(); i++){
+			VQuali[i]=false;
+			if (SimAnalyzer.vtquali)
+			if (Double.isNaN(data.getAsDouble(0,i)))
+			{
+				System.out.println("var "+data.getColumnLabel(i)+" quali ");
+				VQuali[i]=true;
+				
+			}
+		}
+	
 	}
 	
 	@SuppressWarnings({ "unchecked", "unused" })
@@ -314,6 +331,8 @@ public abstract class SimulationController {
 				currenttick=tick;
 				if(tick >=0 && tick % ticksBetweenClustering == 0)
 				{
+					long duration = System.nanoTime();
+
 					List<Cluster> clt = new ArrayList<Cluster>();
 					int nt=tick/ticksBetweenClustering;
 
@@ -447,6 +466,7 @@ public abstract class SimulationController {
 					scl.setLocation(500,100);
 				    scl.pack() ;
 					scl.setVisible(true);*/
+					System.out.println("SimStep " + tick + " realise en " + duration/1000000 + "ms");
 				}
 					
 				si.repeat(1, updateProcedure);
@@ -630,7 +650,7 @@ public abstract class SimulationController {
 			si.getGlobalVariableName();
 			//NetLogoInterface.createUpdateProcedure("__UPDATE");
             int cltsize =1;      
-            Matrix cltmg = null;
+            Matrix concatenatedDataHistory = null;
             int x = 0;
             List<List<Cluster>> clusterltarray = new ArrayList<List<Cluster>>();
             List<double[][]> vtestlist = new ArrayList<double[][]>();
@@ -641,7 +661,10 @@ public abstract class SimulationController {
 				currenttick=tick;
 				if(tick >=0 && tick % SimAnalyzer.updatestep == 0){						  
 //				if(tick >=0 && tick % ticksBetweenClustering == 0){						  
-					List<Cluster> clt = new ArrayList<Cluster>();
+					long duration = System.nanoTime();
+					Clusterer.buildclustertime=0;
+					Clusterer.clustertime=0;
+				List<Cluster> clt = new ArrayList<Cluster>();
 		            List<Observer> obslist = new ArrayList<Observer>();
 					for(int i=0;i<=(tick-tick%ticksBetweenClustering)/ticksBetweenClustering;i++)
 					{
@@ -712,15 +735,15 @@ public abstract class SimulationController {
 					MatrixList.add(mg);
 					if(x==0)
 					{
-						cltmg = mg;
+						concatenatedDataHistory = mg;
 						x = 1;
 					}
 					else
-						cltmg = cltmg.appendVertically(mg);
+						concatenatedDataHistory = concatenatedDataHistory.appendVertically(mg);
 					if(tick==maxTicks)
 					{
 						DataMatrix.showGUI();
-						cltmg.showGUI();
+						concatenatedDataHistory.showGUI();
 					}
 					
 					if(tick >=0 && tick % ticksBetweenClustering == 0){						  
@@ -747,12 +770,19 @@ public abstract class SimulationController {
 				    scl.pack() ;
 					scl.setVisible(true);
 					}
-				}
+					duration = System.nanoTime() - duration;
+				System.out.println("SimUpdateStep " + tick + " realise en " + duration/1000000 + "ms");
+				System.out.println("SimUpdateStep " + tick + " ClusterBuild " + Clusterer.buildclustertime/1000000 + "ms");
+				System.out.println("SimUpdateStep " + tick + " ClusterInst " + Clusterer.clustertime/1000000 + "ms");
+			}
 				si.repeat(1, updateProcedure);
 			}
 			if (SimAnalyzer.computehistory)
 			{
-				Matrix subm;
+				long duration = System.nanoTime();
+				Clusterer.buildclustertime=0;
+				Clusterer.clustertime=0;
+			Matrix subm;
 				int noma=MatrixList.size();
 				for(int tick=maxTicks; tick>=0; tick--){
 					currenttick=tick;
@@ -773,13 +803,17 @@ public abstract class SimulationController {
 						
 					}
 				}
-				
-			}
+				duration = System.nanoTime() - duration;
+			
+				System.out.println("History realise en " + duration/1000000 + "ms");
+				System.out.println("History  ClusterBuild " + Clusterer.buildclustertime/1000000 + "ms");
+				System.out.println("History  ClusterInst " + Clusterer.clustertime/1000000 + "ms");
+		}
 			
 			
 			if (SimAnalyzer.followcluster)
 			{
-	        ClusterEval ctel = new ClusterEval(clusterltarray,clusterltarray2, ticklist, MatrixList, vtestlist, cltmg); 
+	        ClusterEval ctel = new ClusterEval(clusterltarray,clusterltarray2, ticklist, MatrixList, vtestlist, concatenatedDataHistory); 
 	        FAgModel fag=new FAgModel(clusterltarray.get(0).get(0).agm);
 			@SuppressWarnings("unused")
 			WindowListener l = new WindowAdapter()

@@ -18,6 +18,8 @@ public abstract class Clusterer {
 	public boolean ClusterBuilt=false;
 	public List<Cluster> clustinit;
 	public List<Clusterer> subclusterer;
+	public static long buildclustertime=1;
+	public static long clustertime=1;
 	
 	public void buildClusterer(Matrix data)throws Exception{
 		buildClusterer(data, null);

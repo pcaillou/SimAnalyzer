@@ -70,9 +70,11 @@ public class WekaClusterer extends Clusterer {
 
 
 	public Long clusterInstance(Matrix input, Matrix weight, long sampleRow)throws Exception {
+		long duration = System.nanoTime();
 		double sampleWeight = 1.0;
 		Instance instance = WekaWrapper.sampleToInstanceWrapper(input, sampleRow, sampleWeight, discrete);
 		instance.setDataset(instances);
+		clustertime+=System.nanoTime()-duration;
 		return new Long(wekaClusterer.clusterInstance(instance));
 	}
 
@@ -86,9 +88,11 @@ public class WekaClusterer extends Clusterer {
 
 	@Override
 	public void buildClusterer(Matrix data, Matrix weight)throws Exception {
+		long duration = System.nanoTime();
 		Instances instances = WekaWrapper.matrixToInstancesWrapper(data, weight, discrete);
 		this.instances = instances;
 		wekaClusterer.buildClusterer(instances);
+		buildclustertime+=System.nanoTime()-duration;
 	//	wekaClusterer.
 	}
 

@@ -13,6 +13,8 @@ import java.util.List;
 
 
 import org.ujmp.core.Matrix;
+import org.ujmp.core.doublematrix.DenseDoubleMatrix2D;
+import org.ujmp.core.doublematrix.DoubleMatrix;
 
 import controller.AgModel;
 import controller.SimulationController;
@@ -30,14 +32,27 @@ public class Cluster {
 	public double[] vtests;
 	public double[] avg;
 	public double[] stderr;
-	public Matrix vtestsm;
-	public Matrix avgsm;
-	public Matrix stderrsm;
-	public Matrix vtestsmdef;
-	public Matrix avgsmdef;
-	public Matrix stderrsmdef;
-	public Matrix avglobsm;
-	public Matrix stdglobsm;
+	public DenseDoubleMatrix2D vtestsm;
+	public DenseDoubleMatrix2D avgsm;
+	public DenseDoubleMatrix2D stderrsm;
+	public DenseDoubleMatrix2D vtestsmdef;
+	public DenseDoubleMatrix2D avgsmdef;
+	public DenseDoubleMatrix2D stderrsmdef;
+	public DenseDoubleMatrix2D avglobsm;
+	public DenseDoubleMatrix2D stdglobsm;
+	public ArrayList<HashMap<String,Integer>> globDistrib=new ArrayList();
+	public ArrayList<HashMap<String,Integer>> popDistrib=new ArrayList();
+	public ArrayList<HashMap<String,Integer>> defDistrib=new ArrayList();
+	public String[] qvtests;
+	public String[] qvtestsshort;
+	public Matrix qvtestsm;
+	public Matrix qavgsm;
+	public Matrix qstderrsm;
+	public Matrix qvtestsmdef;
+	public Matrix qavgsmdef;
+	public Matrix qstderrsmdef;
+	public Matrix qavglobsm;
+	public Matrix qstdglobsm;
     public List<Long> ticklist = new ArrayList<Long>();
 	public AgModel agm;
 	public int idtickinit;
@@ -155,6 +170,18 @@ public class Cluster {
 		this.update(data, componentsIds);
 		agm=new AgModel(cl,this);
 	}
+	
+	public void updatedistrib(Matrix data, ArrayList<VariableDistribution> distrib){		
+		distrib.clear();
+		long idColumn = data.getColumnForLabel(Cluster.ID_C_NAME);
+//		long classLabelColumn = data.getColumnForLabel(Cluster.CLASS_LABEL_C_NAME);
+		for(int column =0; column < data.getColumnCount(); column++){
+				String label = data.getColumnLabel(column);
+				VariableDistribution vd = VariableDistributionFactory.buildDistribution(data, column);
+				distrib.set(column, vd);			
+		}
+	}
+	
 	
 	public void update(Matrix data, Collection<Long> componentsIds){
 		
