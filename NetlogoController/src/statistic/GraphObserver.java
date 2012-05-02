@@ -16,12 +16,15 @@ import observer.SimulationInterface;
 public class GraphObserver extends StatisticalObserver  {
 	long step = 1;
 	
-	public static String[] ParamNames={"ListenTo","ObservedBy","GraphColumnName","time (optional)","","","","","","","","","","","","","","","",""};
+	public static String[] ParamNames={"ListenTo","ObservedBy","GraphColumnName","time [opt]","weightEdgeDefault [opt]","timeCreationEdgeDefault [opt]","timeDeleteEdgeDefault [opt]","","","","","","","","","","","","",""};
 	public static String[] DefaultValues={"0","1","3","","","","","","","","","","","","","","","","",""};
 	
 	/* temporaire le temps d'avoir les vrai constantes de label graph */
 	private String LABEL_GRAPH = "";
 	private String LABEL_TIME = "";
+	private int WEIGHT_DEFAULT = 1;
+	private long TIME_CREATION_DEFAULT = -1;
+	private long TIME_DELETE_DEFAULT = -1;
 	
 	private DynamicGraph graph = new DynamicGraph("GraphObserver");
 	
@@ -47,6 +50,18 @@ public class GraphObserver extends StatisticalObserver  {
 		try {
 			this.LABEL_GRAPH=paramvals[2];
 			this.LABEL_TIME=paramvals[3];
+			if (!paramvals[4].equals(""))
+			{
+				this.WEIGHT_DEFAULT = Integer.valueOf(paramvals[4]);
+			}
+			if (!paramvals[5].equals(""))
+			{
+				this.TIME_CREATION_DEFAULT = Integer.valueOf(paramvals[5]);
+			}
+			if (!paramvals[6].equals(""))
+			{
+				this.TIME_DELETE_DEFAULT = Integer.valueOf(paramvals[6]);
+			}
 		} catch (NumberFormatException e) {
 			System.err.println("Erreur lors de la recuperation des parametres");
 			e.printStackTrace();
@@ -60,11 +75,11 @@ public class GraphObserver extends StatisticalObserver  {
 	
 	public Matrix getGraphResult(Matrix data, long idColumn, long graphColumn, long timeColumn,String sufix)
 	{
-		Matrix result = MatrixFactory.zeros(ValueType.STRING, data.getRowCount(), 11);
 		
-		/* temps pris par defaut si aucune colonne timeColumn specifiee */
 		long timeTick = SimulationController.currenttick;
-		
+		long rowCount = data.getRowCount();
+
+		Matrix result = MatrixFactory.zeros(ValueType.STRING, rowCount, 11);
 		ArrayList<Long> timeList = new ArrayList<Long>();
 		
 		/* initialisation de la matrice */
@@ -81,9 +96,11 @@ public class GraphObserver extends StatisticalObserver  {
 		result.setColumnLabel(10, "gr_centrality" + sufix);			// centralite d'un noeud par rapport a ceux atteignable
 		
 		/* on charge dans le graphe les donnees recues et on recupere le temps actuel */
-		for (long i = data.getRowCount()-1 ; i >= 0  ; i--)
+		for (long i = 0 ; i < rowCount  ; i++)
 		{
 			long actualTime = 0;
+			long minTime,maxTime;
+
 			if (timeColumn == -1)
 			{
 				actualTime = timeTick;
@@ -100,9 +117,26 @@ public class GraphObserver extends StatisticalObserver  {
 					timeList.add(actualTime);
 				}
 			}
-			graph.loadFromString(data.getAsString(i,graphColumn), 1, actualTime, actualTime, true);
+			
+			if (TIME_CREATION_DEFAULT == -1)
+			{
+				minTime = actualTime;
+			}
+			else
+			{
+				minTime = TIME_CREATION_DEFAULT;
+			}
+			if (TIME_DELETE_DEFAULT == -1)
+			{
+				maxTime = actualTime;
+			}
+			else
+			{
+				maxTime = TIME_DELETE_DEFAULT;
+			}
+			graph.loadFromString(data.getAsString(i,graphColumn), WEIGHT_DEFAULT, minTime, maxTime, true);
 		}
-
+		
 		
 		/* on calcule les nouvelles donnees */
 		
@@ -239,7 +273,7 @@ public class GraphObserver extends StatisticalObserver  {
 		}
 		
 		/* on ajoute au resultat les nouvelles donnees */
-		for (int i = (int) (data.getRowCount() - 1) ; i >= 0  ; i--)
+		for (int i = (int) (rowCount - 1) ; i >= 0  ; i--)
 		{
 			long time;
 			if (timeColumn != -1)
@@ -262,9 +296,6 @@ public class GraphObserver extends StatisticalObserver  {
 			result.setAsDouble(densitys.get(time) / densitys.get(time-1), i, 8);
 			result.setAsInt(indirectConnections.get(time)[index], i, 9);
 			result.setAsDouble(centralitys.get(time)[index], i, 10);
-			
-
-			
 		}
 		
 		for (long l : timeList)
@@ -283,7 +314,7 @@ public class GraphObserver extends StatisticalObserver  {
 		     timeColumn = data.getColumnForLabel(LABEL_TIME);
 		
 		long duration = System.nanoTime();
-	
+		
 		/* on effectue le calcul pour chaque graphe (voir comment recuperer tout les id des graphes) */
 		Matrix tmpResult = getGraphResult(data, idColumn, graphColumn, timeColumn,LABEL_GRAPH);
 		
@@ -315,8 +346,8 @@ public class GraphObserver extends StatisticalObserver  {
 			}
 		}
 		
-		//data.showGUI();
-		//result.showGUI();
+		data.showGUI();
+		result.showGUI();
 		//pause();
 		
 		/* on envoie le resultat */

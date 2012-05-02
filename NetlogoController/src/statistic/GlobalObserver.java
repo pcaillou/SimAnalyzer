@@ -60,11 +60,12 @@ public class GlobalObserver extends StatisticalObserver {
 			}
 			else
 			{
-			Matrix n2 = newglobal.appendHorizontally(data);	
-			newglobal=n2.subMatrix(Ret.NEW, 0, 0, n2.getRowCount()-1, n2.getColumnCount()-1);
-			for(long column =0; column<data.getColumnCount(); column++ ){
-				long nc=newglobal.getColumnCount()-data.getColumnCount()+column;
-				newglobal.setColumnLabel(nc, data.getColumnLabel(column));}
+				Matrix n2 = newglobal.appendHorizontally(data);	
+				newglobal=n2.subMatrix(Ret.NEW, 0, 0, n2.getRowCount()-1, n2.getColumnCount()-1);
+				for(long column =0; column<data.getColumnCount(); column++ ){
+					long nc=newglobal.getColumnCount()-data.getColumnCount()+column;
+					newglobal.setColumnLabel(nc, data.getColumnLabel(column));
+				}
 			}
 		}
 		

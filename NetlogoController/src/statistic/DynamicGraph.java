@@ -40,10 +40,10 @@ public class DynamicGraph{
 	public static final char RIGHT_BRACE = ']';
 	public static final char SEPARATOR =   ':';
 	
-	public HashMap<Long, int[][]> adjacencyMatrixs;
-	public HashMap<Long, int[][]> weightsMatrixs;
-	public HashMap<Long, int[][]> shortestPathsWeightMatrixs;
-	public HashMap<Long, int[][]> shortestPathsMatrixs;
+	private HashMap<Long, int[][]> adjacencyMatrixs;
+	private HashMap<Long, int[][]> weightsMatrixs;
+	private HashMap<Long, int[][]> shortestPathsWeightMatrixs;
+	private HashMap<Long, int[][]> shortestPathsMatrixs;
 	
 	Integer autoGenerateEdgedId;
 	
@@ -629,7 +629,7 @@ public class DynamicGraph{
 		/* on teste si l'intervalle est coherent */
 		if (timeAdd > timeDel)
 		{
-			System.err.println("Error : " +timeAdd + "-" + timeDel + " is not a valid interval");
+			System.err.println("Error : " + timeAdd + "-" + timeDel + " is not a valid interval");
 			return null;
 		}
 		
@@ -745,7 +745,7 @@ public class DynamicGraph{
 	 * @param source : chaine contenant les donnes graphes dans le format LEFT_BRACE attr1 SEPARATOR attr2 SEPARATOR ... RIGHT_BRACE
 	 * @param weightDefault : poids par defaut si non specifie
 	 * @param timeStartDefault : temps de creation par defaut si non specifie
-	 * @param timeEndDefault : temps de suppression par defaut si non specifie
+	 * @param timeEndDefault : temps de suppression par defaut si non specifie (ou egal au temps de creation si la valeur lui est inférieure)
 	 * @param insert : vrai si les donnes doivent etre inserees, faux si elles doivent etre ajoutees (voir fonction addEdge et insertEdge)
 	 */
 	public void loadFromString(String source, int weightDefault, long timeStartDefault, long timeEndDefault, boolean insert)
@@ -768,41 +768,45 @@ public class DynamicGraph{
 				case 2 :
 					if (insert)
 					{
-						addEdge(graphContent.get(0),graphContent.get(1),weightDefault,timeStartDefault,timeEndDefault);
+						insertEdge(graphContent.get(0),graphContent.get(1),weightDefault,timeStartDefault,timeEndDefault);
 					}
 					else
 					{
-						insertEdge(graphContent.get(0),graphContent.get(1),weightDefault,timeStartDefault,timeEndDefault);
+						addEdge(graphContent.get(0),graphContent.get(1),weightDefault,timeStartDefault,timeEndDefault);
 					}
 					break;
 				case 3 :
 					if (insert)
 					{
-						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),timeStartDefault,timeEndDefault);
+						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),timeStartDefault,timeEndDefault);
 					}
 					else
 					{
-						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),timeStartDefault,timeEndDefault);
+						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),timeStartDefault,timeEndDefault);
 					}
 					break;
 				case 4 :
+					if (Long.valueOf(graphContent.get(3)) > timeEndDefault)
+					{
+						timeEndDefault = Long.valueOf(graphContent.get(3));
+					}
 					if (insert)
 					{
-						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),timeEndDefault);
+						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),timeEndDefault);
 					}
 					else
 					{
-						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),timeEndDefault);
+						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),timeEndDefault);
 					}
 					break;
 				case 5 :
 					if (insert)
 					{
-						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),Long.valueOf(graphContent.get(4)));
+						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),Long.valueOf(graphContent.get(4)));
 					}
 					else
 					{
-						insertEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),Long.valueOf(graphContent.get(4)));
+						addEdge(graphContent.get(0),graphContent.get(1),Integer.valueOf(graphContent.get(2)),Long.valueOf(graphContent.get(3)),Long.valueOf(graphContent.get(4)));
 					}
 					break;
 				default :
@@ -867,7 +871,7 @@ public class DynamicGraph{
 	 */
 	public int[][] getAdjacencyMatrixAt(long time)
 	{	
-		if (adjacencyMatrixs.containsKey(time))
+		if (adjacencyMatrixs.containsKey(time) && adjacencyMatrixs.get(time).length == getNodeCount())
 		{
 			return adjacencyMatrixs.get(time);
 		}
@@ -908,7 +912,7 @@ public class DynamicGraph{
 	 */
 	public int[][] getWeightMatrix(long time)
 	{
-		if (weightsMatrixs.containsKey(time))
+		if (weightsMatrixs.containsKey(time) && weightsMatrixs.get(time).length == getNodeCount())
 		{
 			return weightsMatrixs.get(time);
 		}
@@ -949,7 +953,7 @@ public class DynamicGraph{
 	 */
 	public int[][] getShortestPathsMatrixs(long time)
 	{
-		if (shortestPathsWeightMatrixs.containsKey(time))
+		if (shortestPathsWeightMatrixs.containsKey(time)&& shortestPathsWeightMatrixs.get(time).length == getNodeCount())
 		{
 			return shortestPathsWeightMatrixs.get(time);
 		}
@@ -995,7 +999,7 @@ public class DynamicGraph{
 	 */
 	public int[][] getShortestPathWeightMatrix(long time)
 	{
-		if (shortestPathsWeightMatrixs.containsKey(time))
+		if (shortestPathsWeightMatrixs.containsKey(time) && shortestPathsWeightMatrixs.get(time).length == getNodeCount())
 		{
 			return shortestPathsWeightMatrixs.get(time);
 		}
