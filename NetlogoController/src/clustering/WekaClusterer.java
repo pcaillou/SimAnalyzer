@@ -9,6 +9,7 @@ import java.lang.reflect.Constructor;
 
 import org.ujmp.core.Matrix;
 
+
 import weka.clusterers.NumberOfClustersRequestable;
 import weka.core.Instance;
 import weka.core.Instances;
@@ -59,7 +60,14 @@ public class WekaClusterer extends Clusterer {
 			Constructor<?> constr = c.getConstructor(new Class[] {});
 			wekaClusterer = (weka.clusterers.Clusterer) constr.newInstance(new Object[] {});
 			if (options != null || options.length != 0) {
-				 ((Object) wekaClusterer).setOptions(options);
+				java.lang.String optionsex[]={"a"};
+				Class optcl=options.getClass();
+				java.lang.reflect.Method setopt=wekaClusterer.getClass().getMethod("setOptions",optcl);
+				String opt=options.toString();
+				optionsex[0]=opt;
+				setopt.invoke(wekaClusterer, (Object)options);
+//				 ((Object) wekaClusterer).setOptions(options);
+				//TODO
 			}
 		}
 	}
