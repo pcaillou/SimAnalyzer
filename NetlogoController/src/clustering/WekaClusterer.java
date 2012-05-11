@@ -59,7 +59,7 @@ public class WekaClusterer extends Clusterer {
 			Constructor<?> constr = c.getConstructor(new Class[] {});
 			wekaClusterer = (weka.clusterers.Clusterer) constr.newInstance(new Object[] {});
 			if (options != null || options.length != 0) {
-				// wekaClusterer.setOptions(options);
+				 ((Object) wekaClusterer).setOptions(options);
 			}
 		}
 	}
