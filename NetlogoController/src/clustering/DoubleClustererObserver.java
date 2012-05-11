@@ -99,7 +99,7 @@ public class DoubleClustererObserver extends ClustererObserver {
 		input.setLabel("Input");
 		// normalization across the samples cannot hurt
 		// i.e. zero mean and unit variance for each feature
-		input = input.standardize(Ret.NEW, Matrix.ROW);
+//		input = input.standardize(Ret.NEW, Matrix.ROW);
 		input.setLabel("Standardized Input");
 		// looks different?
 		if(controller.SimulationController.tf)
@@ -112,9 +112,13 @@ public class DoubleClustererObserver extends ClustererObserver {
 				Matrix inputbuild = controller.SimulationController.input.get(controller.SimulationController.inputN);
 				Matrix inputbuildint=inputbuild.selectColumns(Ret.NEW,columnsint);
 				c.buildClusterer(inputbuildint);
+				for(int co=0; co<inputbuildint.getColumnCount(); co++){
+					System.out.println("coli "+co+" "+inputbuildint.getColumnLabel(co));
+					
+				}
 //			CLUSTER_BUILT = true;
 			c.ClusterBuilt = true;
-//			System.out.println("BuildCO "+name);
+			System.out.println("BuildCO "+name);
 			clusterltint = c.clusterData(data, inputint);
 			
 			clustersIds = new ArrayList<Long>();
@@ -147,6 +151,10 @@ public class DoubleClustererObserver extends ClustererObserver {
 				Matrix datanew = data.selectRows(Ret.NEW,rows);
 				cl.buildClusterer(inputbuildnew);
 				cl.ClusterBuilt = true;
+				for(int co=0; co<inputbuildnew.getColumnCount(); co++){
+					System.out.println("coln "+co+" "+inputbuildnew.getColumnLabel(co));
+					
+				}
 //			System.out.println("BuildCO "+name);
 				List<Cluster> clusterltf = cl.clusterData(datanew, inputnew);
 				c.subclusterer.add(cl);
