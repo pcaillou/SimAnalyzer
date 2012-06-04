@@ -73,6 +73,29 @@ public class GraphObserver extends StatisticalObserver  {
 		super();
 	}
 	
+	/**
+	 * Calcule toutes les données possible depuis la matrice donnee
+	 * 
+	 * paramètres calcules :
+	 *   - correlation avec t-1
+	 *   - correlation depuis t = 0
+	 *   - degres sortant au temps t
+	 *   - degres entrant au temps t
+	 *   - nombre total d'arcs au temps t
+	 *   - diametre (du graphe) au temps t
+	 *   - rayon (du graphe) au temps t
+	 *   - densite du noeud au temps t
+	 *   - rapport de la densité du noeud au temps t et t-1
+	 *   - nombre de connections indirectes au temps t
+	 *   - centralité au temps t
+	 *   
+	 * @param data
+	 * @param idColumn
+	 * @param graphColumn
+	 * @param timeColumn
+	 * @param sufix
+	 * @return
+	 */
 	public Matrix getGraphResult(Matrix data, long idColumn, long graphColumn, long timeColumn,String sufix)
 	{
 		
@@ -306,7 +329,7 @@ public class GraphObserver extends StatisticalObserver  {
 		
 		for (long l : timeList)
 		{
-			graph.displayGraph(l);
+			//graph.displayGraph(l);
 		}
 		
 		return result;
@@ -353,8 +376,8 @@ public class GraphObserver extends StatisticalObserver  {
 		result.setLabel("GraphObserver");
 
 		
-		data.showGUI();
-		result.showGUI();
+		//data.showGUI();
+		//result.showGUI();
 		//pause();
 		
 		/* on envoie le resultat */
