@@ -102,7 +102,7 @@ public class GraphObserver extends StatisticalObserver  {
 		long timeTick = SimulationController.currenttick;
 		long rowCount = data.getRowCount();
 
-		Matrix result = MatrixFactory.zeros(ValueType.STRING, rowCount, 11);
+		Matrix result = MatrixFactory.zeros(ValueType.STRING, rowCount, 13);
 		ArrayList<Long> timeList = new ArrayList<Long>();
 		
 		/* initialisation de la matrice */
@@ -116,7 +116,9 @@ public class GraphObserver extends StatisticalObserver  {
 		result.setColumnLabel(7, "gr_density" + sufix);				// densite du graphe
 		result.setColumnLabel(8, "gr_ratioDensity" + sufix);		// densite du graphe par rapport a t-1
 		result.setColumnLabel(9, "gr_indirectConnection" + sufix);	// nombre de noeuds accessible - degre sortant
-		result.setColumnLabel(10, "gr_centrality" + sufix);			// centralite d'un noeud par rapport a ceux atteignable
+		result.setColumnLabel(10, "gr_directConnectionsChain" + sufix);		// connexions directes aux autres noeud sous forme de chaine
+		result.setColumnLabel(11, "gr_indirectConnectionsChain" + sufix);	// connexions indirectes aux autres noeud sous forme de chaine
+		result.setColumnLabel(12, "gr_centrality" + sufix);			// centralite d'un noeud par rapport a ceux atteignable
 		
 		/* on charge dans le graphe les donnees recues et on recupere le temps actuel */
 		long actualTime = 0;
@@ -243,26 +245,54 @@ public class GraphObserver extends StatisticalObserver  {
 		
 		/* on calcule le nombre de connexions indirecte pour chaque noeud */
 		HashMap<Long,Integer[]> indirectConnections = new HashMap<Long, Integer[]>();
+		HashMap<Long,String[]> directConnectionsChains = new HashMap<Long, String[]>();
+		HashMap<Long,String[]> indirectConnectionsChains = new HashMap<Long, String[]>();	
+		
 		for (long time : timeList)
 		{
-			/* on calcule le nombre de connexions avec tout les noeuds, et on retire le nombre de degres sortant */
 			Integer[] indirectConnection = new Integer[graph.getNodeCount()];
+			String[] indirectConnctionChain = new String[graph.getNodeCount()];
+			String[] directConnctionChain = new String[graph.getNodeCount()];
 			int[][] paths = graph.getShortestPathWeightMatrix(time);
-			
+			int[][] adj = graph.getAdjacencyMatrixAt(time);
+
+			/* on calcule le nombre de connexions avec tout les noeuds, et on retire le nombre de degres sortant */
 			for (int i = indirectConnection.length-1 ; i >= 0  ; i--)
 			{
 				indirectConnection[i] = 0;
-				for (int j : paths[i])
+				indirectConnctionChain[i] = "";
+				directConnctionChain[i] = "";
+				
+				for (int j = indirectConnection.length-1 ; j >= 0  ; j--)
 				{
-					if (j < Integer.MAX_VALUE)
+					if (paths[i][j] < Integer.MAX_VALUE)
 					{
 						indirectConnection[i]++;
 					}
+					
+					if (adj[i][j] == 1)
+					{
+						indirectConnctionChain[i] += "1";
+						directConnctionChain[i] += "1";
+					}
+					else if (paths[i][j] < Integer.MAX_VALUE)
+					{
+						indirectConnctionChain[i] += "1";
+						directConnctionChain[i] += "0";
+					}
+					else
+					{
+						indirectConnctionChain[i] += "0";
+						directConnctionChain[i] += "0";
+					}
 				}
+				
 				indirectConnection[i] -= graph.getOutDegree(graph.getNode(i), time);
 			}
 			
 			indirectConnections.put(time, indirectConnection);
+			indirectConnectionsChains.put(time, indirectConnctionChain);
+			directConnectionsChains.put(time, directConnctionChain);
 			
 		}
 		
@@ -325,11 +355,13 @@ public class GraphObserver extends StatisticalObserver  {
 			result.setAsDouble(densitys.get(time) / densitys.get(time-1), i, 8);
 			result.setAsInt(indirectConnections.get(time)[index], i, 9);
 			result.setAsDouble(centralitys.get(time)[index], i, 10);
+			result.setAsString("[" + directConnectionsChains.get(time)[index] + "]", i, 11);
+			result.setAsString("[" + indirectConnectionsChains.get(time)[index] + "]", i, 12);
 		}
 		
 		for (long l : timeList)
 		{
-			//graph.displayGraph(l);
+			graph.displayGraph(l);
 		}
 		
 		return result;
@@ -377,7 +409,7 @@ public class GraphObserver extends StatisticalObserver  {
 
 		
 		//data.showGUI();
-		//result.showGUI();
+		result.showGUI();
 		//pause();
 		
 		/* on envoie le resultat */
