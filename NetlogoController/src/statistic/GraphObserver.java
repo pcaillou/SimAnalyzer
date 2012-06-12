@@ -116,9 +116,9 @@ public class GraphObserver extends StatisticalObserver  {
 		result.setColumnLabel(7, "gr_density" + sufix);				// densite du graphe
 		result.setColumnLabel(8, "gr_ratioDensity" + sufix);		// densite du graphe par rapport a t-1
 		result.setColumnLabel(9, "gr_indirectConnection" + sufix);	// nombre de noeuds accessible - degre sortant
-		result.setColumnLabel(10, "gr_directConnectionsChain" + sufix);		// connexions directes aux autres noeud sous forme de chaine
-		result.setColumnLabel(11, "gr_indirectConnectionsChain" + sufix);	// connexions indirectes aux autres noeud sous forme de chaine
-		result.setColumnLabel(12, "gr_centrality" + sufix);			// centralite d'un noeud par rapport a ceux atteignable
+		result.setColumnLabel(10, "gr_centrality" + sufix);			// centralite d'un noeud par rapport a ceux atteignable
+		result.setColumnLabel(11, "gr_directConnectionsChain" + sufix);		// connexions directes aux autres noeud sous forme de chaine
+		result.setColumnLabel(12, "gr_indirectConnectionsChain" + sufix);	// connexions indirectes aux autres noeud sous forme de chaine
 		
 		/* on charge dans le graphe les donnees recues et on recupere le temps actuel */
 		long actualTime = 0;
