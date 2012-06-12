@@ -88,6 +88,7 @@ public abstract class SimulationController {
 	public static boolean[] VInit;
 	public static boolean[] VQuali;
 	public static int nbVInit;
+	public static ArrayList<Cluster> ReRunClusters; 
 	
 	public static Random rand=new Random();
 	
@@ -111,6 +112,8 @@ public abstract class SimulationController {
 	public void reRunBoucle(Object... params) throws Exception
 	{
 		int stepglob=0;
+		this.ReRunClusters=new ArrayList();
+		ReRunClusters.add(this.clusterTarget);
        	globvarcurrent=globvarmax;
        	if (globvarmax>globvarmin)
        	{
@@ -174,9 +177,12 @@ public abstract class SimulationController {
 				ResFil=ResFil.deleteRows(Ret.NEW, i);
 			}
 		}
-		ResFil.showGUI();					
-		
-	}
+		ResFil.showGUI();	
+/*		FAgModel fag=new FAgModel(this.clusterTarget.agm,true);
+		fag.setLocation(100,100);
+	    fag.pack() ;
+		fag.setVisible(true);
+*/	}
 	
 	public static void updateVariableInfo(Matrix data)
 	{
@@ -198,7 +204,8 @@ public abstract class SimulationController {
 	public void reRunInit(Object... params) throws Exception
 	{
 		clearObservers();
-		
+		ClustererObserver observedco=this.currentco;
+		Cluster observedcl=this.clusterTarget;
 		
 		List<Clusterer>  wclloc = (List<Clusterer>)getParameter(CLUSTERER_INDEX, params);
 		List<Observer> obs=new ArrayList<Observer>();
@@ -206,6 +213,7 @@ public abstract class SimulationController {
 		for (int i=0; i<SimAnalyzer.nbObserverMax; i++)
 		{
 			String typ=SimAnalyzer.obstypes[i];
+			if (typ!=null)
 			if (!typ.equals("None"))
 			{
 				Observer nobs=(Observer)(Class.forName(typ).newInstance());
@@ -226,40 +234,31 @@ public abstract class SimulationController {
 		if (obs.size()>0)
 		for (Observer ob:obs)
 		{
-			if (Integer.getInteger(ob.paramvalues[0])!=null)
-			{
-				int no=Integer.getInteger(ob.paramvalues[0]);
-				if (no!=2) obs.get(no).addListener(ob);
+			try {
+				int no=Integer.parseInt(ob.paramvalues[0]);
+				if (no!=2) obs .get(no).addListener(ob);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+	//			e.printStackTrace();
 			}
-			if (Integer.getInteger(ob.paramvalues[1])!=null)
-			{
-				int no=Integer.getInteger(ob.paramvalues[1]);
-				if (no!=2) obs.get(no).addListener(ob);
+			
+			try {
+				int noo=Integer.parseInt(ob.paramvalues[1]);
+				if (noo!=2) ob.addListener(obs.get(noo));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+	//			e.printStackTrace();
 			}
+	
 			
 		}
 		
 //		
-//		SlidingMeanObserver smo = new SlidingMeanObserver(si, slidingWindowSize);
-//		smo.setVisualizationRefresh(-1);
-//		GraphObserver gro = new GraphObserver(si, slidingWindowSize);
-//		gro.setVisualizationRefresh(-1);
-//		InitParamObserver ino = new InitParamObserver(si, slidingWindowSize);
-//		ino.setVisualizationRefresh(-1);
-//		
-//		GlobalObserver go = new GlobalObserver(si, slidingWindowSize);
-//		
-//		dio.addListener(go);
-//		dio.addListener(smo);
-//		dio.addListener(gro);
-//		dio.addListener(ino);
-//		smo.addListener(go);
-//		gro.addListener(go);
-//		ino.addListener(go);
-//		
 		lasto.addListener(go);
 //
 		addObserver(dio);
+		
+		
 	
 		
 		try {
@@ -325,7 +324,7 @@ public abstract class SimulationController {
             List<List<Cluster>> clusterltarray = new ArrayList<List<Cluster>>();
             List<double[][]> vtestlist = new ArrayList<double[][]>();
             List<Integer> ticklist = new ArrayList<Integer>();
-            List<Matrix> MatrixList = new ArrayList<Matrix>();
+            MatrixList = new ArrayList<Matrix>();
             List<List<Cluster>> clusterltarray2 = new ArrayList<List<Cluster>>();
 			for(int tick=0; tick<=maxTicks; tick++){
 				currenttick=tick;
@@ -345,7 +344,8 @@ public abstract class SimulationController {
 						ClustererObserver col = new ClustererObserver(wcl.get(i),si);
 						if ((nt==steptarget)&(typeReRun==0))
 						{
-							col = new ClustererObserver(clustererTarget,si);														
+							col = new ClustererObserver(clustererTarget,si);		
+							observedco=col;
 						}
 						//col=Clust(by def) de i en tick
 						col.setSimulationInterface(si);
@@ -365,6 +365,7 @@ public abstract class SimulationController {
 						{
 							clusterltarray.add(col.getClusterlist());
 							clt = col.getClusterlist();
+							
 						}
 						clusterltarray2.add(col.getClusterlist());
 						go.removeListener(col);
@@ -393,30 +394,33 @@ public abstract class SimulationController {
 		//				DataMatrix.showGUI();
 		//				mg.showGUI();
 					}
-					if(x==0)
-					{
-						cltmg = mg;
-						x = 1;
-					}
-					else
-						cltmg = cltmg.appendVertically(mg);
+//					if(x==0)
+//					{
+//						cltmg = mg;
+//						x = 1;
+//					}
+//					else
+//						cltmg = cltmg.appendVertically(mg);
 					
-					double[][] vtest = new double[clt.size()][(int) mg.getColumnCount()];
-					for(int i=0;i<clt.size();i++)
-					{
-						vtest[i]= Vtest.Vtest(clt.get(i),mg);
-					}
+//					double[][] vtest = new double[clt.size()][(int) mg.getColumnCount()];
+//					for(int i=0;i<clt.size();i++)
+//					{
+//						vtest[i]= Vtest.Vtest(clt.get(i),mg);
+//					}
 					ticklist.add(tick);
-					vtestlist.add(vtest);	 
-//			        ShowClusterlt scl = new ShowClusterlt(clt, tick, cltsize, vtest, mg);
-			        cltsize += clt.size(); 
+//					vtestlist.add(vtest);	 
+//			        cltsize += clt.size(); 
 					if ((nt==steptarget)&(typeReRun==0))
 					{
-						Matrix m=Vtest.VtestM(clt.get(SimulationController.noclusttarget),mg);
+//						Matrix m=Vtest.VtestM(clt.get(SimulationController.noclusttarget),mg);
+						observedcl=observedco.getClusterlist().get(SimulationController.noclusttarget);	
+						ReRunClusters.add(observedcl);
+						Vtest.Vtest(observedcl,mg);
+						Vtest.Vtestinit(observedcl,mg);
+						Matrix m=observedcl.vtestsm;
+						
 						m.setAsDouble(SimulationController.globvarcurrent, 0,0);
 						ResMat=ResMat.appendHorizontally(m);	
-//						mn.showGUI();
-//						ResMat.showGUI();
 						@SuppressWarnings("deprecation")
 						Matrix ResFil=ResMat.copy();
 						for (int i=(int)ResFil.getRowCount()-1; i>0; i--)
@@ -471,10 +475,12 @@ public abstract class SimulationController {
 					
 				si.repeat(1, updateProcedure);
 			}	
-/*
 			if (SimAnalyzer.computehistory)
 			{
-				Matrix subm;
+				long duration = System.nanoTime();
+				Clusterer.buildclustertime=0;
+				Clusterer.clustertime=0;
+			Matrix subm;
 				int noma=MatrixList.size();
 				for(int tick=maxTicks; tick>=0; tick--){
 					currenttick=tick;
@@ -482,21 +488,16 @@ public abstract class SimulationController {
 						noma--;
 						subm=MatrixList.get(noma);
 						System.out.println("Compute Hist..."+(tick / ticksBetweenClustering));
-						for(int i=0;i<=maxTicks/ticksBetweenClustering;i++)
-						{
-							ClustererObserver col = new ClustererObserver(wcl.get(i),si);
-							if (SimAnalyzer.doubleclustering)
-								col = new DoubleClustererObserver(wcl.get(i),si);
-							//col=Clust(by def) de i en tick
-							col.setSimulationInterface(si);
-							col.name="Obs I"+i+"T"+tick/ticksBetweenClustering;
-							col.majwithdata(subm);
-						}
+						observedco.majwithdata(subm);
 						
 					}
 				}
-				
-			}*/
+				duration = System.nanoTime() - duration;
+			
+				System.out.println("History realise en " + duration/1000000 + "ms");
+				System.out.println("History  ClusterBuild " + Clusterer.buildclustertime/1000000 + "ms");
+				System.out.println("History  ClusterInst " + Clusterer.clustertime/1000000 + "ms");
+		}
 			
 			
 			
@@ -803,6 +804,7 @@ public abstract class SimulationController {
 						
 					}
 				}
+				SimulationController.datamatclust=concatenatedDataHistory;
 				duration = System.nanoTime() - duration;
 			
 				System.out.println("History realise en " + duration/1000000 + "ms");
@@ -813,8 +815,8 @@ public abstract class SimulationController {
 			
 			if (SimAnalyzer.followcluster)
 			{
-	        ClusterEval ctel = new ClusterEval(clusterltarray,clusterltarray2, ticklist, MatrixList, vtestlist, concatenatedDataHistory); 
-	        FAgModel fag=new FAgModel(clusterltarray.get(0).get(0).agm);
+	        ClusterEval ctel = new ClusterEval(clusterltarray,clusterltarray2, ticklist, MatrixList, vtestlist, concatenatedDataHistory,false); 
+//	        FAgModel fag=new FAgModel(clusterltarray.get(0).get(0).agm);
 			@SuppressWarnings("unused")
 			WindowListener l = new WindowAdapter()
 			{
@@ -823,12 +825,16 @@ public abstract class SimulationController {
 					 System.exit(0);
 				}
 			};
-			ctel.setLocation(500,100);
+			ctel.setLocation(100,50);
 		    ctel.pack() ;
 			ctel.setVisible(true);
-			fag.setLocation(100,100);
-		    fag.pack() ;
-			fag.setVisible(true);
+	        ClusterEval cteldesc = new ClusterEval(clusterltarray,clusterltarray2, ticklist, MatrixList, vtestlist, concatenatedDataHistory,true); 
+			cteldesc.setLocation(80,40);
+		    cteldesc.pack() ;
+			cteldesc.setVisible(true);
+//			fag.setLocation(100,100);
+//		    fag.pack() ;
+//			fag.setVisible(true);
 			}
 
 		} catch (InterruptedException e) {

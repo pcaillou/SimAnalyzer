@@ -108,7 +108,19 @@ public class FAgModel extends JFrame implements ActionListener
 	int v1,v2;
 	int colbase;
 	boolean created=false;
+	boolean rerun=false;
+	ArrayList<Cluster> cllist;
 
+	public FAgModel(AgModel agmd, boolean trerun)
+	{
+		this(agmd);
+		if (trerun)
+		{
+			rerun=true;
+			cllist=SimulationController.ReRunClusters;
+		}
+	}
+	
 	@SuppressWarnings({"deprecation", "unused"})
 	public FAgModel(AgModel agmd)
 	{	
@@ -538,7 +550,8 @@ public class FAgModel extends JFrame implements ActionListener
 	{
 		System.out.println("red "+v1+"/"+v2);
 		//Plot
-		
+		if (rerun==false)
+		{
 		if (v1!=v2)
 		{
 		
@@ -644,6 +657,122 @@ public class FAgModel extends JFrame implements ActionListener
 		        plot.setBackgroundPaint(Color.WHITE);			
 //			chart.setBorderVisible(false);
 			
+		}
+		}
+		if (rerun)
+		{
+			Cluster clr;
+		if (v1!=v2)
+		{
+		
+        XYIntervalSeries series1 = new XYIntervalSeries("ByExtension");
+        XYIntervalSeries series2 = new XYIntervalSeries("ByIntension");
+        XYIntervalSeries series3 = new XYIntervalSeries("Avg");
+        
+		// column keys...
+		@SuppressWarnings("unused")
+		String category1 = "1";
+		@SuppressWarnings("unused")
+		String category2 = "2";
+
+		for(int j=0;j<mbase.getColumnCount();j++)
+		{
+				series1.add(clbase.avgsm.getAsDouble(v1,j),clbase.avgsm.getAsDouble(v1,j)-clbase.stderrsm.getAsDouble(v1,j),clbase.avgsm.getAsDouble(v1,j)+clbase.stderrsm.getAsDouble(v1,j),clbase.avgsm.getAsDouble(v2,j),clbase.avgsm.getAsDouble(v2,j)-clbase.stderrsm.getAsDouble(v2,j),clbase.avgsm.getAsDouble(v2,j)+clbase.stderrsm.getAsDouble(v2,j));
+				if (clbase.avgsmdef.getAsDouble(2,j)>0)
+				series2.add(clbase.avgsmdef.getAsDouble(v1,j),clbase.avgsmdef.getAsDouble(v1,j)-clbase.stderrsmdef.getAsDouble(v1,j),clbase.avgsmdef.getAsDouble(v1,j)+clbase.stderrsmdef.getAsDouble(v1,j),clbase.avgsmdef.getAsDouble(v2,j),clbase.avgsmdef.getAsDouble(v2,j)-clbase.stderrsmdef.getAsDouble(v2,j),clbase.avgsmdef.getAsDouble(v2,j)+clbase.stderrsmdef.getAsDouble(v2,j));
+				series3.add(clbase.avglobsm.getAsDouble(v1,j),clbase.avglobsm.getAsDouble(v1,j)-clbase.stdglobsm.getAsDouble(v1,j),clbase.avglobsm.getAsDouble(v1,j)+clbase.stdglobsm.getAsDouble(v1,j),clbase.avglobsm.getAsDouble(v2,j),clbase.avglobsm.getAsDouble(v2,j)-clbase.stdglobsm.getAsDouble(v2,j),clbase.avglobsm.getAsDouble(v2,j)+clbase.stdglobsm.getAsDouble(v2,j));				
+
+//			series2.add(clbase.avgsmdef.getAsDouble(v1,j),clbase.avgsmdef.getAsDouble(v2,j));
+//			series3.add(clbase.avglobsm.getAsDouble(v1,j),clbase.avglobsm.getAsDouble(v2,j));
+			
+		}
+//        XYSeriesCollection dataset = new XYSeriesCollection();
+        XYIntervalSeriesCollection dataset = new XYIntervalSeriesCollection();
+        dataset.addSeries(series1);
+        dataset.addSeries(series2);
+        dataset.addSeries(series3);
+
+        
+        chartg = ChartFactory.createXYLineChart(
+        		"",
+                mbase.getRowLabel(v1),
+                mbase.getRowLabel(v2),
+             
+                dataset,
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                false
+            );
+
+        XYPlot plot = (XYPlot) chartg.getPlot();
+//        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+        XYErrorRenderer renderer = new XYErrorRenderer();
+        renderer.setSeriesLinesVisible(0, true);
+        renderer.setSeriesShapesVisible(0, true);
+        renderer.setSeriesLinesVisible(1, true);
+        renderer.setSeriesShapesVisible(1, true);        
+        renderer.setSeriesLinesVisible(2, true);
+        renderer.setSeriesShapesVisible(2, true);        
+        renderer.setDrawSeriesLineAsPath(true);
+        if (this.jcheckVariance.isSelected())
+        {
+        	renderer.setDrawXError(true);
+        	renderer.setDrawYError(true);
+        }
+        else
+        {
+        	renderer.setDrawXError(false);
+        	renderer.setDrawYError(false);        	
+        }
+        
+//        renderer.
+        plot.setRenderer(renderer);
+//		plot.setOutlineVisible(false);
+		plot.getDomainAxis().setVisible(true);
+		plot.getRangeAxis().setVisible(true);
+		plot.getDomainAxis().setAutoRange(true);
+		plot.getRangeAxis().setAutoRange(true);
+		plot.setBackgroundPaint(Color.WHITE);			
+//		chart.setBorderVisible(false);
+		}
+		if (v1==v2)
+		{
+
+			 DefaultStatisticalCategoryDataset result = new DefaultStatisticalCategoryDataset();
+				ArrayList<String> series=new ArrayList<String>(); 
+			 String series1 = new String("ByExtension");
+		     String series2 = new String("ByIntension");
+		     String series3 = new String("Avg");
+		     for (int i=0; i<this.cllist.size(); i++)
+		     {
+		    	clr=cllist.get(i); 
+		    	series.add("xp"+i);
+				for(int j=0;j<mbase.getColumnCount();j++)
+				{
+					result.add(clr.avgsm.getAsDouble(v1,j),clr.stderrsm.getAsDouble(v1,j),series.get(i),new String(""+j));
+//					result.add(clr.avgsmdef.getAsDouble(v1,j),clbase.stderrsmdef.getAsDouble(v1,j),series2,new String(""+j));
+//					result.add(clr.avglobsm.getAsDouble(v1,j),clbase.stdglobsm.getAsDouble(v1,j),series3,new String(""+j));
+					
+				}
+		     }
+		     
+		     
+
+		         CategoryAxis xAxis = new CategoryAxis("");
+		         xAxis.setCategoryMargin(0.5d);
+		         ValueAxis yAxis = new NumberAxis(mbase.getRowLabel(v1));
+
+		        // define the plot
+		         StatisticalLineAndShapeRenderer renderer = new StatisticalLineAndShapeRenderer();
+		         CategoryPlot plot = new CategoryPlot(result, xAxis, yAxis, renderer);
+
+		        chartg = new JFreeChart("",
+		                                          plot);
+		        plot.setBackgroundPaint(Color.WHITE);			
+//			chart.setBorderVisible(false);
+			
+		}
 		}
 		
 		

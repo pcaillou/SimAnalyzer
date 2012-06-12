@@ -126,6 +126,7 @@ public class ClustererObserver extends Observer {
 //		if(!CLUSTER_BUILT){
 			if(!c.ClusterBuilt){
 			c.buildClusterer(controller.SimulationController.input.get(controller.SimulationController.inputN));
+//			controller.SimulationController.input.get(controller.SimulationController.inputN).showGUI();
 //			CLUSTER_BUILT = true;
 			c.ClusterBuilt = true;
 //			System.out.println("BuildCO "+name);

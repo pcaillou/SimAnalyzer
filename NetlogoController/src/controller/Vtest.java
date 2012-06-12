@@ -175,6 +175,81 @@ public class Vtest{
 		return nst;
 	}
 	
+	public static double getMax(HashMap<String,Double> dist,int t)
+	{
+		double resd=0;
+		String res="";
+		String ress="";
+		String rest;
+		double vmax=1;
+		double vmin=-1;
+		if (dist==null)
+		{
+			resd=0;
+			
+		}
+		else
+		if (dist.size()>0)
+		{
+			int n=0;
+			int nm=0;
+			for (String rep:dist.keySet())
+			{
+				if (dist.get(rep)>resd)
+				{
+					n++;
+					nm++;
+					res=res+rep+"("+((int)(dist.get(rep)*100)/(double)100)+")";
+					if (dist.get(rep)>vmax)
+					{
+						vmax=dist.get(rep);
+					}
+				}
+			}
+			if (nm>1)
+			ress=ress+((int)(vmax*100)/(double)100)+"+/";
+			if (nm==1)
+				ress=ress+((int)(vmax*100)/(double)100)+"/";
+			if (nm==0)
+				ress=ress+"-/";
+			nm=0;
+			for (String rep:dist.keySet())
+			{
+				if (dist.get(rep)<-2)
+				{
+					n++;
+					nm++;
+					res=res+rep+"("+((int)(dist.get(rep)*100)/(double)100)+")";
+					if (dist.get(rep)<vmin)
+					{
+						vmin=dist.get(rep);
+					}
+				}
+			}
+			if (nm>1)
+				ress=ress+((int)(vmin*100)/(double)100)+"+";
+			if (nm==1)
+				ress=ress+((int)(vmin*100)/(double)100)+"";
+			if (nm==0)
+				ress=ress+"-";
+
+			if (n==0) res="--";
+				
+			resd=Math.max(vmax, -vmin);
+			
+		}
+		else
+		{
+			resd=0;
+			res="noMod";
+			ress="_";
+		}
+		rest=ress;
+		if (t==0)
+		rest=res;
+		return resd;
+	}
+	
 	public static String[] Vtestglobquali(Cluster clu, Matrix mg,int type, Cluster cib)
 	{
 		Variance varcalc=new Variance();

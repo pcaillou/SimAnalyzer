@@ -17,8 +17,14 @@ import java.awt.event.WindowListener;
 // AD import java.io.FileReader;
 // AD import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -59,12 +65,14 @@ public class ClusterEval extends JFrame implements ActionListener
 	List<JRadioButton> jrb1 = new ArrayList<JRadioButton>();
 	List<JRadioButton> jrb2 = new ArrayList<JRadioButton>();
 	ArrayList<JButton> jbHistoryPop;
+	ArrayList<JButton> jbRepPer;
+	ArrayList<JButton> jbRepInit;
 	ArrayList<Integer> id1;
 	ArrayList<Integer> id2;
 	JButton jbDefinition = new JButton("History by definition");
 	JButton jbs = new JButton("Show matrix");
-	JButton jbRI = new JButton("Reproduce initial");
-	JButton jbRD = new JButton("Reproduce same period");
+	JButton jbRI = new JButton("ReI");
+	JButton jbRD = new JButton("ReP");
 	JPanel jp = new JPanel(gb);
 	JScrollPane jsp = new JScrollPane(jp);
 	Matrix m;
@@ -83,9 +91,42 @@ public class ClusterEval extends JFrame implements ActionListener
 //		getContentPane().add(l1);
 		jpa.add(comp,gbc);
 	}
+	public static <K, V extends Comparable<V>> Map<K, V> sortByValues(final Map<K, V> map) {
+	    Comparator<K> valueComparator =  new Comparator<K>() {
+	        public int compare(K k1, K k2) {
+	            int compare = map.get(k2).compareTo(map.get(k1));
+	            if (compare == 0) return 1;
+	            else return compare;
+	        }
+	    };
+	    Map<K, V> sortedByValues = new TreeMap<K, V>(valueComparator);
+	    sortedByValues.putAll(map);
+	    return sortedByValues;
+	}
 	
+	public LinkedHashMap getSortedMap(HashMap hmap)
+	{
+	LinkedHashMap map = new LinkedHashMap();
+	List mapKeys = new ArrayList(hmap.keySet());
+	List mapValues = new ArrayList(hmap.values());
+	hmap.clear();
+	TreeSet sortedSet = new TreeSet(mapValues);
+	Object[] sortedArray = sortedSet.toArray();
+	int size = sortedArray.length;
+	// a) Ascending sort
+
+	for (int i=0; i<size; i++)
+	{
+
+	map.put(mapKeys.get(mapValues.indexOf(sortedArray[i])), sortedArray[i]);
+	mapValues.set(mapValues.indexOf(sortedArray[i]), null);
+
+	}
+	return map;
+	}
+
 	@SuppressWarnings("deprecation")
-	public ClusterEval(final List<List<Cluster>> cltarray, final List<List<Cluster>> cltarray2, final List<Integer> ticklist, final List<Matrix> MatrixList,List<double[][]> vtestlist, final Matrix concatenatedDataHistory)
+	public ClusterEval(final List<List<Cluster>> cltarray, final List<List<Cluster>> cltarray2, final List<Integer> ticklist, final List<Matrix> MatrixList,List<double[][]> vtestlist, final Matrix concatenatedDataHistory,boolean typece)
 	{	
 		cltarrayll=cltarray;
 		setTitle("Cluster evaluation");    
@@ -101,7 +142,7 @@ public class ClusterEval extends JFrame implements ActionListener
 		int vtdebx=1;
 		int vtdeby=0;
 		int posx=0;
-		int posy=vtdeby+1;
+		int posy=vtdeby+3;
 		
 		JLabel la = new JLabel("Score");
 		placenewcomp(posx,posy,gbc,la,jp);
@@ -118,6 +159,8 @@ public class ClusterEval extends JFrame implements ActionListener
 		for(int k=0;k<concatenatedDataHistory.getColumnCount();k++)
 		{
 				la = new JLabel(concatenatedDataHistory.getColumnLabel(k));
+				if (typece==true) la = new JLabel("var "+(k+1));
+				if (typece==false)
 				placenewcomp(posx,posy,gbc,la,jp);
 				posy++;
 		}
@@ -126,11 +169,15 @@ public class ClusterEval extends JFrame implements ActionListener
 		posy=vtdeby;
 		
 		jbHistoryPop=new ArrayList<JButton>();
+		jbRepInit=new ArrayList<JButton>();
+		jbRepPer=new ArrayList<JButton>();
 		id1=new ArrayList<Integer>();
 		id2=new ArrayList<Integer>();
 		
 		for(int i=0;i<cltarray.size();i++)
 		{
+				
+			
 			for(int j=0;j<cltarray.get(i).size();j++)
 			{
 				posy=vtdeby;
@@ -139,6 +186,22 @@ public class ClusterEval extends JFrame implements ActionListener
 
 				JButton jb = new JButton("Evo");
 				jbHistoryPop.add(jb);
+				id1.add(i);								
+				id2.add(j);		
+				jb.addActionListener(this);
+				
+				placenewcomp(posx,posy,gbc,jb,jp);
+				posy++;
+				 jb = new JButton("RePop");
+				jbRepInit.add(jb);
+				id1.add(i);								
+				id2.add(j);		
+				jb.addActionListener(this);
+				
+				placenewcomp(posx,posy,gbc,jb,jp);
+				posy++;
+				 jb = new JButton("ReDef");
+				jbRepPer.add(jb);
 				id1.add(i);								
 				id2.add(j);		
 				jb.addActionListener(this);
@@ -159,7 +222,25 @@ public class ClusterEval extends JFrame implements ActionListener
 				la = new JLabel("nb:"+cltarray.get(i).get(j).getSize());
 				placenewcomp(posx,posy,gbc,la,jp);
 				posy++;
+
+				HashMap<Integer, Double> trvt=new HashMap();
+				for(int k=0;k<concatenatedDataHistory.getColumnCount();k++)
+				{
+				if ((SimulationController.VQuali[k])&(SimAnalyzer.vtquali))
+				{
+					trvt.put(k, Math.abs(Vtest.getMax((HashMap)ct.qvtestsm.getAsObject(k+3,0),0)));					
+				}
+				else
+				{
+					trvt.put(k,Math.abs(vtestlist.get(i)[j][k]));					
+				
+				}
+				}
+				Map<Integer, Double> sortvt=sortByValues(trvt);				
+								
 				HashMap<String,Double> vtq;
+				if (typece==false)
+				{
 				for(int k=0;k<concatenatedDataHistory.getColumnCount();k++)
 				{
 					if ((SimulationController.VQuali[k])&(SimAnalyzer.vtquali))
@@ -184,6 +265,54 @@ public class ClusterEval extends JFrame implements ActionListener
 					}
 					
 				}
+				}
+				if (typece==true)
+				{
+					Iterator<Integer> it = sortvt.keySet().iterator();
+					while(it.hasNext())
+				{
+					int k=it.next();
+					
+					if ((SimulationController.VQuali[k])&(SimAnalyzer.vtquali))
+					{
+						trvt.put(k, Math.abs(Vtest.getMax((HashMap)ct.qvtestsm.getAsObject(k+3,0),0)));					
+					}
+					else
+					{
+						trvt.put(k,Math.abs(vtestlist.get(i)[j][k]));					
+					
+					}
+
+					if ((SimulationController.VQuali[k])&(SimAnalyzer.vtquali))
+					{
+							la = new JLabel(concatenatedDataHistory.getColumnLabel(k)+":"+ct.qvtestsshort[k]);
+							la.setToolTipText(ct.qvtests[k]);
+							la.setForeground(Color.magenta);
+							if (Math.abs(Vtest.getMax((HashMap)ct.qvtestsm.getAsObject(k+3,0),0))>1)
+									{
+								placenewcomp(posx,posy,gbc,la,jp);
+								posy++;
+								
+									}
+						
+					}
+					else
+					{
+						la = new JLabel(concatenatedDataHistory.getColumnLabel(k)+":"+((int)(vtestlist.get(i)[j][k]*100))/(double)100);
+						if(vtestlist.get(i)[j][k]>2.00)
+							la.setForeground(Color.blue);
+						if(vtestlist.get(i)[j][k]<-2.00)
+							la.setForeground(Color.red);
+						if (Math.abs(vtestlist.get(i)[j][k])>1)
+						{
+						placenewcomp(posx,posy,gbc,la,jp);
+						posy++;
+						}
+					
+					}
+					
+				}
+				}
 				
 				posx++;
 				
@@ -203,12 +332,12 @@ public class ClusterEval extends JFrame implements ActionListener
 		gbc.anchor=GridBagConstraints.WEST;
 	//	gb.setConstraints(jb2,gbc);
 	//	getContentPane().add(jb2);
-		jp.add(jbDefinition,gbc);
+//		jp.add(jbDefinition,gbc);
 		gbc.gridx=0;
 		gbc.gridy=nt+4;
 		jp.add(jbRI,gbc);
 		gbc.gridy=nt+3;
-		jp.add(jbRD,gbc);
+//		jp.add(jbRD,gbc);
 		for(int i=0;i<cltarray.size();i++)
 		{
 			nt++;
@@ -222,7 +351,7 @@ public class ClusterEval extends JFrame implements ActionListener
 			gbc.anchor=GridBagConstraints.WEST;
 	//		gb.setConstraints(jrb2.get(i),gbc);
 	//		getContentPane().add(jrb2.get(i));
-			jp.add(jrb2.get(i),gbc);
+	//		jp.add(jrb2.get(i),gbc);
 			group.add(jrb2.get(i));
 			l6 = new JLabel("Clusterer"+i+"(t="+ticklist.get(i)+")");
 			gbc.gridx=2;
@@ -234,7 +363,7 @@ public class ClusterEval extends JFrame implements ActionListener
 			gbc.anchor=GridBagConstraints.WEST;
 	//		gb.setConstraints(l6,gbc);
     //		getContentPane().add(l6);
-			jp.add(l6,gbc);
+//			jp.add(l6,gbc);
 		}
 		jbDefinition.addActionListener(new ActionListener()
 		{
@@ -287,7 +416,7 @@ public class ClusterEval extends JFrame implements ActionListener
 		gbc.weightx=10;
 		gbc.weighty=10;
 		gbc.anchor=GridBagConstraints.WEST;
-		jp.add(jbs,gbc);
+//		jp.add(jbs,gbc);
 		jbs.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) {
@@ -336,7 +465,7 @@ public class ClusterEval extends JFrame implements ActionListener
 								SimulationController.steptarget=i;
 								SimulationController.noclusttarget=j;
 								SimulationController.typeReRun=0;
-								SimulationController.datamatclust=concatenatedDataHistory;
+//								SimulationController.datamatclust=concatenatedDataHistory;
 								@SuppressWarnings("unused")
 								ReRunParam p = new ReRunParam();
 								@SuppressWarnings("unused")
@@ -435,6 +564,106 @@ public class ClusterEval extends JFrame implements ActionListener
 				Cluster cl=cltarrayll.get(i).get(j);
 
     			HistoryPo hpo=new HistoryPo(cl,i,j);
+    			hpo.setLocation(80,80);
+    		    hpo.pack() ;
+    			hpo.setVisible(true);
+
+    			FAgModel fag=new FAgModel(cl.agm);
+    			fag.setLocation(100,100);
+    		    fag.pack() ;
+    			fag.setVisible(true);
+				
+			}
+			
+		}
+		for (JButton jb:jbRepInit)
+		{
+			if (src.equals(jb))
+			{
+				int i=id1.get(jbRepInit.indexOf(jb));
+				int j=id2.get(jbRepInit.indexOf(jb));
+				Cluster cl=cltarrayll.get(i).get(j);
+
+				int nbagt=0;
+				for(int ij=0;j<cltarrayll.get(i).size();ij++)
+				{
+					nbagt=nbagt+(int)cltarrayll.get(i).get(ij).getSize();
+				}
+
+				
+				SimulationController.clustererTarget=SimulationController.wcl.get(i);
+				SimulationController.clusterTarget=cltarrayll.get(i).get(j);
+				SimulationController.ResMat=SimulationController.clusterTarget.vtestsm;
+				SimulationController.steptarget=i;
+				SimulationController.noclusttarget=j;
+				SimulationController.typeReRun=1;
+				
+				SimulationController.clustpopprop=(double)cltarrayll.get(i).get(j).getSize()/(double)nbagt;
+//				SimulationController.datamatclust=concatenatedDataHistory;
+				@SuppressWarnings("unused")
+				ReRunParam p = new ReRunParam();
+				@SuppressWarnings("unused")
+				WindowListener l = new WindowAdapter()
+				{
+					public void windowClosing(WindowEvent e)
+				    {
+						System.exit(0);
+					}
+				};
+//				SimAnalyzer.restartnetlogo=true;									
+
+				
+				
+				HistoryPo hpo=new HistoryPo(cl,i,j);
+    			hpo.setLocation(80,80);
+    		    hpo.pack() ;
+    			hpo.setVisible(true);
+
+    			FAgModel fag=new FAgModel(cl.agm);
+    			fag.setLocation(100,100);
+    		    fag.pack() ;
+    			fag.setVisible(true);
+				
+			}
+			
+		}
+		for (JButton jb:jbRepPer)
+		{
+			if (src.equals(jb))
+			{
+				int ii=id1.get(jbRepPer.indexOf(jb));
+				int ij=id2.get(jbRepPer.indexOf(jb));
+
+				@SuppressWarnings("unused")
+				List<Cluster> lc = new ArrayList<Cluster>();
+				@SuppressWarnings("unused")
+				List<Integer> tll = new ArrayList<Integer>();
+				int nj=0;
+
+				Cluster cl=cltarrayll.get(ii).get(ij);
+	
+				SimulationController.clustererTarget=SimulationController.wcl.get(ii);
+							SimulationController.clusterTarget=cl;
+							SimulationController.ResMat=SimulationController.clusterTarget.vtestsm;
+							SimulationController.steptarget=ii;
+							SimulationController.noclusttarget=ij;
+							SimulationController.typeReRun=0;
+//							SimulationController.datamatclust=concatenatedDataHistory;
+							@SuppressWarnings("unused")
+							ReRunParam p = new ReRunParam();
+							@SuppressWarnings("unused")
+							WindowListener l = new WindowAdapter()
+							{
+								public void windowClosing(WindowEvent e)
+							    {
+									System.exit(0);
+								}
+							};
+				
+				
+				
+
+    			HistoryPo hpo=new HistoryPo(cl,ii,ij);
     			hpo.setLocation(80,80);
     		    hpo.pack() ;
     			hpo.setVisible(true);
