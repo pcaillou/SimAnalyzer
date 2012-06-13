@@ -16,8 +16,8 @@ import observer.SimulationInterface;
 public class GraphObserver extends StatisticalObserver  {
 	long step = 1;
 	
-	public static String[] ParamNames={"ListenTo","ObservedBy","GraphColumnName","time [opt]","weightEdgeDefault [opt]","timeCreationEdgeDefault [opt]","timeDeleteEdgeDefault [opt]","","","","","","","","","","","","",""};
-	public static String[] DefaultValues={"0","1","3","","","","","","","","","","","","","","","","",""};
+	public static String[] ParamNames={"ListenTo","ObservedBy","GraphColumnName","Directed [0/1]","time [opt]","weightEdgeDefault [opt]","timeCreationEdgeDefault [opt]","timeDeleteEdgeDefault [opt]","","","","","","","","","","","",""};
+	public static String[] DefaultValues={"0","1","3","1","","","","","","","","","","","","","","","",""};
 	
 	/* temporaire le temps d'avoir les vrai constantes de label graph */
 	private String LABEL_GRAPH = "";
@@ -52,15 +52,19 @@ public class GraphObserver extends StatisticalObserver  {
 			this.LABEL_TIME=paramvals[3];
 			if (!paramvals[4].equals(""))
 			{
-				this.WEIGHT_DEFAULT = Integer.valueOf(paramvals[4]);
+				graph.directed = paramvals[4].equals("0");
 			}
 			if (!paramvals[5].equals(""))
 			{
-				this.TIME_CREATION_DEFAULT = Integer.valueOf(paramvals[5]);
+				this.WEIGHT_DEFAULT = Integer.valueOf(paramvals[5]);
 			}
 			if (!paramvals[6].equals(""))
 			{
-				this.TIME_DELETE_DEFAULT = Integer.valueOf(paramvals[6]);
+				this.TIME_CREATION_DEFAULT = Integer.valueOf(paramvals[6]);
+			}
+			if (!paramvals[7].equals(""))
+			{
+				this.TIME_DELETE_DEFAULT = Integer.valueOf(paramvals[7]);
 			}
 		} catch (NumberFormatException e) {
 			System.err.println("Erreur lors de la recuperation des parametres");

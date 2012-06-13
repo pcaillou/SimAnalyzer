@@ -178,6 +178,13 @@ public class SimAnalyzer extends JFrame
 		obsParamNames.put(c.getName(), pn);
 		obsParamDefaultValues.put(c.getName(), pnd);
 		
+		c=BinObserver.class;
+		pn=BinObserver.ParamNames;		
+		pnd=BinObserver.DefaultValues;		
+		ObsPossibleTypeList.add(c.getName());		
+		obsParamNames.put(c.getName(), pn);
+		obsParamDefaultValues.put(c.getName(), pnd);
+		
 		restartnetlogo=false;
 		setJMenuBar(menubar);
 		menup.add(micp);

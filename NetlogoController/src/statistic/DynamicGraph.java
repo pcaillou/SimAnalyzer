@@ -47,6 +47,8 @@ public class DynamicGraph{
 	
 	Integer autoGenerateEdgedId;
 	
+	public boolean directed = true;
+	
 	protected MultiGraph graph;
 	
 	/**
@@ -638,7 +640,7 @@ public class DynamicGraph{
 		{
 			autoGenerateEdgedId++;
 		}
-		Edge e = graph.addEdge("Arrow" + String.valueOf(autoGenerateEdgedId), source, target,true);
+		Edge e = graph.addEdge("Arrow" + String.valueOf(autoGenerateEdgedId), source, target,directed);
 		e.addAttribute(POIDS, poids);
 		e.addAttribute(TIME_CREATION, timeAdd);
 		e.addAttribute(TIME_SUPPRESSION, timeDel);
