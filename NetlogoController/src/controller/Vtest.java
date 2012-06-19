@@ -374,25 +374,65 @@ public class Vtest{
 		    	clu.qvtestsmdef.setRowLabel(j+3, mg.getColumnLabel(j));
 		    	clu.qvtestsmdef.setAsObject(vtest[j], j+3, 0);
 		    }
+			clu.qavglobsm = MatrixFactory.dense(ValueType.OBJECT,mg.getColumnCount()+3,1);		    
+	    	clu.qavglobsm.setRowLabel(1, "tick");
+	    	clu.qavglobsm.setRowLabel(2, "size");
+	    	clu.qavglobsm.setAsDouble(n, 2, 0);
+	    	clu.qavglobsm.setAsDouble(SimulationController.currenttick, 1, 0);
+		    for(int j=0;j<mg.getColumnCount();j++)
+		    {
+		    	clu.qavglobsm.setRowLabel(j+3, mg.getColumnLabel(j));
+		    	clu.qavglobsm.setAsObject(clu.globDistrib.get(j), j+3, 0);
+		    }
+			clu.qavgsm = MatrixFactory.dense(ValueType.OBJECT,mg.getColumnCount()+3,1);		    
+	    	clu.qavgsm.setRowLabel(1, "tick");
+	    	clu.qavgsm.setRowLabel(2, "size");
+	    	clu.qavgsm.setAsDouble(clu.getSize(), 2, 0);
+	    	clu.qavgsm.setAsDouble(SimulationController.currenttick, 1, 0);
+		    for(int j=0;j<mg.getColumnCount();j++)
+		    {
+		    	clu.qavgsm.setRowLabel(j+3, mg.getColumnLabel(j));
+		    	clu.qavgsm.setAsObject(clu.popDistrib.get(j), j+3, 0);
+		    }
+			clu.qavgsmdef =MatrixFactory.dense(ValueType.OBJECT,mg.getColumnCount()+3,1);	
+	    	clu.qavgsmdef.setRowLabel(1, "tick");
+	    	clu.qavgsmdef.setRowLabel(2, "size");
+	    	clu.qavgsmdef.setAsDouble(clu.getSize(), 2, 0);
+	    	clu.qavgsmdef.setAsDouble(SimulationController.currenttick, 1, 0);
+		    for(int j=0;j<mg.getColumnCount();j++)
+		    {
+		    	clu.qavgsmdef.setRowLabel(j+3, mg.getColumnLabel(j));
+		    	clu.qavgsmdef.setAsObject(clu.popDistrib.get(j), j+3, 0);
+		    }
 	    	
 	    }
 	    if (type==2)
    		if (cib.ticklist.contains(SimulationController.currenttick)==false)
 	    {
 			Matrix mn = MatrixFactory.dense(ValueType.OBJECT,mg.getColumnCount()+3,1);			    
+			Matrix mnav = MatrixFactory.dense(ValueType.OBJECT,mg.getColumnCount()+3,1);			    
+			Matrix mnavglob = MatrixFactory.dense(ValueType.OBJECT,mg.getColumnCount()+3,1);			    
 		    for(int j=0;j<mg.getColumnCount();j++)
 		    {
 		    	mn.setAsObject(vtest[j], j+3, 0);
+		    	mnav.setAsObject(clu.popDistrib.get(j), j+3, 0);
+		    	mnavglob.setAsObject(clu.globDistrib.get(j), j+3, 0);
 		    }
 //		    cib.vtestsm=cib.vtestsm.appendVertically(mn);	
 	    	mn.setAsDouble(clu.getSize(), 2, 0);
+	    	mnav.setAsDouble(clu.getSize(), 2, 0);
+	    	mnavglob.setAsDouble(n, 2, 0);
 	    	if (SimulationController.currenttick>=cib.ticklist.get(0))
 	    	{
 	    	cib.qvtestsmdef=MyMatrix.appendHorizontally(cib.qvtestsmdef, mn);
+	    	cib.qavgsmdef=MyMatrix.appendHorizontally(cib.qavgsmdef, mnav);
+	    	cib.qavglobsm=MyMatrix.appendHorizontally(cib.qavglobsm, mnavglob);
 	    	}
 	    	else
 	    	{
 		    	cib.qvtestsmdef=MyMatrix.appendHorizontally(mn,cib.qvtestsmdef,true);
+		    	cib.qavgsmdef=MyMatrix.appendHorizontally(mnav,cib.qavgsmdef, true);
+		    	cib.qavglobsm=MyMatrix.appendHorizontally(mnavglob,cib.qavglobsm, true);
 	    		
 	    	}
 
@@ -404,19 +444,23 @@ public class Vtest{
 //			cib.vtestsm.showGUI();
 //	    	cib.ticklist.add(SimulationController.currenttick);
 			Matrix mn =MatrixFactory.dense(ValueType.OBJECT,mg.getColumnCount()+3,1);		 
+			Matrix mnav =MatrixFactory.dense(ValueType.OBJECT,mg.getColumnCount()+3,1);		 
 		    for(int j=0;j<mg.getColumnCount();j++)
 		    {
 		    	mn.setAsObject(vtest[j], j+3, 0);
+		    	mnav.setAsObject(clu.popDistrib.get(j), j+3, 0);
 		    }
 //		    cib.vtestsm=cib.vtestsm.appendVertically(mn);	
 		    if (m==null)
 		    {
 		    	mn.setAsDouble(0, 2, 0);
+		    	mnav.setAsDouble(0, 2, 0);
 		    	
 		    }
 		    else
 		    {
 	    	mn.setAsDouble(clu.getSize(), 2, 0);
+	    	mnav.setAsDouble(clu.getSize(), 2, 0);
 		    }
 //	    	mn.showGUI();
 //			cib.vtestsm.appendHorizontally(mn.selectColumns(Ret.LINK,0));
@@ -424,10 +468,12 @@ public class Vtest{
 	    	{
 	    	
 	    		cib.qvtestsm=MyMatrix.appendHorizontally(cib.qvtestsm, mn);
+		    	cib.qavgsm=MyMatrix.appendHorizontally(cib.qavgsm, mnav);
 	    	}
 	    	else
 	    	{
 	    		cib.qvtestsm=MyMatrix.appendHorizontally(mn,cib.qvtestsm,true);
+		    	cib.qavgsm=MyMatrix.appendHorizontally(mnav,cib.qavgsm, true);
     		
 	    	}
 //			cib.avgsm.showGUI();

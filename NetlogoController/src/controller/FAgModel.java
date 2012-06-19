@@ -17,6 +17,8 @@ import java.awt.event.ActionListener;
 //AD import java.io.FileReader;
 //AD import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 //AD import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -99,6 +101,8 @@ public class FAgModel extends JFrame implements ActionListener
 	List<JRadioButton> jrbx = new ArrayList<JRadioButton>();
 	List<JRadioButton> jrby = new ArrayList<JRadioButton>();
 	List<Integer> jrbi = new ArrayList<Integer>();
+	List<Boolean> isNaN = new ArrayList<Boolean>();
+	List<Boolean> isNaNQ = new ArrayList<Boolean>();
 	Matrix m;
 	AgModel agm;
 	Cluster clbase;
@@ -142,10 +146,11 @@ public class FAgModel extends JFrame implements ActionListener
 		String vg;
 		
 		//	getContentPane().setLayout(gb);
-			List<Boolean> isNaN = new ArrayList<Boolean>();
 			m = MatrixFactory.sparse(mbase.getRowCount(),mbase.getColumnCount());
 			for(int i=0;i<mbase.getRowCount();i++)
 				isNaN.add(i,true);
+			for(int i=0;i<mbase.getRowCount();i++)
+				isNaNQ.add(i,true);
 			for(int i=3;i<mbase.getRowCount();i++)
 			{
 				int vt=0;
@@ -373,7 +378,89 @@ public class FAgModel extends JFrame implements ActionListener
 					jp.add(monPanel,gbc);
 
 				
-				}					
+				}	
+				if((isNaN.get(i))&((SimulationController.VQuali[i-3])&(SimAnalyzer.vtquali)))
+				{
+					isNaNQ.set(i, false);
+				nx=0;
+					
+					l4 = new JLabel(mbase.getRowLabel(i));
+					gbc.gridx=nx;
+					gbc.gridy=i+1;
+					gbc.gridwidth=1;
+					gbc.gridheight=1;
+					gbc.weightx=10;
+					gbc.weighty=10;
+					gbc.anchor=GridBagConstraints.WEST;
+					//		gb.setConstraints(l4,gbc);
+					//		getContentPane().add(l4);
+					jp.add(l4,gbc);
+					m.setColumnLabel(i+3, l4.getText());
+					nx++;
+
+					vtd=Math.round(Math.abs(Vtest.getMax((HashMap)clbase.qvtestsm.getAsObject(i,0),0))*100)/100.0;
+					Pattern p = Pattern.compile("T0");
+//							Matcher mt = p.matcher(ml.get(i).getColumnLabel(j));
+					if((vtd>2.00 || vtd<-2.00)) 
+/*									&& !(ml.get(i).getColumnLabel(j).equals("Id"))
+									&& !(ml.get(i).getColumnLabel(j).equals("Class label"))
+									&& !(ml.get(i).getColumnLabel(j).equals("LABEL-COLOR"))
+									&& !(ml.get(i).getColumnLabel(j).equals("MMId"))
+									&& !(ml.get(i).getColumnLabel(j).equals("MMClass label"))
+									&& !(ml.get(i).getColumnLabel(j).equals("MMLABEL-COLOR"))
+									&& !mt.lookingAt())*/
+						vt++;
+					l4 = new JLabel(" "+Double.toString(vtd));
+					if(vtd>2.00)
+						l4.setForeground(Color.blue);
+					if(vtd<-2.00)
+						l4.setForeground(Color.red);
+					gbc.gridx=nx;
+					gbc.gridy=i+1;
+					gbc.gridwidth=1;
+					gbc.gridheight=1;
+					gbc.weightx=10;
+					gbc.weighty=10;
+					gbc.anchor=GridBagConstraints.WEST;
+					//		gb.setConstraints(l4,gbc);
+					//		getContentPane().add(l4);
+					jp.add(l4,gbc);
+					nx++;
+					//graph
+					nx++;
+					
+					JRadioButton jbb=new JRadioButton();
+					jbb.addActionListener(this);
+					gbc.gridx=nx;
+					gbc.gridy=i+1;
+					gbc.gridwidth=1;
+					gbc.gridheight=1;
+					gbc.weightx=10;
+					gbc.weighty=10;
+					gbc.anchor=GridBagConstraints.WEST;
+					jrbx.add(jbb);
+					jrbi.add(i);
+					jp.add(jbb,gbc);
+										
+					nx++;
+
+					jbb=new JRadioButton();
+					jbb.addActionListener(this);
+					gbc.gridx=nx;
+					gbc.gridy=i+1;
+					gbc.gridwidth=1;
+					gbc.gridheight=1;
+					gbc.weightx=10;
+					gbc.weighty=10;
+					gbc.anchor=GridBagConstraints.WEST;
+					jrby.add(jbb);
+					jp.add(jbb,gbc);
+					nx++;
+
+
+
+				}
+
 			}
 
 			
@@ -628,6 +715,8 @@ public class FAgModel extends JFrame implements ActionListener
 		}
 		if (v1==v2)
 		{
+			if (isNaN.get(v1)==false)
+			{
 
 			 DefaultStatisticalCategoryDataset result = new DefaultStatisticalCategoryDataset();
 			 String series1 = new String("ByExtension");
@@ -657,6 +746,52 @@ public class FAgModel extends JFrame implements ActionListener
 		        plot.setBackgroundPaint(Color.WHITE);			
 //			chart.setBorderVisible(false);
 			
+			}
+			if (isNaNQ.get(v1)==false)
+			{
+				if (isNaN.get(v1)==true)
+				{
+
+				 DefaultStatisticalCategoryDataset result = new DefaultStatisticalCategoryDataset();
+//				 String series1 = new String("CurrentTime");
+				 HashMap<String, Integer> dat=(HashMap)clbase.qavglobsm.getAsObject(v1,0);
+//				 int j=clbase.idtickinit;
+				 String[] series = new String[(int)mbase.getColumnCount()];
+
+//					for(int i=0;i<dat.size() ;i++)
+				 
+				 for (int j=0; j<clbase.qavglobsm.getColumnCount();j++)
+				 {
+					 series[j]="t"+j;
+					 dat=(HashMap)clbase.qavglobsm.getAsObject(v1,j);
+					 Iterator<String> it=dat.keySet().iterator();
+				 while (it.hasNext())
+					{
+							String nk=it.next();
+//						result.add(clbase.qavglobsm.getAsDouble(i,j),clbase.stderrsm.getAsDouble(v1,j),series1,new String(""+j));
+//						result.add(clbase.avgsmdef.getAsDouble(v1,j),clbase.stderrsmdef.getAsDouble(v1,j),series2,new String(""+j));
+//						result.add(clbase.avglobsm.getAsDouble(v1,j),clbase.stdglobsm.getAsDouble(v1,j),series3,new String(""+j));
+						result.add(dat.get(nk).doubleValue(),0.0,series[j],new String(""+nk));
+						
+					}
+				 }
+			     			     
+
+			         CategoryAxis xAxis = new CategoryAxis("");
+			         xAxis.setCategoryMargin(0.5d);
+			         ValueAxis yAxis = new NumberAxis(mbase.getRowLabel(v1));
+
+			        // define the plot
+			         StatisticalLineAndShapeRenderer renderer = new StatisticalLineAndShapeRenderer();
+			         CategoryPlot plot = new CategoryPlot(result, xAxis, yAxis, renderer);
+
+			        chartg = new JFreeChart("",
+			                                          plot);
+			        plot.setBackgroundPaint(Color.WHITE);			
+//				chart.setBorderVisible(false);
+			
+			}
+			}
 		}
 		}
 		if (rerun)
