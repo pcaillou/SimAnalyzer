@@ -194,16 +194,16 @@ public class ClusterEval extends JFrame implements ActionListener
 				posy++;
 				 jb = new JButton("RePop");
 				jbRepInit.add(jb);
-				id1.add(i);								
-				id2.add(j);		
+//				id1.add(i);								
+//				id2.add(j);		
 				jb.addActionListener(this);
 				
 				placenewcomp(posx,posy,gbc,jb,jp);
 				posy++;
 				 jb = new JButton("ReDef");
 				jbRepPer.add(jb);
-				id1.add(i);								
-				id2.add(j);		
+//				id1.add(i);								
+//				id2.add(j);		
 				jb.addActionListener(this);
 				
 				placenewcomp(posx,posy,gbc,jb,jp);
