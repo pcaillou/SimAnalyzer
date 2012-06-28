@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 //AD import java.io.FileReader;
 //AD import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -774,17 +775,52 @@ public class FAgModel extends JFrame implements ActionListener
 						result.add(dat.get(nk).doubleValue(),0.0,series[j],new String(""+nk));
 						
 					}
+				 	
 				 }
-			     			     
-
+			     	List categ=result.getColumnKeys();
+			     	int nbcateg=result.getColumnCount();
+			     	Iterator<String> categit=categ.iterator();
+			     	 ArrayList<String> jeVeuxOrdonner = new ArrayList<String>();
+			         while (categit.hasNext())
+		               {
+			        	 jeVeuxOrdonner.add(categit.next());
+		         
+		               }
+			         Collections.sort(jeVeuxOrdonner);
+		
+					 DefaultStatisticalCategoryDataset results = new DefaultStatisticalCategoryDataset();
+					 for (int j=0; j<nbcateg;j++)
+					 {
+							results.add(0.0,0.0,series[0],jeVeuxOrdonner.get(j));						 
+					 }
+			         
+					 for (int j=0; j<clbase.qavglobsm.getColumnCount();j++)
+					 {
+//						 series[j]="t"+j;
+						 dat=(HashMap)clbase.qavglobsm.getAsObject(v1,j);
+						 Iterator<String> it=dat.keySet().iterator();
+					 while (it.hasNext())
+						{
+								String nk=it.next();
+//							result.add(clbase.qavglobsm.getAsDouble(i,j),clbase.stderrsm.getAsDouble(v1,j),series1,new String(""+j));
+//							result.add(clbase.avgsmdef.getAsDouble(v1,j),clbase.stderrsmdef.getAsDouble(v1,j),series2,new String(""+j));
+//							result.add(clbase.avglobsm.getAsDouble(v1,j),clbase.stdglobsm.getAsDouble(v1,j),series3,new String(""+j));
+							results.add(dat.get(nk).doubleValue(),0.0,series[j],new String(""+nk));
+							
+						}
+					 	
+					 }
+			         
+			         
 			         CategoryAxis xAxis = new CategoryAxis("");
 			         xAxis.setCategoryMargin(0.5d);
+			         
+			         
 			         ValueAxis yAxis = new NumberAxis(mbase.getRowLabel(v1));
 
 			        // define the plot
 			         StatisticalLineAndShapeRenderer renderer = new StatisticalLineAndShapeRenderer();
-			         CategoryPlot plot = new CategoryPlot(result, xAxis, yAxis, renderer);
-
+			         CategoryPlot plot = new CategoryPlot(results, xAxis, yAxis, renderer);
 			        chartg = new JFreeChart("",
 			                                          plot);
 			        plot.setBackgroundPaint(Color.WHITE);			
@@ -915,7 +951,7 @@ public class FAgModel extends JFrame implements ActionListener
         {
 		chartPanelg = new ChartPanel(chartg);
 		created=true;
-        chartPanelg.setPreferredSize(new java.awt.Dimension(400, 400));
+        chartPanelg.setPreferredSize(new java.awt.Dimension(600, 600));
         
     	JPanel monPanel = new JPanel(new BorderLayout());        	
 		monPanel.add(chartPanelg, BorderLayout.NORTH);

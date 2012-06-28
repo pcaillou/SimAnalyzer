@@ -1396,6 +1396,41 @@ public class SimAnalyzer extends JFrame
 				System.err.println("Error : " + e1.getLocalizedMessage());
 				//e1.printStackTrace();
 			}
+			
+			{
+				FileWriter fw = null;
+				try {
+					fw = new FileWriter("projects/"+nomproj+"obs.config", false);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				BufferedWriter bw = new BufferedWriter(fw);
+				try {
+					for (int i=0; i<nbobsmax; i++)
+					{
+						if (lcombo[i].getSelectedIndex()>=0)
+						SimAnalyzer.obstypes[i]=lcombo[i].getSelectedItem().toString();
+						else
+							SimAnalyzer.obstypes[i]="";
+						
+						bw.write(SimAnalyzer.obstypes[i]);
+						bw.newLine();						
+						for (int j=0; j<Observer.nbparammax; j++)
+						{
+							bw.write(params[i][j]);
+							SimAnalyzer.obsparams[i][j]=params[i][j];
+							bw.newLine();													
+						}
+					}
+					bw.flush(); 
+					bw.close();
+					fw.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}		  	        
+				menus.setEnabled(true);		  
+			}
+
 	    }
 
 		public void actionPerformed(ActionEvent e) {

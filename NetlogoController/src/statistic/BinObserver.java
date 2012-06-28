@@ -85,19 +85,29 @@ long step = 1;
 				value -= INTERVAL_WIDTH/10;
 			}
 			group = (int) (value / INTERVAL_WIDTH) + 1;
-			if (group < 1 && group > INTERVAL_QUANTITY)
+			if (group < 1)
 			{
 				group = 1;
 				System.err.println("BinObserver error : value is out of intervals (group set to 1) : " + data.getAsDouble(i,idColumn) + " - " + INTERVAL_START + "->" + (INTERVAL_START + INTERVAL_QUANTITY * INTERVAL_WIDTH) + " ");
 			}
-			total[group-1]++;
+			if (group > INTERVAL_QUANTITY)
+			{
+				group = INTERVAL_QUANTITY;
+				System.err.println("BinObserver error : value is out of intervals (group set to 1) : " + data.getAsDouble(i,idColumn) + " - " + INTERVAL_START + "->" + (INTERVAL_START + INTERVAL_QUANTITY * INTERVAL_WIDTH) + " ");
+			}
+			if (group<10)			
+			result.setAsString("B0" + group,i,0);
+			if (group>=10)
 			result.setAsString("B" + group,i,0);
 		}
 		
 		String gTotal = "";
 		for (int i = 0 ; i < INTERVAL_QUANTITY ; i++)
 		{
-			gTotal += "[B" + (i+1) + " " +  total[i] + "]";
+			if (i<9)
+			gTotal += "[B0" + (i+1) + " " +  total[i] + "]";
+			if (i>=9)
+				gTotal += "[B" + (i+1) + " " +  total[i] + "]";
 		}
 		for (int i = 0 ; i < data.getRowCount() ; i++)
 		{
@@ -105,7 +115,7 @@ long step = 1;
 		}
 		
 		//data.showGUI();
-		result.showGUI();
+//		result.showGUI();
 		//pause();
 		
 		/* on envoie le resultat */
