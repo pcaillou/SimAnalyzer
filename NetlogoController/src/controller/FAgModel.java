@@ -830,7 +830,10 @@ public class FAgModel extends JFrame implements ActionListener
 					 for (int j=0; j<nbc;j++)
 					 {
 //						 series[j]="t"+j;
-						 dat=(HashMap)clbase.qavglobsm.getAsObject(v1,j);
+						 if (!this.jcheckcluster.isSelected())
+						 {
+							 dat=(HashMap)clbase.qavglobsm.getAsObject(v1,j);
+						 }
 						 if (this.jcheckcluster.isSelected())
 						 {
 							 dat=(HashMap)clbase.qavgsm.getAsObject(v1,j);
