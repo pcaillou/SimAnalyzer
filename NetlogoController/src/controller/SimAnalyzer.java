@@ -77,6 +77,7 @@ public class SimAnalyzer extends JFrame
 	static boolean computehistory=true;
 	static boolean doubleclustering=false;
 	static boolean vtquali=true;
+	static int algo=1; //0 XMEANS 1 DBSCAN
 	static String name;
 	public static Integer  clusterstep, totalsteps,updatestep;
 	public static  Integer  agcol, timecol, startcol, endcol;
@@ -384,6 +385,10 @@ public class SimAnalyzer extends JFrame
 		int maxIterations = 200;
 		Clusterer cl=new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
 				, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations );
+   	    if (algo==1)
+   	    	cl=new WekaClusterer(WekaClusterer.WekaClustererType.OPTICS, false
+				, "-E", "10", "-M", "4");
+
 		return cl;
 	}
 
@@ -402,9 +407,12 @@ public class SimAnalyzer extends JFrame
 //				WekaClusterer clusterer = new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
 //						, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations );
 	       	    for(int i=0;i<=totalsteps;i++)
-	       	    {
+	       	    {if (algo==0)
 	       	    	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
 						, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations ));
+	       	    if (algo==1)
+	       	    	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.OPTICS, false
+						, "-E", "10", "-M", "4"));
 	       	    }
 				params = NetLogoSimulationController.getDefaultParams();
 		        params[NetLogoSimulationController.CLUSTERER_INDEX]=wcl;

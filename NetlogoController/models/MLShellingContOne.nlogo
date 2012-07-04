@@ -216,7 +216,7 @@ number
 number
 50
 2500
-80
+100
 10
 1
 NIL
@@ -231,7 +231,7 @@ SLIDER
 %-similar-wanted
 0
 100
-40
+60
 1
 1
 %
@@ -280,7 +280,7 @@ nb-category
 nb-category
 1
 100
-3
+2
 1
 1
 NIL

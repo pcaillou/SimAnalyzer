@@ -99,7 +99,7 @@ public class DoubleClustererObserver extends ClustererObserver {
 		input.setLabel("Input");
 		// normalization across the samples cannot hurt
 		// i.e. zero mean and unit variance for each feature
-//		input = input.standardize(Ret.NEW, Matrix.ROW);
+		input = input.standardize(Ret.NEW, Matrix.ROW);
 		input.setLabel("Standardized Input");
 		// looks different?
 		if(controller.SimulationController.tf)

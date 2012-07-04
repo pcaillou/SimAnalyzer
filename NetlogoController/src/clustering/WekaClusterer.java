@@ -17,7 +17,7 @@ import clustering.Clusterer;
 
 public class WekaClusterer extends Clusterer {
 	public enum WekaClustererType {
-		Cobweb, DBScan, EM, FarthestFirst, FilteredClusterer, MakeDensityBasedClusterer, SimpleKMeans, XMeans
+		Cobweb, DBScan, EM, FarthestFirst, FilteredClusterer, MakeDensityBasedClusterer, SimpleKMeans, XMeans, OPTICS
 	};
 
 	private weka.clusterers.Clusterer wekaClusterer = null;
@@ -83,7 +83,15 @@ public class WekaClusterer extends Clusterer {
 		Instance instance = WekaWrapper.sampleToInstanceWrapper(input, sampleRow, sampleWeight, discrete);
 		instance.setDataset(instances);
 		clustertime+=System.nanoTime()-duration;
-		return new Long(wekaClusterer.clusterInstance(instance));
+		int res=0;
+		try {
+			res=wekaClusterer.clusterInstance(instance);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Erreur de generation d'instance (WekaClusterer/clusterinstance)");
+//			e.printStackTrace();
+		}
+		return new Long(res);
 	}
 
 	public void setNumberOfClusters(int numberOfClusters) throws Exception {
