@@ -43,6 +43,7 @@ import javax.swing.JScrollPane;
 import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
 import org.ujmp.core.calculation.Calculation.Ret;
+import org.ujmp.core.enums.ValueType;
 //AD import org.ujmp.core.exceptions.MatrixException;
 
 import clustering.Cluster;
@@ -85,6 +86,8 @@ public class FAgModel extends JFrame implements ActionListener
 	GridBagLayout gbs=new GridBagLayout();
 	JPanel jps = new JPanel(gbs);
 	JCheckBox jcheckVariance;
+	JCheckBox jcheckcluster;
+	JButton jbexport;
 	GridBagConstraints gbc=new GridBagConstraints();
 	GridBagLayout gb=new GridBagLayout();
 	ButtonGroup group = new ButtonGroup();
@@ -547,6 +550,22 @@ public class FAgModel extends JFrame implements ActionListener
 			jps.add(jcheckVariance,gbcs);
 			ny++;
 			
+			jcheckcluster=new JCheckBox("Distrib for cluster in extension");
+			jcheckcluster.addActionListener(this);
+			jcheckcluster.setSelected(false);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jcheckcluster,gbcs);
+			ny++;
+			
+			jbexport=new JButton("Export to UJMP");
+			jbexport.addActionListener(this);
+			jbexport.setSelected(false);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jbexport,gbcs);
+			ny++;
+			
 
 			
 			//PLOT
@@ -576,7 +595,7 @@ public class FAgModel extends JFrame implements ActionListener
 				
 			}
 
-			redrawgraph();
+			redrawgraph(false);
 
 			gbcg.gridx=1;
 			gbcg.gridy=0;
@@ -634,7 +653,7 @@ public class FAgModel extends JFrame implements ActionListener
 			
 			
 	}
-	public void redrawgraph()
+	public void redrawgraph(boolean export)
 	{
 		System.out.println("red "+v1+"/"+v2);
 		//Plot
@@ -756,6 +775,10 @@ public class FAgModel extends JFrame implements ActionListener
 				 DefaultStatisticalCategoryDataset result = new DefaultStatisticalCategoryDataset();
 //				 String series1 = new String("CurrentTime");
 				 HashMap<String, Integer> dat=(HashMap)clbase.qavglobsm.getAsObject(v1,0);
+				 if (this.jcheckcluster.isSelected())
+				 {
+					 dat=(HashMap)clbase.qavgsm.getAsObject(v1,0);
+				 }
 //				 int j=clbase.idtickinit;
 				 String[] series = new String[(int)mbase.getColumnCount()];
 
@@ -765,6 +788,10 @@ public class FAgModel extends JFrame implements ActionListener
 				 {
 					 series[j]="t"+j;
 					 dat=(HashMap)clbase.qavglobsm.getAsObject(v1,j);
+					 if (this.jcheckcluster.isSelected())
+					 {
+						 dat=(HashMap)clbase.qavgsm.getAsObject(v1,j);
+					 }
 					 Iterator<String> it=dat.keySet().iterator();
 				 while (it.hasNext())
 					{
@@ -788,16 +815,26 @@ public class FAgModel extends JFrame implements ActionListener
 		               }
 			         Collections.sort(jeVeuxOrdonner);
 		
+						Matrix datmat=MatrixFactory.dense(ValueType.DOUBLE,clbase.qavglobsm.getColumnCount(),nbcateg);
 					 DefaultStatisticalCategoryDataset results = new DefaultStatisticalCategoryDataset();
 					 for (int j=0; j<nbcateg;j++)
 					 {
-							results.add(0.0,0.0,series[0],jeVeuxOrdonner.get(j));						 
+							results.add(0.0,0.0,series[0],jeVeuxOrdonner.get(j));
+							datmat.setColumnLabel(j, jeVeuxOrdonner.get(j));
 					 }
-			         
-					 for (int j=0; j<clbase.qavglobsm.getColumnCount();j++)
+			         int nbc=(int)clbase.qavglobsm.getColumnCount();
+					 if (this.jcheckcluster.isSelected())
+					 {
+				         nbc=(int)clbase.qavgsm.getColumnCount();
+					 }
+					 for (int j=0; j<nbc;j++)
 					 {
 //						 series[j]="t"+j;
 						 dat=(HashMap)clbase.qavglobsm.getAsObject(v1,j);
+						 if (this.jcheckcluster.isSelected())
+						 {
+							 dat=(HashMap)clbase.qavgsm.getAsObject(v1,j);
+						 }
 						 Iterator<String> it=dat.keySet().iterator();
 					 while (it.hasNext())
 						{
@@ -806,11 +843,12 @@ public class FAgModel extends JFrame implements ActionListener
 //							result.add(clbase.avgsmdef.getAsDouble(v1,j),clbase.stderrsmdef.getAsDouble(v1,j),series2,new String(""+j));
 //							result.add(clbase.avglobsm.getAsDouble(v1,j),clbase.stdglobsm.getAsDouble(v1,j),series3,new String(""+j));
 							results.add(dat.get(nk).doubleValue(),0.0,series[j],new String(""+nk));
+							datmat.setAsDouble(dat.get(nk).doubleValue(),j, jeVeuxOrdonner.indexOf(""+nk));
 							
 						}
 					 	
 					 }
-			         
+					 if (export) datmat.showGUI();
 			         
 			         CategoryAxis xAxis = new CategoryAxis("");
 			         xAxis.setCategoryMargin(0.5d);
@@ -979,7 +1017,19 @@ public class FAgModel extends JFrame implements ActionListener
 		Object src=arg0.getSource();
 		if (src==jcheckVariance)
 		{
-			redrawgraph();
+			redrawgraph(false);
+			this.repaint();
+			
+		}
+		if (src==jcheckcluster)
+		{
+			redrawgraph(false);
+			this.repaint();
+			
+		}
+		if (src==jbexport)
+		{
+			redrawgraph(true);
 			this.repaint();
 			
 		}
@@ -988,13 +1038,13 @@ public class FAgModel extends JFrame implements ActionListener
 			if (src==jrbx.get(i))
 			{
 				v1=jrbi.get(i).intValue();
-				redrawgraph();
+				redrawgraph(false);
 				this.repaint();
 			}
 			if (src==jrby.get(i))
 			{
 				v2=jrbi.get(i).intValue();
-				redrawgraph();
+				redrawgraph(false);
 				this.repaint();
 			}
 		}
