@@ -88,6 +88,7 @@ public class FAgModel extends JFrame implements ActionListener
 	JCheckBox jcheckVariance;
 	JCheckBox jcheckcluster;
 	JButton jbexport;
+	JButton jbexportnum;
 	GridBagConstraints gbc=new GridBagConstraints();
 	GridBagLayout gb=new GridBagLayout();
 	ButtonGroup group = new ButtonGroup();
@@ -566,6 +567,13 @@ public class FAgModel extends JFrame implements ActionListener
 			jps.add(jbexport,gbcs);
 			ny++;
 			
+			jbexportnum=new JButton("Export Cont. Variable data");
+			jbexportnum.addActionListener(this);
+			jbexportnum.setSelected(false);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jbexportnum,gbcs);
+			ny++;
 
 			
 			//PLOT
@@ -1034,6 +1042,13 @@ public class FAgModel extends JFrame implements ActionListener
 		{
 			redrawgraph(true);
 			this.repaint();
+			
+		}
+		if (src==jbexportnum)
+		{
+			clbase.vtestsm.showGUI();
+			clbase.avgsm.showGUI();
+			clbase.avglobsm.showGUI();
 			
 		}
 		for (int i=0; i<jrbx.size(); i++)
