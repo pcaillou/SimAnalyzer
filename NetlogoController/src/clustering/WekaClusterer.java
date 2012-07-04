@@ -88,7 +88,7 @@ public class WekaClusterer extends Clusterer {
 			res=wekaClusterer.clusterInstance(instance);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("Erreur de generation d'instance (WekaClusterer/clusterinstance)");
+//			System.out.println("Erreur de generation d'instance (WekaClusterer/clusterinstance)");
 //			e.printStackTrace();
 		}
 		return new Long(res);

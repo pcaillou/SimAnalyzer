@@ -12,6 +12,7 @@ import java.util.List;
 //AD import org.nlogo.agent.Turtle;
 //AD import org.nlogo.api.CompilerException;
 
+import controller.SimAnalyzer;
 import controller.SimulationController;
 
 import clustering.SimulationClustersUpdater;
@@ -29,6 +30,14 @@ public class NetLogoClustersUpdater extends SimulationClustersUpdater{
 				int color = (int)(((double)org.nlogo.api.Color.getColorNamesArray().length *clusterId)/(clustersNumber+1));
 				color =color %org.nlogo.api.Color.getColorNamesArray().length;
 SimulationController.si.setAgentVariable(id.intValue(), "COLOR", org.nlogo.api.Color.getColorNumberByIndex(color));
+//System.out.println("C"+c.getId());
+/*if (SimAnalyzer.doubleclustering)
+{
+	int lab=((Double)SimulationController.si.getAgentVariable(id.intValue(), "COLOR")).intValue();
+	if ((lab/1000)>0)
+		SimulationController.si.setAgentVariable(id.intValue(), "HEADING", ((double)(lab/1000)));
+		
+}*/
 //					Turtle t = NetLogoInterface.getTurtle(id);
 //					t.setVariable(Turtle.VAR_COLOR,  org.nlogo.api.Color.getColorNumberByIndex(color));
 				

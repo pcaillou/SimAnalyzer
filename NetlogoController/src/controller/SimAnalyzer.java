@@ -73,10 +73,13 @@ public class SimAnalyzer extends JFrame
 	static boolean startnetlogo;
 	static boolean startlogs;
 	static boolean restartnetlogo;
-	static boolean followcluster=true;
+	public static boolean allsteps=false;
+	public static boolean followcluster=true;
 	static boolean computehistory=true;
-	static boolean doubleclustering=false;
+	public static boolean doubleclustering=false;
 	static boolean vtquali=true;
+	public static double XYfactor=1.0; //multiply XY coordinate for double clustering
+	public static int Clusterfactor=1; //multiply XY coordinate for double clustering
 	static int algo=1; //0 XMEANS 1 DBSCAN
 	static String name;
 	public static Integer  clusterstep, totalsteps,updatestep;
@@ -386,8 +389,8 @@ public class SimAnalyzer extends JFrame
 		Clusterer cl=new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
 				, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations );
    	    if (algo==1)
-   	    	cl=new WekaClusterer(WekaClusterer.WekaClustererType.OPTICS, false
-				, "-E", "10", "-M", "4");
+   	    	cl=new WekaClusterer(WekaClusterer.WekaClustererType.DBScan, false
+				, "-E", "0.13", "-M", "5");
 
 		return cl;
 	}
@@ -411,8 +414,8 @@ public class SimAnalyzer extends JFrame
 	       	    	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
 						, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations ));
 	       	    if (algo==1)
-	       	    	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.OPTICS, false
-						, "-E", "10", "-M", "4"));
+	       	    	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.DBScan, false
+						, "-E", "0.13", "-M", "5"));
 	       	    }
 				params = NetLogoSimulationController.getDefaultParams();
 		        params[NetLogoSimulationController.CLUSTERER_INDEX]=wcl;

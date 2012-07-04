@@ -89,18 +89,27 @@ public class DoubleClustererObserver extends ClustererObserver {
 				}
 			}
 		}
+		long xcolumndata = data.getColumnForLabel("XCOR");
+		long ycolumndata = data.getColumnForLabel("YCOR");
+		if (SimAnalyzer.XYfactor!=1)
+		for(long i=0; i<data.getRowCount(); i++){
+			data.setAsDouble(data.getAsDouble(i,xcolumndata)*SimAnalyzer.XYfactor, i,xcolumndata);
+			data.setAsDouble(data.getAsDouble(i,ycolumndata)*SimAnalyzer.XYfactor, i,ycolumndata);
+		}
 		Matrix input = data.selectColumns(Ret.NEW, columns);
-		ArrayList<Long> columnsint = new ArrayList<Long>();
 		long xcolumninput = input.getColumnForLabel("XCOR");
 		long ycolumninput = input.getColumnForLabel("YCOR");
+		ArrayList<Long> columnsint = new ArrayList<Long>();
 		columnsint.add(xcolumninput);
 		columnsint.add(ycolumninput);
 		Matrix inputint=input.selectColumns(Ret.NEW,columnsint);
+//		Matrix inputtrans=input.selectColumns(Ret.LINK,columnsint);
+//		inputtrans.mtimes(SimAnalyzer.XYfactor);
 		input.setLabel("Input");
 		// normalization across the samples cannot hurt
 		// i.e. zero mean and unit variance for each feature
-		input = input.standardize(Ret.NEW, Matrix.ROW);
-		input.setLabel("Standardized Input");
+//		input = input.standardize(Ret.NEW, Matrix.ROW);
+//		input.setLabel("Standardized Input");
 		// looks different?
 		if(controller.SimulationController.tf)
 		{
@@ -117,6 +126,8 @@ public class DoubleClustererObserver extends ClustererObserver {
 					
 				}
 //			CLUSTER_BUILT = true;
+		if((!c.ClusterBuilt)|(SimAnalyzer.followcluster)){
+					
 			c.ClusterBuilt = true;
 			System.out.println("BuildCO "+name);
 			clusterltint = c.clusterData(data, inputint);
@@ -207,7 +218,7 @@ public class DoubleClustererObserver extends ClustererObserver {
 					}
 				}
 								
-				
+				if (SimAnalyzer.followcluster)
 				for (int i=0; i<c.clustinit.size(); i++)
 				{
 					boolean found=false;
@@ -236,6 +247,7 @@ public class DoubleClustererObserver extends ClustererObserver {
 			Long clusterId = c.subclusterer.get(clusterIdint.intValue()).clusterInstance(input, i);
 			data.setAsLong(clusterId, i, classLabelColumn);
 			data.setAsLong(clusterIdint*1000+clusterId, i, classLabelColumn);
+		}
 		}
 	}
 

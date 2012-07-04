@@ -35,14 +35,14 @@ to setup
         setxy random-xcor random-ycor
   ;;        setxy (((who mod 3) * 10) - 10) ((((who / 2) mod 3) * 10) - 10)
           set shape "person"
-          if category = 0 [set shape "star"]
-          if category = 1 [set shape "square"]
+          if category = 6 [set shape "star"]
+          if category = 4 [set shape "square"]
           if category = 2 [set shape "default"]
           if category = 3 [set shape "circle"]
-          if category = 4 [set shape "dot"]
+          if category = 7 [set shape "dot"]
           if category = 5 [set shape "pentagon"]
-          if category = 6 [set shape "person"]
-          if category = 7 [set shape "plant"]
+          if category = 0 [set shape "person"]
+          if category = 1 [set shape "plant"]
           if category = 8 [set shape "orbit 1"]
           if category = 9 [set shape "orbit 6"]
           if category = 10 [set shape "orbit 3"]
@@ -61,7 +61,7 @@ end
 
 
 to go
-  if all? turtles [happy?] [ stop ]
+;  if all? turtles [happy?] [ stop ]
   move-unhappy-turtles
   update-variables
   tick
@@ -216,7 +216,7 @@ number
 number
 50
 2500
-100
+150
 10
 1
 NIL
@@ -231,7 +231,7 @@ SLIDER
 %-similar-wanted
 0
 100
-60
+30
 1
 1
 %
@@ -280,7 +280,7 @@ nb-category
 nb-category
 1
 100
-2
+3
 1
 1
 NIL

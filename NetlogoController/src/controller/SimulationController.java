@@ -12,6 +12,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import javax.swing.JOptionPane;
 // AD import java.util.regex.Matcher;
 //AD import java.util.regex.Pattern;
 
@@ -767,7 +769,7 @@ public abstract class SimulationController {
 							 System.exit(0);
 						}
 					};
-					scl.setLocation(500,100);
+					scl.setLocation(500,10);
 				    scl.pack() ;
 					scl.setVisible(true);
 					}
@@ -775,6 +777,16 @@ public abstract class SimulationController {
 				System.out.println("SimUpdateStep " + tick + " realise en " + duration/1000000 + "ms");
 				System.out.println("SimUpdateStep " + tick + " ClusterBuild " + Clusterer.buildclustertime/1000000 + "ms");
 				System.out.println("SimUpdateStep " + tick + " ClusterInst " + Clusterer.clustertime/1000000 + "ms");
+				if (!SimAnalyzer.allsteps)
+				{
+					Object[] possibleValues = { "Step", "All",};
+					Object selectedValue = JOptionPane.showInputDialog(null,
+					"All or one step", "Next",
+					JOptionPane.INFORMATION_MESSAGE, null,
+					possibleValues, possibleValues[0]);
+					if (selectedValue==possibleValues[1]) 
+						{SimAnalyzer.allsteps=true;}
+				}
 			}
 				si.repeat(1, updateProcedure);
 			}
