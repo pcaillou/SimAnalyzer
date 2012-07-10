@@ -9,6 +9,9 @@ import java.awt.GridBagLayout;
 //AD import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 //AD import java.awt.event.WindowAdapter;
 //AD import java.awt.event.WindowEvent;
 //AD import java.awt.event.WindowListener;
@@ -16,6 +19,8 @@ import java.awt.event.ActionListener;
 //AD import java.io.File;
 //AD import java.io.FileReader;
 //AD import java.io.IOException;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -27,8 +32,10 @@ import java.util.regex.Pattern;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -43,6 +50,7 @@ import javax.swing.JScrollPane;
 import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
 import org.ujmp.core.calculation.Calculation.Ret;
+import org.ujmp.core.doublematrix.DenseDoubleMatrix2D;
 import org.ujmp.core.enums.ValueType;
 //AD import org.ujmp.core.exceptions.MatrixException;
 
@@ -72,6 +80,8 @@ import org.jfree.data.xy.XYIntervalSeriesCollection;
 //AD import org.jfree.data.xy.XYSeriesCollection;
 //AD import org.jfree.experimental.chart.swt.ChartComposite;
 
+import controller.SimAnalyzer.ShowProject;
+
 //AD import weka.core.matrix.Maths;
 
 public class FAgModel extends JFrame implements ActionListener
@@ -82,13 +92,18 @@ public class FAgModel extends JFrame implements ActionListener
 	GridBagConstraints gbcg=new GridBagConstraints();
 	GridBagLayout gbg=new GridBagLayout();
 	JPanel jpg = new JPanel(gbg);
+	JFrame grframe;
 	GridBagConstraints gbcs=new GridBagConstraints();
 	GridBagLayout gbs=new GridBagLayout();
 	JPanel jps = new JPanel(gbs);
 	JCheckBox jcheckVariance;
 	JCheckBox jcheckcluster;
+	JCheckBox jcompareglobal;
+	JCheckBox jcomparecluster;
 	JButton jbexport;
 	JButton jbexportnum;
+	JButton jbsaveto;
+	JButton jbcomparewith;
 	GridBagConstraints gbc=new GridBagConstraints();
 	GridBagLayout gb=new GridBagLayout();
 	ButtonGroup group = new ButtonGroup();
@@ -109,6 +124,8 @@ public class FAgModel extends JFrame implements ActionListener
 	List<Boolean> isNaN = new ArrayList<Boolean>();
 	List<Boolean> isNaNQ = new ArrayList<Boolean>();
 	Matrix m;
+	Matrix corelavg,corelavglob;
+	Matrix difavg,difavglob;
 	AgModel agm;
 	Cluster clbase;
 	Matrix mbase;
@@ -130,10 +147,131 @@ public class FAgModel extends JFrame implements ActionListener
 		}
 	}
 	
-	@SuppressWarnings({"deprecation", "unused"})
-	public FAgModel(AgModel agmd)
-	{	
-		agm=agmd;
+	public void majcalc()
+	{
+		int nm=1;
+		int size=0;
+		int nx=0;
+		int ny=0;
+		clbase=agm.clustinit;
+		colbase=clbase.idtickinit;
+		mbase=clbase.vtestsm;
+		mbasedef=clbase.vtestsmdef;
+		nbstep=(int)mbase.getColumnCount();
+		double vtd,vtd2,vtd3;
+		String vg;
+		Matrix comp,corel,compg,corelg,abs;
+		
+		//	getContentPane().setLayout(gb);
+			m = MatrixFactory.sparse(mbase.getRowCount(),clbase.nbotherxp+1);
+			corelavg= MatrixFactory.sparse(mbase.getRowCount(),clbase.nbotherxp+1);
+		    difavg= MatrixFactory.sparse(mbase.getRowCount(),clbase.nbotherxp+1);
+			corelavglob= MatrixFactory.sparse(mbase.getRowCount(),clbase.nbotherxp+1);
+		    difavglob= MatrixFactory.sparse(mbase.getRowCount(),clbase.nbotherxp+1);
+			for(int i=0;i<mbase.getRowCount();i++)
+				isNaN.add(i,true);
+			for(int i=0;i<mbase.getRowCount();i++)
+				isNaNQ.add(i,true);
+			if (clbase.nbotherxp>0)
+				for (int xp=0; xp<clbase.nbotherxp; xp++)
+				{
+					comp=clbase.avgsm.clone().transpose();
+					comp=MyMatrix.appendHorizontally(comp, clbase.havgsm.get(xp).transpose(Matrix.LINK));
+					corel=comp.corrcoef(Matrix.NEW, true);
+//					corel.showGUI();
+//					comp.showGUI();
+					compg=clbase.avglobsm.clone().transpose();
+					compg=MyMatrix.appendHorizontally(compg, clbase.havglobsm.get(xp).transpose(Matrix.LINK));
+					corelg=compg.corrcoef(Matrix.NEW, true);
+					for(int i=0;i<mbase.getRowCount();i++)
+					{
+						corelavg.setAsDouble(corel.getAsDouble(i,i+mbase.getRowCount()), i, xp);
+						corelavglob.setAsDouble(corelg.getAsDouble(i,i+mbase.getRowCount()), i, xp);
+						double dif,difg;
+						dif=0;
+						difg=0;
+						for (int j=0; j<mbase.getColumnCount(); j++)
+						{
+							if((!Double.isNaN(clbase.avgsm.getAsDouble(i,j)))&(!Double.isNaN(clbase.havgsm.get(xp).getAsDouble(i,j))))
+								if((clbase.avgsm.getAsDouble(i,j)>0)|(clbase.havgsm.get(xp).getAsDouble(i,j)>0))
+							  dif=dif+(clbase.avgsm.getAsDouble(i,j)-clbase.havgsm.get(xp).getAsDouble(i,j))*
+							  (clbase.avgsm.getAsDouble(i,j)-clbase.havgsm.get(xp).getAsDouble(i,j))/
+									 (Math.max(clbase.avgsm.getAsDouble(i,j),clbase.havgsm.get(xp).getAsDouble(i,j))*
+											 Math.max(clbase.avgsm.getAsDouble(i,j),clbase.havgsm.get(xp).getAsDouble(i,j)));
+							if((!Double.isNaN(clbase.avglobsm.getAsDouble(i,j)))&(!Double.isNaN(clbase.havglobsm.get(xp).getAsDouble(i,j))))
+								if((clbase.avglobsm.getAsDouble(i,j)>0)|(clbase.havglobsm.get(xp).getAsDouble(i,j)>0))
+								  difg=difg+(clbase.avglobsm.getAsDouble(i,j)-clbase.havglobsm.get(xp).getAsDouble(i,j))*
+								  (clbase.avglobsm.getAsDouble(i,j)-clbase.havglobsm.get(xp).getAsDouble(i,j))/
+										 (Math.max(clbase.avglobsm.getAsDouble(i,j),clbase.havglobsm.get(xp).getAsDouble(i,j))*
+												 Math.max(clbase.avglobsm.getAsDouble(i,j),clbase.havglobsm.get(xp).getAsDouble(i,j)));
+						}
+						dif=(mbase.getColumnCount()-dif)/mbase.getColumnCount();
+						difg=(mbase.getColumnCount()-difg)/mbase.getColumnCount();
+						difavg.setAsDouble(dif, i, xp);
+						difavglob.setAsDouble(difg, i, xp);
+						int vt=0;
+						if(!Double.isNaN(mbase.getAsDouble(i,colbase)))
+						{
+
+						}
+
+					}
+					corelavg.setAsDouble(0, 0, xp);
+					corelavglob.setAsDouble(0, 0, xp);
+					difavg.setAsDouble(0, 0, xp);
+					difavglob.setAsDouble(0, 0, xp);
+					double avgdif=0;
+					double avgdifglob=0;
+					double avgcorel=0;
+					double avgcorelglob=0;
+					double navgdif=0;
+					double navgdifglob=0;
+					double navgcorel=0;
+					double navgcorelglob=0;
+					for(int i=1;i<mbase.getRowCount();i++)
+					{
+						if(!Double.isNaN(corelavg.getAsDouble(i,xp)))
+								{
+								navgcorel++;
+								avgcorel=avgcorel+corelavg.getAsDouble(i,xp);
+								}
+							
+						if(!Double.isNaN(corelavglob.getAsDouble(i,xp)))
+						{
+						navgcorelglob++;
+						avgcorelglob=avgcorelglob+corelavglob.getAsDouble(i,xp);
+						}
+						if(!Double.isNaN(difavg.getAsDouble(i,xp)))
+						{
+						navgdif++;
+						avgdif=avgdif+difavg.getAsDouble(i,xp);
+						}
+						if(!Double.isNaN(difavglob.getAsDouble(i,xp)))
+						{
+						navgdifglob++;
+						avgdifglob=avgdifglob+difavglob.getAsDouble(i,xp);
+						}
+						
+					}
+					corelavg.setAsDouble(avgcorel/navgcorel, 0, xp);
+					corelavglob.setAsDouble(avgcorelglob/navgcorelglob, 0, xp);
+					difavg.setAsDouble(avgdif/navgdif, 0, xp);
+					difavglob.setAsDouble(avgdifglob/navgdifglob, 0, xp);
+					
+				}
+	
+			if (clbase.nbotherxp>0)
+			{
+			corelavg.showGUI();
+			difavg.showGUI();
+			this.corelavglob.showGUI();
+			this.difavglob.showGUI();
+			}
+
+	}
+
+	public void majaff()
+	{
 		agm.calcscores();
 		setTitle("Cluster evaluation");    
 		setResizable(true);    
@@ -142,6 +280,7 @@ public class FAgModel extends JFrame implements ActionListener
 		int size=0;
 		int nx=0;
 		int ny=0;
+		jp.removeAll();
 		clbase=agm.clustinit;
 		colbase=clbase.idtickinit;
 		mbase=clbase.vtestsm;
@@ -238,6 +377,60 @@ public class FAgModel extends JFrame implements ActionListener
 					jp.add(jbb,gbc);
 					nx++;
 
+					if (clbase.nbotherxp>0)
+						for (int xp=0; xp<clbase.nbotherxp; xp++)
+						{
+							l1 = new JLabel(""+Math.round(this.corelavg.getAsDouble(i,xp)*100)/100.0);
+							gbc.gridx=nx;
+							gbc.gridy=i+1;
+							gbc.gridwidth=1;
+							gbc.gridheight=1;
+							gbc.weightx=10;
+							gbc.weighty=10;
+							gbc.anchor=GridBagConstraints.WEST;
+						//	gb.setConstraints(l1,gbc);
+						//	getContentPane().add(l1);
+							jp.add(l1,gbc);
+							nx++;
+							l1 = new JLabel(""+Math.round(this.difavg.getAsDouble(i,xp)*100)/100.0);
+							gbc.gridx=nx;
+							gbc.gridy=i+1;
+							gbc.gridwidth=1;
+							gbc.gridheight=1;
+							gbc.weightx=10;
+							gbc.weighty=10;
+							gbc.anchor=GridBagConstraints.WEST;
+						//	gb.setConstraints(l1,gbc);
+						//	getContentPane().add(l1);
+							jp.add(l1,gbc);
+							nx++;
+							l1 = new JLabel(""+Math.round(this.corelavglob.getAsDouble(i,xp)*100)/100.0);
+							gbc.gridx=nx;
+							gbc.gridy=i+1;
+							gbc.gridwidth=1;
+							gbc.gridheight=1;
+							gbc.weightx=10;
+							gbc.weighty=10;
+							gbc.anchor=GridBagConstraints.WEST;
+						//	gb.setConstraints(l1,gbc);
+						//	getContentPane().add(l1);
+							jp.add(l1,gbc);
+							nx++;
+							l1 = new JLabel(""+Math.round(this.difavglob.getAsDouble(i,xp)*100)/100.0);
+							gbc.gridx=nx;
+							gbc.gridy=i+1;
+							gbc.gridwidth=1;
+							gbc.gridheight=1;
+							gbc.weightx=10;
+							gbc.weighty=10;
+							gbc.anchor=GridBagConstraints.WEST;
+						//	gb.setConstraints(l1,gbc);
+						//	getContentPane().add(l1);
+							jp.add(l1,gbc);
+							nx++;
+							
+							
+						}
 
 
 					m.setAsString(l4.getText(), i,2);
@@ -509,6 +702,112 @@ public class FAgModel extends JFrame implements ActionListener
 		//	getContentPane().add(l1);
 			jp.add(l1,gbc);
 			
+			if (clbase.nbotherxp>0)
+				for (int xp=0; xp<clbase.nbotherxp; xp++)
+				{
+					l1 = new JLabel(clbase.hname.get(xp));
+					gbc.gridx=5+4*xp;
+					gbc.gridy=0;
+					gbc.gridwidth=1;
+					gbc.gridheight=1;
+					gbc.weightx=10;
+					gbc.weighty=10;
+					gbc.anchor=GridBagConstraints.WEST;
+				//	gb.setConstraints(l1,gbc);
+				//	getContentPane().add(l1);
+					jp.add(l1,gbc);
+					l1 = new JLabel("CorClu");
+					gbc.gridx=5+4*xp;
+					gbc.gridy=1;
+					gbc.gridwidth=1;
+					gbc.gridheight=1;
+					gbc.weightx=10;
+					gbc.weighty=10;
+					gbc.anchor=GridBagConstraints.WEST;
+				//	gb.setConstraints(l1,gbc);
+				//	getContentPane().add(l1);
+					jp.add(l1,gbc);
+					l1 = new JLabel("DifClu");
+					gbc.gridx=6+4*xp;
+					gbc.gridy=1;
+					gbc.gridwidth=1;
+					gbc.gridheight=1;
+					gbc.weightx=10;
+					gbc.weighty=10;
+					gbc.anchor=GridBagConstraints.WEST;
+				//	gb.setConstraints(l1,gbc);
+				//	getContentPane().add(l1);
+					jp.add(l1,gbc);
+					l1 = new JLabel("CorGlob");
+					gbc.gridx=7+4*xp;
+					gbc.gridy=1;
+					gbc.gridwidth=1;
+					gbc.gridheight=1;
+					gbc.weightx=10;
+					gbc.weighty=10;
+					gbc.anchor=GridBagConstraints.WEST;
+				//	gb.setConstraints(l1,gbc);
+				//	getContentPane().add(l1);
+					jp.add(l1,gbc);
+					l1 = new JLabel("DifGlob");
+					gbc.gridx=8+4*xp;
+					gbc.gridy=1;
+					gbc.gridwidth=1;
+					gbc.gridheight=1;
+					gbc.weightx=10;
+					gbc.weighty=10;
+					gbc.anchor=GridBagConstraints.WEST;
+				//	gb.setConstraints(l1,gbc);
+				//	getContentPane().add(l1);
+					jp.add(l1,gbc);
+					l1 = new JLabel(""+Math.round(this.corelavg.getAsDouble(0,xp)*100)/100.0);
+					gbc.gridx=5+4*xp;
+					gbc.gridy=2;
+					gbc.gridwidth=1;
+					gbc.gridheight=1;
+					gbc.weightx=10;
+					gbc.weighty=10;
+					gbc.anchor=GridBagConstraints.WEST;
+				//	gb.setConstraints(l1,gbc);
+				//	getContentPane().add(l1);
+					jp.add(l1,gbc);
+					l1 = new JLabel(""+Math.round(this.difavg.getAsDouble(0,xp)*100)/100.0);
+					gbc.gridx=6+4*xp;
+					gbc.gridy=2;
+					gbc.gridwidth=1;
+					gbc.gridheight=1;
+					gbc.weightx=10;
+					gbc.weighty=10;
+					gbc.anchor=GridBagConstraints.WEST;
+				//	gb.setConstraints(l1,gbc);
+				//	getContentPane().add(l1);
+					jp.add(l1,gbc);
+					l1 = new JLabel(""+Math.round(this.corelavglob.getAsDouble(0,xp)*100)/100.0);
+					gbc.gridx=7+4*xp;
+					gbc.gridy=2;
+					gbc.gridwidth=1;
+					gbc.gridheight=1;
+					gbc.weightx=10;
+					gbc.weighty=10;
+					gbc.anchor=GridBagConstraints.WEST;
+				//	gb.setConstraints(l1,gbc);
+				//	getContentPane().add(l1);
+					jp.add(l1,gbc);
+					l1 = new JLabel(""+Math.round(this.difavglob.getAsDouble(0,xp)*100)/100.0);
+					gbc.gridx=8+4*xp;
+					gbc.gridy=2;
+					gbc.gridwidth=1;
+					gbc.gridheight=1;
+					gbc.weightx=10;
+					gbc.weighty=10;
+					gbc.anchor=GridBagConstraints.WEST;
+				//	gb.setConstraints(l1,gbc);
+				//	getContentPane().add(l1);
+					jp.add(l1,gbc);
+					
+					
+				}
+			
 			l3 = new JLabel("nb:"+mbase.getAsDouble(2,colbase));
 		gbc.gridx=0;
 		gbc.gridy=1;
@@ -541,6 +840,47 @@ public class FAgModel extends JFrame implements ActionListener
 			gbcs.anchor=GridBagConstraints.WEST;
 
 			
+
+			gbcg.gridx=1;
+			gbcg.gridy=0;
+			gbcg.gridwidth=1;
+			gbcg.gridheight=2;
+			gbcg.weightx=10;
+			gbcg.weighty=10;
+			gbcg.anchor=GridBagConstraints.WEST;
+			jpg.add(jp,gbcg);
+
+			
+			
+			//			setContentPane(monPanel);
+
+		
+			
+	}
+
+	@SuppressWarnings({"deprecation", "unused"})
+	public FAgModel(AgModel agmd)
+	{	
+		agm=agmd;
+		agm.calcscores();
+		setTitle("Cluster evaluation");    
+		setResizable(true);    
+		//getContentPane().setLayout(gb);
+		majaff();
+		
+		int nm=1;
+		int size=0;
+		int nx=0;
+		int ny=0;
+
+				// SCORES
+			gbcs.gridwidth=1;
+			gbcs.gridheight=1;
+			gbcs.weightx=10;
+			gbcs.weighty=10;
+			gbcs.anchor=GridBagConstraints.WEST;
+
+			
 			jcheckVariance=new JCheckBox("Show Standard Error");
 			jcheckVariance.addActionListener(this);
 			jcheckVariance.setSelected(false);
@@ -558,6 +898,20 @@ public class FAgModel extends JFrame implements ActionListener
 			gbcs.gridy=ny;
 			jps.add(jcheckcluster,gbcs);
 			ny++;
+			jcompareglobal=new JCheckBox("Show alternative global evolutions");
+			jcompareglobal.addActionListener(this);
+			jcompareglobal.setSelected(false);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jcompareglobal,gbcs);
+			ny++;
+			jcomparecluster=new JCheckBox("Show alterntaive cluster evolutions");
+			jcomparecluster.addActionListener(this);
+			jcomparecluster.setSelected(false);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jcomparecluster,gbcs);
+			ny++;
 			
 			jbexport=new JButton("Export to UJMP");
 			jbexport.addActionListener(this);
@@ -573,6 +927,22 @@ public class FAgModel extends JFrame implements ActionListener
 			gbcs.gridx=nx;
 			gbcs.gridy=ny;
 			jps.add(jbexportnum,gbcs);
+			ny++;
+
+			jbsaveto=new JButton("Save to...");
+			jbsaveto.addActionListener(this);
+			jbsaveto.setSelected(false);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jbsaveto,gbcs);
+			ny++;
+
+			jbcomparewith=new JButton("Compare with...");
+			jbcomparewith.addActionListener(this);
+			jbcomparewith.setSelected(false);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jbcomparewith,gbcs);
 			ny++;
 
 			
@@ -617,12 +987,12 @@ public class FAgModel extends JFrame implements ActionListener
 			
 			
 			gbcg.gridx=0;
-			gbcg.gridy=1;
+			gbcg.gridy=0;
 			gbcg.gridwidth=1;
 			gbcg.gridheight=1;
 			gbcg.weightx=10;
 			gbcg.weighty=10;
-			gbcg.anchor=GridBagConstraints.WEST;
+			gbcg.anchor=GridBagConstraints.NORTHWEST;
 			jpg.add(jps,gbcg);
 
 			
@@ -661,6 +1031,7 @@ public class FAgModel extends JFrame implements ActionListener
 			
 			
 	}
+	
 	public void redrawgraph(boolean export)
 	{
 		System.out.println("red "+v1+"/"+v2);
@@ -745,19 +1116,69 @@ public class FAgModel extends JFrame implements ActionListener
 		{
 			if (isNaN.get(v1)==false)
 			{
-
-			 DefaultStatisticalCategoryDataset result = new DefaultStatisticalCategoryDataset();
-			 String series1 = new String("ByExtension");
-		     String series2 = new String("ByIntension");
-		     String series3 = new String("Avg");
-
-				for(int j=0;j<mbase.getColumnCount();j++)
+				if (!(this.jcomparecluster.isSelected()|this.jcompareglobal.isSelected()))
 				{
-					result.add(clbase.avgsm.getAsDouble(v1,j),clbase.stderrsm.getAsDouble(v1,j),series1,new String(""+j));
-					result.add(clbase.avgsmdef.getAsDouble(v1,j),clbase.stderrsmdef.getAsDouble(v1,j),series2,new String(""+j));
-					result.add(clbase.avglobsm.getAsDouble(v1,j),clbase.stdglobsm.getAsDouble(v1,j),series3,new String(""+j));
+					 DefaultStatisticalCategoryDataset result = new DefaultStatisticalCategoryDataset();
+					 String series1 = new String("ByExtension");
+				     String series2 = new String("ByIntension");
+				     String series3 = new String("Avg");
+
+						for(int j=0;j<mbase.getColumnCount();j++)
+						{
+							result.add(clbase.avgsm.getAsDouble(v1,j),clbase.stderrsm.getAsDouble(v1,j),series1,new String(""+j));
+							result.add(clbase.avgsmdef.getAsDouble(v1,j),clbase.stderrsmdef.getAsDouble(v1,j),series2,new String(""+j));
+							result.add(clbase.avglobsm.getAsDouble(v1,j),clbase.stdglobsm.getAsDouble(v1,j),series3,new String(""+j));
+							
+						}
+				     
+				     
+
+				         CategoryAxis xAxis = new CategoryAxis("");
+				         xAxis.setCategoryMargin(0.5d);
+				         ValueAxis yAxis = new NumberAxis(mbase.getRowLabel(v1));
+
+				        // define the plot
+				         StatisticalLineAndShapeRenderer renderer = new StatisticalLineAndShapeRenderer();
+				         CategoryPlot plot = new CategoryPlot(result, xAxis, yAxis, renderer);
+
+				        chartg = new JFreeChart("",
+				                                          plot);
+				        plot.setBackgroundPaint(Color.WHITE);			
 					
 				}
+				if (this.jcomparecluster.isSelected()|this.jcompareglobal.isSelected())
+				{
+					
+
+			 DefaultStatisticalCategoryDataset result = new DefaultStatisticalCategoryDataset();
+			 String[] series = new String[clbase.nbotherxp+1];
+			 series[0]="base";
+				for(int j=0;j<mbase.getColumnCount();j++)
+				{
+					if (this.jcomparecluster.isSelected())
+					result.add(clbase.avgsm.getAsDouble(v1,j),clbase.stderrsm.getAsDouble(v1,j),series[0],new String(""+j));
+//					result.add(clbase.avgsmdef.getAsDouble(v1,j),clbase.stderrsmdef.getAsDouble(v1,j),series2,new String(""+j));
+					if (this.jcompareglobal.isSelected())
+					result.add(clbase.avglobsm.getAsDouble(v1,j),clbase.stdglobsm.getAsDouble(v1,j),series[0],new String(""+j));
+					
+				}
+			 if (clbase.nbotherxp>0)
+				for(int i=0;i<clbase.nbotherxp;i++)
+				{
+					 series[i+1]=clbase.hname.get(i);
+						for(int j=0;j<mbase.getColumnCount();j++)
+						{
+							if (this.jcomparecluster.isSelected())
+								result.add(clbase.havgsm.get(i).getAsDouble(v1,j),clbase.hstderrsm.get(i).getAsDouble(v1,j),series[i+1],new String(""+j));
+//								result.add(clbase.avgsmdef.getAsDouble(v1,j),clbase.stderrsmdef.getAsDouble(v1,j),series2,new String(""+j));
+								if (this.jcompareglobal.isSelected())
+								result.add(clbase.havglobsm.get(i).getAsDouble(v1,j),clbase.hstdglobsm.get(i).getAsDouble(v1,j),series[i+1],new String(""+j));
+							
+						}
+					
+				}
+			 
+
 		     
 		     
 
@@ -773,6 +1194,7 @@ public class FAgModel extends JFrame implements ActionListener
 		                                          plot);
 		        plot.setBackgroundPaint(Color.WHITE);			
 //			chart.setBorderVisible(false);
+				}
 			
 			}
 			if (isNaNQ.get(v1)==false)
@@ -1013,7 +1435,12 @@ public class FAgModel extends JFrame implements ActionListener
 		gbcg.weighty=10;
 		gbcg.anchor=GridBagConstraints.NORTHWEST;
 
-		jpg.add(monPanel,gbcg);
+//		jpg.add(monPanel,gbcg);
+		
+		grframe=new JFrame("Cluster graph");
+		grframe.add(monPanel);
+		grframe.pack();
+		grframe.setVisible(true);
         }
         else
         {
@@ -1049,6 +1476,79 @@ public class FAgModel extends JFrame implements ActionListener
 			clbase.vtestsm.showGUI();
 			clbase.avgsm.showGUI();
 			clbase.avglobsm.showGUI();
+			
+		}
+		if (src==jbsaveto)
+		{
+			 String response = JOptionPane.showInputDialog(null,
+					  "Save Folder Name?",
+					  "Enter the new folder name",
+					  JOptionPane.QUESTION_MESSAGE);
+			File projectf = new File("savedlogs/"+response);
+			boolean bfile = projectf.mkdir();
+			if (!bfile)
+				System.out.println("This folder exists. Please create another one!");
+			else 
+			{
+				try {
+					String nomf = new String("savedlogs/"+response+"/avglobsm.csv");
+					clbase.avglobsm.exportToFile(nomf);
+					nomf = new String("savedlogs/"+response+"/vtestsm.csv");
+					clbase.vtestsm.exportToFile(nomf);
+					nomf = new String("savedlogs/"+response+"/avgsm.csv");
+					clbase.avgsm.exportToFile(nomf);
+					nomf = new String("savedlogs/"+response+"/stderrsm.csv");
+					clbase.stderrsm.exportToFile(nomf);
+					nomf = new String("savedlogs/"+response+"/stdglobsm.csv");
+					clbase.stdglobsm.exportToFile(nomf);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				dispose();
+			}			
+		}
+		if (src==jbcomparewith)
+		{
+			JFileChooser fileChooser = new JFileChooser("savedlogs/");
+			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			fileChooser.setDialogTitle("Choose saved results");
+			int ret = fileChooser.showOpenDialog(this);
+			if (ret == JFileChooser.APPROVE_OPTION) {
+				System.out.println(fileChooser.getSelectedFile().getName());
+				String filename = fileChooser.getName(fileChooser.getSelectedFile());
+				try {
+					String nomf = new String("savedlogs/"+filename+"/avglobsm.csv");
+			//		Matrix nm=clbase.avglobsm.clone();
+					Matrix nm=MatrixFactory.importFromFile(nomf);
+/*					if (clbase.nbotherxp==0)
+					{
+						clbase.nbotherxp++;
+						clbase.havglobsm.add(clbase.nbotherxp-1, clbase.avglobsm);
+						clbase.hvtestsm.add(clbase.nbotherxp-1, clbase.vtestsm);
+						clbase.havgsm.add(clbase.nbotherxp-1, clbase.avgsm);						
+					}*/
+					clbase.nbotherxp++;
+					clbase.havglobsm.add(clbase.nbotherxp-1, nm);
+					nomf = new String("savedlogs/"+filename+"/vtestsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.hvtestsm.add(clbase.nbotherxp-1, nm);
+					nomf = new String("savedlogs/"+filename+"/avgsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.havgsm.add(clbase.nbotherxp-1, nm);
+					nomf = new String("savedlogs/"+filename+"/stderrsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.hstderrsm.add(clbase.nbotherxp-1, nm);
+					nomf = new String("savedlogs/"+filename+"/stdglobsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.hstdglobsm.add(clbase.nbotherxp-1, nm);
+					clbase.hname.add(clbase.nbotherxp-1,filename);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+			majcalc();
+			majaff();
 			
 		}
 		for (int i=0; i<jrbx.size(); i++)

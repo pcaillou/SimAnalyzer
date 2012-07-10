@@ -45,18 +45,25 @@ public class Cluster {
 	public ArrayList<HashMap<String,Integer>> defDistrib=new ArrayList();
 	public String[] qvtests;
 	public String[] qvtestsshort;
+	public ArrayList<String> hname;
 	public Matrix qvtestsm;
+	public ArrayList<Matrix> hvtestsm;
 	public Matrix qavgsm;
+	public ArrayList<Matrix> havgsm;
 	public Matrix qstderrsm;
+	public ArrayList<Matrix> hstderrsm;
 	public Matrix qvtestsmdef;
 	public Matrix qavgsmdef;
 	public Matrix qstderrsmdef;
 	public Matrix qavglobsm;
+	public ArrayList<Matrix> havglobsm;
 	public Matrix qstdglobsm;
+	public ArrayList<Matrix> hstdglobsm;
     public List<Long> ticklist = new ArrayList<Long>();
 	public AgModel agm;
 	public int idtickinit;
 	public long tickinit;
+	public int nbotherxp;
 	
 	private List<List<Object>>getSortListByCommonComponents(List<Cluster> clusters){
 		ArrayList<Object> sortClusters = new ArrayList<Object>();
@@ -165,6 +172,13 @@ public class Cluster {
 		setId(id);
 		tickinit=SimulationController.currenttick;
 		idtickinit=0;
+		nbotherxp=0;
+		this.havglobsm=new ArrayList<Matrix>();
+		this.havgsm=new ArrayList<Matrix>();
+		this.hvtestsm=new ArrayList<Matrix>();
+		this.hstderrsm=new ArrayList<Matrix>();
+		this.hstdglobsm=new ArrayList<Matrix>();
+		this.hname=new ArrayList<String>();
 		// AD ticklist=new ArrayList(); /* code original
 		ticklist=new ArrayList<Long>(); // */
 		this.update(data, componentsIds);

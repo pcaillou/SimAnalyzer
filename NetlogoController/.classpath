@@ -5,7 +5,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="lib/NetLogo.jar"/>
 	<classpathentry kind="lib" path="lib/lib"/>
-	<classpathentry kind="lib" path="lib/ujmp-complete-0.2.5.jar"/>
+	<classpathentry kind="lib" path="lib/ujmp-complete-0.2.5.jar" sourcepath="lib/ujmp-complete-0.2.5-sources.jar"/>
 	<classpathentry kind="lib" path="lib/weka.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.0.8-bin.jar"/>
 	<classpathentry kind="lib" path="lib/mysql.jar"/>
@@ -17,5 +17,7 @@
 	<classpathentry kind="lib" path="lib/commons-math-2.2-sources.jar"/>
 	<classpathentry kind="lib" path="lib/commons-math-2.2.jar"/>
 	<classpathentry kind="lib" path="lib/gs-core-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/ujmp-complete-0.2.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib/ujmp-complete-0.2.5-javadoc.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
