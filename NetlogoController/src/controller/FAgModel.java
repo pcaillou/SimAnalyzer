@@ -51,6 +51,7 @@ import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
 import org.ujmp.core.calculation.Calculation.Ret;
 import org.ujmp.core.doublematrix.DenseDoubleMatrix2D;
+import org.ujmp.core.enums.FileFormat;
 import org.ujmp.core.enums.ValueType;
 //AD import org.ujmp.core.exceptions.MatrixException;
 
@@ -98,6 +99,7 @@ public class FAgModel extends JFrame implements ActionListener
 	JPanel jps = new JPanel(gbs);
 	JCheckBox jcheckVariance;
 	JCheckBox jcheckcluster;
+	JCheckBox jcheckdistrib;
 	JCheckBox jcompareglobal;
 	JCheckBox jcomparecluster;
 	JButton jbexport;
@@ -891,6 +893,13 @@ public class FAgModel extends JFrame implements ActionListener
 			jps.add(jcheckVariance,gbcs);
 			ny++;
 			
+			jcheckdistrib=new JCheckBox("Distrib for numerical var.");
+			jcheckdistrib.addActionListener(this);
+			jcheckdistrib.setSelected(false);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jcheckdistrib,gbcs);
+			ny++;
 			jcheckcluster=new JCheckBox("Distrib for cluster in extension");
 			jcheckcluster.addActionListener(this);
 			jcheckcluster.setSelected(false);
@@ -1035,6 +1044,9 @@ public class FAgModel extends JFrame implements ActionListener
 	public void redrawgraph(boolean export)
 	{
 		System.out.println("red "+v1+"/"+v2);
+//		clbase.davglobsm.showGUI();
+//		clbase.davgsm.showGUI();
+//		clbase.davgsmdef.showGUI();
 		//Plot
 		if (rerun==false)
 		{
@@ -1118,6 +1130,8 @@ public class FAgModel extends JFrame implements ActionListener
 			{
 				if (!(this.jcomparecluster.isSelected()|this.jcompareglobal.isSelected()))
 				{
+					if (!this.jcheckdistrib.isSelected())
+					{
 					 DefaultStatisticalCategoryDataset result = new DefaultStatisticalCategoryDataset();
 					 String series1 = new String("ByExtension");
 				     String series2 = new String("ByIntension");
@@ -1144,11 +1158,148 @@ public class FAgModel extends JFrame implements ActionListener
 				        chartg = new JFreeChart("",
 				                                          plot);
 				        plot.setBackgroundPaint(Color.WHITE);			
-					
+					}
+					if (this.jcheckdistrib.isSelected())
+					{
+
+						 DefaultStatisticalCategoryDataset result = new DefaultStatisticalCategoryDataset();
+//						 String series1 = new String("CurrentTime");
+
+						 Long parami=clbase.distribparams.getAsLong(v1,0);
+						 Matrix dat=clbase.davglobsm.getAsMatrix(v1,0);
+							long fact=clbase.distribparams.getAsLong(v1,0);
+							double unit=Math.pow(2,fact);
+							long debnb=clbase.distribparams.getAsLong(v1,1);
+							long nbbin=clbase.distribparams.getAsLong(v1,2);
+							double debvalue=unit*debnb;
+						 if (this.jcheckcluster.isSelected())
+						 {
+							 dat=clbase.davgsm.getAsMatrix(v1,0);
+						 }
+//						 int j=clbase.idtickinit;
+						 String[] series = new String[(int)mbase.getColumnCount()];
+
+//							for(int i=0;i<dat.size() ;i++)
+						 
+							for(int j=0;j<mbase.getColumnCount();j++)
+							{
+								 dat=clbase.davglobsm.getAsMatrix(v1,j);
+								 if (this.jcheckcluster.isSelected())
+								 {
+									 dat=clbase.davgsm.getAsMatrix(v1,j);
+								 }
+//								 dat.showGUI();
+								 series[j]="t"+j;
+								 for (int b=0; b<=Cluster.NB_MAX_BIN;b++)
+								 {
+//									 if (this.jcheckcluster.isSelected())
+									 {
+										 result.add(dat.getAsLong(b,0),0.0,series[j],new String("<"+(debvalue+unit*b)));
+									 }
+								 }
+							}
+							 
+							 if (export) dat.showGUI();
+					         
+					         CategoryAxis xAxis = new CategoryAxis("");
+					         xAxis.setCategoryMargin(0.5d);
+					         
+					         
+					         ValueAxis yAxis = new NumberAxis(mbase.getRowLabel(v1));
+
+					        // define the plot
+					         StatisticalLineAndShapeRenderer renderer = new StatisticalLineAndShapeRenderer();
+					         CategoryPlot plot = new CategoryPlot(result, xAxis, yAxis, renderer);
+					        chartg = new JFreeChart("",
+					                                          plot);
+					        plot.setBackgroundPaint(Color.WHITE);			
+//						chart.setBorderVisible(false);
+						
+						
+						
+					}
 				}
 				if (this.jcomparecluster.isSelected()|this.jcompareglobal.isSelected())
 				{
-					
+					if (this.jcheckdistrib.isSelected())
+					{
+
+						 DefaultStatisticalCategoryDataset result = new DefaultStatisticalCategoryDataset();
+//						 String series1 = new String("CurrentTime");
+
+						 Long parami=clbase.distribparams.getAsLong(v1,0);
+						 Matrix dat=clbase.davglobsm.getAsMatrix(v1,0);
+							long fact=clbase.distribparams.getAsLong(v1,0);
+							double unit=Math.pow(2,fact);
+							long debnb=clbase.distribparams.getAsLong(v1,1);
+							long nbbin=clbase.distribparams.getAsLong(v1,2);
+							double debvalue=unit*debnb;
+							long seltp=clbase.avglobsm.getColumnCount()-1;
+						 if (this.jcheckcluster.isSelected())
+						 {
+							 dat=clbase.davgsm.getAsMatrix(v1,0);
+						 }
+//						 int j=clbase.idtickinit;
+						 String[] series = new String[clbase.nbotherxp+1];
+
+						 series[0]="base";
+						 dat=clbase.davglobsm.getAsMatrix(v1,seltp);
+						 if (this.jcheckcluster.isSelected())
+						 {
+							 dat=clbase.davgsm.getAsMatrix(v1,seltp);
+						 }
+//						 dat.showGUI();
+						 for (int b=0; b<=Cluster.NB_MAX_BIN;b++)
+						 {
+							 {
+								 result.add(dat.getAsLong(b,0),0.0,series[0],new String("<"+(debvalue+unit*b)));
+							 }
+						 }
+
+						 if (clbase.nbotherxp>0)
+							for(int i=0;i<clbase.nbotherxp;i++)
+							{
+								 series[i+1]=clbase.hname.get(i);
+								 dat=clbase.hdavglobsm.get(i).getAsMatrix(v1,seltp);
+								 if (this.jcheckcluster.isSelected())
+								 {
+									 dat=clbase.hdavgsm.get(i).getAsMatrix(v1,seltp);
+								 }
+//								 dat.showGUI();
+								 for (int b=0; b<=Cluster.NB_MAX_BIN;b++)
+								 {
+									 {
+										 result.add(dat.getAsLong(b,0),0.0,series[i+1],new String("<"+(debvalue+unit*b)));
+									 }
+								 }
+								
+							}
+
+						 //							for(int i=0;i<dat.size() ;i++)
+						 
+							 
+							 if (export) dat.showGUI();
+					         
+					         CategoryAxis xAxis = new CategoryAxis("");
+					         xAxis.setCategoryMargin(0.5d);
+					         
+					         
+					         ValueAxis yAxis = new NumberAxis(mbase.getRowLabel(v1));
+
+					        // define the plot
+					         StatisticalLineAndShapeRenderer renderer = new StatisticalLineAndShapeRenderer();
+					         CategoryPlot plot = new CategoryPlot(result, xAxis, yAxis, renderer);
+					         
+					        chartg = new JFreeChart("",
+					                                          plot);
+					        plot.setBackgroundPaint(Color.WHITE);			
+//						chart.setBorderVisible(false);
+						
+						
+						
+					}					
+					if (!this.jcheckdistrib.isSelected())
+					{
 
 			 DefaultStatisticalCategoryDataset result = new DefaultStatisticalCategoryDataset();
 			 String[] series = new String[clbase.nbotherxp+1];
@@ -1194,6 +1345,7 @@ public class FAgModel extends JFrame implements ActionListener
 		                                          plot);
 		        plot.setBackgroundPaint(Color.WHITE);			
 //			chart.setBorderVisible(false);
+				}
 				}
 			
 			}
@@ -1476,6 +1628,7 @@ public class FAgModel extends JFrame implements ActionListener
 			clbase.vtestsm.showGUI();
 			clbase.avgsm.showGUI();
 			clbase.avglobsm.showGUI();
+			clbase.distribparams.showGUI();
 			
 		}
 		if (src==jbsaveto)
@@ -1501,6 +1654,14 @@ public class FAgModel extends JFrame implements ActionListener
 					clbase.stderrsm.exportToFile(nomf);
 					nomf = new String("savedlogs/"+response+"/stdglobsm.csv");
 					clbase.stdglobsm.exportToFile(nomf);
+					nomf = new String("savedlogs/"+response+"/davgsm.ser");
+					clbase.davgsm.exportToFile(nomf);
+					nomf = new String("savedlogs/"+response+"/davglobsm.ser");
+					clbase.davglobsm.exportToFile(nomf);
+					nomf = new String("savedlogs/"+response+"/davgsmdef.ser");
+					clbase.davgsmdef.exportToFile(nomf);
+					nomf = new String("savedlogs/"+response+"/distribparam.csv");
+					clbase.distribparams.exportToFile(nomf);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -1541,6 +1702,26 @@ public class FAgModel extends JFrame implements ActionListener
 					nomf = new String("savedlogs/"+filename+"/stdglobsm.csv");
 					nm=MatrixFactory.importFromFile(nomf);
 					clbase.hstdglobsm.add(clbase.nbotherxp-1, nm);
+
+					nomf = new String("savedlogs/"+filename+"/distribparam.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.hdistribparams.add(clbase.nbotherxp-1, nm);
+					Matrix nd=nm;
+					nomf = new String("savedlogs/"+filename+"/davgsm.ser");
+					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+					nm.showGUI();
+					clbase.rebin(nm,clbase.davgsm,nd,clbase.distribparams);
+					clbase.hdavgsm.add(clbase.nbotherxp-1, nm);
+					nomf = new String("savedlogs/"+filename+"/davglobsm.ser");
+					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+					clbase.rebin(nm,clbase.davglobsm,nd,clbase.distribparams);
+					clbase.hdavglobsm.add(clbase.nbotherxp-1, nm);
+					nomf = new String("savedlogs/"+filename+"/davgsmdef.ser");
+					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+					clbase.rebin(nm,clbase.davgsmdef,nd,clbase.distribparams);
+					clbase.hdavgsmdef.add(clbase.nbotherxp-1, nm);
+										
+					
 					clbase.hname.add(clbase.nbotherxp-1,filename);
 				} catch (IOException e1) {
 					e1.printStackTrace();
