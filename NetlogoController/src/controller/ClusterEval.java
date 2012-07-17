@@ -441,7 +441,7 @@ public class ClusterEval extends JPanel implements ActionListener
 					}
 				}
  				mn=mn.transpose(Ret.NEW);
-				mn.showGUI();
+//				mn.showGUI();
 			}
 		});
 //		getContentPane().add(jsp);
@@ -937,7 +937,7 @@ public class ClusterEval extends JPanel implements ActionListener
 						}
 					}
 	 				mn=mn.transpose(Ret.NEW);
-					mn.showGUI();
+//					mn.showGUI();
 				}
 			});
 			this.getContentPane().add(jsp);

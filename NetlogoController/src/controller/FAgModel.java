@@ -1075,7 +1075,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 						}
 					}
 	 				mn=mn.transpose(Ret.NEW);
-					mn.showGUI();
+//					mn.showGUI();
 				}
 			});
 
@@ -1745,6 +1745,24 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 			this.repaint();
 			
 		}
+		if (src==this.jcheckdistrib)
+		{
+			redrawgraph(false);
+			this.repaint();
+			
+		}
+		if (src==this.jcompareglobal)
+		{
+			redrawgraph(false);
+			this.repaint();
+			
+		}
+		if (src==this.jcomparecluster)
+		{
+			redrawgraph(false);
+			this.repaint();
+			
+		}
 		if (src==jbexport)
 		{
 			redrawgraph(true);
@@ -1837,7 +1855,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 					Matrix nd=nm;
 					nomf = new String("savedlogs/"+filename+"/davgsm.ser");
 					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
-					nm.showGUI();
+//					nm.showGUI();
 					clbase.rebin(nm,clbase.davgsm,nd,clbase.distribparams);
 					clbase.hdavgsm.add(clbase.nbotherxp-1, nm);
 					nomf = new String("savedlogs/"+filename+"/davglobsm.ser");
