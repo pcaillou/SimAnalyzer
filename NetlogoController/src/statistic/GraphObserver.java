@@ -177,6 +177,7 @@ public class GraphObserver extends StatisticalObserver  {
 			{
 				graph.addNode(data.getAsString(i,idColumn));
 			}
+			System.out.println("je suis a data.getAsString(" + i + "," + data.getColumnLabel(graphColumn) + ")");
 			graph.loadFromString(data.getAsString(i,graphColumn), WEIGHT_DEFAULT, minTime, maxTime, true);
 		}
 		
