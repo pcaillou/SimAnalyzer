@@ -39,6 +39,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 //AD import javax.swing.JTextField;
 //AD import javax.swing.ScrollPaneLayout;
 
@@ -85,7 +89,7 @@ import controller.SimAnalyzer.ShowProject;
 
 //AD import weka.core.matrix.Maths;
 
-public class FAgModel extends JPanel implements ActionListener
+public class FAgModel extends JPanel implements ActionListener,ChangeListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -102,6 +106,9 @@ public class FAgModel extends JPanel implements ActionListener
 	JCheckBox jcheckdistrib;
 	JCheckBox jcompareglobal;
 	JCheckBox jcomparecluster;
+	JCheckBox jctimedistrib;
+	JSlider jsbin;
+	JSlider jstime;
 	JButton jbexport;
 	JButton jbexportnum;
 	JButton jbsaveto;
@@ -884,7 +891,7 @@ public class FAgModel extends JPanel implements ActionListener
 			gbcs.anchor=GridBagConstraints.WEST;
 
 			
-			jcheckVariance=new JCheckBox("Show Standard Error");
+			jcheckVariance=new JCheckBox("Show Standard Error"); 
 			jcheckVariance.addActionListener(this);
 			jcheckVariance.setSelected(false);
 			nx=0;
@@ -901,26 +908,59 @@ public class FAgModel extends JPanel implements ActionListener
 			gbcs.gridy=ny;
 			jps.add(jcheckdistrib,gbcs);
 			ny++;
-			jcheckcluster=new JCheckBox("Distrib for cluster in extension");
+			jctimedistrib=new JCheckBox("x=bins / x=time (check)");
+			jctimedistrib.addActionListener(this);
+			jctimedistrib.setSelected(false);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jctimedistrib,gbcs);
+			ny++;
+			jcheckcluster=new JCheckBox("Distrib for population / cluster in extension (check)");
 			jcheckcluster.addActionListener(this);
 			jcheckcluster.setSelected(false);
 			gbcs.gridx=nx;
 			gbcs.gridy=ny;
 			jps.add(jcheckcluster,gbcs);
 			ny++;
-			jcompareglobal=new JCheckBox("Show alternative global evolutions");
+			jcompareglobal=new JCheckBox("Compare with other simulations");
 			jcompareglobal.addActionListener(this);
 			jcompareglobal.setSelected(false);
 			gbcs.gridx=nx;
 			gbcs.gridy=ny;
 			jps.add(jcompareglobal,gbcs);
 			ny++;
-			jcomparecluster=new JCheckBox("Show alterntaive cluster evolutions");
+			jcomparecluster=new JCheckBox("Compare global pop / cluster (check)");
 			jcomparecluster.addActionListener(this);
 			jcomparecluster.setSelected(false);
 			gbcs.gridx=nx;
 			gbcs.gridy=ny;
 			jps.add(jcomparecluster,gbcs);
+			ny++;
+			
+			JLabel lab=new JLabel("Bin selection for result comparison");
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(lab,gbcs);
+			ny++;
+			
+			jsbin=new JSlider(JSlider.HORIZONTAL,0,clbase.NB_MAX_BIN-1,0);
+			jsbin.addChangeListener(this);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jsbin,gbcs);
+			ny++;
+			
+			lab=new JLabel("Step selection for result comparison");
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(lab,gbcs);
+			ny++;
+			
+			jstime=new JSlider(JSlider.HORIZONTAL,0,(int)clbase.avgsm.getColumnCount(),0);
+			jstime.addChangeListener(this);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jstime,gbcs);
 			ny++;
 			
 			jbexport=new JButton("Export to UJMP");
@@ -1198,9 +1238,14 @@ public class FAgModel extends JPanel implements ActionListener
 								 series[j]="t"+j;
 								 for (int b=0; b<=Cluster.NB_MAX_BIN;b++)
 								 {
-//									 if (this.jcheckcluster.isSelected())
+									 if (this.jctimedistrib.isSelected())
 									 {
 										 result.add(dat.getAsLong(b,0),0.0,series[j],new String("<"+(debvalue+unit*b)));
+									 }
+									 else
+									 {
+										 result.add(dat.getAsLong(b,0),0.0,new String("<"+(debvalue+unit*b)),series[j]);
+										 
 									 }
 								 }
 							}
@@ -1229,6 +1274,8 @@ public class FAgModel extends JPanel implements ActionListener
 				{
 					if (this.jcheckdistrib.isSelected())
 					{
+						 if (this.jctimedistrib.isSelected())
+						 {
 
 						 DefaultStatisticalCategoryDataset result = new DefaultStatisticalCategoryDataset();
 //						 String series1 = new String("CurrentTime");
@@ -1240,7 +1287,79 @@ public class FAgModel extends JPanel implements ActionListener
 							long debnb=clbase.distribparams.getAsLong(v1,1);
 							long nbbin=clbase.distribparams.getAsLong(v1,2);
 							double debvalue=unit*debnb;
-							long seltp=clbase.avglobsm.getColumnCount()-1;
+							long selbin=this.jsbin.getValue();
+						 if (this.jcheckcluster.isSelected())
+						 {
+							 dat=clbase.davgsm.getAsMatrix(v1,0);
+						 }
+//						 int j=clbase.idtickinit;
+						 String[] series = new String[clbase.nbotherxp+1];
+
+						 series[0]="base:<"+(debvalue+unit*selbin);
+							for(int j=0;j<mbase.getColumnCount();j++)
+							{
+						 dat=clbase.davglobsm.getAsMatrix(v1,j);
+						 if (this.jcheckcluster.isSelected())
+						 {
+							 dat=clbase.davgsm.getAsMatrix(v1,j);
+						 }
+//						 dat.showGUI();
+								 result.add(dat.getAsLong(selbin,0),0.0,series[0],"t"+j);
+							}
+
+						 if (clbase.nbotherxp>0)
+							for(int i=0;i<clbase.nbotherxp;i++)
+							{
+								 series[i+1]=clbase.hname.get(i);
+									for(int j=0;j<mbase.getColumnCount();j++)
+									{
+								 dat=clbase.hdavglobsm.get(i).getAsMatrix(v1,j);
+								 if (this.jcheckcluster.isSelected())
+								 {
+									 dat=clbase.hdavgsm.get(i).getAsMatrix(v1,j);
+								 }
+//								 dat.showGUI();
+										 result.add(dat.getAsLong(selbin,0),0.0,series[i+1],"t"+j);
+									}
+								
+							}
+
+						 //							for(int i=0;i<dat.size() ;i++)
+						 
+							 
+							 if (export) dat.showGUI();
+					         
+					         CategoryAxis xAxis = new CategoryAxis("");
+					         xAxis.setCategoryMargin(0.5d);
+					         
+					         
+					         ValueAxis yAxis = new NumberAxis(mbase.getRowLabel(v1));
+
+					        // define the plot
+					         StatisticalLineAndShapeRenderer renderer = new StatisticalLineAndShapeRenderer();
+					         CategoryPlot plot = new CategoryPlot(result, xAxis, yAxis, renderer);
+					        chartg = new JFreeChart("",
+					                                          plot);
+					        plot.setBackgroundPaint(Color.WHITE);			
+//						chart.setBorderVisible(false);
+						
+						
+						
+					}		
+						 if (!this.jctimedistrib.isSelected())
+						 {
+
+						 DefaultStatisticalCategoryDataset result = new DefaultStatisticalCategoryDataset();
+//						 String series1 = new String("CurrentTime");
+
+						 Long parami=clbase.distribparams.getAsLong(v1,0);
+						 Matrix dat=clbase.davglobsm.getAsMatrix(v1,0);
+							long fact=clbase.distribparams.getAsLong(v1,0);
+							double unit=Math.pow(2,fact);
+							long debnb=clbase.distribparams.getAsLong(v1,1);
+							long nbbin=clbase.distribparams.getAsLong(v1,2);
+							double debvalue=unit*debnb;
+							long seltp=this.jstime.getValue();
 						 if (this.jcheckcluster.isSelected())
 						 {
 							 dat=clbase.davgsm.getAsMatrix(v1,0);
@@ -1257,9 +1376,8 @@ public class FAgModel extends JPanel implements ActionListener
 //						 dat.showGUI();
 						 for (int b=0; b<=Cluster.NB_MAX_BIN;b++)
 						 {
-							 {
 								 result.add(dat.getAsLong(b,0),0.0,series[0],new String("<"+(debvalue+unit*b)));
-							 }
+								 
 						 }
 
 						 if (clbase.nbotherxp>0)
@@ -1274,9 +1392,7 @@ public class FAgModel extends JPanel implements ActionListener
 //								 dat.showGUI();
 								 for (int b=0; b<=Cluster.NB_MAX_BIN;b++)
 								 {
-									 {
 										 result.add(dat.getAsLong(b,0),0.0,series[i+1],new String("<"+(debvalue+unit*b)));
-									 }
 								 }
 								
 							}
@@ -1302,7 +1418,8 @@ public class FAgModel extends JPanel implements ActionListener
 						
 						
 						
-					}					
+					}		
+					}
 					if (!this.jcheckdistrib.isSelected())
 					{
 
@@ -1606,6 +1723,12 @@ public class FAgModel extends JPanel implements ActionListener
         this.repaint();
 	}
 	
+	public void stateChanged(ChangeEvent e) {
+	    JSlider source = (JSlider)e.getSource();
+	    if (source==this.jsbin) {
+	    }
+        this.redrawgraph(false);
+	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
