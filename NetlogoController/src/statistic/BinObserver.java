@@ -56,7 +56,7 @@ long step = 1;
 	
 	public BinObserver() {
 		super();
-		dataChart = new double[INTERVAL_QUANTITY][0];
+		dataChart = new double[INTERVAL_QUANTITY][1];
 	}
 	
 	public void newDataAvailable(DataEvent de) throws Exception {
@@ -80,25 +80,23 @@ long step = 1;
 		{
 			value = data.getAsDouble(i,idColumn);
 			value -= INTERVAL_START;
-			if (value % INTERVAL_WIDTH == 0)
-			{
-				value -= INTERVAL_WIDTH/10;
-			}
-			group = (int) (value / INTERVAL_WIDTH) + 1;
+			group = (int) (value / INTERVAL_WIDTH) +1;
 			if (group < 1)
 			{
 				group = 1;
-				System.err.println("BinObserver error : value is out of intervals (group set to 1) : " + data.getAsDouble(i,idColumn) + " - " + INTERVAL_START + "->" + (INTERVAL_START + INTERVAL_QUANTITY * INTERVAL_WIDTH) + " ");
+				System.err.println("BinObserver error : value is out of intervals (group set to 1) : " + data.getAsDouble(i,idColumn) + " , " + INTERVAL_START + "->" + (INTERVAL_START + INTERVAL_QUANTITY * INTERVAL_WIDTH) + " ");
 			}
 			if (group > INTERVAL_QUANTITY)
 			{
 				group = INTERVAL_QUANTITY;
-				System.err.println("BinObserver error : value is out of intervals (group set to 1) : " + data.getAsDouble(i,idColumn) + " - " + INTERVAL_START + "->" + (INTERVAL_START + INTERVAL_QUANTITY * INTERVAL_WIDTH) + " ");
+				System.err.println("BinObserver error : value is out of intervals (group set to 1) : " + data.getAsDouble(i,idColumn) + " , " + INTERVAL_START + "->" + (INTERVAL_START + INTERVAL_QUANTITY * INTERVAL_WIDTH) + " ");
 			}
 			if (group<10)			
 			result.setAsString("B0" + group,i,0);
 			if (group>=10)
 			result.setAsString("B" + group,i,0);
+			System.out.println(value + " va dans l'intervale " + ((group-1)*INTERVAL_WIDTH) + "-" + ((group)*INTERVAL_WIDTH));
+			total[group-1]++;
 		}
 		
 		String gTotal = "";
