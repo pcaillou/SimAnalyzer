@@ -85,7 +85,7 @@ import controller.SimAnalyzer.ShowProject;
 
 //AD import weka.core.matrix.Maths;
 
-public class FAgModel extends JFrame implements ActionListener
+public class FAgModel extends JPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -275,8 +275,8 @@ public class FAgModel extends JFrame implements ActionListener
 	public void majaff()
 	{
 		agm.calcscores();
-		setTitle("Cluster evaluation");    
-		setResizable(true);    
+//		setTitle("Cluster evaluation");    
+//		setResizable(true);    
 		//getContentPane().setLayout(gb);
 		int nm=1;
 		int size=0;
@@ -865,8 +865,8 @@ public class FAgModel extends JFrame implements ActionListener
 	{	
 		agm=agmd;
 		agm.calcscores();
-		setTitle("Cluster evaluation");    
-		setResizable(true);    
+//		setTitle("Cluster evaluation");    
+//		setResizable(true);    
 		//getContentPane().setLayout(gb);
 		majaff();
 		
@@ -1007,7 +1007,8 @@ public class FAgModel extends JFrame implements ActionListener
 			
 			//			setContentPane(monPanel);
 
-			this.getContentPane().add(jsp);
+//			this.getContentPane().add(jsp);
+			add(jsp);
 
 			
 			jbs.addActionListener(new ActionListener()
@@ -1289,7 +1290,6 @@ public class FAgModel extends JFrame implements ActionListener
 					        // define the plot
 					         StatisticalLineAndShapeRenderer renderer = new StatisticalLineAndShapeRenderer();
 					         CategoryPlot plot = new CategoryPlot(result, xAxis, yAxis, renderer);
-					         
 					        chartg = new JFreeChart("",
 					                                          plot);
 					        plot.setBackgroundPaint(Color.WHITE);			
@@ -1665,7 +1665,7 @@ public class FAgModel extends JFrame implements ActionListener
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				dispose();
+//				dispose();
 			}			
 		}
 		if (src==jbcomparewith)

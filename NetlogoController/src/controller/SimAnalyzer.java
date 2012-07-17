@@ -96,6 +96,32 @@ public class SimAnalyzer extends JFrame
 	static String prname;
 	static File myDataFile = null;
 	static List<WekaClusterer> wcl = new ArrayList<WekaClusterer>();
+	JButton jbcreateproject,jbloadproject,jbloadresults;
+	public static int tabidintro=0;
+	public static int tabidproject=1;	
+	public static int tabidobserver=2;	
+	public static int tabidclusters=3;	
+	public static int tabidoverview=4;	
+	public static int tabidoverviewsort=5;	
+	public static int tabiddetail=6;
+	public static String tabnameproject="Project Config";
+	public static String tabttproject="";
+	public static Icon tabicproject=null;
+	public static String tabnameobserver="Observers Config";
+	public static String tabttobserver="";
+	public static Icon tabicobserver=null;
+	public static String tabnameclusters="Clusters population";
+	public static String tabttclusters="";
+	public static Icon tabicoclusters=null;
+	public static String tabnameoverview="Overview (by name)";
+	public static String tabttoverview="";
+	public static Icon tabicooverview=null;
+	public static String tabnameoverviewsort="Overview (by VT)";
+	public static String tabttoverviewsort="";
+	public static Icon tabicooverviewsort=null;
+	public static JTabbedPane tabbedpane;
+	public static JTabbedPane clusterspane;
+	public static SimAnalyzer simanal;
 
 	// AD /*
 	static Vector<Object> vjf = new Vector<Object>();
@@ -123,6 +149,7 @@ public class SimAnalyzer extends JFrame
 		ObsPossibleTypeList=new ArrayList<String>();
 		obsParamNames=new HashMap<String,String[]>();
 		obsParamDefaultValues=new HashMap<String,String[]>();
+		SimAnalyzer.simanal=this;
 		
 		ObsPossibleTypeList.add("None");		
 		obsParamNames.put("None", Observer.ParamNames);
@@ -186,7 +213,7 @@ public class SimAnalyzer extends JFrame
 		obsParamDefaultValues.put(c.getName(), pnd);
 		
 		restartnetlogo=false;
-		setJMenuBar(menubar);
+//		setJMenuBar(menubar);
 		menup.add(micp);
 		menup.add(miop);
 		micp.addActionListener(this);
@@ -203,12 +230,62 @@ public class SimAnalyzer extends JFrame
 		menug.setEnabled(false);
 		menus.setEnabled(false);
 		
-		JTextField [] jtf = new JTextField[columnCount]; 
+		tabbedpane=new JTabbedPane();
+		
+		
+/*		getContentPane().setLayout(gb);
+
+		gbc.gridx=0;
+		gbc.gridy=1;
+		gbc.gridwidth=1;
+		gbc.gridheight=1;
+		gbc.weightx=10;
+		gbc.weighty=10;
+		gb.setConstraints(tabbedpane,gbc);*/
+		getContentPane().add(tabbedpane);
+		this.setResizable(true);
+
+		JPanel intropanel=new JPanel();
+
+		JPanel projectpanel=new JPanel();
+
+		JPanel temppanel=new JPanel();
+		JTextField jtfinconst=new JTextField("In construction...");
+		temppanel.add(jtfinconst);
+		
+//		tabbedpane.setTabPlacement(tabbedpane.VERTICAL,tabbedpane.LEFT);
+//		tabbedpane.setTabLayoutPolicy(tabbedpane.VERTICAL);
+		
+		this.clusterspane=new JTabbedPane();
+
+		
+		tabbedpane.addTab("Presetation", intropanel);
+		tabbedpane.addTab(tabnameproject, projectpanel);
+		tabbedpane.addTab(tabnameobserver, new JPanel());
+		tabbedpane.addTab(tabnameclusters, clusterspane);
+		tabbedpane.addTab(tabnameoverview, new JPanel());
+		tabbedpane.addTab(tabnameoverviewsort, new JPanel());
+		
+		jbcreateproject=new JButton("Create new Project");
+		jbloadproject=new JButton("Load Project");
+		jbloadresults=new JButton("Load Results");
+		
+		intropanel.add(jbcreateproject);
+		intropanel.add(jbloadproject);
+		intropanel.add(jbloadresults);
+		
+		jbcreateproject.addActionListener(this);
+		jbloadproject.addActionListener(this);
+		jbloadresults.addActionListener(this);
+		
+		
+		
+/*		JTextField [] jtf = new JTextField[columnCount]; 
 		JCheckBox [] cb = new JCheckBox[columnCount];
 		Choice [] c1 = new Choice[columnCount];
 	    Choice [] c2 = new Choice[columnCount];
 
-		getContentPane().setLayout(gb);
+		
 		JLabel l1 = new JLabel("variables:");
 		gbc.gridx=0;
 		gbc.gridy=0;
@@ -374,7 +451,7 @@ public class SimAnalyzer extends JFrame
 		jbt2.setEnabled(false);
 		jbt3.setEnabled(false);
 		jbt4.setEnabled(false);
-		jbt5.setEnabled(false);
+		jbt5.setEnabled(false);*/
 	}
 	
 	public static Clusterer newClusterer() throws Exception
@@ -621,70 +698,35 @@ public class SimAnalyzer extends JFrame
 	public synchronized void actionPerformed(ActionEvent evt)
 	{
 		Object src = evt.getSource();
-		if (src.equals(micp))
+		if (src.equals(jbcreateproject))
 		{	
 			CreateProject p = new CreateProject();
-			WindowListener l = new WindowAdapter()
-			{
-				public void windowClosing(WindowEvent e)
-			    {
-					System.exit(0);
-				}
-			};
 			p.setLocation(500,100);
 		    p.pack() ;
 		    p.setVisible(true);
 		}
-		if (src.equals(miop))
+		if (src.equals(jbloadproject))
 		{
 			OpenProject p = new OpenProject();
-			WindowListener l = new WindowAdapter()
-			{
-				public void windowClosing(WindowEvent e)
-			    {
-					System.exit(0);
-				}
-			};
 
 		}
 		if (src.equals(mignl))
 		{
 		   ShowProject f = new ShowProject(1);
-		   WindowListener l = new WindowAdapter()
-		   {
-				public void windowClosing(WindowEvent e)
-				{
-					System.exit(0);
-				}
-		   };
-		   f.setLocation(500,100);
-	       f.pack() ;
-		   f.setVisible(true);
+//		   f.setLocation(500,100);
+//	       f.pack() ;
+//		   f.setVisible(true);
 		}
 		if (src.equals(migrl))
 		{
 			   ShowProject f = new ShowProject(2);
-		   WindowListener l = new WindowAdapter()
-		   {
-				public void windowClosing(WindowEvent e)
-				{
-					System.exit(0);
-				}
-		   };
-		   f.setLocation(500,100);
-	       f.pack() ;
-		   f.setVisible(true);
+//		   f.setLocation(500,100);
+//	       f.pack() ;
+//		   f.setVisible(true);
 		}
 		if (src.equals(mist))
 		{
 			SaveData s = new SaveData();
-			 WindowListener l = new WindowAdapter()
-			 {
-				 public void windowClosing(WindowEvent e)
-				 {
-					System.exit(0);
-				 }
-			 };
 			 s.setLocation(500,100);
 		     s.pack() ;
 			 s.setVisible(true);
@@ -1183,17 +1225,11 @@ public class SimAnalyzer extends JFrame
 				String filename = fileChooser.getName(fileChooser.getSelectedFile());
 				prname = filename.split("\\.")[0];
 				ShowProject sp = new ShowProject();
-				@SuppressWarnings("unused")
-				WindowListener l = new WindowAdapter()
-				{
-					public void windowClosing(WindowEvent e)
-					{
-						System.exit(0);
-					}
-				};
-				sp.setLocation(500,100);
-			    sp.pack() ;
-				sp.setVisible(true);				
+				SimAnalyzer.tabbedpane.removeTabAt(tabidproject);
+				SimAnalyzer.tabbedpane.insertTab(tabnameproject, tabicproject,sp,tabttproject,tabidproject);
+				SimAnalyzer.tabbedpane.setSelectedIndex(tabidproject);
+				SimAnalyzer.simanal.pack();
+				
 			}
 	    }
 	}
@@ -1297,7 +1333,7 @@ public class SimAnalyzer extends JFrame
 			
 
 	
-	class ObserversConfig extends JFrame implements ActionListener
+	class ObserversConfig extends JPanel implements ActionListener
 	{
 		private static final long serialVersionUID = 1L;
 		int nbobsmax=SimAnalyzer.nbObserverMax;
@@ -1357,7 +1393,7 @@ public class SimAnalyzer extends JFrame
 			lcombo[0].setEnabled(false);
 			lcombo[1].setEnabled(false);
 			lcombo[2].setEnabled(false);
-			jbtOK = new JButton("Ok");   
+			jbtOK = new JButton("Save");   
 			panel_1.add(jbtOK);   
 			jbtOK.addActionListener(this);
 			jbtcancel = new JButton("Cancel");   
@@ -1445,7 +1481,7 @@ public class SimAnalyzer extends JFrame
 			}
 			if (src.equals(jbtcancel))
 			{
-				dispose();
+//				dispose();
 			}
 			if (src.equals(jbtOK))
 			{
@@ -1480,14 +1516,14 @@ public class SimAnalyzer extends JFrame
 					e1.printStackTrace();
 				}		  	        
 				menus.setEnabled(true);		  
-				dispose();
+//				dispose();
 			}
 			
 		}
 	}
 			
 	
-	class ShowProject extends JFrame implements ActionListener
+	class ShowProject extends JPanel implements ActionListener
 	{
 		private static final long serialVersionUID = 1L;
 		JLabel[] l;//, l0,lt,  l1, l2,l2b, l3, l4, l5,  l6,  l7,l8,l9,l10;
@@ -1575,11 +1611,13 @@ public class SimAnalyzer extends JFrame
 			jbtOK = new JButton("Cancel");   
 			panel_1.add(jbtOK);   
 			jbtOK.addActionListener(this);
-			setVisible(true); 
+//			setVisible(true); 
 			 obsconf=new ObserversConfig(prname);
 			ltf[0].setEditable(false);
-			obsconf.setVisible(false);
-
+//			obsconf.setVisible(false);
+			SimAnalyzer.tabbedpane.removeTabAt(SimAnalyzer.tabidobserver);
+			SimAnalyzer.tabbedpane.insertTab(tabnameobserver, tabicobserver,obsconf,tabttobserver,tabidobserver);
+			SimAnalyzer.tabbedpane.setSelectedIndex(tabidobserver);
 			
 		}
 		public ShowProject() 
@@ -1611,7 +1649,7 @@ public class SimAnalyzer extends JFrame
 				menug.setEnabled(true);
 				for(int i=0;i<columnCount;i++)
 				{
-					JTextField jf = new JTextField();
+/*					JTextField jf = new JTextField();
 					jf = (JTextField) vjf.elementAt(i);
 					jf.setEnabled(true);
 					JCheckBox jcb = new JCheckBox();
@@ -1622,7 +1660,7 @@ public class SimAnalyzer extends JFrame
 					jc1.setEnabled(true);
 					Choice jc2 = new Choice();
 					jc2 = (Choice) vc2.elementAt(i);
-					FileReader fr = null;
+*/					FileReader fr = null;
 					try {
 						fr = new FileReader("projects/"+prname+".config");
 					} catch (IOException e1) {
@@ -1636,7 +1674,7 @@ public class SimAnalyzer extends JFrame
 						} catch (IOException e2) {
 							e2.printStackTrace();
 					}
-					jc2.removeAll();
+/*					jc2.removeAll();
 					jc2.add(" ");
 					String[] v2 = l.split("  ");
 					for(int j=0;j<v2.length;j++)
@@ -1646,14 +1684,14 @@ public class SimAnalyzer extends JFrame
 					jbt2.setEnabled(true);
 					jbt3.setEnabled(true);
 					jbt4.setEnabled(true);
-					jbt5.setEnabled(true);
-					this.pack();
+					jbt5.setEnabled(true);*/
+//					this.pack();
 					
 				}	
 			}
 			if (src.equals(jbtOK))
 			{
-				dispose();
+//				dispose();
 			}
 			if (false)
 			{
@@ -1762,8 +1800,8 @@ public class SimAnalyzer extends JFrame
 		        	
 				menus.setEnabled(true);
 				menug.setEnabled(false);
-				dispose();
-				for(int i=0;i<columnCount;i++)
+	//			dispose();
+/*				for(int i=0;i<columnCount;i++)
 				{
 					JTextField jf = new JTextField();
 					jf = (JTextField) vjf.elementAt(i);
@@ -1782,7 +1820,7 @@ public class SimAnalyzer extends JFrame
 					jbt3.setEnabled(false);
 					jbt4.setEnabled(false);
 					jbt5.setEnabled(false);		
-				}
+				}*/
 			}
 			
 		}

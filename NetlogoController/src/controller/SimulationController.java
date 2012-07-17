@@ -12,6 +12,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 // AD import java.util.regex.Matcher;
 //AD import java.util.regex.Pattern;
 
@@ -768,7 +771,7 @@ public abstract class SimulationController {
 						}
 					};
 					scl.setLocation(500,100);
-				    scl.pack() ;
+//				    scl.pack() ;
 					scl.setVisible(true);
 					}
 					duration = System.nanoTime() - duration;
@@ -817,24 +820,32 @@ public abstract class SimulationController {
 			{
 	        ClusterEval ctel = new ClusterEval(clusterltarray,clusterltarray2, ticklist, MatrixList, vtestlist, concatenatedDataHistory,false); 
 //	        FAgModel fag=new FAgModel(clusterltarray.get(0).get(0).agm);
-			@SuppressWarnings("unused")
-			WindowListener l = new WindowAdapter()
-			{
-				public void windowClosing(WindowEvent e)
-				{
-					 System.exit(0);
-				}
-			};
-			ctel.setLocation(100,50);
-		    ctel.pack() ;
-			ctel.setVisible(true);
+//			ctel.setLocation(100,50);
+//		    ctel.pack() ;
+//			ctel.setVisible(true);
 	        ClusterEval cteldesc = new ClusterEval(clusterltarray,clusterltarray2, ticklist, MatrixList, vtestlist, concatenatedDataHistory,true); 
-			cteldesc.setLocation(80,40);
-		    cteldesc.pack() ;
-			cteldesc.setVisible(true);
+//			cteldesc.setLocation(80,40);
+//		    cteldesc.pack() ;
+//			cteldesc.setVisible(true);
 //			fag.setLocation(100,100);
 //		    fag.pack() ;
 //			fag.setVisible(true);
+			SimAnalyzer.tabbedpane.removeTabAt(SimAnalyzer.tabidoverview);
+//			SimAnalyzer.tabbedpane.insertTab(SimAnalyzer.tabnameoverview, SimAnalyzer.tabicooverview,ctel,SimAnalyzer.tabttoverview,SimAnalyzer.tabidoverview);
+
+			JScrollPane scp = new JScrollPane();
+			scp.setViewportView(ctel);
+
+			SimAnalyzer.tabbedpane.insertTab(SimAnalyzer.tabnameoverview, SimAnalyzer.tabicooverview,scp,SimAnalyzer.tabttoverview,SimAnalyzer.tabidoverview);
+			
+			SimAnalyzer.tabbedpane.removeTabAt(SimAnalyzer.tabidoverviewsort);
+
+			scp = new JScrollPane();
+			scp.setViewportView(cteldesc);
+
+			SimAnalyzer.tabbedpane.insertTab(SimAnalyzer.tabnameoverviewsort, SimAnalyzer.tabicooverviewsort,scp,SimAnalyzer.tabttoverviewsort,SimAnalyzer.tabidoverviewsort);
+			SimAnalyzer.tabbedpane.setSelectedIndex(SimAnalyzer.tabidoverviewsort);
+			SimAnalyzer.simanal.pack();
 			}
 
 		} catch (InterruptedException e) {
