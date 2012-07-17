@@ -14,6 +14,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
+import netlogo.NetLogoInterface;
 import netlogo.NetLogoSimulationController;
 
 //AD import org.nlogo.app.App;
@@ -468,7 +469,11 @@ public class SimAnalyzer extends JFrame
 	{
 		while (true)
 		{
-			
+			Thread t=Thread.currentThread();
+			synchronized (t)
+			{
+			t.wait(100);
+			}
   		    System.out.print("");
 		    if (startnetlogo)
 		    {

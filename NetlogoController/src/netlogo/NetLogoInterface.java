@@ -32,6 +32,7 @@ import org.nlogo.agent.Turtle;
 import org.nlogo.agent.World;
 import org.nlogo.api.*;
 import org.nlogo.app.App;
+import org.nlogo.awt.UserCancelException;
 import org.nlogo.nvm.*;
 import org.nlogo.window.*;
 
@@ -194,6 +195,16 @@ public class NetLogoInterface extends SimulationInterface {
 			return NetLogoInterface.getPatches();
 		}
 		return null;
+	}
+	
+	public static void killNetlogo()
+	{
+		try {
+			App.app().quit();
+		} catch (UserCancelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static Program getProgram()throws org.nlogo.api.CompilerException{

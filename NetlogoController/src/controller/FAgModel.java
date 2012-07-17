@@ -1238,7 +1238,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 								 series[j]="t"+j;
 								 for (int b=0; b<=Cluster.NB_MAX_BIN;b++)
 								 {
-									 if (this.jctimedistrib.isSelected())
+									 if (!this.jctimedistrib.isSelected())
 									 {
 										 result.add(dat.getAsLong(b,0),0.0,series[j],new String("<"+(debvalue+unit*b)));
 									 }
@@ -1270,7 +1270,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 						
 					}
 				}
-				if (this.jcomparecluster.isSelected()|this.jcompareglobal.isSelected())
+				if (this.jcompareglobal.isSelected())
 				{
 					if (this.jcheckdistrib.isSelected())
 					{
@@ -1431,7 +1431,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 					if (this.jcomparecluster.isSelected())
 					result.add(clbase.avgsm.getAsDouble(v1,j),clbase.stderrsm.getAsDouble(v1,j),series[0],new String(""+j));
 //					result.add(clbase.avgsmdef.getAsDouble(v1,j),clbase.stderrsmdef.getAsDouble(v1,j),series2,new String(""+j));
-					if (this.jcompareglobal.isSelected())
+					if (!this.jcomparecluster.isSelected())
 					result.add(clbase.avglobsm.getAsDouble(v1,j),clbase.stdglobsm.getAsDouble(v1,j),series[0],new String(""+j));
 					
 				}
@@ -1444,7 +1444,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 							if (this.jcomparecluster.isSelected())
 								result.add(clbase.havgsm.get(i).getAsDouble(v1,j),clbase.hstderrsm.get(i).getAsDouble(v1,j),series[i+1],new String(""+j));
 //								result.add(clbase.avgsmdef.getAsDouble(v1,j),clbase.stderrsmdef.getAsDouble(v1,j),series2,new String(""+j));
-								if (this.jcompareglobal.isSelected())
+							if (!this.jcomparecluster.isSelected())
 								result.add(clbase.havglobsm.get(i).getAsDouble(v1,j),clbase.hstdglobsm.get(i).getAsDouble(v1,j),series[i+1],new String(""+j));
 							
 						}
@@ -1822,9 +1822,11 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 			int ret = fileChooser.showOpenDialog(this);
 			if (ret == JFileChooser.APPROVE_OPTION) {
 				System.out.println(fileChooser.getSelectedFile().getName());
+				System.out.println(fileChooser.getSelectedFile().getAbsolutePath());
 				String filename = fileChooser.getName(fileChooser.getSelectedFile());
+				String pathname = fileChooser.getSelectedFile().getAbsolutePath();
 				try {
-					String nomf = new String("savedlogs/"+filename+"/avglobsm.csv");
+					String nomf = new String(pathname+"/avglobsm.csv");
 			//		Matrix nm=clbase.avglobsm.clone();
 					Matrix nm=MatrixFactory.importFromFile(nomf);
 /*					if (clbase.nbotherxp==0)
@@ -1836,33 +1838,33 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 					}*/
 					clbase.nbotherxp++;
 					clbase.havglobsm.add(clbase.nbotherxp-1, nm);
-					nomf = new String("savedlogs/"+filename+"/vtestsm.csv");
+					nomf = new String(pathname+"/vtestsm.csv");
 					nm=MatrixFactory.importFromFile(nomf);
 					clbase.hvtestsm.add(clbase.nbotherxp-1, nm);
-					nomf = new String("savedlogs/"+filename+"/avgsm.csv");
+					nomf = new String(pathname+"/avgsm.csv");
 					nm=MatrixFactory.importFromFile(nomf);
 					clbase.havgsm.add(clbase.nbotherxp-1, nm);
-					nomf = new String("savedlogs/"+filename+"/stderrsm.csv");
+					nomf = new String(pathname+"/stderrsm.csv");
 					nm=MatrixFactory.importFromFile(nomf);
 					clbase.hstderrsm.add(clbase.nbotherxp-1, nm);
-					nomf = new String("savedlogs/"+filename+"/stdglobsm.csv");
+					nomf = new String(pathname+"/stdglobsm.csv");
 					nm=MatrixFactory.importFromFile(nomf);
 					clbase.hstdglobsm.add(clbase.nbotherxp-1, nm);
 
-					nomf = new String("savedlogs/"+filename+"/distribparam.csv");
+					nomf = new String(pathname+"/distribparam.csv");
 					nm=MatrixFactory.importFromFile(nomf);
 					clbase.hdistribparams.add(clbase.nbotherxp-1, nm);
 					Matrix nd=nm;
-					nomf = new String("savedlogs/"+filename+"/davgsm.ser");
+					nomf = new String(pathname+"/davgsm.ser");
 					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
 //					nm.showGUI();
 					clbase.rebin(nm,clbase.davgsm,nd,clbase.distribparams);
 					clbase.hdavgsm.add(clbase.nbotherxp-1, nm);
-					nomf = new String("savedlogs/"+filename+"/davglobsm.ser");
+					nomf = new String(pathname+"/davglobsm.ser");
 					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
 					clbase.rebin(nm,clbase.davglobsm,nd,clbase.distribparams);
 					clbase.hdavglobsm.add(clbase.nbotherxp-1, nm);
-					nomf = new String("savedlogs/"+filename+"/davgsmdef.ser");
+					nomf = new String(pathname+"/davgsmdef.ser");
 					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
 					clbase.rebin(nm,clbase.davgsmdef,nd,clbase.distribparams);
 					clbase.hdavgsmdef.add(clbase.nbotherxp-1, nm);

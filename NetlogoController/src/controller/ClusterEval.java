@@ -16,6 +16,8 @@ import java.awt.event.WindowListener;
 // AD import java.io.File;
 // AD import java.io.FileReader;
 // AD import java.io.IOException;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -34,6 +36,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -71,7 +74,7 @@ public class ClusterEval extends JPanel implements ActionListener
 	ArrayList<Integer> id2;
 	JButton jbDefinition = new JButton("History by definition");
 	JButton jbs = new JButton("Show matrix");
-	JButton jbRI = new JButton("ReI");
+	JButton jbRI = new JButton("Save All");
 	JButton jbRD = new JButton("ReP");
 	JPanel jp = new JPanel(gb);
 	JScrollPane jsp = new JScrollPane(jp);
@@ -498,56 +501,53 @@ public class ClusterEval extends JPanel implements ActionListener
 		jbRI.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) {
-				try {
-					@SuppressWarnings("unused")
-					List<Cluster> lc = new ArrayList<Cluster>();
-					@SuppressWarnings("unused")
-					List<Integer> tll = new ArrayList<Integer>();
-					int nj=0;
-					for(int i=0;i<cltarray.size();i++)
+				{
+					 String response = JOptionPane.showInputDialog(null,
+							  "Save Main Folder Name?",
+							  "Enter the new folder name",
+							  JOptionPane.QUESTION_MESSAGE);
+					File projectf = new File("savedlogs/"+response);
+					boolean bfile = projectf.mkdir();
+					if (!bfile)
+						System.out.println("This folder exists. Please create another one!");
+					else 
 					{
-						int nbagt=0;
-						for(int j=0;j<cltarray.get(i).size();j++)
+						for(int i=0;i<cltarray.size();i++)
 						{
-							nbagt=nbagt+(int)cltarray.get(i).get(j).getSize();
-						}
-						for(int j=0;j<cltarray.get(i).size();j++)
-						{
-							if(jrb1.get(nj).isSelected())
-							{
-								SimulationController.clustererTarget=SimulationController.wcl.get(i);
-								SimulationController.clusterTarget=cltarray.get(i).get(j);
-								SimulationController.ResMat=SimulationController.clusterTarget.vtestsm;
-								SimulationController.steptarget=i;
-								SimulationController.noclusttarget=j;
-								SimulationController.typeReRun=1;
 								
-								SimulationController.clustpopprop=(double)cltarray.get(i).get(j).getSize()/(double)nbagt;
-								SimulationController.datamatclust=concatenatedDataHistory;
-								@SuppressWarnings("unused")
-								ReRunParam p = new ReRunParam();
-								@SuppressWarnings("unused")
-								WindowListener l = new WindowAdapter()
-								{
-									public void windowClosing(WindowEvent e)
-								    {
-										System.exit(0);
-									}
-								};
-//								SimAnalyzer.restartnetlogo=true;									
-							}
-							nj++;
+							
+							for(int j=0;j<cltarray.get(i).size();j++)
+							{
+						try {
+							File projectd = new File("savedlogs/"+response+"/ClusterT"+i+"C"+j);
+							boolean nfile = projectd.mkdir();
+							Cluster clbase=(Cluster)cltarray.get(i).get(j);
+							String nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/avglobsm.csv");
+							clbase.avglobsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/vtestsm.csv");
+							clbase.vtestsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/avgsm.csv");
+							clbase.avgsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/stderrsm.csv");
+							clbase.stderrsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/stdglobsm.csv");
+							clbase.stdglobsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/davgsm.ser");
+							clbase.davgsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/davglobsm.ser");
+							clbase.davglobsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/davgsmdef.ser");
+							clbase.davgsmdef.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/distribparam.csv");
+							clbase.distribparams.exportToFile(nomf);
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+//						dispose();
+					}
 						}
 					}
-					for(int i=0;i<jrb1.size();i++)
-					{						
-						if(jrb1.get(i).isSelected())
-						{
-						}
-					}
-//					SimAnalyzer.nlsc.reRunInit();
-				} catch (Exception e1) {
-					e1.printStackTrace();
+					
 				}
 			}
 		});
