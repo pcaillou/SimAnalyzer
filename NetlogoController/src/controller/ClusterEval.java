@@ -54,7 +54,7 @@ import org.ujmp.core.calculation.Calculation.Ret;
 
 import clustering.Cluster;
 	
-public class ClusterEval extends JFrame implements ActionListener
+public class ClusterEval extends JPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -128,9 +128,10 @@ public class ClusterEval extends JFrame implements ActionListener
 	@SuppressWarnings("deprecation")
 	public ClusterEval(final List<List<Cluster>> cltarray, final List<List<Cluster>> cltarray2, final List<Integer> ticklist, final List<Matrix> MatrixList,List<double[][]> vtestlist, final Matrix concatenatedDataHistory,boolean typece)
 	{	
+//		super(VERTICAL_SCROLLBAR_ALWAYS,HORIZONTAL_SCROLLBAR_ALWAYS);
 		cltarrayll=cltarray;
-		setTitle("Cluster evaluation");    
-		setResizable(true);    
+//		setTitle("Cluster evaluation");    
+//		setResizable(true);    
 		//getContentPane().setLayout(gb);
 		Cluster ct;
 		int nm=1;
@@ -443,7 +444,8 @@ public class ClusterEval extends JFrame implements ActionListener
 				mn.showGUI();
 			}
 		});
-		getContentPane().add(jsp);
+//		getContentPane().add(jsp);
+		this.add(jsp);
 		jbRD.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) {
@@ -569,9 +571,9 @@ public class ClusterEval extends JFrame implements ActionListener
     			hpo.setVisible(true);
 
     			FAgModel fag=new FAgModel(cl.agm);
-    			fag.setLocation(100,100);
-    		    fag.pack() ;
-    			fag.setVisible(true);
+ //   			fag.setLocation(100,100);
+//    		    fag.pack() ;
+  //  			fag.setVisible(true);
 				
 			}
 			
@@ -620,9 +622,9 @@ public class ClusterEval extends JFrame implements ActionListener
     			hpo.setVisible(true);
 
     			FAgModel fag=new FAgModel(cl.agm);
-    			fag.setLocation(100,100);
-    		    fag.pack() ;
-    			fag.setVisible(true);
+//    			fag.setLocation(100,100);
+ //   		    fag.pack() ;
+  //  			fag.setVisible(true);
 				
 			}
 			
@@ -669,9 +671,9 @@ public class ClusterEval extends JFrame implements ActionListener
     			hpo.setVisible(true);
 
     			FAgModel fag=new FAgModel(cl.agm);
-    			fag.setLocation(100,100);
-    		    fag.pack() ;
-    			fag.setVisible(true);
+//    			fag.setLocation(100,100);
+ //   		    fag.pack() ;
+  //  			fag.setVisible(true);
 				
 			}
 			
@@ -768,8 +770,8 @@ public class ClusterEval extends JFrame implements ActionListener
 				
 			}
 			
-			
-			this.getContentPane().add(jsp);
+			this.add(jsp);
+//			this.getContentPane().add(jsp);
 		}
 	}
 	

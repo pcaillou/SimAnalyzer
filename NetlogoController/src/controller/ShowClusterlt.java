@@ -29,7 +29,7 @@ import org.ujmp.core.calculation.Calculation.Ret;
 
 import clustering.Cluster;
 
-public class ShowClusterlt extends JFrame
+public class ShowClusterlt extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -44,9 +44,9 @@ public class ShowClusterlt extends JFrame
 	List<JRadioButton> jrb = new ArrayList<JRadioButton>(); 
 	public ShowClusterlt(final List<Cluster> clt,final int t,final int n, final double[][] vtest, final Matrix dataMatrix)
 	{	
-		setTitle("Cluster list");  
+//		setTitle("Cluster list");  
 	//	setSize(500,350);  
-		setResizable(true);    
+//		setResizable(true);    
 	//	getContentPane().setLayout(gb);
 		for(int i=0;i<clt.size();i++)
 		{
@@ -95,6 +95,7 @@ public class ShowClusterlt extends JFrame
    //   gb.setConstraints(jbt1,gbc);
    //   getContentPane().add(jbt1);
 	    jp.add(jbt1,gbc);
+	    this.add(jp);
 	    jbt1.addActionListener(new ActionListener()
 	    {
 	    	public void actionPerformed(ActionEvent e) {
@@ -145,7 +146,9 @@ public class ShowClusterlt extends JFrame
     	    	}
 	    	}
 		});
-	    getContentPane().add(jsp);
+		SimAnalyzer.clusterspane.addTab("tick"+SimulationController.currenttick, null,this,"");
+	    
+//	    getContentPane().add(jsp);
 	}
 	class GlobalDesc extends JFrame
 	{
