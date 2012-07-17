@@ -269,6 +269,7 @@ public class FAgModel extends JPanel implements ActionListener
 			this.corelavglob.showGUI();
 			this.difavglob.showGUI();
 			}
+			
 
 	}
 
@@ -1038,7 +1039,11 @@ public class FAgModel extends JPanel implements ActionListener
 				}
 			});
 
-			
+			JScrollPane scp = new JScrollPane();
+			scp.setViewportView(this);
+
+			SimAnalyzer.tabbedpane.addTab("Cluster T"+clbase.tickinit+" Id"+clbase.getId(), scp);
+	
 			
 	}
 	
