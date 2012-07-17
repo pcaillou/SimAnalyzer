@@ -865,7 +865,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 			//			setContentPane(monPanel);
 
 		
-			
+			repaint();
 	}
 
 	@SuppressWarnings({"deprecation", "unused"})
