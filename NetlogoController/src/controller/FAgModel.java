@@ -81,6 +81,8 @@ import org.jfree.data.statistics.DefaultStatisticalCategoryDataset;
 //AD import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYIntervalSeries;
 import org.jfree.data.xy.XYIntervalSeriesCollection;
+
+import scala.reflect.generic.Trees.This;
 //AD import org.jfree.data.xy.XYSeries;
 //AD import org.jfree.data.xy.XYSeriesCollection;
 //AD import org.jfree.experimental.chart.swt.ChartComposite;
@@ -1780,6 +1782,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 			
 		}
 		if (src==jbsaveto)
+			if (src==this.jb1)
 		{
 			 String response = JOptionPane.showInputDialog(null,
 					  "Save Folder Name?",
