@@ -2,6 +2,7 @@ package controller;
 
 
 //AD import clustering.Cluster;
+import clustering.Cluster;
 import clustering.Clusterer;
 import statistic.*;
 //AD import clustering.Indexes;
@@ -23,10 +24,15 @@ import observer.Observer;
 import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
 //AD import org.ujmp.core.calculation.Calculation.Ret;
+import org.ujmp.core.calculation.Calculation.Ret;
+import org.ujmp.core.doublematrix.DenseDoubleMatrix2D;
+import org.ujmp.core.doublematrix.factory.DefaultDenseDoubleMatrix2DFactory;
+import org.ujmp.core.doublematrix.factory.DenseDoubleMatrix2DFactory;
 import org.ujmp.core.enums.DB;
 import org.ujmp.core.enums.FileFormat;
 //AD import org.ujmp.core.enums.ValueType;
 import org.ujmp.core.exceptions.MatrixException;
+import org.ujmp.core.stringmatrix.impl.DefaultDenseStringMatrix2D;
 
 import statistic.DirectObserver;
 
@@ -713,6 +719,166 @@ public class SimAnalyzer extends JFrame
 		if (src.equals(jbloadproject))
 		{
 			OpenProject p = new OpenProject();
+
+		}
+		if (src.equals(this.jbloadresults))
+		{
+			JFileChooser fileChooser = new JFileChooser("savedlogs/");
+			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			fileChooser.setDialogTitle("Choose saved results");
+			int ret = fileChooser.showOpenDialog(this);
+			if (ret == JFileChooser.APPROVE_OPTION) {
+				System.out.println(fileChooser.getSelectedFile().getName());
+				System.out.println(fileChooser.getSelectedFile().getAbsolutePath());
+				String filename = fileChooser.getName(fileChooser.getSelectedFile());
+				String pathname = fileChooser.getSelectedFile().getAbsolutePath();
+				try {
+/*					if (clbase.nbotherxp==0)
+					{
+						clbase.nbotherxp++;
+						clbase.havglobsm.add(clbase.nbotherxp-1, clbase.avglobsm);
+						clbase.hvtestsm.add(clbase.nbotherxp-1, clbase.vtestsm);
+						clbase.havgsm.add(clbase.nbotherxp-1, clbase.avgsm);						
+					}*/
+					Clusterer cl=null;
+					try {
+						cl = SimAnalyzer.newClusterer();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					String nomf = new String(pathname+"/avglobsm.csv");
+			//		Matrix nm=clbase.avglobsm.clone();
+					Matrix nm=MatrixFactory.importFromFile(nomf);
+					Matrix virtualdata=nm.subMatrix(Ret.NEW, 3, 0, nm.getRowCount()-1, nm.getColumnCount()-1).transpose();
+
+					ArrayList<Long> nc=new ArrayList<Long>();
+					Matrix tempm=Vtest.mfact.zeros(0, 0);
+					Cluster clbase=new Cluster(cl,new Long(0),tempm,nc);
+					AgModel agm=new AgModel(cl,clbase);
+
+					Matrix nomc;
+					nomf = new String(pathname+"/colnoms.csv");
+			//		Matrix nm=clbase.avglobsm.clone();
+					nomc=MatrixFactory.importFromFile(nomf);
+
+					
+					nomf = new String(pathname+"/avglobsm.csv");
+			//		Matrix nm=clbase.avglobsm.clone();
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.avglobsm=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.avglobsm.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.avglobsm.setRowLabel(i, nomc.getAsString(i,0));
+					nomf = new String(pathname+"/vtestsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.vtestsm=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.vtestsm.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.vtestsm.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.vtestsm= (DenseDoubleMatrix2D)((DefaultDenseStringMatrix2D)nm).toDoubleMatrix();
+//					clbase.vtestsm=(DenseDoubleMatrix2D) nm;
+					nomf = new String(pathname+"/avgsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.avgsm=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.avgsm.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.avgsm.setRowLabel(i, nomc.getAsString(i,0));
+					nomf = new String(pathname+"/vtestsmdef.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.vtestsmdef=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.vtestsmdef.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.vtestsmdef.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.vtestsm= (DenseDoubleMatrix2D)((DefaultDenseStringMatrix2D)nm).toDoubleMatrix();
+//					clbase.vtestsm=(DenseDoubleMatrix2D) nm;
+					nomf = new String(pathname+"/avgsmdef.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.avgsmdef=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.avgsmdef.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.avgsmdef.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.avgsm=(DenseDoubleMatrix2D)((DefaultDenseStringMatrix2D)nm).toDoubleMatrix();
+//					clbase.avgsm=(DenseDoubleMatrix2D) nm;
+					nomf = new String(pathname+"/stderrsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.stderrsm=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.stderrsm.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.stderrsm.setRowLabel(i, nomc.getAsString(i,0));
+					nomf = new String(pathname+"/stderrsmdef.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.stderrsmdef=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.stderrsmdef.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.stderrsmdef.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.stderrsm=(DenseDoubleMatrix2D)((DefaultDenseStringMatrix2D)nm).toDoubleMatrix();
+//					clbase.stderrsm=(DenseDoubleMatrix2D) nm;
+					nomf = new String(pathname+"/stdglobsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.stdglobsm=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.stdglobsm.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.stdglobsm.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.stdglobsm=(DenseDoubleMatrix2D)((DefaultDenseStringMatrix2D)nm).toDoubleMatrix();
+//					clbase.stdglobsm=(DenseDoubleMatrix2D) nm;
+
+					nomf = new String(pathname+"/distribparam.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.distribparams=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.distribparams.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.distribparams.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.distribparams=(DenseDoubleMatrix2D)((DefaultDenseStringMatrix2D)nm).toDoubleMatrix();
+//					clbase.distribparams= (DenseDoubleMatrix2D) nm;
+					Matrix nd=nm;
+					nomf = new String(pathname+"/davgsm.ser");
+					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+//					nm.showGUI();
+					clbase.davgsm=nm;
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.davgsm.setRowLabel(i, nomc.getAsString(i,0));
+					nomf = new String(pathname+"/davglobsm.ser");
+					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+					clbase.davglobsm=nm;
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.davglobsm.setRowLabel(i, nomc.getAsString(i,0));
+					nomf = new String(pathname+"/davgsmdef.ser");
+					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+					clbase.davgsmdef=nm;
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.davgsmdef.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.avglobsm.showGUI();			
+					 virtualdata=clbase.avglobsm.subMatrix(Ret.NEW, 3, 0, clbase.avglobsm.getRowCount()-1, clbase.avglobsm.getColumnCount()-1).transpose();
+					SimulationController.updateVariableInfo(virtualdata);
+					SimAnalyzer.vtquali=false;
+					
+	    			FAgModel fag=new FAgModel(agm);
+					
+					
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
 
 		}
 		if (src.equals(mignl))

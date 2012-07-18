@@ -158,6 +158,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 	
 	public void majcalc()
 	{
+
 		int nm=1;
 		int size=0;
 		int nx=0;
@@ -269,19 +270,13 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 					
 				}
 	
-			if (clbase.nbotherxp>0)
-			{
-			corelavg.showGUI();
-			difavg.showGUI();
-			this.corelavglob.showGUI();
-			this.difavglob.showGUI();
-			}
 			
 
 	}
 
 	public void majaff()
 	{
+
 		agm.calcscores();
 //		setTitle("Cluster evaluation");    
 //		setResizable(true);    
@@ -854,7 +849,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 			gbcg.gridx=1;
 			gbcg.gridy=0;
 			gbcg.gridwidth=1;
-			gbcg.gridheight=2;
+			gbcg.gridheight=1;
 			gbcg.weightx=10;
 			gbcg.weighty=10;
 			gbcg.anchor=GridBagConstraints.WEST;
@@ -865,7 +860,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 			//			setContentPane(monPanel);
 
 		
-			repaint();
+//			repaint();
 	}
 
 	@SuppressWarnings({"deprecation", "unused"})
@@ -1775,6 +1770,13 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 			clbase.avgsm.showGUI();
 			clbase.avglobsm.showGUI();
 			clbase.distribparams.showGUI();
+			if (clbase.nbotherxp>0)
+			{
+			corelavg.showGUI();
+			difavg.showGUI();
+			this.corelavglob.showGUI();
+			this.difavglob.showGUI();
+			}
 			
 		}
 		if (src==jbsaveto)
@@ -1826,46 +1828,54 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 				String filename = fileChooser.getName(fileChooser.getSelectedFile());
 				String pathname = fileChooser.getSelectedFile().getAbsolutePath();
 				try {
-					String nomf = new String(pathname+"/avglobsm.csv");
+					Matrix nomc;
+					String nomf = new String(pathname+"/colnoms.csv");
+			//		Matrix nm=clbase.avglobsm.clone();
+					nomc=MatrixFactory.importFromFile(nomf);
+
+					
+					nomf = new String(pathname+"/avglobsm.csv");
 			//		Matrix nm=clbase.avglobsm.clone();
 					Matrix nm=MatrixFactory.importFromFile(nomf);
-/*					if (clbase.nbotherxp==0)
-					{
-						clbase.nbotherxp++;
-						clbase.havglobsm.add(clbase.nbotherxp-1, clbase.avglobsm);
-						clbase.hvtestsm.add(clbase.nbotherxp-1, clbase.vtestsm);
-						clbase.havgsm.add(clbase.nbotherxp-1, clbase.avgsm);						
-					}*/
+					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
 					clbase.nbotherxp++;
 					clbase.havglobsm.add(clbase.nbotherxp-1, nm);
 					nomf = new String(pathname+"/vtestsm.csv");
 					nm=MatrixFactory.importFromFile(nomf);
+					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
 					clbase.hvtestsm.add(clbase.nbotherxp-1, nm);
 					nomf = new String(pathname+"/avgsm.csv");
 					nm=MatrixFactory.importFromFile(nomf);
+					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
 					clbase.havgsm.add(clbase.nbotherxp-1, nm);
 					nomf = new String(pathname+"/stderrsm.csv");
 					nm=MatrixFactory.importFromFile(nomf);
+					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
 					clbase.hstderrsm.add(clbase.nbotherxp-1, nm);
 					nomf = new String(pathname+"/stdglobsm.csv");
 					nm=MatrixFactory.importFromFile(nomf);
+					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
 					clbase.hstdglobsm.add(clbase.nbotherxp-1, nm);
 
 					nomf = new String(pathname+"/distribparam.csv");
 					nm=MatrixFactory.importFromFile(nomf);
+					nm=clbase.reorder(nm,nomc,clbase.distribparams,false,null);
 					clbase.hdistribparams.add(clbase.nbotherxp-1, nm);
 					Matrix nd=nm;
 					nomf = new String(pathname+"/davgsm.ser");
 					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+					nm=clbase.reorder(nm,nomc,clbase.davgsm,false,null);
 //					nm.showGUI();
 					clbase.rebin(nm,clbase.davgsm,nd,clbase.distribparams);
 					clbase.hdavgsm.add(clbase.nbotherxp-1, nm);
 					nomf = new String(pathname+"/davglobsm.ser");
 					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+					nm=clbase.reorder(nm,nomc,clbase.davglobsm,false,null);
 					clbase.rebin(nm,clbase.davglobsm,nd,clbase.distribparams);
 					clbase.hdavglobsm.add(clbase.nbotherxp-1, nm);
 					nomf = new String(pathname+"/davgsmdef.ser");
 					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+					nm=clbase.reorder(nm,nomc,clbase.davgsmdef,false,null);
 					clbase.rebin(nm,clbase.davgsmdef,nd,clbase.distribparams);
 					clbase.hdavgsmdef.add(clbase.nbotherxp-1, nm);
 										

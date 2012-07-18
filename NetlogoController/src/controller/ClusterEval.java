@@ -526,10 +526,16 @@ public class ClusterEval extends JPanel implements ActionListener
 							clbase.avglobsm.exportToFile(nomf);
 							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/vtestsm.csv");
 							clbase.vtestsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/vtestsmdef.csv");
+							clbase.vtestsmdef.exportToFile(nomf);
 							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/avgsm.csv");
 							clbase.avgsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/avgsmdef.csv");
+							clbase.avgsmdef.exportToFile(nomf);
 							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/stderrsm.csv");
 							clbase.stderrsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/stderrsmdef.csv");
+							clbase.stderrsmdef.exportToFile(nomf);
 							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/stdglobsm.csv");
 							clbase.stdglobsm.exportToFile(nomf);
 							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/davgsm.ser");
@@ -540,6 +546,13 @@ public class ClusterEval extends JPanel implements ActionListener
 							clbase.davgsmdef.exportToFile(nomf);
 							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/distribparam.csv");
 							clbase.distribparams.exportToFile(nomf);
+							Matrix nmd=Vtest.mfactm.zeros(clbase.avglobsm.getRowCount(), 1);
+							for (long n=0;n<nmd.getRowCount();n++)
+							{
+								nmd.setAsString(clbase.avglobsm.getRowLabel(n), n,0);
+							}
+							nomf = new String("savedlogs/"+response+"/ClusterT"+i+"C"+j+"/colnoms.csv");
+							nmd.exportToFile(nomf);
 						} catch (IOException e1) {
 							e1.printStackTrace();
 						}

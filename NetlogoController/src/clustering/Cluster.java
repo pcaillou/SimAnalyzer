@@ -247,7 +247,7 @@ public class Cluster {
 				comdistribparams.setAsLong(0, i, 2);
 			}
 
-		comdistribparams.showGUI();
+//		comdistribparams.showGUI();
 		}
 		distribparams=(DenseDoubleMatrix2D)comdistribparams.clone();
 		distribparams=Vtest.mfact.zeros(l,3);
@@ -267,6 +267,9 @@ public class Cluster {
 	    this.davglobsm=Vtest.mfactm.zeros(l,1);
 		for (int i=0; i<l; i++)
 		{
+	    	this.davgsm.setRowLabel(i,distribparams.getRowLabel(i));
+	    	this.davgsmdef.setRowLabel(i,distribparams.getRowLabel(i));
+	    	this.davglobsm.setRowLabel(i,distribparams.getRowLabel(i));
 //			distribparams.setAsLong(-20, i, 0);
 //			distribparams.setAsLong(0, i, 1);
 //			distribparams.setAsLong(0, i, 2);
@@ -274,6 +277,74 @@ public class Cluster {
 			this.davgsmdef.setAsMatrix(nm.clone(), i,0);
 			this.davglobsm.setAsMatrix(nm.clone(), i,0);
 		}
+	}
+	
+	public Matrix reorder(Matrix morig, Matrix mnoms, Matrix refmat, boolean defvalue, Object defval)
+	{
+		Matrix mres=morig.clone();
+		if (morig.getRowCount()!=refmat.getRowCount())
+		{
+			mres=refmat.clone();
+			for (int i=0; i<refmat.getRowCount(); i++)
+			{
+				int cc=-1;
+				if (mnoms.getRowCount()>i)
+				if (mnoms.getAsString(i,0).equals(refmat.getRowLabel(i)))
+				{
+					cc=i;
+				}
+				if (cc==-1)
+				{
+					for (int j=0; j<morig.getRowCount(); j++)
+					{
+						if (mnoms.getAsString(j,0).equals(refmat.getRowLabel(i)))
+								{
+							System.out.println("Map C"+j+"->C"+i+"("+refmat.getRowLabel(i)+")");
+							cc=j;
+								}
+					}
+				}
+				if (cc>=0)
+				{
+					for (int j=0; j<refmat.getColumnCount(); j++)
+					{
+						if (j<morig.getColumnCount())
+						{
+							mres.setAsObject(morig.getAsObject(cc,j), i,j);
+						}
+						if (j>=morig.getColumnCount())
+						{
+							mres.setAsObject(morig.getAsObject(cc,morig.getColumnCount()-1), i,j);
+						}
+					}
+					
+				}
+				if (cc<0)
+				{
+					System.out.println("NoSuchVar C"+i+"n"+refmat.getRowLabel(i));
+					if (defvalue)
+					for (int j=0; j<refmat.getColumnCount(); j++)
+					{
+							mres.setAsObject(defval, i,j);
+					}
+					
+				}
+					
+			}
+		}
+		if (morig.getColumnCount()<refmat.getColumnCount())
+		{
+			System.out.println("TimeExtension T"+morig.getColumnCount()+"->"+refmat.getColumnCount());
+			for (int i=0; i<refmat.getRowCount(); i++)
+			{
+				for (long j=morig.getColumnCount(); j<refmat.getColumnCount(); j++)
+				{
+					mres.setAsObject(mres.getAsObject(i,morig.getColumnCount()-1), i,j);					
+				}
+			}
+			
+		}
+		return mres;
 	}
 	
 	public void rebin(Matrix morig,Matrix mref, Matrix distriborig, Matrix distribtarget)

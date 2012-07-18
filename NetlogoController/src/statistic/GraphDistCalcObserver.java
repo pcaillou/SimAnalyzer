@@ -110,7 +110,7 @@ public class GraphDistCalcObserver extends StatisticalObserver {
 
 		}
 		newglobal.setLabel("Graphdist");
-		newglobal.showGUI();
+//		newglobal.showGUI();
 		this.preventListeners(new DataEvent(newglobal, de.getArguments()));
 	}
 
