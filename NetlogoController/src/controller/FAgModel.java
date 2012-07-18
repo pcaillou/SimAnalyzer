@@ -1164,7 +1164,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 		plot.getRangeAxis().setVisible(true);
 		plot.getDomainAxis().setAutoRange(true);
 		plot.getRangeAxis().setAutoRange(true);
-		plot.setBackgroundPaint(Color.WHITE);			
+        plot.setBackgroundPaint(Color.BLACK);
 //		chart.setBorderVisible(false);
 		}
 		if (v1==v2)
@@ -1200,7 +1200,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 
 				        chartg = new JFreeChart("",
 				                                          plot);
-				        plot.setBackgroundPaint(Color.WHITE);			
+				         plot.setBackgroundPaint(Color.BLACK);
 					}
 					if (this.jcheckdistrib.isSelected())
 					{
@@ -1260,7 +1260,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 					         CategoryPlot plot = new CategoryPlot(result, xAxis, yAxis, renderer);
 					        chartg = new JFreeChart("",
 					                                          plot);
-					        plot.setBackgroundPaint(Color.WHITE);			
+					         plot.setBackgroundPaint(Color.BLACK);
 //						chart.setBorderVisible(false);
 						
 						
@@ -1337,7 +1337,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 					         CategoryPlot plot = new CategoryPlot(result, xAxis, yAxis, renderer);
 					        chartg = new JFreeChart("",
 					                                          plot);
-					        plot.setBackgroundPaint(Color.WHITE);			
+					         plot.setBackgroundPaint(Color.BLACK);
 //						chart.setBorderVisible(false);
 						
 						
@@ -1410,7 +1410,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 					         CategoryPlot plot = new CategoryPlot(result, xAxis, yAxis, renderer);
 					        chartg = new JFreeChart("",
 					                                          plot);
-					        plot.setBackgroundPaint(Color.WHITE);			
+					         plot.setBackgroundPaint(Color.BLACK);
 //						chart.setBorderVisible(false);
 						
 						
@@ -1462,7 +1462,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 
 		        chartg = new JFreeChart("",
 		                                          plot);
-		        plot.setBackgroundPaint(Color.WHITE);			
+		         plot.setBackgroundPaint(Color.BLACK);
 //			chart.setBorderVisible(false);
 				}
 				}
@@ -1565,7 +1565,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 			         CategoryPlot plot = new CategoryPlot(results, xAxis, yAxis, renderer);
 			        chartg = new JFreeChart("",
 			                                          plot);
-			        plot.setBackgroundPaint(Color.WHITE);			
+			         plot.setBackgroundPaint(Color.BLACK);
 //				chart.setBorderVisible(false);
 			
 			}
@@ -1646,7 +1646,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 		plot.getRangeAxis().setVisible(true);
 		plot.getDomainAxis().setAutoRange(true);
 		plot.getRangeAxis().setAutoRange(true);
-		plot.setBackgroundPaint(Color.WHITE);			
+        plot.setBackgroundPaint(Color.BLACK);
 //		chart.setBorderVisible(false);
 		}
 		if (v1==v2)
@@ -1682,7 +1682,7 @@ public class FAgModel extends JPanel implements ActionListener,ChangeListener
 
 		        chartg = new JFreeChart("",
 		                                          plot);
-		        plot.setBackgroundPaint(Color.WHITE);			
+		         plot.setBackgroundPaint(Color.BLACK);
 //			chart.setBorderVisible(false);
 			
 		}
