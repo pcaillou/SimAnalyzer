@@ -57,7 +57,7 @@ import org.ujmp.core.calculation.Calculation.Ret;
 
 import clustering.Cluster;
 	
-public class ClusterEval extends JPanel implements ActionListener
+public class ClusterEval extends MyPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -80,53 +80,6 @@ public class ClusterEval extends JPanel implements ActionListener
 	JScrollPane jsp = new JScrollPane(jp);
 	Matrix m;
 	List<List<Cluster>> cltarrayll;
-
-	public void placenewcomp(int posx,int posy, GridBagConstraints gbc,JComponent comp,JPanel jpa)
-	{
-		gbc.gridx=posx;
-		gbc.gridy=posy;
-		gbc.gridwidth=1;
-		gbc.gridheight=1;
-		gbc.weightx=10;
-		gbc.weighty=10;
-		gbc.anchor=GridBagConstraints.WEST;
-//		gb.setConstraints(l1,gbc);
-//		getContentPane().add(l1);
-		jpa.add(comp,gbc);
-	}
-	public static <K, V extends Comparable<V>> Map<K, V> sortByValues(final Map<K, V> map) {
-	    Comparator<K> valueComparator =  new Comparator<K>() {
-	        public int compare(K k1, K k2) {
-	            int compare = map.get(k2).compareTo(map.get(k1));
-	            if (compare == 0) return 1;
-	            else return compare;
-	        }
-	    };
-	    Map<K, V> sortedByValues = new TreeMap<K, V>(valueComparator);
-	    sortedByValues.putAll(map);
-	    return sortedByValues;
-	}
-	
-	public LinkedHashMap getSortedMap(HashMap hmap)
-	{
-	LinkedHashMap map = new LinkedHashMap();
-	List mapKeys = new ArrayList(hmap.keySet());
-	List mapValues = new ArrayList(hmap.values());
-	hmap.clear();
-	TreeSet sortedSet = new TreeSet(mapValues);
-	Object[] sortedArray = sortedSet.toArray();
-	int size = sortedArray.length;
-	// a) Ascending sort
-
-	for (int i=0; i<size; i++)
-	{
-
-	map.put(mapKeys.get(mapValues.indexOf(sortedArray[i])), sortedArray[i]);
-	mapValues.set(mapValues.indexOf(sortedArray[i]), null);
-
-	}
-	return map;
-	}
 
 	@SuppressWarnings("deprecation")
 	public ClusterEval(final List<List<Cluster>> cltarray, final List<List<Cluster>> cltarray2, final List<Integer> ticklist, final List<Matrix> MatrixList,List<double[][]> vtestlist, final Matrix concatenatedDataHistory,boolean typece)
