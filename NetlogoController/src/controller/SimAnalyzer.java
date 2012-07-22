@@ -129,6 +129,9 @@ public class SimAnalyzer extends JFrame
 	public static JTabbedPane tabbedpane;
 	public static JTabbedPane clusterspane;
 	public static SimAnalyzer simanal;
+	public static String clustererParametersString;
+	public static String[] clustererParameters;
+	public static int clustererType;
 
 	// AD /*
 	static Vector<Object> vjf = new Vector<Object>();
@@ -467,7 +470,22 @@ public class SimAnalyzer extends JFrame
 		int maxClustersNumber = 20;
 		int maxIterations = 200;
 		Clusterer cl=new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
-				, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations );
+				, SimAnalyzer.clustererParameters.clone() );
+		if (SimAnalyzer.clustererType==1)
+		{
+			 cl=new WekaClusterer(WekaClusterer.WekaClustererType.SimpleKMeans, false
+					, SimAnalyzer.clustererParameters.clone() );
+		}
+		if (SimAnalyzer.clustererType==2)
+		{
+			 cl=new WekaClusterer(WekaClusterer.WekaClustererType.DBScan, false
+					, SimAnalyzer.clustererParameters.clone() );
+		}
+		if (SimAnalyzer.clustererType==3)
+		{
+			 cl=new WekaClusterer(WekaClusterer.WekaClustererType.MakeDensityBasedClusterer, false
+					, SimAnalyzer.clustererParameters.clone() );
+		}
 		return cl;
 	}
 
@@ -491,8 +509,26 @@ public class SimAnalyzer extends JFrame
 //						, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations );
 	       	    for(int i=0;i<=totalsteps;i++)
 	       	    {
-	       	    	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
-						, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations ));
+		    		if (SimAnalyzer.clustererType==0)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==1)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.SimpleKMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==2)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.DBScan, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==3)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
 	       	    }
 				params = NetLogoSimulationController.getDefaultParams();
 		        params[NetLogoSimulationController.CLUSTERER_INDEX]=wcl;
@@ -589,8 +625,26 @@ public class SimAnalyzer extends JFrame
 	       	  
 				for(int i=0;i<=totalsteps;i++)
 	       	    {
-	       	    	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
-						, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations ));
+		    		if (SimAnalyzer.clustererType==0)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==1)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.SimpleKMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==2)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.DBScan, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==3)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
 	       	    }
 				params = LogsSimulationController.getDefaultParams();
 		        params[LogsSimulationController.CLUSTERER_INDEX]=wcl;
@@ -606,12 +660,30 @@ public class SimAnalyzer extends JFrame
 				params[LogsSimulationController.STARTCLUSTCOL_INDEX]=startcol;
 				params[LogsSimulationController.ENDCLUSTCOL_INDEX]=endcol;
 		        nlsc = new LogsSimulationController();
-		        for(int i=0; i<=totalsteps; i++)
+/*		        for(int i=0; i<=totalsteps; i++)
 		        {
-		        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
-							, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations));
+		    		if (SimAnalyzer.clustererType==0)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters));
+		    		}
+		    		if (SimAnalyzer.clustererType==1)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.SimpleKMeans, false
+								, SimAnalyzer.clustererParameters));
+		    		}
+		    		if (SimAnalyzer.clustererType==2)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.DBScan, false
+								, SimAnalyzer.clustererParameters));
+		    		}
+		    		if (SimAnalyzer.clustererType==3)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters));
+		    		}
 		        }
-		        
+*/		        
 	            try {
 	            	nlsc.runSimulation(params);
 		        } catch (Exception e) {
@@ -1699,6 +1771,8 @@ public class SimAnalyzer extends JFrame
 		private static final long serialVersionUID = 1L;
 		JLabel[] l;//, l0,lt,  l1, l2,l2b, l3, l4, l5,  l6,  l7,l8,l9,l10;
 		JTextField[] ltf; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
+		JComboBox lcomb;
+		JTextField ltparam;
 		int nblab;
 		JButton jbtdm, jbtOK, jbtsim, jbtsave;
 		ObserversConfig obsconf;
@@ -1720,7 +1794,7 @@ public class SimAnalyzer extends JFrame
 			grid.setVgap(15);  
 			panel_1.setLayout(grid);  
 			panel.add(panel_1);  
-			 nblab=13;
+			 nblab=14;
 			l=new JLabel[nblab];
 			ltf=new JTextField[nblab];
 
@@ -1763,12 +1837,28 @@ public class SimAnalyzer extends JFrame
 		    no++;
 		    l[no] = new JLabel("Recompute history: ");  
 			ltf[no] = new JTextField("1");
+
+			JLabel labc=new JLabel("Clustering algorithm");
+			String[] jcitems=new String[4];
+			jcitems[0]="XMeans";
+			jcitems[1]="SimpleKMeans";
+			jcitems[2]="DBScan";
+			jcitems[3]="Autre2";
+			lcomb=new JComboBox(jcitems);
+			lcomb.addActionListener(this);
+			
+			no++;
+		    l[no] = new JLabel("Clusterer parameters: ");  
+			ltf[no] = new JTextField("-L1 -H50 -I100");
+			ltparam=ltf[no];
 			
 			for (int i=0; i<nblab; i++)
 			{
 				panel_1.add(l[i]);
 				panel_1.add(ltf[i]);				
 			}
+			panel_1.add(labc);
+			panel_1.add(lcomb);				
 			
 			jbtsave = new JButton("Start new simulation (and save)");   
 			panel_1.add(jbtsave);   
@@ -1809,12 +1899,30 @@ public class SimAnalyzer extends JFrame
 				e.printStackTrace();
 			} 
 			}
+			try {
+				lcomb.setSelectedIndex(Integer.parseInt(br.readLine()));
+			} catch (Exception e) {
+				lcomb.setSelectedIndex(0);
+				ltparam.setText("-L 1 -H 50 -I 100");
+				e.printStackTrace();
+			} 
 	    }
 
 		@SuppressWarnings("unused")
 		public void actionPerformed(ActionEvent e) {
 			Object src=e.getSource();
 			Matrix m = NetLogoSimulationController.DataMatrix;
+			if (src.equals(this.lcomb))
+			{
+				if (lcomb.getSelectedIndex()==0)
+					ltparam.setText("-L 1 -H 50 -I 100");
+				if (lcomb.getSelectedIndex()==1)
+					ltparam.setText("-N 3");
+				if (lcomb.getSelectedIndex()==2)
+					ltparam.setText("");
+				if (lcomb.getSelectedIndex()==3)
+					ltparam.setText("");
+			}
 			if (src.equals(jbtdm))
 			{
 				menug.setEnabled(true);
@@ -1932,6 +2040,8 @@ public class SimAnalyzer extends JFrame
 						bw.write(ltf[i].getText());
 						bw.newLine();						
 					}
+					bw.write(""+this.lcomb.getSelectedIndex());
+					bw.newLine();						
 					bw.flush(); 
 					bw.close();
 					fw.close();
@@ -1958,6 +2068,10 @@ public class SimAnalyzer extends JFrame
 		        if (Integer.parseInt(ltf[10].getText())==0) doubleclustering=false;
 		        if (Integer.parseInt(ltf[11].getText())==0) followcluster=false;
 		        if (Integer.parseInt(ltf[12].getText())==0) computehistory=false;
+		        SimAnalyzer.clustererType=lcomb.getSelectedIndex();
+		        String delims = "[ ]+";
+		        SimAnalyzer.clustererParametersString=ltf[13].getText();
+		        SimAnalyzer.clustererParameters=SimAnalyzer.clustererParametersString.split(delims);
 		        if (typem==1)
 		        {
 					startnetlogo=true;
