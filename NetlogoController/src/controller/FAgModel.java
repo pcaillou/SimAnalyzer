@@ -286,7 +286,7 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 					corelavglob.setAsDouble(0, 0, xp);
 					difavg.setAsDouble(0, 0, xp);
 					difavglob.setAsDouble(0, 0, xp);
-					distavglob.showGUI();
+//					distavglob.showGUI();
 					double avgdif=0;
 					double avgdifglob=0;
 					double avgcorel=0;
@@ -398,8 +398,6 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 		{
 			l4 = new JLabel("VT");
 			newColTitle(l4,nx,ny,gbc,jp);
-		l4 = new JLabel("VT");
-		newColTitle(l4,nx,ny,gbc,jp);
 		for(int i=3;i<mbase.getRowCount();i++)
 		{
 			vtd=Math.round(mbase.getAsDouble(i,colbase)*100)/100.0;
@@ -415,7 +413,7 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 		ny=deby;
 		}
 		
-		l4 = new JLabel("VarX");
+		l4 = new JLabel("X");
 		newColTitle(l4,nx,ny,gbc,jp);
 		for(int i=3;i<mbase.getRowCount();i++)
 		{
@@ -429,7 +427,7 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 		nx++;
 		ny=deby;
 
-		l4 = new JLabel("VarY");
+		l4 = new JLabel("Y");
 		newColTitle(l4,nx,ny,gbc,jp);
 		for(int i=3;i<mbase.getRowCount();i++)
 		{
@@ -445,11 +443,16 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 		if (clbase.nbotherxp>0)
 			for (int xp=0; xp<clbase.nbotherxp; xp++)
 			{
+				gbc.gridwidth=4;
+			l1 = new JLabel(clbase.hname.get(xp));
+				placenewcomp(nx,ny-2,gbc,l1,jp);
+				gbc.gridwidth=1;
+
 				if (this.jcGlobalOrCluster.isSelected())
 				{
 					l1 = new JLabel(""+Math.round(this.corelavg.getAsDouble(0,xp)*100)/100.0);
 					placenewcomp(nx,ny-1,gbc,l1,jp);
-				l4 = new JLabel("CorelAvg");
+				l4 = new JLabel("Corel");
 				newColTitle(l4,nx,ny,gbc,jp);
 				for(int i=3;i<mbase.getRowCount();i++)
 				{
@@ -469,7 +472,7 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 				{
 					l1 = new JLabel(""+Math.round(this.difavg.getAsDouble(0,xp)*100)/100.0);
 					placenewcomp(nx,ny-1,gbc,l1,jp);
-				l4 = new JLabel("DiffAvg");
+				l4 = new JLabel("Diff");
 				newColTitle(l4,nx,ny,gbc,jp);
 				for(int i=3;i<mbase.getRowCount();i++)
 				{
@@ -488,7 +491,7 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 				{
 					l1 = new JLabel(""+Math.round(this.totdistavg.getAsDouble(0,xp)*100)/100.0);
 					placenewcomp(nx,ny-1,gbc,l1,jp);
-				l4 = new JLabel("DistAvg");
+				l4 = new JLabel("Dist");
 				newColTitle(l4,nx,ny,gbc,jp);
 				for(int i=3;i<mbase.getRowCount();i++)
 				{
@@ -507,7 +510,7 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 				{
 					l1 = new JLabel(""+Math.round(this.corelavglob.getAsDouble(0,xp)*100)/100.0);
 					placenewcomp(nx,ny-1,gbc,l1,jp);
-				l4 = new JLabel("CorelAvgGlob");
+				l4 = new JLabel("Corel");
 				newColTitle(l4,nx,ny,gbc,jp);
 				for(int i=3;i<mbase.getRowCount();i++)
 				{
@@ -526,7 +529,7 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 				{
 					l1 = new JLabel(""+Math.round(this.difavglob.getAsDouble(0,xp)*100)/100.0);
 					placenewcomp(nx,ny-1,gbc,l1,jp);
-				l4 = new JLabel("DifAvgGlob");
+				l4 = new JLabel("Diff");
 				newColTitle(l4,nx,ny,gbc,jp);
 				for(int i=3;i<mbase.getRowCount();i++)
 				{
@@ -545,7 +548,7 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 				{
 					l1 = new JLabel(""+Math.round(this.totdistavglob.getAsDouble(0,xp)*100)/100.0);
 					placenewcomp(nx,ny-1,gbc,l1,jp);
-				l4 = new JLabel("DistAvg");
+				l4 = new JLabel("Dist");
 				newColTitle(l4,nx,ny,gbc,jp);
 				for(int i=3;i<mbase.getRowCount();i++)
 				{
@@ -564,7 +567,7 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 				{
 					l1 = new JLabel(""+Math.round(this.totdistavglob.getAsDouble(0,xp)*100)/100.0);
 					placenewcomp(nx,ny-1,gbc,l1,jp);
-				l4 = new JLabel("DistAvg");
+				l4 = new JLabel("DistEvo");
 				newColTitle(l4,nx,ny,gbc,jp);
 				for(int i=3;i<mbase.getRowCount();i++)
 				{
@@ -608,7 +611,74 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 							val = this.distavglob.getAsMatrix(i,xp).getAsDouble(j,0);
 //							if (i==16)
 //							this.distavglob.getAsMatrix(i,xp).showGUI();
-							renderer.setSeriesPaint(j, new Color(200-(int)(val*200-200),200-(int)(val*200-200),255));						
+							renderer.setSeriesPaint(j, new Color((int)(200-val*200),(int)(200-val*200),255));						
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					chart.setBorderVisible(false);
+					
+					ChartPanel chartPanel = new ChartPanel(chart);
+			        chartPanel.setPreferredSize(new java.awt.Dimension(100, 25));
+			        
+					JPanel monPanel = new JPanel(new BorderLayout());
+					monPanel.add(chartPanel, BorderLayout.CENTER);
+					
+					newOnSameCol(monPanel,(double)i,gbc,jp);			
+				}
+				nx++;
+				ny=deby;
+				}
+				if (this.jcGlobalOrCluster.isSelected())
+				{
+					l1 = new JLabel(""+Math.round(this.totdistavg.getAsDouble(0,xp)*100)/100.0);
+					placenewcomp(nx,ny-1,gbc,l1,jp);
+				l4 = new JLabel("DistEvo");
+				newColTitle(l4,nx,ny,gbc,jp);
+				for(int i=3;i<mbase.getRowCount();i++)
+				{
+					DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+					// row keys...
+					String series1 = "";
+
+					// column keys...
+					String category1 = "1";
+
+					for(int j=0;j<mbase.getColumnCount();j++)
+					{
+						series1=new String("c"+j);
+						dataset.addValue(1, series1, category1);												
+					}
+					
+					JFreeChart chart = ChartFactory.createStackedBarChart("", // chart
+							// title
+							"", // domain axis label
+							"", // range axis label
+							dataset, // data
+							PlotOrientation.HORIZONTAL, // orientation
+							false, // include legend
+							true, // tooltips?
+							false // URLs?
+							);
+
+					CategoryPlot plot = (CategoryPlot) chart.getPlot();
+					plot.setOutlineVisible(false);
+					plot.getDomainAxis().setVisible(false);
+					plot.getRangeAxis().setVisible(false);
+//					this.distavglob.showGUI();
+					for(int j=1;j<mbase.getColumnCount();j++)
+					{
+						CategoryItemRenderer renderer = plot.getRenderer();
+						renderer.setSeriesPaint(j, Color.white);
+						double val;
+						if (!Double.isNaN(this.totdistavg.getAsDouble(i,xp)))
+						try {
+							val = this.distavg.getAsMatrix(i,xp).getAsDouble(j,0);
+//							if (i==16)
+//							this.distavglob.getAsMatrix(i,xp).showGUI();
+							renderer.setSeriesPaint(j, new Color((int)(200-val*200),(int)(200-val*200),255));						
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -696,7 +766,7 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 				chart.setBorderVisible(false);
 				
 				ChartPanel chartPanel = new ChartPanel(chart);
-		        chartPanel.setPreferredSize(new java.awt.Dimension(100, 25));
+		        chartPanel.setPreferredSize(new java.awt.Dimension(60, 20));
 		        
 				JPanel monPanel = new JPanel(new BorderLayout());
 				monPanel.add(chartPanel, BorderLayout.CENTER);
@@ -890,9 +960,9 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 
 			l1 = new JLabel("StabilityPop: "+((double)((int)(agm.scorestabpop*10000)))/100+"%");
 			
-			gbc.gridx=2;
+			gbc.gridx=1;
 			gbc.gridy=2;
-			gbc.gridwidth=1;
+			gbc.gridwidth=2;
 			gbc.gridheight=1;
 			gbc.weightx=10;
 			gbc.weighty=10;
@@ -903,9 +973,9 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 			
 			l1 = new JLabel("StabilityDesc: "+((double)((int)(agm.scorestabdesc*10000)))/100+"%");
 			
-			gbc.gridx=2;
+			gbc.gridx=1;
 			gbc.gridy=1;
-			gbc.gridwidth=1;
+			gbc.gridwidth=2;
 			gbc.gridheight=1;
 			gbc.weightx=10;
 			gbc.weighty=10;
@@ -2158,30 +2228,35 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 		Object src=arg0.getSource();
 		if (src==jcheckVariance)
 		{
+			majaff();
 			redrawgraph(false);
 			this.repaint();
 			
 		}
 		if (src==jcExtensionOrIntension)
 		{
+			majaff();
 			redrawgraph(false);
 			this.repaint();
 			
 		}
 		if (src==this.jcValueOrDistrib)
 		{
+			majaff();
 			redrawgraph(false);
 			this.repaint();
 			
 		}
 		if (src==this.jcSingleOrCompare)
 		{
+			majaff();
 			redrawgraph(false);
 			this.repaint();
 			
 		}
 		if (src==this.jcGlobalOrCluster)
 		{
+			majaff();
 			redrawgraph(false);
 			this.repaint();
 			
