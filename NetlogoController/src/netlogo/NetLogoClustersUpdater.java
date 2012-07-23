@@ -5,6 +5,7 @@
  */
 package netlogo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,13 +24,18 @@ public class NetLogoClustersUpdater extends SimulationClustersUpdater{
 	//Generaliser cette m�thode
 	public void updateClustersInSimulation(List<Cluster> clustersSet) {
 		long clustersNumber = clustersSet.size();
+		ArrayList<Long> affectedAgents=new ArrayList<Long>();
 		for(Cluster c: clustersSet){
 			
 			Long clusterId = c.getId();
 			for(Long id: c.getComponentIds()){
 				int color = (int)(((double)org.nlogo.api.Color.getColorNamesArray().length *clusterId)/(clustersNumber+1));
 				color =color %org.nlogo.api.Color.getColorNamesArray().length;
+				if (color>=0)
 SimulationController.si.setAgentVariable(id.intValue(), "COLOR", org.nlogo.api.Color.getColorNumberByIndex(color));
+				else
+					SimulationController.si.setAgentVariable(id.intValue(), "COLOR", 139.0);
+				affectedAgents.add(id);
 //System.out.println("C"+c.getId());
 /*if (SimAnalyzer.doubleclustering)
 {
@@ -43,6 +49,17 @@ SimulationController.si.setAgentVariable(id.intValue(), "COLOR", org.nlogo.api.C
 				
 			}
 			
+		}
+		long[] allagents=SimulationController.si.getAgentsId();
+		long clnum=-1;
+		for (int i=0; i<allagents.length; i++)
+		{
+			if (!affectedAgents.contains(allagents[i]))
+			{
+				System.out.println("Agent "+allagents[i]+" sans cluster");
+				int color=-1;
+				SimulationController.si.setAgentVariable((int)allagents[i], "COLOR", org.nlogo.api.Color.getColorNumberByIndex(color));
+			}
 		}
 		
 	}

@@ -88,7 +88,7 @@ public class WekaClusterer extends Clusterer {
 		Instance instance = WekaWrapper.sampleToInstanceWrapper(input, sampleRow, sampleWeight, discrete);
 		instance.setDataset(instances);
 		clustertime+=System.nanoTime()-duration;
-		int res=0;
+		int res=-1;
 		try {
 			res=wekaClusterer.clusterInstance(instance);
 		} catch (Exception e) {

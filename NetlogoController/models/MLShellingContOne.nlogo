@@ -100,7 +100,7 @@ to update-turtles
     ;; surrounding the current patch
     set similar-nearby matrix:get distrib category color
     set total-nearby matrix:get total-distrib 0 color
-    set happy? similar-nearby >= ( %-similar-wanted * total-nearby / 100 )
+    set happy? ((similar-nearby >= ( %-similar-wanted * total-nearby / 100 )) and (color < 139))
   ]
 end
 
@@ -687,7 +687,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 5.0RC8
+NetLogo 5.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

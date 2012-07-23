@@ -1904,7 +1904,9 @@ public class SimAnalyzer extends JFrame
 			} 
 			}
 			try {
+				String vtemp=ltparam.getText();
 				lcomb.setSelectedIndex(Integer.parseInt(br.readLine()));
+				ltparam.setText(vtemp);
 			} catch (Exception e) {
 				lcomb.setSelectedIndex(0);
 				ltparam.setText("-L 1 -H 50 -I 100");

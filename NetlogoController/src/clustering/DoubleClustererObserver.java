@@ -135,6 +135,7 @@ public class DoubleClustererObserver extends ClustererObserver {
 			clustersIds = new ArrayList<Long>();
 			for(long i=0;i<data.getRowCount();i++){
 				Long clusterId = c.clusterInstance(inputint, i);
+//				if (clusterId==-1) clusterId=new Long(0);
 				clustersIds.add(clusterId);
 				data.setAsLong(clusterId, i, classLabelColumn);
 			}
@@ -148,6 +149,7 @@ public class DoubleClustererObserver extends ClustererObserver {
 			}
 			for(int i=0;i<data.getRowCount();i++){
 				Long clusterId = data.getAsLong(i,classLabelColumn);
+				if (clusterId==-1) clusterId=new Long(0);
 				lrows.get(clusterId.intValue()).add((long)i);
 			}
 			c.subclusterer=new ArrayList<Clusterer>();
@@ -160,6 +162,7 @@ public class DoubleClustererObserver extends ClustererObserver {
 				Matrix inputbuildnew = inputbuild.selectRows(Ret.NEW,rows);
 				Matrix inputnew = input.selectRows(Ret.NEW,rows);
 				Matrix datanew = data.selectRows(Ret.NEW,rows);
+				if (inputbuildnew.getRowCount()>0)
 				cl.buildClusterer(inputbuildnew);
 				cl.ClusterBuilt = true;
 				for(int co=0; co<inputbuildnew.getColumnCount(); co++){
@@ -244,6 +247,7 @@ public class DoubleClustererObserver extends ClustererObserver {
 		
 		for(long i=0;i<data.getRowCount();i++){
 			Long clusterIdint = c.clusterInstance(inputint, i);
+			if (clusterIdint==-1) clusterIdint=new Long(0);
 			Long clusterId = c.subclusterer.get(clusterIdint.intValue()).clusterInstance(input, i);
 			data.setAsLong(clusterId, i, classLabelColumn);
 			data.setAsLong(clusterIdint*1000+clusterId, i, classLabelColumn);

@@ -136,7 +136,8 @@ public class ClustererObserver extends Observer {
 			else
 			{
 				clusterlt = c.clusterData(data, input);
-				for (int i=0; i<c.clustinit.size(); i++)
+				if (SimAnalyzer.followcluster)
+			for (int i=0; i<c.clustinit.size(); i++)
 				{
 					boolean found=false;
 					for (int j=0; j<clusterlt.size(); j++)
