@@ -15,6 +15,8 @@ import org.ujmp.core.doublematrix.DenseDoubleMatrix2D;
 import org.ujmp.core.doublematrix.DoubleMatrix;
 import org.ujmp.core.doublematrix.factory.DefaultDenseDoubleMatrix2DFactory;
 import org.ujmp.core.enums.ValueType;
+import org.ujmp.core.exceptions.MatrixException;
+import org.ujmp.core.objectmatrix.factory.DefaultDenseObjectMatrix2DFactory;
 
 import statistic.distribution.VariableDistribution;
 //AD import org.ujmp.core.exceptions.MatrixException;
@@ -24,6 +26,7 @@ import clustering.Cluster;
 @SuppressWarnings("deprecation")
 public class Vtest{
 	public static DefaultDenseDoubleMatrix2DFactory mfact=new DefaultDenseDoubleMatrix2DFactory();
+	public static DefaultDenseObjectMatrix2DFactory mfactm=new DefaultDenseObjectMatrix2DFactory();
 	public static Matrix VtestM(Cluster clu, Matrix mg)
 	{
 		double[] vt=Vtestglob(clu,mg,0,null);
@@ -551,6 +554,7 @@ public class Vtest{
 	    	nm[j] = meancalc.evaluate(rmatg.getColumn(0));
 	    	nmg[j] = nm[j];
 	        vtest[j]=0;
+	        m=mg;
 	    	
 	    }
 	    else
@@ -579,6 +583,7 @@ public class Vtest{
 	    	clu.vtests=vtest;
 	    	clu.avg=nmg;
 	    	clu.stderr=vag;
+		    clu.initdistrib(mg.getColumnCount()+3);
 			clu.vtestsm = mfact.zeros(mg.getColumnCount()+3,1);
 	    	clu.vtestsm.setRowLabel(1, "tick");
 	    	clu.vtestsm.setRowLabel(2, "size");
@@ -598,6 +603,10 @@ public class Vtest{
 		    {
 		    	clu.avgsm.setRowLabel(j+3, mg.getColumnLabel(j));
 		    	clu.avgsm.setAsDouble(nmg[j], j+3, 0);
+			    for(int i=0;i<m.getRowCount();i++)
+			    {
+					clu.addtodistrib(m.getAsDouble(i,j), j+3, 0, 0);
+			    }
 		    }
 			clu.stderrsm =mfact.zeros(mg.getColumnCount()+3,1);		    		    
 	    	clu.stderrsm.setRowLabel(1, "tick");
@@ -628,6 +637,10 @@ public class Vtest{
 		    {
 		    	clu.avgsmdef.setRowLabel(j+3, mg.getColumnLabel(j));
 		    	clu.avgsmdef.setAsDouble(nmg[j], j+3, 0);
+			    for(int i=0;i<m.getRowCount();i++)
+			    {
+		    	clu.addtodistrib(m.getAsDouble(i,j), j+3, 0, 1);
+			    }
 		    }
 			clu.stderrsmdef = mfact.zeros(mg.getColumnCount()+3,1);		    	    
 	    	clu.stderrsmdef.setRowLabel(1, "tick");
@@ -648,6 +661,10 @@ public class Vtest{
 		    {
 		    	clu.avglobsm.setRowLabel(j+3, mg.getColumnLabel(j));
 		    	clu.avglobsm.setAsDouble(nm[j], j+3, 0);
+			    for(int i=0;i<mg.getRowCount();i++)
+			    {
+		    	clu.addtodistrib(mg.getAsDouble(i,j), j+3, 0, 2);
+			    }
 		    }
 			clu.stdglobsm = mfact.zeros(mg.getColumnCount()+3,1);		    
 	    	clu.stdglobsm.setRowLabel(1, "tick");
@@ -665,6 +682,10 @@ public class Vtest{
 	    {
 	    	// par def
 //			cib.vtestsm.showGUI();
+   			if (cib.davglobsm.getColumnCount()!=cib.davgsm.getColumnCount())
+   			{
+		    System.out.println("globs"+cib.getId()+" s "+cib.davglobsm.getColumnCount()+"avg"+cib.davgsm.getColumnCount());
+   			}
 			cib.agm.clustHistDef.add(clu);
 	    	cib.ticklist.add(SimulationController.currenttick);
 	    	if (SimulationController.currenttick<cib.ticklist.get(0))
@@ -676,6 +697,9 @@ public class Vtest{
 	    	DenseDoubleMatrix2D mns =mfact.zeros(mg.getColumnCount()+3,1);		     
 	    	DenseDoubleMatrix2D mnag =mfact.zeros(mg.getColumnCount()+3,1);		        
 	    	DenseDoubleMatrix2D mnsg =mfact.zeros(mg.getColumnCount()+3,1);		        
+	    	Matrix mnd=mfactm.zeros(mg.getColumnCount()+3,1);		    
+	    	Matrix mng=mfactm.zeros(mg.getColumnCount()+3,1);		    
+	    	Matrix mdb=mfact.zeros(Cluster.NB_MAX_BIN+2,1);		    
 //			DenseDoubleMatrix2D mn = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
 //			Matrix mna = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
 //			Matrix mns = MatrixFactory.sparse(mg.getColumnCount()+3,1);		    
@@ -688,6 +712,9 @@ public class Vtest{
 		    	mns.setAsDouble(Math.sqrt(vag[j]), j+3, 0);
 		    	mnag.setAsDouble(nm[j], j+3, 0);
 		    	mnsg.setAsDouble(Math.sqrt(va[j]), j+3, 0);
+		    	mng.setAsMatrix(mdb.clone(), j+3, 0);
+		    	mnd.setAsMatrix(mdb.clone(), j+3, 0);
+		    	
 		    }
 //		    cib.vtestsm=cib.vtestsm.appendVertically(mn);	
 	    	mn.setAsDouble(clu.getSize(), 2, 0);
@@ -702,6 +729,8 @@ public class Vtest{
 			cib.stderrsmdef=MyMatrix.appendHorizontallyDD(cib.stderrsmdef,mns);	
 			cib.avglobsm=MyMatrix.appendHorizontallyDD(cib.avglobsm,mnag);	
 			cib.stdglobsm=MyMatrix.appendHorizontallyDD(cib.stdglobsm,mnsg);	
+			cib.davglobsm=MyMatrix.appendHorizontally(cib.davglobsm,mng);	
+			cib.davgsmdef=MyMatrix.appendHorizontally(cib.davgsmdef,mnd);	
 	    	}
 	    	else
 	    	{
@@ -710,10 +739,28 @@ public class Vtest{
 				cib.stderrsmdef=MyMatrix.appendHorizontallyDD(mns,cib.stderrsmdef,true);	
 				cib.avglobsm=MyMatrix.appendHorizontallyDD(mnag,cib.avglobsm,true);	
 				cib.stdglobsm=MyMatrix.appendHorizontallyDD(mnsg,cib.stdglobsm,true);	
-	    		
+				cib.davglobsm=MyMatrix.appendHorizontally(mng,cib.davglobsm);	
+				cib.davgsmdef=MyMatrix.appendHorizontally(mnd,cib.davgsmdef);		    		
 	    	}
-
+	    	int nc=0;
+	    	if (SimulationController.currenttick>=cib.ticklist.get(0)) nc=(int)cib.davglobsm.getColumnCount()-1;
+		    for(int j=0;j<mg.getColumnCount();j++)
+		    {
+			    for(int i=0;i<m.getRowCount();i++)
+			    {
+		    	cib.addtodistrib(m.getAsDouble(i,j), j+3,nc, 1);
+			    }
+			    for(int i=0;i<mg.getRowCount();i++)
+			    {
+		    	cib.addtodistrib(mg.getAsDouble(i,j), j+3, nc, 2);
+			    }
+		    	
+		    }
 			Vtestglob(cib,mg,4,cib);
+   			if (cib.davglobsm.getColumnCount()!=cib.davgsm.getColumnCount())
+   			{
+		    System.out.println("globs"+cib.getId()+" s "+cib.davglobsm.getColumnCount()+"avg"+cib.davgsm.getColumnCount());
+   			}
 	    }
 	    if (type==4)
 //	    if (cib.ticklist.contains(SimulationController.currenttick)==false)
@@ -726,6 +773,8 @@ public class Vtest{
 	    	DenseDoubleMatrix2D mns =mfact.zeros(mg.getColumnCount()+3,1);		    
 	    	DenseDoubleMatrix2D mnag =mfact.zeros(mg.getColumnCount()+3,1);		    ;	    
 	    	DenseDoubleMatrix2D mnsg = mfact.zeros(mg.getColumnCount()+3,1);		    
+	    	Matrix mnd=mfactm.zeros(mg.getColumnCount()+3,1);		    
+	    	Matrix mdb=mfact.zeros(Cluster.NB_MAX_BIN+2,1);		    
 		    for(int j=0;j<mg.getColumnCount();j++)
 		    {
 		    	mn.setAsDouble(vtest[j], j+3, 0);
@@ -733,6 +782,7 @@ public class Vtest{
 		    	mns.setAsDouble(Math.sqrt(vag[j]), j+3, 0);
 		    	mnag.setAsDouble(nm[j], j+3, 0);
 		    	mnsg.setAsDouble(Math.sqrt(va[j]), j+3, 0);
+		    	mnd.setAsMatrix(mdb.clone(), j+3, 0);
 		    }
 //		    cib.vtestsm=cib.vtestsm.appendVertically(mn);	
 		    if (m==null)
@@ -757,15 +807,29 @@ public class Vtest{
 	    	
 	    		cib.vtestsm=MyMatrix.appendHorizontallyDD(cib.vtestsm, mn);
 	    		cib.avgsm=MyMatrix.appendHorizontallyDD(cib.avgsm,mna);	
-	    		cib.stderrsm=MyMatrix.appendHorizontallyDD(cib.stderrsm,mns);	
+	    		cib.stderrsm=MyMatrix.appendHorizontallyDD(cib.stderrsm,mns);
+				cib.davgsm=MyMatrix.appendHorizontally(cib.davgsm,mnd);	
 	    	}
 	    	else
 	    	{
 	    		cib.vtestsm=MyMatrix.appendHorizontallyDD(mn,cib.vtestsm,true);
 	    		cib.avgsm=MyMatrix.appendHorizontallyDD(mna,cib.avgsm,true);	
 	    		cib.stderrsm=MyMatrix.appendHorizontallyDD(mns,cib.stderrsm,true);	
+				cib.davgsm=MyMatrix.appendHorizontally(mnd,cib.davgsm);		    		
     		
 	    	}
+	    	int nc=0;
+	    	if (SimulationController.currenttick>=cib.ticklist.get(0)) nc=(int)cib.davgsm.getColumnCount()-1;
+	    	
+	    	if (m!=null)
+		    for(int j=0;j<mg.getColumnCount();j++)
+		    {
+			    for(int i=0;i<m.getRowCount();i++)
+			    {
+		    	cib.addtodistrib(m.getAsDouble(i,j), j+3, nc, 0);
+			    }
+		    	
+		    }
 //			cib.avgsm.showGUI();
 //			cib.avglobsm.showGUI();
 //			cib.vtestsm.setSize(cib.vtestsm.getSize(0),cib.vtestsm.getSize(1)+1);
@@ -820,6 +884,9 @@ public class Vtest{
 	    	DenseDoubleMatrix2D mns =mfact.zeros(mg.getColumnCount()+3,1);		    
 	    	DenseDoubleMatrix2D mnag =mfact.zeros(mg.getColumnCount()+3,1);		    ;	    
 	    	DenseDoubleMatrix2D mnsg = mfact.zeros(mg.getColumnCount()+3,1);	    
+	    	Matrix mnd=mfactm.zeros(mg.getColumnCount()+3,1);		    
+	    	Matrix mng=mfactm.zeros(mg.getColumnCount()+3,1);		    
+	    	Matrix mdb=mfact.zeros(Cluster.NB_MAX_BIN+2,1);		    
 		    for(int j=0;j<mg.getColumnCount();j++)
 		    {
 		    	mn.setAsDouble(vtest[j], j+3, 0);
@@ -827,6 +894,8 @@ public class Vtest{
 		    	mns.setAsDouble(Math.sqrt(vag[j]), j+3, 0);
 		    	mnag.setAsDouble(nm[j], j+3, 0);
 		    	mnsg.setAsDouble(Math.sqrt(va[j]), j+3, 0);
+		    	mng.setAsMatrix(mdb.clone(), j+3, 0);
+		    	mnd.setAsMatrix(mdb.clone(), j+3, 0);
 		    }
 //		    cib.vtestsm=cib.vtestsm.appendVertically(mn);	
 	    	mn.setAsDouble(0, 2, 0);
@@ -841,6 +910,8 @@ public class Vtest{
 			cib.stderrsmdef=MyMatrix.appendHorizontallyDD(cib.stderrsmdef,mns);	
 			cib.avglobsm=MyMatrix.appendHorizontallyDD(cib.avglobsm,mnag);	
 			cib.stdglobsm=MyMatrix.appendHorizontallyDD(cib.stdglobsm,mnsg);	
+			cib.davglobsm=MyMatrix.appendHorizontally(cib.davglobsm,mng);	
+			cib.davgsmdef=MyMatrix.appendHorizontally(cib.davgsmdef,mnd);	
 	    	}
 	    	else
 	    	{
@@ -849,8 +920,20 @@ public class Vtest{
 				cib.stderrsmdef=MyMatrix.appendHorizontallyDD(mns,cib.stderrsmdef,true);	
 				cib.avglobsm=MyMatrix.appendHorizontallyDD(mnag,cib.avglobsm,true);	
 				cib.stdglobsm=MyMatrix.appendHorizontallyDD(mnsg,cib.stdglobsm,true);	
+				cib.davglobsm=MyMatrix.appendHorizontally(mng,cib.davglobsm);	
+				cib.davgsmdef=MyMatrix.appendHorizontally(mnd,cib.davgsmdef);		    		
 	    		
 	    	}
+	    	int nc=0;
+	    	if (SimulationController.currenttick>=cib.ticklist.get(0)) nc=(int)cib.davglobsm.getColumnCount()-1;
+		    for(int j=0;j<mg.getColumnCount();j++)
+		    {
+			    for(int i=0;i<mg.getRowCount();i++)
+			    {
+		    	cib.addtodistrib(mg.getAsDouble(i,j), j+3, nc, 2);
+			    }
+		    	
+		    }
 
 			Vtestglob(cib,mg,4,cib);
 	    }

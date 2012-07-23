@@ -15,7 +15,9 @@ public class MyMatrix {
 	{
 		return appendHorizontallyDD( m1, m2, false);
 		
-	}	public static Matrix appendHorizontally(Matrix m1, Matrix m2, boolean m2labels)
+	}	
+	
+	public static Matrix appendHorizontally(Matrix m1, Matrix m2, boolean m2labels)
 	{
 		Matrix res;
 		Matrix n2 = m1.appendHorizontally(m2);	

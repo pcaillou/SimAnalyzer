@@ -65,7 +65,12 @@ public class WekaClusterer extends Clusterer {
 				java.lang.reflect.Method setopt=wekaClusterer.getClass().getMethod("setOptions",optcl);
 				String opt=options.toString();
 				optionsex[0]=opt;
-				setopt.invoke(wekaClusterer, (Object)options);
+				try {
+					setopt.invoke(wekaClusterer, (Object)options);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 //				 ((Object) wekaClusterer).setOptions(options);
 				//TODO
 			}

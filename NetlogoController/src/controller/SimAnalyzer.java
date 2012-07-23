@@ -2,6 +2,7 @@ package controller;
 
 
 //AD import clustering.Cluster;
+import clustering.Cluster;
 import clustering.Clusterer;
 import statistic.*;
 //AD import clustering.Indexes;
@@ -14,6 +15,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
+import netlogo.NetLogoInterface;
 import netlogo.NetLogoSimulationController;
 
 //AD import org.nlogo.app.App;
@@ -22,10 +24,15 @@ import observer.Observer;
 import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
 //AD import org.ujmp.core.calculation.Calculation.Ret;
+import org.ujmp.core.calculation.Calculation.Ret;
+import org.ujmp.core.doublematrix.DenseDoubleMatrix2D;
+import org.ujmp.core.doublematrix.factory.DefaultDenseDoubleMatrix2DFactory;
+import org.ujmp.core.doublematrix.factory.DenseDoubleMatrix2DFactory;
 import org.ujmp.core.enums.DB;
 import org.ujmp.core.enums.FileFormat;
 //AD import org.ujmp.core.enums.ValueType;
 import org.ujmp.core.exceptions.MatrixException;
+import org.ujmp.core.stringmatrix.impl.DefaultDenseStringMatrix2D;
 
 import statistic.DirectObserver;
 
@@ -100,6 +107,35 @@ public class SimAnalyzer extends JFrame
 	static String prname;
 	static File myDataFile = null;
 	static List<WekaClusterer> wcl = new ArrayList<WekaClusterer>();
+	JButton jbcreateproject,jbloadproject,jbloadresults;
+	public static int tabidintro=0;
+	public static int tabidproject=1;	
+	public static int tabidobserver=2;	
+	public static int tabidclusters=3;	
+	public static int tabidoverview=4;	
+	public static int tabidoverviewsort=5;	
+	public static int tabiddetail=6;
+	public static String tabnameproject="Project Config";
+	public static String tabttproject="";
+	public static Icon tabicproject=null;
+	public static String tabnameobserver="Observers Config";
+	public static String tabttobserver="";
+	public static Icon tabicobserver=null;
+	public static String tabnameclusters="Clusters population";
+	public static String tabttclusters="";
+	public static Icon tabicoclusters=null;
+	public static String tabnameoverview="Overview (by name)";
+	public static String tabttoverview="";
+	public static Icon tabicooverview=null;
+	public static String tabnameoverviewsort="Overview (by VT)";
+	public static String tabttoverviewsort="";
+	public static Icon tabicooverviewsort=null;
+	public static JTabbedPane tabbedpane;
+	public static JTabbedPane clusterspane;
+	public static SimAnalyzer simanal;
+	public static String clustererParametersString;
+	public static String[] clustererParameters;
+	public static int clustererType;
 
 	// AD /*
 	static Vector<Object> vjf = new Vector<Object>();
@@ -127,6 +163,7 @@ public class SimAnalyzer extends JFrame
 		ObsPossibleTypeList=new ArrayList<String>();
 		obsParamNames=new HashMap<String,String[]>();
 		obsParamDefaultValues=new HashMap<String,String[]>();
+		SimAnalyzer.simanal=this;
 		
 		ObsPossibleTypeList.add("None");		
 		obsParamNames.put("None", Observer.ParamNames);
@@ -190,7 +227,7 @@ public class SimAnalyzer extends JFrame
 		obsParamDefaultValues.put(c.getName(), pnd);
 		
 		restartnetlogo=false;
-		setJMenuBar(menubar);
+//		setJMenuBar(menubar);
 		menup.add(micp);
 		menup.add(miop);
 		micp.addActionListener(this);
@@ -207,12 +244,62 @@ public class SimAnalyzer extends JFrame
 		menug.setEnabled(false);
 		menus.setEnabled(false);
 		
-		JTextField [] jtf = new JTextField[columnCount]; 
+		tabbedpane=new JTabbedPane();
+		
+		
+/*		getContentPane().setLayout(gb);
+
+		gbc.gridx=0;
+		gbc.gridy=1;
+		gbc.gridwidth=1;
+		gbc.gridheight=1;
+		gbc.weightx=10;
+		gbc.weighty=10;
+		gb.setConstraints(tabbedpane,gbc);*/
+		getContentPane().add(tabbedpane);
+		this.setResizable(true);
+
+		JPanel intropanel=new JPanel();
+
+		JPanel projectpanel=new JPanel();
+
+		JPanel temppanel=new JPanel();
+		JTextField jtfinconst=new JTextField("In construction...");
+		temppanel.add(jtfinconst);
+		
+//		tabbedpane.setTabPlacement(tabbedpane.VERTICAL,tabbedpane.LEFT);
+//		tabbedpane.setTabLayoutPolicy(tabbedpane.VERTICAL);
+		
+		this.clusterspane=new JTabbedPane();
+
+		
+		tabbedpane.addTab("Presetation", intropanel);
+		tabbedpane.addTab(tabnameproject, projectpanel);
+		tabbedpane.addTab(tabnameobserver, new JPanel());
+		tabbedpane.addTab(tabnameclusters, clusterspane);
+		tabbedpane.addTab(tabnameoverview, new JPanel());
+		tabbedpane.addTab(tabnameoverviewsort, new JPanel());
+		
+		jbcreateproject=new JButton("Create new Project");
+		jbloadproject=new JButton("Load Project");
+		jbloadresults=new JButton("Load Results");
+		
+		intropanel.add(jbcreateproject);
+		intropanel.add(jbloadproject);
+		intropanel.add(jbloadresults);
+		
+		jbcreateproject.addActionListener(this);
+		jbloadproject.addActionListener(this);
+		jbloadresults.addActionListener(this);
+		
+		
+		
+/*		JTextField [] jtf = new JTextField[columnCount]; 
 		JCheckBox [] cb = new JCheckBox[columnCount];
 		Choice [] c1 = new Choice[columnCount];
 	    Choice [] c2 = new Choice[columnCount];
 
-		getContentPane().setLayout(gb);
+		
 		JLabel l1 = new JLabel("variables:");
 		gbc.gridx=0;
 		gbc.gridy=0;
@@ -378,7 +465,7 @@ public class SimAnalyzer extends JFrame
 		jbt2.setEnabled(false);
 		jbt3.setEnabled(false);
 		jbt4.setEnabled(false);
-		jbt5.setEnabled(false);
+		jbt5.setEnabled(false);*/
 	}
 	
 	public static Clusterer newClusterer() throws Exception
@@ -387,11 +474,22 @@ public class SimAnalyzer extends JFrame
 		int maxClustersNumber = 20;
 		int maxIterations = 200;
 		Clusterer cl=new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
-				, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations );
-   	    if (algo==1)
-   	    	cl=new WekaClusterer(WekaClusterer.WekaClustererType.DBScan, false
-				, "-E", "0.13", "-M", "5");
-
+				, SimAnalyzer.clustererParameters.clone() );
+		if (SimAnalyzer.clustererType==1)
+		{
+			 cl=new WekaClusterer(WekaClusterer.WekaClustererType.SimpleKMeans, false
+					, SimAnalyzer.clustererParameters.clone() );
+		}
+		if (SimAnalyzer.clustererType==2)
+		{
+			 cl=new WekaClusterer(WekaClusterer.WekaClustererType.DBScan, false
+					, SimAnalyzer.clustererParameters.clone() );
+		}
+		if (SimAnalyzer.clustererType==3)
+		{
+			 cl=new WekaClusterer(WekaClusterer.WekaClustererType.MakeDensityBasedClusterer, false
+					, SimAnalyzer.clustererParameters.clone() );
+		}
 		return cl;
 	}
 
@@ -399,7 +497,11 @@ public class SimAnalyzer extends JFrame
 	{
 		while (true)
 		{
-			
+			Thread t=Thread.currentThread();
+			synchronized (t)
+			{
+			t.wait(100);
+			}
   		    System.out.print("");
 		    if (startnetlogo)
 		    {
@@ -410,12 +512,27 @@ public class SimAnalyzer extends JFrame
 //				WekaClusterer clusterer = new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
 //						, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations );
 	       	    for(int i=0;i<=totalsteps;i++)
-	       	    {if (algo==0)
-	       	    	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
-						, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations ));
-	       	    if (algo==1)
-	       	    	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.DBScan, false
-						, "-E", "0.13", "-M", "5"));
+	       	    {
+		    		if (SimAnalyzer.clustererType==0)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==1)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.SimpleKMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==2)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.DBScan, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==3)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
 	       	    }
 				params = NetLogoSimulationController.getDefaultParams();
 		        params[NetLogoSimulationController.CLUSTERER_INDEX]=wcl;
@@ -512,8 +629,26 @@ public class SimAnalyzer extends JFrame
 	       	  
 				for(int i=0;i<=totalsteps;i++)
 	       	    {
-	       	    	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
-						, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations ));
+		    		if (SimAnalyzer.clustererType==0)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==1)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.SimpleKMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==2)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.DBScan, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==3)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
 	       	    }
 				params = LogsSimulationController.getDefaultParams();
 		        params[LogsSimulationController.CLUSTERER_INDEX]=wcl;
@@ -529,12 +664,30 @@ public class SimAnalyzer extends JFrame
 				params[LogsSimulationController.STARTCLUSTCOL_INDEX]=startcol;
 				params[LogsSimulationController.ENDCLUSTCOL_INDEX]=endcol;
 		        nlsc = new LogsSimulationController();
-		        for(int i=0; i<=totalsteps; i++)
+/*		        for(int i=0; i<=totalsteps; i++)
 		        {
-		        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
-							, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations));
+		    		if (SimAnalyzer.clustererType==0)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters));
+		    		}
+		    		if (SimAnalyzer.clustererType==1)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.SimpleKMeans, false
+								, SimAnalyzer.clustererParameters));
+		    		}
+		    		if (SimAnalyzer.clustererType==2)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.DBScan, false
+								, SimAnalyzer.clustererParameters));
+		    		}
+		    		if (SimAnalyzer.clustererType==3)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters));
+		    		}
 		        }
-		        
+*/		        
 	            try {
 	            	nlsc.runSimulation(params);
 		        } catch (Exception e) {
@@ -632,70 +785,195 @@ public class SimAnalyzer extends JFrame
 	public synchronized void actionPerformed(ActionEvent evt)
 	{
 		Object src = evt.getSource();
-		if (src.equals(micp))
+		if (src.equals(jbcreateproject))
 		{	
 			CreateProject p = new CreateProject();
-			WindowListener l = new WindowAdapter()
-			{
-				public void windowClosing(WindowEvent e)
-			    {
-					System.exit(0);
-				}
-			};
 			p.setLocation(500,100);
 		    p.pack() ;
 		    p.setVisible(true);
 		}
-		if (src.equals(miop))
+		if (src.equals(jbloadproject))
 		{
 			OpenProject p = new OpenProject();
-			WindowListener l = new WindowAdapter()
-			{
-				public void windowClosing(WindowEvent e)
-			    {
-					System.exit(0);
+
+		}
+		if (src.equals(this.jbloadresults))
+		{
+			JFileChooser fileChooser = new JFileChooser("savedlogs/");
+			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			fileChooser.setDialogTitle("Choose saved results");
+			int ret = fileChooser.showOpenDialog(this);
+			if (ret == JFileChooser.APPROVE_OPTION) {
+				System.out.println(fileChooser.getSelectedFile().getName());
+				System.out.println(fileChooser.getSelectedFile().getAbsolutePath());
+				String filename = fileChooser.getName(fileChooser.getSelectedFile());
+				String pathname = fileChooser.getSelectedFile().getAbsolutePath();
+				try {
+/*					if (clbase.nbotherxp==0)
+					{
+						clbase.nbotherxp++;
+						clbase.havglobsm.add(clbase.nbotherxp-1, clbase.avglobsm);
+						clbase.hvtestsm.add(clbase.nbotherxp-1, clbase.vtestsm);
+						clbase.havgsm.add(clbase.nbotherxp-1, clbase.avgsm);						
+					}*/
+					Clusterer cl=null;
+					try {
+						cl = SimAnalyzer.newClusterer();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					String nomf = new String(pathname+"/avglobsm.csv");
+			//		Matrix nm=clbase.avglobsm.clone();
+					Matrix nm=MatrixFactory.importFromFile(nomf);
+					Matrix virtualdata=nm.subMatrix(Ret.NEW, 3, 0, nm.getRowCount()-1, nm.getColumnCount()-1).transpose();
+
+					ArrayList<Long> nc=new ArrayList<Long>();
+					Matrix tempm=Vtest.mfact.zeros(0, 0);
+					Cluster clbase=new Cluster(cl,new Long(0),tempm,nc);
+					AgModel agm=new AgModel(cl,clbase);
+
+					Matrix nomc;
+					nomf = new String(pathname+"/colnoms.csv");
+			//		Matrix nm=clbase.avglobsm.clone();
+					nomc=MatrixFactory.importFromFile(nomf);
+
+					
+					nomf = new String(pathname+"/avglobsm.csv");
+			//		Matrix nm=clbase.avglobsm.clone();
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.avglobsm=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.avglobsm.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.avglobsm.setRowLabel(i, nomc.getAsString(i,0));
+					nomf = new String(pathname+"/vtestsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.vtestsm=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.vtestsm.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.vtestsm.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.vtestsm= (DenseDoubleMatrix2D)((DefaultDenseStringMatrix2D)nm).toDoubleMatrix();
+//					clbase.vtestsm=(DenseDoubleMatrix2D) nm;
+					nomf = new String(pathname+"/avgsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.avgsm=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.avgsm.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.avgsm.setRowLabel(i, nomc.getAsString(i,0));
+					nomf = new String(pathname+"/vtestsmdef.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.vtestsmdef=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.vtestsmdef.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.vtestsmdef.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.vtestsm= (DenseDoubleMatrix2D)((DefaultDenseStringMatrix2D)nm).toDoubleMatrix();
+//					clbase.vtestsm=(DenseDoubleMatrix2D) nm;
+					nomf = new String(pathname+"/avgsmdef.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.avgsmdef=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.avgsmdef.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.avgsmdef.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.avgsm=(DenseDoubleMatrix2D)((DefaultDenseStringMatrix2D)nm).toDoubleMatrix();
+//					clbase.avgsm=(DenseDoubleMatrix2D) nm;
+					nomf = new String(pathname+"/stderrsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.stderrsm=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.stderrsm.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.stderrsm.setRowLabel(i, nomc.getAsString(i,0));
+					nomf = new String(pathname+"/stderrsmdef.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.stderrsmdef=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.stderrsmdef.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.stderrsmdef.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.stderrsm=(DenseDoubleMatrix2D)((DefaultDenseStringMatrix2D)nm).toDoubleMatrix();
+//					clbase.stderrsm=(DenseDoubleMatrix2D) nm;
+					nomf = new String(pathname+"/stdglobsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.stdglobsm=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.stdglobsm.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.stdglobsm.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.stdglobsm=(DenseDoubleMatrix2D)((DefaultDenseStringMatrix2D)nm).toDoubleMatrix();
+//					clbase.stdglobsm=(DenseDoubleMatrix2D) nm;
+
+					nomf = new String(pathname+"/distribparam.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					clbase.distribparams=Vtest.mfact.zeros(nm.getRowCount(), nm.getColumnCount());
+					for (int i=0; i<nm.getRowCount(); i++)
+						for (int j=0; j<nm.getColumnCount(); j++)
+							clbase.distribparams.setAsDouble(nm.getAsDouble(i,j), i,j);
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.distribparams.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.distribparams=(DenseDoubleMatrix2D)((DefaultDenseStringMatrix2D)nm).toDoubleMatrix();
+//					clbase.distribparams= (DenseDoubleMatrix2D) nm;
+					Matrix nd=nm;
+					nomf = new String(pathname+"/davgsm.ser");
+					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+//					nm.showGUI();
+					clbase.davgsm=nm;
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.davgsm.setRowLabel(i, nomc.getAsString(i,0));
+					nomf = new String(pathname+"/davglobsm.ser");
+					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+					clbase.davglobsm=nm;
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.davglobsm.setRowLabel(i, nomc.getAsString(i,0));
+					nomf = new String(pathname+"/davgsmdef.ser");
+					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+					clbase.davgsmdef=nm;
+					for (int i=0; i<nm.getRowCount(); i++)
+						clbase.davgsmdef.setRowLabel(i, nomc.getAsString(i,0));
+//					clbase.avglobsm.showGUI();			
+					 virtualdata=clbase.avglobsm.subMatrix(Ret.NEW, 3, 0, clbase.avglobsm.getRowCount()-1, clbase.avglobsm.getColumnCount()-1).transpose();
+					SimulationController.updateVariableInfo(virtualdata);
+					SimAnalyzer.vtquali=false;
+					
+	    			FAgModel fag=new FAgModel(agm);
+					
+					
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
-			};
+				
+			}
 
 		}
 		if (src.equals(mignl))
 		{
 		   ShowProject f = new ShowProject(1);
-		   WindowListener l = new WindowAdapter()
-		   {
-				public void windowClosing(WindowEvent e)
-				{
-					System.exit(0);
-				}
-		   };
-		   f.setLocation(500,100);
-	       f.pack() ;
-		   f.setVisible(true);
+//		   f.setLocation(500,100);
+//	       f.pack() ;
+//		   f.setVisible(true);
 		}
 		if (src.equals(migrl))
 		{
 			   ShowProject f = new ShowProject(2);
-		   WindowListener l = new WindowAdapter()
-		   {
-				public void windowClosing(WindowEvent e)
-				{
-					System.exit(0);
-				}
-		   };
-		   f.setLocation(500,100);
-	       f.pack() ;
-		   f.setVisible(true);
+//		   f.setLocation(500,100);
+//	       f.pack() ;
+//		   f.setVisible(true);
 		}
 		if (src.equals(mist))
 		{
 			SaveData s = new SaveData();
-			 WindowListener l = new WindowAdapter()
-			 {
-				 public void windowClosing(WindowEvent e)
-				 {
-					System.exit(0);
-				 }
-			 };
 			 s.setLocation(500,100);
 		     s.pack() ;
 			 s.setVisible(true);
@@ -1194,17 +1472,11 @@ public class SimAnalyzer extends JFrame
 				String filename = fileChooser.getName(fileChooser.getSelectedFile());
 				prname = filename.split("\\.")[0];
 				ShowProject sp = new ShowProject();
-				@SuppressWarnings("unused")
-				WindowListener l = new WindowAdapter()
-				{
-					public void windowClosing(WindowEvent e)
-					{
-						System.exit(0);
-					}
-				};
-				sp.setLocation(500,100);
-			    sp.pack() ;
-				sp.setVisible(true);				
+				SimAnalyzer.tabbedpane.removeTabAt(tabidproject);
+				SimAnalyzer.tabbedpane.insertTab(tabnameproject, tabicproject,sp,tabttproject,tabidproject);
+				SimAnalyzer.tabbedpane.setSelectedIndex(tabidproject);
+				SimAnalyzer.simanal.pack();
+				
 			}
 	    }
 	}
@@ -1308,7 +1580,7 @@ public class SimAnalyzer extends JFrame
 			
 
 	
-	class ObserversConfig extends JFrame implements ActionListener
+	class ObserversConfig extends JPanel implements ActionListener
 	{
 		private static final long serialVersionUID = 1L;
 		int nbobsmax=SimAnalyzer.nbObserverMax;
@@ -1368,7 +1640,7 @@ public class SimAnalyzer extends JFrame
 			lcombo[0].setEnabled(false);
 			lcombo[1].setEnabled(false);
 			lcombo[2].setEnabled(false);
-			jbtOK = new JButton("Ok");   
+			jbtOK = new JButton("Save");   
 			panel_1.add(jbtOK);   
 			jbtOK.addActionListener(this);
 			jbtcancel = new JButton("Cancel");   
@@ -1456,7 +1728,7 @@ public class SimAnalyzer extends JFrame
 			}
 			if (src.equals(jbtcancel))
 			{
-				dispose();
+//				dispose();
 			}
 			if (src.equals(jbtOK))
 			{
@@ -1491,18 +1763,20 @@ public class SimAnalyzer extends JFrame
 					e1.printStackTrace();
 				}		  	        
 				menus.setEnabled(true);		  
-				dispose();
+//				dispose();
 			}
 			
 		}
 	}
 			
 	
-	class ShowProject extends JFrame implements ActionListener
+	class ShowProject extends JPanel implements ActionListener
 	{
 		private static final long serialVersionUID = 1L;
 		JLabel[] l;//, l0,lt,  l1, l2,l2b, l3, l4, l5,  l6,  l7,l8,l9,l10;
 		JTextField[] ltf; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
+		JComboBox lcomb;
+		JTextField ltparam;
 		int nblab;
 		JButton jbtdm, jbtOK, jbtsim, jbtsave;
 		ObserversConfig obsconf;
@@ -1524,7 +1798,7 @@ public class SimAnalyzer extends JFrame
 			grid.setVgap(15);  
 			panel_1.setLayout(grid);  
 			panel.add(panel_1);  
-			 nblab=13;
+			 nblab=14;
 			l=new JLabel[nblab];
 			ltf=new JTextField[nblab];
 
@@ -1567,12 +1841,28 @@ public class SimAnalyzer extends JFrame
 		    no++;
 		    l[no] = new JLabel("Recompute history: ");  
 			ltf[no] = new JTextField("1");
+
+			JLabel labc=new JLabel("Clustering algorithm");
+			String[] jcitems=new String[4];
+			jcitems[0]="XMeans";
+			jcitems[1]="SimpleKMeans";
+			jcitems[2]="DBScan";
+			jcitems[3]="Autre2";
+			lcomb=new JComboBox(jcitems);
+			lcomb.addActionListener(this);
+			
+			no++;
+		    l[no] = new JLabel("Clusterer parameters: ");  
+			ltf[no] = new JTextField("-L1 -H50 -I100");
+			ltparam=ltf[no];
 			
 			for (int i=0; i<nblab; i++)
 			{
 				panel_1.add(l[i]);
 				panel_1.add(ltf[i]);				
 			}
+			panel_1.add(labc);
+			panel_1.add(lcomb);				
 			
 			jbtsave = new JButton("Start new simulation (and save)");   
 			panel_1.add(jbtsave);   
@@ -1586,11 +1876,13 @@ public class SimAnalyzer extends JFrame
 			jbtOK = new JButton("Cancel");   
 			panel_1.add(jbtOK);   
 			jbtOK.addActionListener(this);
-			setVisible(true); 
+//			setVisible(true); 
 			 obsconf=new ObserversConfig(prname);
 			ltf[0].setEditable(false);
-			obsconf.setVisible(false);
-
+//			obsconf.setVisible(false);
+			SimAnalyzer.tabbedpane.removeTabAt(SimAnalyzer.tabidobserver);
+			SimAnalyzer.tabbedpane.insertTab(tabnameobserver, tabicobserver,obsconf,tabttobserver,tabidobserver);
+			SimAnalyzer.tabbedpane.setSelectedIndex(tabidobserver);
 			
 		}
 		public ShowProject() 
@@ -1611,18 +1903,36 @@ public class SimAnalyzer extends JFrame
 				e.printStackTrace();
 			} 
 			}
+			try {
+				lcomb.setSelectedIndex(Integer.parseInt(br.readLine()));
+			} catch (Exception e) {
+				lcomb.setSelectedIndex(0);
+				ltparam.setText("-L 1 -H 50 -I 100");
+				e.printStackTrace();
+			} 
 	    }
 
 		@SuppressWarnings("unused")
 		public void actionPerformed(ActionEvent e) {
 			Object src=e.getSource();
 			Matrix m = NetLogoSimulationController.DataMatrix;
+			if (src.equals(this.lcomb))
+			{
+				if (lcomb.getSelectedIndex()==0)
+					ltparam.setText("-L 1 -H 50 -I 100");
+				if (lcomb.getSelectedIndex()==1)
+					ltparam.setText("-N 3");
+				if (lcomb.getSelectedIndex()==2)
+					ltparam.setText("-E 0.13 -M 5");
+				if (lcomb.getSelectedIndex()==3)
+					ltparam.setText("");
+			}
 			if (src.equals(jbtdm))
 			{
 				menug.setEnabled(true);
 				for(int i=0;i<columnCount;i++)
 				{
-					JTextField jf = new JTextField();
+/*					JTextField jf = new JTextField();
 					jf = (JTextField) vjf.elementAt(i);
 					jf.setEnabled(true);
 					JCheckBox jcb = new JCheckBox();
@@ -1633,7 +1943,7 @@ public class SimAnalyzer extends JFrame
 					jc1.setEnabled(true);
 					Choice jc2 = new Choice();
 					jc2 = (Choice) vc2.elementAt(i);
-					FileReader fr = null;
+*/					FileReader fr = null;
 					try {
 						fr = new FileReader("projects/"+prname+".config");
 					} catch (IOException e1) {
@@ -1647,7 +1957,7 @@ public class SimAnalyzer extends JFrame
 						} catch (IOException e2) {
 							e2.printStackTrace();
 					}
-					jc2.removeAll();
+/*					jc2.removeAll();
 					jc2.add(" ");
 					String[] v2 = l.split("  ");
 					for(int j=0;j<v2.length;j++)
@@ -1657,14 +1967,14 @@ public class SimAnalyzer extends JFrame
 					jbt2.setEnabled(true);
 					jbt3.setEnabled(true);
 					jbt4.setEnabled(true);
-					jbt5.setEnabled(true);
-					this.pack();
+					jbt5.setEnabled(true);*/
+//					this.pack();
 					
 				}	
 			}
 			if (src.equals(jbtOK))
 			{
-				dispose();
+//				dispose();
 			}
 			if (false)
 			{
@@ -1734,6 +2044,8 @@ public class SimAnalyzer extends JFrame
 						bw.write(ltf[i].getText());
 						bw.newLine();						
 					}
+					bw.write(""+this.lcomb.getSelectedIndex());
+					bw.newLine();						
 					bw.flush(); 
 					bw.close();
 					fw.close();
@@ -1760,6 +2072,10 @@ public class SimAnalyzer extends JFrame
 		        if (Integer.parseInt(ltf[10].getText())==0) doubleclustering=false;
 		        if (Integer.parseInt(ltf[11].getText())==0) followcluster=false;
 		        if (Integer.parseInt(ltf[12].getText())==0) computehistory=false;
+		        SimAnalyzer.clustererType=lcomb.getSelectedIndex();
+		        String delims = "[ ]+";
+		        SimAnalyzer.clustererParametersString=ltf[13].getText();
+		        SimAnalyzer.clustererParameters=SimAnalyzer.clustererParametersString.split(delims);
 		        if (typem==1)
 		        {
 					startnetlogo=true;
@@ -1773,8 +2089,8 @@ public class SimAnalyzer extends JFrame
 		        	
 				menus.setEnabled(true);
 				menug.setEnabled(false);
-				dispose();
-				for(int i=0;i<columnCount;i++)
+	//			dispose();
+/*				for(int i=0;i<columnCount;i++)
 				{
 					JTextField jf = new JTextField();
 					jf = (JTextField) vjf.elementAt(i);
@@ -1793,7 +2109,7 @@ public class SimAnalyzer extends JFrame
 					jbt3.setEnabled(false);
 					jbt4.setEnabled(false);
 					jbt5.setEnabled(false);		
-				}
+				}*/
 			}
 			
 		}

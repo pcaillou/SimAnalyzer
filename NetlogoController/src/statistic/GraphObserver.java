@@ -16,7 +16,7 @@ import observer.SimulationInterface;
 public class GraphObserver extends StatisticalObserver  {
 	long step = 1;
 	
-	public static String[] ParamNames={"ListenTo","ObservedBy","GraphColumnName","Display [0/1]","Directed [0/1]","time [opt]","weightEdgeDefault [opt]","timeCreationEdgeDefault [opt]","timeDeleteEdgeDefault [opt]","","","","","","","","","","",""};
+	public static String[] ParamNames={"ListenTo","ObservedBy","GraphColumnName","Display [0/1]","Directed [0/1]","time [opt]","weightEdgeDefault [opt]","timeCreationEdgeDefault [opt]","timeDeleteEdgeDefault [opt] (MAX = Long.MAX_VALUE)","","","","","","","","","","",""};
 	public static String[] DefaultValues={"0","1","3","1","1","","","","","","","","","","","","","",""};
 	
 	/* temporaire le temps d'avoir les vrai constantes de label graph */
@@ -50,14 +50,14 @@ public class GraphObserver extends StatisticalObserver  {
 	{
 		try {
 			this.LABEL_GRAPH=paramvals[2];
-			this.LABEL_TIME=paramvals[3];
+			this.LABEL_TIME=paramvals[5];
+			if (!paramvals[3].equals(""))
+			{
+				DISPLAY = paramvals[3].equals("1");
+			}
 			if (!paramvals[4].equals(""))
 			{
-				DISPLAY = paramvals[4].equals("1");
-			}
-			if (!paramvals[5].equals(""))
-			{
-				graph.directed = paramvals[5].equals("1");
+				graph.directed = paramvals[4].equals("1");
 			}
 			if (!paramvals[6].equals(""))
 			{
@@ -65,11 +65,15 @@ public class GraphObserver extends StatisticalObserver  {
 			}
 			if (!paramvals[7].equals(""))
 			{
-				this.TIME_CREATION_DEFAULT = Integer.valueOf(paramvals[7]);
+				this.TIME_CREATION_DEFAULT = Long.valueOf(paramvals[7]);
 			}
-			if (!paramvals[8].equals(""))
+			if (paramvals[8].toLowerCase().equals("max"))
 			{
-				this.TIME_DELETE_DEFAULT = Integer.valueOf(paramvals[8]);
+				this.TIME_DELETE_DEFAULT = Long.MAX_VALUE;
+			}
+			else if (!paramvals[8].equals(""))
+			{
+				this.TIME_DELETE_DEFAULT = Long.valueOf(paramvals[8]);
 			}
 		} catch (NumberFormatException e) {
 			System.err.println("Erreur lors de la recuperation des parametres");
@@ -173,6 +177,7 @@ public class GraphObserver extends StatisticalObserver  {
 			{
 				graph.addNode(data.getAsString(i,idColumn));
 			}
+			System.out.println("je suis a data.getAsString(" + i + "," + data.getColumnLabel(graphColumn) + ")");
 			graph.loadFromString(data.getAsString(i,graphColumn), WEIGHT_DEFAULT, minTime, maxTime, true);
 		}
 		

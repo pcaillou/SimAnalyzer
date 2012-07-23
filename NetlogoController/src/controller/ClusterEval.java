@@ -16,6 +16,8 @@ import java.awt.event.WindowListener;
 // AD import java.io.File;
 // AD import java.io.FileReader;
 // AD import java.io.IOException;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -34,6 +36,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -54,7 +57,7 @@ import org.ujmp.core.calculation.Calculation.Ret;
 
 import clustering.Cluster;
 	
-public class ClusterEval extends JFrame implements ActionListener
+public class ClusterEval extends MyPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -71,66 +74,20 @@ public class ClusterEval extends JFrame implements ActionListener
 	ArrayList<Integer> id2;
 	JButton jbDefinition = new JButton("History by definition");
 	JButton jbs = new JButton("Show matrix");
-	JButton jbRI = new JButton("ReI");
+	JButton jbRI = new JButton("Save All");
 	JButton jbRD = new JButton("ReP");
 	JPanel jp = new JPanel(gb);
 	JScrollPane jsp = new JScrollPane(jp);
 	Matrix m;
 	List<List<Cluster>> cltarrayll;
 
-	public void placenewcomp(int posx,int posy, GridBagConstraints gbc,JComponent comp,JPanel jpa)
-	{
-		gbc.gridx=posx;
-		gbc.gridy=posy;
-		gbc.gridwidth=1;
-		gbc.gridheight=1;
-		gbc.weightx=10;
-		gbc.weighty=10;
-		gbc.anchor=GridBagConstraints.WEST;
-//		gb.setConstraints(l1,gbc);
-//		getContentPane().add(l1);
-		jpa.add(comp,gbc);
-	}
-	public static <K, V extends Comparable<V>> Map<K, V> sortByValues(final Map<K, V> map) {
-	    Comparator<K> valueComparator =  new Comparator<K>() {
-	        public int compare(K k1, K k2) {
-	            int compare = map.get(k2).compareTo(map.get(k1));
-	            if (compare == 0) return 1;
-	            else return compare;
-	        }
-	    };
-	    Map<K, V> sortedByValues = new TreeMap<K, V>(valueComparator);
-	    sortedByValues.putAll(map);
-	    return sortedByValues;
-	}
-	
-	public LinkedHashMap getSortedMap(HashMap hmap)
-	{
-	LinkedHashMap map = new LinkedHashMap();
-	List mapKeys = new ArrayList(hmap.keySet());
-	List mapValues = new ArrayList(hmap.values());
-	hmap.clear();
-	TreeSet sortedSet = new TreeSet(mapValues);
-	Object[] sortedArray = sortedSet.toArray();
-	int size = sortedArray.length;
-	// a) Ascending sort
-
-	for (int i=0; i<size; i++)
-	{
-
-	map.put(mapKeys.get(mapValues.indexOf(sortedArray[i])), sortedArray[i]);
-	mapValues.set(mapValues.indexOf(sortedArray[i]), null);
-
-	}
-	return map;
-	}
-
 	@SuppressWarnings("deprecation")
 	public ClusterEval(final List<List<Cluster>> cltarray, final List<List<Cluster>> cltarray2, final List<Integer> ticklist, final List<Matrix> MatrixList,List<double[][]> vtestlist, final Matrix concatenatedDataHistory,boolean typece)
 	{	
+//		super(VERTICAL_SCROLLBAR_ALWAYS,HORIZONTAL_SCROLLBAR_ALWAYS);
 		cltarrayll=cltarray;
-		setTitle("Cluster evaluation");    
-		setResizable(true);    
+//		setTitle("Cluster evaluation");    
+//		setResizable(true);    
 		//getContentPane().setLayout(gb);
 		Cluster ct;
 		int nm=1;
@@ -440,10 +397,11 @@ public class ClusterEval extends JFrame implements ActionListener
 					}
 				}
  				mn=mn.transpose(Ret.NEW);
-				mn.showGUI();
+//				mn.showGUI();
 			}
 		});
-		getContentPane().add(jsp);
+//		getContentPane().add(jsp);
+		this.add(jsp);
 		jbRD.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) {
@@ -496,56 +454,66 @@ public class ClusterEval extends JFrame implements ActionListener
 		jbRI.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) {
-				try {
-					@SuppressWarnings("unused")
-					List<Cluster> lc = new ArrayList<Cluster>();
-					@SuppressWarnings("unused")
-					List<Integer> tll = new ArrayList<Integer>();
-					int nj=0;
-					for(int i=0;i<cltarray.size();i++)
+				{
+					 String response = JOptionPane.showInputDialog(null,
+							  "Save Main Folder Name?",
+							  "Enter the new folder name",
+							  JOptionPane.QUESTION_MESSAGE);
+					File projectf = new File("savedlogs/"+response);
+					boolean bfile = projectf.mkdir();
+					if (!bfile)
+						System.out.println("This folder exists. Please create another one!");
+					else 
 					{
-						int nbagt=0;
-						for(int j=0;j<cltarray.get(i).size();j++)
+						for(int i=0;i<cltarray.size();i++)
 						{
-							nbagt=nbagt+(int)cltarray.get(i).get(j).getSize();
-						}
-						for(int j=0;j<cltarray.get(i).size();j++)
-						{
-							if(jrb1.get(nj).isSelected())
-							{
-								SimulationController.clustererTarget=SimulationController.wcl.get(i);
-								SimulationController.clusterTarget=cltarray.get(i).get(j);
-								SimulationController.ResMat=SimulationController.clusterTarget.vtestsm;
-								SimulationController.steptarget=i;
-								SimulationController.noclusttarget=j;
-								SimulationController.typeReRun=1;
 								
-								SimulationController.clustpopprop=(double)cltarray.get(i).get(j).getSize()/(double)nbagt;
-								SimulationController.datamatclust=concatenatedDataHistory;
-								@SuppressWarnings("unused")
-								ReRunParam p = new ReRunParam();
-								@SuppressWarnings("unused")
-								WindowListener l = new WindowAdapter()
-								{
-									public void windowClosing(WindowEvent e)
-								    {
-										System.exit(0);
-									}
-								};
-//								SimAnalyzer.restartnetlogo=true;									
+							
+							for(int j=0;j<cltarray.get(i).size();j++)
+							{
+						try {
+							File projectd = new File("savedlogs/"+response+"/"+response+"CT"+i+"C"+j);
+							boolean nfile = projectd.mkdir();
+							Cluster clbase=(Cluster)cltarray.get(i).get(j);
+							String nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/avglobsm.csv");
+							clbase.avglobsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/vtestsm.csv");
+							clbase.vtestsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/vtestsmdef.csv");
+							clbase.vtestsmdef.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/avgsm.csv");
+							clbase.avgsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/avgsmdef.csv");
+							clbase.avgsmdef.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/stderrsm.csv");
+							clbase.stderrsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/stderrsmdef.csv");
+							clbase.stderrsmdef.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/stdglobsm.csv");
+							clbase.stdglobsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/davgsm.ser");
+							clbase.davgsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/davglobsm.ser");
+							clbase.davglobsm.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/davgsmdef.ser");
+							clbase.davgsmdef.exportToFile(nomf);
+							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/distribparam.csv");
+							clbase.distribparams.exportToFile(nomf);
+							Matrix nmd=Vtest.mfactm.zeros(clbase.avglobsm.getRowCount(), 1);
+							for (long n=0;n<nmd.getRowCount();n++)
+							{
+								nmd.setAsString(clbase.avglobsm.getRowLabel(n), n,0);
 							}
-							nj++;
+							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/colnoms.csv");
+							nmd.exportToFile(nomf);
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+//						dispose();
+					}
 						}
 					}
-					for(int i=0;i<jrb1.size();i++)
-					{						
-						if(jrb1.get(i).isSelected())
-						{
-						}
-					}
-//					SimAnalyzer.nlsc.reRunInit();
-				} catch (Exception e1) {
-					e1.printStackTrace();
+					
 				}
 			}
 		});
@@ -569,9 +537,9 @@ public class ClusterEval extends JFrame implements ActionListener
     			hpo.setVisible(true);
 
     			FAgModel fag=new FAgModel(cl.agm);
-    			fag.setLocation(100,100);
-    		    fag.pack() ;
-    			fag.setVisible(true);
+ //   			fag.setLocation(100,100);
+//    		    fag.pack() ;
+  //  			fag.setVisible(true);
 				
 			}
 			
@@ -620,9 +588,9 @@ public class ClusterEval extends JFrame implements ActionListener
     			hpo.setVisible(true);
 
     			FAgModel fag=new FAgModel(cl.agm);
-    			fag.setLocation(100,100);
-    		    fag.pack() ;
-    			fag.setVisible(true);
+//    			fag.setLocation(100,100);
+ //   		    fag.pack() ;
+  //  			fag.setVisible(true);
 				
 			}
 			
@@ -669,9 +637,9 @@ public class ClusterEval extends JFrame implements ActionListener
     			hpo.setVisible(true);
 
     			FAgModel fag=new FAgModel(cl.agm);
-    			fag.setLocation(100,100);
-    		    fag.pack() ;
-    			fag.setVisible(true);
+//    			fag.setLocation(100,100);
+ //   		    fag.pack() ;
+  //  			fag.setVisible(true);
 				
 			}
 			
@@ -768,8 +736,8 @@ public class ClusterEval extends JFrame implements ActionListener
 				
 			}
 			
-			
-			this.getContentPane().add(jsp);
+			this.add(jsp);
+//			this.getContentPane().add(jsp);
 		}
 	}
 	
@@ -935,7 +903,7 @@ public class ClusterEval extends JFrame implements ActionListener
 						}
 					}
 	 				mn=mn.transpose(Ret.NEW);
-					mn.showGUI();
+//					mn.showGUI();
 				}
 			});
 			this.getContentPane().add(jsp);
