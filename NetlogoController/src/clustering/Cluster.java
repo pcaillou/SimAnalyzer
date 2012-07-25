@@ -281,10 +281,10 @@ public class Cluster {
 	
 	public Matrix reorder(Matrix morig, Matrix mnoms, Matrix refmat, boolean defvalue, Object defval)
 	{
-		Matrix mres=morig.clone();
-		if (morig.getRowCount()!=refmat.getRowCount())
+		Matrix mres=morig.copy();
+		if (morig.getColumnCount()!=refmat.getColumnCount())
 		{
-			mres=refmat.clone();
+			mres=refmat.copy();
 			for (int i=0; i<refmat.getRowCount(); i++)
 			{
 				int cc=-1;
@@ -339,7 +339,12 @@ public class Cluster {
 			{
 				for (long j=morig.getColumnCount(); j<refmat.getColumnCount(); j++)
 				{
-					mres.setAsObject(mres.getAsObject(i,morig.getColumnCount()-1), i,j);					
+					try {
+						mres.setAsObject(mres.getAsObject(i,morig.getColumnCount()-1), i,j);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}					
 				}
 			}
 			
