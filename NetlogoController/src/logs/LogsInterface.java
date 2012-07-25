@@ -35,6 +35,8 @@ import org.ujmp.core.enums.FileFormat;
 //AD import org.ujmp.core.enums.ValueType;
 import org.ujmp.core.exceptions.MatrixException;
 
+import controller.SimulationController;
+
 
 
 public class LogsInterface extends SimulationInterface{
@@ -258,6 +260,9 @@ public class LogsInterface extends SimulationInterface{
 	    SubMatrix=GlobalMatrix.subMatrix(Ret.LINK, (long)rowact,(long)0,(long)(k-1),GlobalMatrix.getColumnCount()-1);
 //	    SubMatrix.showGUI();
 	    rowact=k;
+	    System.out.println("Time:"+SubMatrix.getAsDouble(0,Timecol)+"/"+SubMatrix.getAsDouble(1,Timecol));
+	    if ((SubMatrix.getRowCount()==0)||(SubMatrix.getAsDouble(0,Timecol)!=SubMatrix.getAsDouble(1,Timecol)))
+	    	SimulationController.maxTicks=(int) SimulationController.currenttick;
 	}
 	
 

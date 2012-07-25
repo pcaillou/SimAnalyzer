@@ -96,7 +96,7 @@ public abstract class SimulationController {
 	public static Random rand=new Random();
 	
 	String modelName;
-	Integer maxTicks;
+	public static Integer maxTicks;
 	Integer ticksBetweenClustering;
 	String agentType;
 	String setupProcedure;
@@ -780,6 +780,7 @@ public abstract class SimulationController {
 				System.out.println("SimUpdateStep " + tick + " ClusterInst " + Clusterer.clustertime/1000000 + "ms");
 			}
 				si.repeat(1, updateProcedure);
+				tick=(int) currenttick;
 			}
 			if (SimAnalyzer.computehistory)
 			{
@@ -830,6 +831,7 @@ public abstract class SimulationController {
 //			fag.setLocation(100,100);
 //		    fag.pack() ;
 //			fag.setVisible(true);
+	        SimAnalyzer.evalpane=cteldesc;
 			SimAnalyzer.tabbedpane.removeTabAt(SimAnalyzer.tabidoverview);
 //			SimAnalyzer.tabbedpane.insertTab(SimAnalyzer.tabnameoverview, SimAnalyzer.tabicooverview,ctel,SimAnalyzer.tabttoverview,SimAnalyzer.tabidoverview);
 
