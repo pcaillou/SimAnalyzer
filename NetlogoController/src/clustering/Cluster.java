@@ -515,9 +515,15 @@ public class Cluster {
 					sm=m.getAsMatrix(p,mt);
 					for (long b=Math.min(nbbin+dif, this.NB_MAX_BIN); b>dif; b--)
 					{
-						nv=sm.getAsLong(b-dif,0);
-						sm.setAsLong(nv, b,0);
-						if ((nv>0)&(newnbbin<b)) newnbbin=b;
+						try {
+							nv=sm.getAsLong(b-dif,0);
+							sm.setAsLong(nv, b,0);
+							if ((nv>0)&(newnbbin<b)) newnbbin=b;
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
 					}
 					
 				}
