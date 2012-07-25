@@ -459,6 +459,14 @@ public class ClusterEval extends MyPanel implements ActionListener
 							  "Save Main Folder Name?",
 							  "Enter the new folder name",
 							  JOptionPane.QUESTION_MESSAGE);
+					 
+					/* on cree le dossier s'il n'existe pas */
+					File savedlogs = new File("savedlogs");
+					if (!savedlogs.isDirectory())
+					{
+						savedlogs.mkdir();
+					}
+					
 					File projectf = new File("savedlogs/"+response);
 					boolean bfile = projectf.mkdir();
 					if (!bfile)

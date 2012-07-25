@@ -88,7 +88,9 @@ import org.jfree.data.statistics.DefaultStatisticalCategoryDataset;
 import org.jfree.data.xy.XYIntervalSeries;
 import org.jfree.data.xy.XYIntervalSeriesCollection;
 
-import scala.reflect.generic.Trees.This;
+/* TODO cet import ne marche pas chez moi (et ca ne semble pas poser de problemes si je le commente) */
+// import scala.reflect.generic.Trees.This;
+
 //AD import org.jfree.data.xy.XYSeries;
 //AD import org.jfree.data.xy.XYSeriesCollection;
 //AD import org.jfree.experimental.chart.swt.ChartComposite;

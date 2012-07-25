@@ -19,5 +19,8 @@
 	<classpathentry kind="lib" path="lib/gs-core-1.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/ujmp-complete-0.2.5-sources.jar"/>
 	<classpathentry kind="lib" path="lib/ujmp-complete-0.2.5-javadoc.zip"/>
+	<classpathentry kind="lib" path="lib/junit.jar"/>
+	<classpathentry kind="lib" path="lib/lib.lib.jar"/>
+	<classpathentry kind="lib" path="lib/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
