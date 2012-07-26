@@ -204,7 +204,12 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 				for (int xp=0; xp<clbase.nbotherxp; xp++)
 				{
 					comp=clbase.avgsm.clone().transpose();
-					comp=MyMatrix.appendHorizontally(comp, clbase.havgsm.get(xp).transpose(Matrix.LINK));
+					try {
+						comp=MyMatrix.appendHorizontally(comp, clbase.havgsm.get(xp).transpose(Matrix.LINK));
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					corel=comp.corrcoef(Matrix.NEW, true);
 //					corel.showGUI();
 //					comp.showGUI();

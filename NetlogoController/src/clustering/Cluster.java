@@ -13,11 +13,13 @@ import java.util.List;
 
 
 import org.ujmp.core.Matrix;
+import org.ujmp.core.calculation.Calculation.Ret;
 import org.ujmp.core.doublematrix.DenseDoubleMatrix2D;
 import org.ujmp.core.doublematrix.DoubleMatrix;
 import org.ujmp.core.exceptions.MatrixException;
 
 import controller.AgModel;
+import controller.MyMatrix;
 import controller.SimulationController;
 import controller.Vtest;
 
@@ -281,10 +283,10 @@ public class Cluster {
 	
 	public Matrix reorder(Matrix morig, Matrix mnoms, Matrix refmat, boolean defvalue, Object defval)
 	{
-		Matrix mres=morig.clone();
+		Matrix mres=morig.copy();
 		if (morig.getRowCount()!=refmat.getRowCount())
 		{
-			mres=refmat.clone();
+			mres=refmat.copy();
 			for (int i=0; i<refmat.getRowCount(); i++)
 			{
 				int cc=-1;
@@ -332,14 +334,34 @@ public class Cluster {
 					
 			}
 		}
-		if (morig.getColumnCount()<refmat.getColumnCount())
+		if (morig.getColumnCount()>refmat.getColumnCount())
 		{
+			ArrayList<Long> nc=new ArrayList<Long>();
+			for (int i=0; i<refmat.getColumnCount(); i++)
+			{
+				nc.add(new Long(i));
+			}
+			mres=mres.selectColumns(Ret.NEW, nc);
+			
+		}
+		if (mres.getColumnCount()<refmat.getColumnCount())
+		{
+			for (long j=mres.getColumnCount(); j<refmat.getColumnCount(); j++)
+			{
+				mres=MyMatrix.appendHorizontally(mres, mres.selectColumns(Ret.NEW, mres.getColumnCount()-1));
+				
+			}
 			System.out.println("TimeExtension T"+morig.getColumnCount()+"->"+refmat.getColumnCount());
 			for (int i=0; i<refmat.getRowCount(); i++)
 			{
 				for (long j=morig.getColumnCount(); j<refmat.getColumnCount(); j++)
 				{
-					mres.setAsObject(mres.getAsObject(i,morig.getColumnCount()-1), i,j);					
+					try {
+						mres.setAsObject(mres.getAsObject(i,morig.getColumnCount()-1), i,j);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}					
 				}
 			}
 			
@@ -357,7 +379,13 @@ public class Cluster {
 				long fact=distriborig.getAsLong(p,0);
 			double unit=Math.pow(2,fact);
 			long debnb=distriborig.getAsLong(p,1);
-			long nbbin=distriborig.getAsLong(p,2);
+			long nbbin=0;
+			try {
+				nbbin=distriborig.getAsLong(p,2);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			double debvalue=unit*debnb;
 
 			long newfact=distribtarget.getAsLong(p,0);

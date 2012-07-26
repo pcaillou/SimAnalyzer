@@ -128,6 +128,7 @@ public class SimAnalyzer extends JFrame
 	public static Icon tabicooverviewsort=null;
 	public static JTabbedPane tabbedpane;
 	public static JTabbedPane clusterspane;
+	public static JPanel evalpane;
 	public static SimAnalyzer simanal;
 	public static String clustererParametersString;
 	public static String[] clustererParameters;
@@ -1774,7 +1775,7 @@ public class SimAnalyzer extends JFrame
 		JComboBox lcomb;
 		JTextField ltparam;
 		int nblab;
-		JButton jbtdm, jbtOK, jbtsim, jbtsave;
+		JButton jbtdm, jbtOK, jbtsim, jbtsave,jbtbatch;
 		ObserversConfig obsconf;
 		public ShowProject(int newtype) 
 		{
@@ -1872,6 +1873,9 @@ public class SimAnalyzer extends JFrame
 			jbtOK = new JButton("Cancel");   
 			panel_1.add(jbtOK);   
 			jbtOK.addActionListener(this);
+			jbtbatch = new JButton("Batch Mode");   
+			panel_1.add(jbtbatch);   
+			jbtbatch.addActionListener(this);
 //			setVisible(true); 
 			 obsconf=new ObserversConfig(prname);
 			ltf[0].setEditable(false);
@@ -2107,7 +2111,78 @@ public class SimAnalyzer extends JFrame
 					jbt5.setEnabled(false);		
 				}*/
 			}
+			if (src.equals(jbtbatch))
+			{
+				
+				name = "models/"+ltf[2].getText();
+				int typem=Integer.parseInt(ltf[1].getText());
+		        clusterstep = Integer.parseInt(ltf[3].getText());
+		        updatestep = Integer.parseInt(ltf[4].getText());
+		        totalsteps = Integer.parseInt(ltf[5].getText());
+		        agcol = Integer.parseInt(ltf[6].getText());
+		        timecol = Integer.parseInt(ltf[7].getText());
+		        startcol = Integer.parseInt(ltf[8].getText());
+		        endcol = Integer.parseInt(ltf[9].getText());
+		        followcluster=true;
+		        doubleclustering=true;
+		        computehistory=true;
+		        if (Integer.parseInt(ltf[10].getText())==0) doubleclustering=false;
+		        if (Integer.parseInt(ltf[11].getText())==0) followcluster=false;
+		        if (Integer.parseInt(ltf[12].getText())==0) computehistory=false;
+		        SimAnalyzer.clustererType=lcomb.getSelectedIndex();
+		        String delims = "[ ]+";
+		        SimAnalyzer.clustererParametersString=ltf[13].getText();
+		        SimAnalyzer.clustererParameters=SimAnalyzer.clustererParametersString.split(delims);
+
+		        
+				JFileChooser fileChooser = new JFileChooser("models/");
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+				fileChooser.setMultiSelectionEnabled(true);
+				fileChooser.setDialogTitle("Choose logs");
+				int ret = fileChooser.showOpenDialog(this);
+				File[] targets=fileChooser.getSelectedFiles();
+				if ((ret == JFileChooser.APPROVE_OPTION)&(targets.length>1)) 
+				{
+					for (int f=0; f<targets.length; f++)
+					{
+						System.out.println(targets[f].getName());
+						System.out.println(targets[f].getAbsolutePath());
+						
+						name = targets[f].getAbsolutePath().substring(0, targets[f].getAbsolutePath().length()-4);
+				        if (typem==1)
+				        {
+							startnetlogo=true;
+							startlogs=false;
+				        }
+				        else
+				        {
+							startnetlogo=false;
+							startlogs=true;
+				        }
+				        while( (startnetlogo==true)|(startlogs==true))
+				        {
+						Thread t=Thread.currentThread();
+						synchronized (t)
+						{
+						try {
+							t.wait(100);
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						}
+				        }
+				        
+				        ClusterEval ce=(ClusterEval)SimAnalyzer.evalpane;
+				    	File projectd = new File("savedlogs/"+"Batch"+prname+"/");
+						boolean nfile = projectd.mkdir();
+				        ce.saveTo(""+"Batch"+prname+"/"+targets[f].getName().substring(0, targets[f].getName().length()-4),targets[f].getName().substring(0, targets[f].getName().length()-4));
+					}
+				}
+				
+
 			
+			}		
 		}
 	}
 		

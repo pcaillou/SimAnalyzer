@@ -473,59 +473,65 @@ public class ClusterEval extends MyPanel implements ActionListener
 						System.out.println("This folder exists. Please create another one!");
 					else 
 					{
-						for(int i=0;i<cltarray.size();i++)
-						{
+							saveTo(response,response);
 								
 							
-							for(int j=0;j<cltarray.get(i).size();j++)
-							{
-						try {
-							File projectd = new File("savedlogs/"+response+"/"+response+"CT"+i+"C"+j);
-							boolean nfile = projectd.mkdir();
-							Cluster clbase=(Cluster)cltarray.get(i).get(j);
-							String nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/avglobsm.csv");
-							clbase.avglobsm.exportToFile(nomf);
-							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/vtestsm.csv");
-							clbase.vtestsm.exportToFile(nomf);
-							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/vtestsmdef.csv");
-							clbase.vtestsmdef.exportToFile(nomf);
-							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/avgsm.csv");
-							clbase.avgsm.exportToFile(nomf);
-							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/avgsmdef.csv");
-							clbase.avgsmdef.exportToFile(nomf);
-							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/stderrsm.csv");
-							clbase.stderrsm.exportToFile(nomf);
-							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/stderrsmdef.csv");
-							clbase.stderrsmdef.exportToFile(nomf);
-							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/stdglobsm.csv");
-							clbase.stdglobsm.exportToFile(nomf);
-							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/davgsm.ser");
-							clbase.davgsm.exportToFile(nomf);
-							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/davglobsm.ser");
-							clbase.davglobsm.exportToFile(nomf);
-							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/davgsmdef.ser");
-							clbase.davgsmdef.exportToFile(nomf);
-							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/distribparam.csv");
-							clbase.distribparams.exportToFile(nomf);
-							Matrix nmd=Vtest.mfactm.zeros(clbase.avglobsm.getRowCount(), 1);
-							for (long n=0;n<nmd.getRowCount();n++)
-							{
-								nmd.setAsString(clbase.avglobsm.getRowLabel(n), n,0);
-							}
-							nomf = new String("savedlogs/"+response+"/"+response+"CT"+i+"C"+j+"/colnoms.csv");
-							nmd.exportToFile(nomf);
-						} catch (IOException e1) {
-							e1.printStackTrace();
-						}
-//						dispose();
-					}
-						}
+
 					}
 					
 				}
 			}
 		});
 	       
+	}
+	
+	public void saveTo(String responser,String responsef)
+	{
+		for(int i=0;i<cltarrayll.size();i++)
+		{
+		for(int j=0;j<cltarrayll.get(i).size();j++)
+		{
+	try {
+		File projectd = new File("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j);
+		boolean nfile = projectd.mkdir();
+		Cluster clbase=(Cluster)cltarrayll.get(i).get(j);
+		String nomf = new String("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j+"/avglobsm.csv");
+		clbase.avglobsm.exportToFile(nomf);
+		nomf = new String("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j+"/vtestsm.csv");
+		clbase.vtestsm.exportToFile(nomf);
+		nomf = new String("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j+"/vtestsmdef.csv");
+		clbase.vtestsmdef.exportToFile(nomf);
+		nomf = new String("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j+"/avgsm.csv");
+		clbase.avgsm.exportToFile(nomf);
+		nomf = new String("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j+"/avgsmdef.csv");
+		clbase.avgsmdef.exportToFile(nomf);
+		nomf = new String("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j+"/stderrsm.csv");
+		clbase.stderrsm.exportToFile(nomf);
+		nomf = new String("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j+"/stderrsmdef.csv");
+		clbase.stderrsmdef.exportToFile(nomf);
+		nomf = new String("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j+"/stdglobsm.csv");
+		clbase.stdglobsm.exportToFile(nomf);
+		nomf = new String("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j+"/davgsm.ser");
+		clbase.davgsm.exportToFile(nomf);
+		nomf = new String("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j+"/davglobsm.ser");
+		clbase.davglobsm.exportToFile(nomf);
+		nomf = new String("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j+"/davgsmdef.ser");
+		clbase.davgsmdef.exportToFile(nomf);
+		nomf = new String("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j+"/distribparam.csv");
+		clbase.distribparams.exportToFile(nomf);
+		Matrix nmd=Vtest.mfactm.zeros(clbase.avglobsm.getRowCount(), 1);
+		for (long n=0;n<nmd.getRowCount();n++)
+		{
+			nmd.setAsString(clbase.avglobsm.getRowLabel(n), n,0);
+		}
+		nomf = new String("savedlogs/"+responser+"/"+responsef+"CT"+i+"C"+j+"/colnoms.csv");
+		nmd.exportToFile(nomf);
+	} catch (IOException e1) {
+		e1.printStackTrace();
+	}
+		}
+//	dispose();
+	}		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
