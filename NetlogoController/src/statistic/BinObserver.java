@@ -95,7 +95,6 @@ long step = 1;
 			result.setAsString("B0" + group,i,0);
 			if (group>=10)
 			result.setAsString("B" + group,i,0);
-			System.out.println(value + " va dans l'intervale " + ((group-1)*INTERVAL_WIDTH) + "-" + ((group)*INTERVAL_WIDTH));
 			total[group-1]++;
 		}
 		

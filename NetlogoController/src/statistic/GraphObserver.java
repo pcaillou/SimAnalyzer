@@ -29,7 +29,7 @@ public class GraphObserver extends StatisticalObserver  {
 	
 	private DynamicGraph graph = new DynamicGraph("GraphObserver");
 	
-	public static final boolean detailledTimeComputation = false;
+	public static final boolean detailledTimeComputation = true;
 	
 	/**
 	 * Fonction ne servant qu'a mettre en pause le programme
@@ -177,7 +177,6 @@ public class GraphObserver extends StatisticalObserver  {
 			{
 				graph.addNode(data.getAsString(i,idColumn));
 			}
-			System.out.println("je suis a data.getAsString(" + i + "," + data.getColumnLabel(graphColumn) + ")");
 			graph.loadFromString(data.getAsString(i,graphColumn), WEIGHT_DEFAULT, minTime, maxTime, true);
 		}
 		
