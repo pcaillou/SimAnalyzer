@@ -535,7 +535,7 @@ public class Cluster {
 			long dif=ndebnb-newdebnb;
 			m=this.davgsm;
 			Matrix sm;
-			long nv;
+			long nv = 0;
 			for (int mn=0; mn<3; mn++)
 			{
 				for (int mt=0; mt<m.getColumnCount(); mt++)
@@ -549,6 +549,7 @@ public class Cluster {
 							if ((nv>0)&(newnbbin<b)) newnbbin=b;
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
+							System.err.println("Error b=" + b + ", dif="+dif+", nv="+nv);
 							e.printStackTrace();
 						}
 						
