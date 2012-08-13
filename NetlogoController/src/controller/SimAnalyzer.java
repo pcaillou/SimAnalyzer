@@ -83,7 +83,7 @@ public class SimAnalyzer extends JFrame
 	static boolean followcluster=true;
 	static boolean computehistory=true;
 	static boolean doubleclustering=false;
-	static boolean vtquali=true;
+	static boolean vtquali=false;
 	static String name;
 	public static Integer  clusterstep, totalsteps,updatestep;
 	public static  Integer  agcol, timecol, startcol, endcol;
@@ -492,9 +492,9 @@ public class SimAnalyzer extends JFrame
 
 	public synchronized static void waits() throws Exception
 	{
+		Thread t=Thread.currentThread();
 		while (true)
 		{
-			Thread t=Thread.currentThread();
 			synchronized (t)
 			{
 			t.wait(100);
@@ -2139,6 +2139,7 @@ public class SimAnalyzer extends JFrame
 				fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 				fileChooser.setMultiSelectionEnabled(true);
 				fileChooser.setDialogTitle("Choose logs");
+				Thread t=Thread.currentThread();
 				int ret = fileChooser.showOpenDialog(this);
 				File[] targets=fileChooser.getSelectedFiles();
 				if ((ret == JFileChooser.APPROVE_OPTION)&(targets.length>1)) 
@@ -2161,7 +2162,6 @@ public class SimAnalyzer extends JFrame
 				        }
 				        while( (startnetlogo==true)|(startlogs==true))
 				        {
-						Thread t=Thread.currentThread();
 						synchronized (t)
 						{
 						try {

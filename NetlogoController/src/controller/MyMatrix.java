@@ -19,9 +19,13 @@ public class MyMatrix {
 	
 	public static Matrix appendHorizontally(Matrix m1, Matrix m2, boolean m2labels)
 	{
-		Matrix res;
-		Matrix n2 = m1.appendHorizontally(m2);	
+		Matrix res=Vtest.mfactm.zeros(1, 1);
+		Matrix n2 = res;	
+		if (!m2labels)
+		{
+		n2 = m1.appendHorizontally(m2);	
 		res=n2.subMatrix(Ret.NEW, 0, 0, n2.getRowCount()-1, n2.getColumnCount()-1);
+		}
 		if (m2labels)
 		{
 			n2 = m2.appendHorizontally(m1).appendHorizontally(m2);	
@@ -50,9 +54,13 @@ public class MyMatrix {
 	}
 	public static DenseDoubleMatrix2D appendHorizontallyDD(DenseDoubleMatrix2D m1, DenseDoubleMatrix2D m2, boolean m2labels)
 	{
-		DenseDoubleMatrix2D res;
-		DenseDoubleMatrix2D n2 = (DenseDoubleMatrix2D) m1.appendHorizontally(m2);	
+		DenseDoubleMatrix2D res=Vtest.mfact.zeros(1, 1);
+		DenseDoubleMatrix2D n2 = res;	
+		if (!m2labels)
+		{
+		n2 = (DenseDoubleMatrix2D) m1.appendHorizontally(m2);	
 		res=(DenseDoubleMatrix2D) n2.subMatrix(Ret.NEW, 0, 0, n2.getRowCount()-1, n2.getColumnCount()-1);
+		}
 		if (m2labels)
 		{
 			n2 = (DenseDoubleMatrix2D) m2.appendHorizontally(m1).appendHorizontally(m2);	
