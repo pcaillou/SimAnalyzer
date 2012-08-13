@@ -2139,7 +2139,7 @@ public class SimAnalyzer extends JFrame
 				fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 				fileChooser.setMultiSelectionEnabled(true);
 				fileChooser.setDialogTitle("Choose logs");
-				Thread t=Thread.currentThread(); 
+				Thread t=Thread.currentThread();
 				int ret = fileChooser.showOpenDialog(this);
 				File[] targets=fileChooser.getSelectedFiles();
 				if ((ret == JFileChooser.APPROVE_OPTION)&(targets.length>1)) 
