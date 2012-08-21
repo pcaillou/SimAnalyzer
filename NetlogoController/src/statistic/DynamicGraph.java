@@ -482,9 +482,11 @@ public class DynamicGraph{
 	{
 		for (Edge e : node1.getEachLeavingEdge())
 		{
+			
 			if (e.getOpposite(node1).equals(node2) 
-			&& (isInInterval(timeStart,getTimeCreation(e),getTimeDelete(e))
-			||  isInInterval(timeEnd  ,getTimeCreation(e),getTimeDelete(e)))
+			&& (isInInterval(getTimeCreation(e),timeStart,timeEnd)
+			||  isInInterval(getTimeDelete(e),timeStart,timeEnd)
+			||  isInInterval(timeStart,getTimeCreation(e),getTimeDelete(e)))
 			)
 			{
 				return true;
@@ -610,8 +612,8 @@ public class DynamicGraph{
 	public Edge addEdge(String source, String target, int poids, long timeAdd, long timeDel)
 	{
 		/* on cree le noeuds arrivee et source s'il n'existent pas */
-		Node nsource = graph.getNode(source),
-			 ntarget = graph.getNode(target);
+		Node nsource = getNode(source),
+			 ntarget = getNode(target);
 		if (nsource == null)
 		{
 			nsource = addNode(source);
@@ -625,6 +627,7 @@ public class DynamicGraph{
 		if (edgesExists(nsource, ntarget,timeAdd,timeDel))
 		{ 
 			System.err.println("Error : " + source + "->"+ target + " on the interval " +timeAdd + "-" + timeDel + " already contains edges");
+			//System.exit(-1);
 			return null;
 		}
 		
@@ -670,48 +673,51 @@ public class DynamicGraph{
 		}
 		
 		/* on supprime ou decale les autres arcs */
-		if (edgesExists(nsource,ntarget,timeAdd,timeAdd))
+		if (edgesExists(nsource,ntarget,timeAdd,timeDel))
 		{
+			//System.out.println("arc " + source + "-" + target + " sur " + timeAdd + "->" + timeDel + " : ARG");
 			boolean restartCheck;
 			do
 			{
 				restartCheck = false; /* un restart est necessaire en cas de suppression d'arc */
 				for (Edge e : nsource.getEachLeavingEdge())
 				{
-					
-					if (e.getOpposite(nsource).equals(ntarget) && getTimeDelete(e) >= timeAdd && getTimeCreation(e) <= timeDel)
+					//System.out.print("  arc " + source + "-" + e.getOpposite(nsource).toString() + " sur " + getTimeCreation(e) + "->" + getTimeDelete(e) + " : ");
+					if (e.getOpposite(nsource).equals(ntarget) 
+					&& (isInInterval(getTimeCreation(e),timeAdd,timeDel) 
+					|| isInInterval(getTimeDelete(e),timeAdd,timeDel))
+					|| isInInterval(timeAdd,getTimeCreation(e),getTimeDelete(e))
+					)
 					{
-						if (getTimeDelete(e) <= timeDel)
+						if (getTimeCreation(e) < timeAdd)
 						{
-							if (getTimeCreation(e) >= timeAdd)
-							{
-								removeEdge(e);
-								restartCheck = true;
-								break;
-							}
-							else
-							{
-								setTimeCreation(e,Math.min(timeAdd-1,getTimeCreation(e)));
-								setTimeDelete(e,timeAdd-1);
-							}
+							setTimeDelete(e,timeAdd-1);
+							//System.out.println("timeDelete reduced to " + (timeAdd-1));
+						}
+						else if (getTimeDelete(e) > timeDel)
+						{
+							setTimeCreation(e,timeDel+1);
+							//System.out.println("timeAdd increased to " + (timeDel+1));
 						}
 						else
 						{
-							if (getTimeCreation(e) >= timeAdd)
-							{
-								setTimeDelete(e,Math.max(timeDel-1,getTimeDelete(e)));
-								setTimeCreation(e,timeDel+1);
-							}
-							else
-							{
-								setTimeCreation(e,Math.min(timeAdd-1,getTimeCreation(e)));
-								setTimeDelete(e,timeAdd-1);
-							}
+							removeEdge(e);
+							//System.out.println("deleted");
+							restartCheck = true;
+							break;
 						}
+					}
+					else
+					{
+						//System.out.println("ignored");
 					}
 				}
 			}
 			while (restartCheck);
+		}
+		else
+		{
+			//System.out.println("arc " + source + "-" + target + " sur " + timeAdd + "->" + timeDel + " : OK");
 		}
 		
 		return addEdge(source, target, poids, timeAdd, timeDel);

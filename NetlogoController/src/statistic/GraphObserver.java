@@ -17,7 +17,7 @@ public class GraphObserver extends StatisticalObserver  {
 	long step = 1;
 	
 	public static String[] ParamNames={"ListenTo","ObservedBy","GraphColumnName","Display [0/1]","Directed [0/1]","time [opt]","weightEdgeDefault [opt]","timeCreationEdgeDefault [opt]","timeDeleteEdgeDefault [opt] (MAX = Long.MAX_VALUE)","","","","","","","","","","",""};
-	public static String[] DefaultValues={"0","1","3","1","1","","","","","","","","","","","","","",""};
+	public static String[] DefaultValues={"0","1","3","1","1","","","","max","","","","","","","","","",""};
 	
 	/* temporaire le temps d'avoir les vrai constantes de label graph */
 	private String LABEL_GRAPH = "";
@@ -29,7 +29,7 @@ public class GraphObserver extends StatisticalObserver  {
 	
 	private DynamicGraph graph = new DynamicGraph("GraphObserver");
 	
-	public static final boolean detailledTimeComputation = false;
+	public static final boolean detailledTimeComputation = true;
 	
 	/**
 	 * Fonction ne servant qu'a mettre en pause le programme
@@ -177,7 +177,6 @@ public class GraphObserver extends StatisticalObserver  {
 			{
 				graph.addNode(data.getAsString(i,idColumn));
 			}
-			System.out.println("je suis a data.getAsString(" + i + "," + data.getColumnLabel(graphColumn) + ")");
 			graph.loadFromString(data.getAsString(i,graphColumn), WEIGHT_DEFAULT, minTime, maxTime, true);
 		}
 		
