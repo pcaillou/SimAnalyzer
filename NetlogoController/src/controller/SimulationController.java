@@ -697,6 +697,8 @@ public abstract class SimulationController {
 						}
 						clusterltarray2.add(col.getClusterlist());*/
 					}
+					duration = System.nanoTime() - duration;
+					System.out.println("s-1 " + " realise en " + duration/1000000 + "ms");
 					dio.observe(agentType);
 					lasto.observe(agentType);
 					for(int i=0;i<=(tick-tick%ticksBetweenClustering)/ticksBetweenClustering;i++)
@@ -713,6 +715,8 @@ public abstract class SimulationController {
 						clusterltarray2.add(col.getClusterlist());
 						go.removeListener(col);
 					}
+					duration = System.nanoTime() - duration;
+					System.out.println("s0 " + " realise en " + duration/1000000 + "ms");
 					
 					Matrix mg = go.getGlobalMatrix(); 
 					if(tick == 0){
@@ -737,6 +741,8 @@ public abstract class SimulationController {
 						DataNew=DataNew.appendHorizontally(ticm);
 //						DataMatrix = DataMatrix.appendVertically(DataNew);
 					}
+					duration = System.nanoTime() - duration;
+					System.out.println("s1 " + " realise en " + duration/1000000 + "ms");
 					MatrixList.add(mg);
 					if(x==0)
 					{
@@ -750,6 +756,8 @@ public abstract class SimulationController {
 						DataMatrix.showGUI();
 						concatenatedDataHistory.showGUI();
 					}
+					duration = System.nanoTime() - duration;
+					System.out.println("s2 " + " realise en " + duration/1000000 + "ms");
 					
 					if(tick >=0 && tick % ticksBetweenClustering == 0){						  
 					double[][] vtest = new double[clt.size()][(int) mg.getColumnCount()];
