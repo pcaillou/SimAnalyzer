@@ -33,7 +33,7 @@ public class ClustererObserver extends Observer {
 
 	 List<Cluster> clusterlt;
 	 Clusterer c = null;
-	 boolean CLUSTER_BUILT = false;
+	  boolean CLUSTER_BUILT = false;
 	 ClusteringReporter reporter = new ClusteringReporter(this);
 	public ClustererObserver(){
 		addReporter(reporter);

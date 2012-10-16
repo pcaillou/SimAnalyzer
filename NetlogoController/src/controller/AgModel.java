@@ -39,6 +39,7 @@ import java.util.regex.Pattern;
 import org.ujmp.core.Matrix;
 //AD import org.ujmp.core.MatrixFactory;
 import org.ujmp.core.calculation.Calculation.Ret;
+import org.ujmp.core.exceptions.MatrixException;
 //AD import org.ujmp.core.exceptions.MatrixException;
 
 //AD import controller.SimAnalyzer.OpenProject;
@@ -82,6 +83,7 @@ public class AgModel
 		scorevardef=new double[(int)mbase.getRowCount()];
 		scorestabdesc=0;
 		scorestabpop=0;
+		long nbcol=Math.min(clustinit.vtestsm.getColumnCount(), clustinit.vtestsmdef.getColumnCount());
 		for (int i=0; i<3; i++)
 		{
 			scorevar[i]=0;
@@ -128,9 +130,14 @@ public class AgModel
 		for (int i=3; i<mbase.getRowCount();i++)
 		{
 			scorestabdet[i]=0;
-			for (int j=0; j<mbase.getColumnCount();j++)
+			for (int j=0; j<nbcol;j++)
 			{
-				scorestabdet[i]+=Math.abs(clustinit.vtestsm.getAsDouble(i,j)-clustinit.vtestsm.getAsDouble(i,clustinit.idtickinit))/Math.max(Math.abs(clustinit.vtestsm.getAsDouble(i,j)),Math.abs(clustinit.vtestsm.getAsDouble(i,clustinit.idtickinit)))/mbase.getColumnCount();
+				try {
+					scorestabdet[i]+=Math.abs(clustinit.vtestsm.getAsDouble(i,j)-clustinit.vtestsm.getAsDouble(i,clustinit.idtickinit))/Math.max(Math.abs(clustinit.vtestsm.getAsDouble(i,j)),Math.abs(clustinit.vtestsm.getAsDouble(i,clustinit.idtickinit)))/nbcol;
+				} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+					// TODO Auto-generated catch block
+					System.out.println("IOB "+i+"/"+j);
+				}
 			}
 			scorestabdet[i]=1-scorestabdet[i];
 			if (!Double.isNaN(scorestabdet[i]))

@@ -83,6 +83,65 @@ public class Cluster {
 	public long tickinit;
 	public int nbotherxp;
 	
+	public Cluster clone()
+	{
+		Cluster res=new Cluster();
+
+		res.componentIds=(HashSet<Long>) componentIds.clone();
+		res.variableDistributions =(HashMap<String, VariableDistribution>) variableDistributions.clone();
+		res.id = id;
+		res.vtests=vtests.clone();
+		res.avg=avg.clone();
+		res.stderr=stderr.clone();
+		res.vtestsm=(DenseDoubleMatrix2D) vtestsm.clone();
+		res.avgsm=(DenseDoubleMatrix2D) avgsm.clone();
+		res.stderrsm=(DenseDoubleMatrix2D) stderrsm.clone();
+		res.vtestsmdef=(DenseDoubleMatrix2D) vtestsmdef.clone();
+		res.avgsmdef=(DenseDoubleMatrix2D) avgsmdef.clone();
+		res.stderrsmdef=(DenseDoubleMatrix2D) stderrsmdef.clone();
+		res.avglobsm=(DenseDoubleMatrix2D) avglobsm.clone();
+		res.stdglobsm=(DenseDoubleMatrix2D) stdglobsm.clone();
+		res.comdistribparams=(DenseDoubleMatrix2D) comdistribparams.clone();
+		res.distribparams=(DenseDoubleMatrix2D) distribparams.clone();
+		res.globDistrib=(ArrayList<HashMap<String, Integer>>) globDistrib.clone();
+		res.popDistrib=(ArrayList<HashMap<String, Integer>>) popDistrib.clone();
+		res.defDistrib=(ArrayList<HashMap<String, Integer>>) defDistrib.clone();
+//		public DenseDoubleMatrix2D globDistribN;
+//		public DenseDoubleMatrix2D popDistribN;
+//		public DenseDoubleMatrix2D defDistribN;
+		res.davgsm=davgsm.clone();
+		res.davglobsm=davglobsm.clone();
+		res.davgsmdef=davgsmdef.clone();
+		res.hdavgsm=(ArrayList<Matrix>) hdavgsm.clone();
+		res.hdavglobsm=(ArrayList<Matrix>) hdavglobsm.clone();
+		res.hdavgsmdef=(ArrayList<Matrix>) hdavgsmdef.clone();
+		res.hdistribparams=(ArrayList<Matrix>) hdistribparams.clone();
+//		res.qvtests=qvtests.clone();
+//		res.qvtestsshort=qvtestsshort.clone();
+		res.hname=(ArrayList<String>) hname.clone();
+//		res.qvtestsm=qvtestsm.clone();
+		res.hvtestsm=(ArrayList<Matrix>) hvtestsm.clone();
+//		res.qavgsm=qavgsm.clone();
+		res.havgsm=(ArrayList<Matrix>) havgsm.clone();
+//		res.qstderrsm=qstderrsm.clone();
+		res.hstderrsm=(ArrayList<Matrix>) hstderrsm.clone();
+//		res.qvtestsmdef=qvtestsm.clone();
+//		res.qavgsmdef=qavgsmdef.clone();
+//		res.qstderrsmdef=qstderrsmdef.clone();
+//		res.qavglobsm=qavglobsm.clone();
+		res.havglobsm=(ArrayList<Matrix>) havglobsm.clone();
+//		res.qstdglobsm=qstdglobsm.clone();
+		res.hstdglobsm=(ArrayList<Matrix>) hstdglobsm.clone();
+		res.ticklist = ticklist.subList(0, ticklist.size()-1);
+		res.agm=agm;
+		res.idtickinit=idtickinit;
+		res.tickinit=tickinit;
+		res.nbotherxp=nbotherxp;
+		
+		
+		return res;
+	}
+	
 	private List<List<Object>>getSortListByCommonComponents(List<Cluster> clusters){
 		ArrayList<Object> sortClusters = new ArrayList<Object>();
 		ArrayList<Object> commonComponents = new ArrayList<Object>();

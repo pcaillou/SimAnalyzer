@@ -80,6 +80,7 @@ public class SimAnalyzer extends JFrame
 	static boolean startnetlogo;
 	static boolean startlogs;
 	static boolean restartnetlogo;
+	static boolean restartlog=false;
 	static boolean followcluster=true;
 	static boolean computehistory=true;
 	static boolean doubleclustering=false;
@@ -607,6 +608,60 @@ public class SimAnalyzer extends JFrame
 		    if (restartnetlogo)
 		    {
 	            try {
+	            	nlsc.reRunBoucle(params);	
+	            	
+		        } catch (Exception e) {
+		        	e.printStackTrace();
+		        }	   
+		        restartnetlogo=false;
+		    	
+		    }
+		    if (restartlog)
+		    {
+		    	int minClustersNumber = 1;
+				int maxClustersNumber = 10;
+				int maxIterations = 200;
+//				WekaClusterer clusterer = new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+//						, "-L", ""+minClustersNumber, "-H", ""+maxClustersNumber, "-I", ""+maxIterations );
+	       	  
+				for(int i=0;i<=totalsteps;i++)
+	       	    {
+		    		if (SimAnalyzer.clustererType==0)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==1)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.SimpleKMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==2)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.DBScan, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+		    		if (SimAnalyzer.clustererType==3)
+		    		{
+			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
+								, SimAnalyzer.clustererParameters.clone()));
+		    		}
+	       	    }
+				params = LogsSimulationController.getDefaultParams();
+		        params[LogsSimulationController.CLUSTERER_INDEX]=wcl;
+		        params[LogsSimulationController.AGENT_TYPE_INDEX]="Turtles";
+		        params[LogsSimulationController.MAX_TICKS_INDEX]=totalsteps;
+		        params[LogsSimulationController.TICKS_BETWEEN_CLUSTERING_INDEX]=clusterstep;
+				params[LogsSimulationController.MODEL_FILE_NAME_INDEX]=name;
+				params[LogsSimulationController.SETUP_PROCEDURE_INDEX]="Setup";
+				params[LogsSimulationController.UPDATE_PROCEDURE_INDEX]="update";
+				params[LogsSimulationController.VARIANCE_REFRESH_INDEX]=20;
+				params[LogsSimulationController.IDCOL_INDEX]=agcol;
+				params[LogsSimulationController.TIMECOL_INDEX]=timecol;
+				params[LogsSimulationController.STARTCLUSTCOL_INDEX]=startcol;
+				params[LogsSimulationController.ENDCLUSTCOL_INDEX]=endcol;
+		        nlsc = new LogsSimulationController();
+		        try {
 	            	nlsc.reRunBoucle(params);	
 	            	
 		        } catch (Exception e) {

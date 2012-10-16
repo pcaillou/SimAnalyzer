@@ -125,6 +125,9 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 	JButton jbexportnum;
 	JButton jbsaveto;
 	JButton jbcomparewith;
+	JButton jbApplyInLog=new JButton("Apply in log and compare");
+	JButton jbApplyInNewSim=new JButton("Apply in new sim and compare");
+	JButton jbInitialCondInNewSim=new JButton("Same initial config and compare");
 	GridBagConstraints gbc=new GridBagConstraints();
 	GridBagLayout gb=new GridBagLayout();
 	ButtonGroup group = new ButtonGroup();
@@ -1293,6 +1296,24 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 			jps.add(jbcomparewith,gbcs);
 			ny++;
 
+			jbApplyInLog.addActionListener(this);
+			jbApplyInLog.setSelected(false);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jbApplyInLog,gbcs);
+			ny++;
+			jbApplyInNewSim.addActionListener(this);
+			jbApplyInNewSim.setSelected(false);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jbApplyInNewSim,gbcs);
+			ny++;
+			jbInitialCondInNewSim.addActionListener(this);
+			jbInitialCondInNewSim.setSelected(false);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jbInitialCondInNewSim,gbcs);
+			ny++;
 			
 			//PLOT
 			
@@ -2392,6 +2413,92 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 										
 					
 					clbase.hname.add(clbase.nbotherxp-1,filename);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+			majcalc();
+			majaff();
+			
+		}
+		if (src==this.jbApplyInLog)
+		{
+			JFileChooser fileChooser = new JFileChooser("savedlogs/");
+			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			fileChooser.setDialogTitle("Choose saved results");
+			int ret = fileChooser.showOpenDialog(this);
+			if (ret == JFileChooser.APPROVE_OPTION) {
+				System.out.println(fileChooser.getSelectedFile().getName());
+				System.out.println(fileChooser.getSelectedFile().getAbsolutePath());
+				String filename = fileChooser.getName(fileChooser.getSelectedFile());
+				String pathname = fileChooser.getSelectedFile().getAbsolutePath();
+				try {
+					Matrix nomc;
+					String nomf = new String(pathname+"/colnoms.csv");
+			//		Matrix nm=clbase.avglobsm.clone();
+					nomc=MatrixFactory.importFromFile(nomf);
+
+					
+					nomf = new String(pathname+"/avglobsm.csv");
+			//		Matrix nm=clbase.avglobsm.clone();
+					Matrix nm=MatrixFactory.importFromFile(nomf);
+					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
+					clbase.nbotherxp++;
+					clbase.havglobsm.add(clbase.nbotherxp-1, nm);
+					nomf = new String(pathname+"/vtestsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
+					clbase.hvtestsm.add(clbase.nbotherxp-1, nm);
+					nomf = new String(pathname+"/avgsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
+					clbase.havgsm.add(clbase.nbotherxp-1, nm);
+					nomf = new String(pathname+"/stderrsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
+					clbase.hstderrsm.add(clbase.nbotherxp-1, nm);
+					nomf = new String(pathname+"/stdglobsm.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
+					clbase.hstdglobsm.add(clbase.nbotherxp-1, nm);
+
+					nomf = new String(pathname+"/distribparam.csv");
+					nm=MatrixFactory.importFromFile(nomf);
+					nm=clbase.reorder(nm,nomc,clbase.distribparams,false,null);
+					clbase.hdistribparams.add(clbase.nbotherxp-1, nm);
+					Matrix nd=nm;
+					nomf = new String(pathname+"/davgsm.ser");
+					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+					nm=clbase.reorder(nm,nomc,clbase.davgsm,false,null);
+//					nm.showGUI();
+					clbase.rebin(nm,clbase.davgsm,nd,clbase.distribparams);
+					clbase.hdavgsm.add(clbase.nbotherxp-1, nm);
+					nomf = new String(pathname+"/davglobsm.ser");
+					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+					nm=clbase.reorder(nm,nomc,clbase.davglobsm,false,null);
+					clbase.rebin(nm,clbase.davglobsm,nd,clbase.distribparams);
+					clbase.hdavglobsm.add(clbase.nbotherxp-1, nm);
+					nomf = new String(pathname+"/davgsmdef.ser");
+					nm=MatrixFactory.importFromFile(FileFormat.SER,nomf);
+					nm=clbase.reorder(nm,nomc,clbase.davgsmdef,false,null);
+					clbase.rebin(nm,clbase.davgsmdef,nd,clbase.distribparams);
+					clbase.hdavgsmdef.add(clbase.nbotherxp-1, nm);
+										
+					
+					clbase.hname.add(clbase.nbotherxp-1,filename);
+
+					SimulationController.glovvarrerun="";
+					SimulationController.globvarmin=-1;
+					SimulationController.globvarmax=-1;
+					SimulationController.globvarstep=-1;
+					SimulationController.nbsteprerun=1;
+//					SimulationController.ResMat.setAsDouble(SimulationController.globvarcurrent, 0,0);
+//			    	SimulationController.ResMat.setRowLabel(0, lgname.getText());
+			    	SimulationController.ResMat.setRowLabel(2, "size");
+			    	SimAnalyzer.restartlog=true;									
+				
+				
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}

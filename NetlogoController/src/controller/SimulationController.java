@@ -26,6 +26,7 @@ import org.nlogo.api.CompilerException;
 import org.ujmp.core.Matrix;
 import org.ujmp.core.MatrixFactory;
 import org.ujmp.core.calculation.Calculation.Ret;
+import org.ujmp.core.enums.FileFormat;
 
 import clustering.Cluster;
 import clustering.Clusterer;
@@ -210,6 +211,9 @@ public abstract class SimulationController {
 		ClustererObserver observedco=this.currentco;
 		Cluster observedcl=this.clusterTarget;
 		
+		Cluster clclone=observedcl.clone();
+		observedcl.ticklist.clear();
+		
 		List<Clusterer>  wclloc = (List<Clusterer>)getParameter(CLUSTERER_INDEX, params);
 		List<Observer> obs=new ArrayList<Observer>();
 		
@@ -345,7 +349,7 @@ public abstract class SimulationController {
 							tf = true;
 						inputN = i;
 						ClustererObserver col = new ClustererObserver(wcl.get(i),si);
-						if ((nt==steptarget)&(typeReRun==0))
+						if ((nt==steptarget)&(typeReRun==0)&(nt==i))
 						{
 							col = new ClustererObserver(clustererTarget,si);		
 							observedco=col;
@@ -358,7 +362,8 @@ public abstract class SimulationController {
 					}
 					dio.observe(agentType);
 					lasto.observe(agentType);
-					for(int i=0;i<=tick/ticksBetweenClustering;i++)
+					
+/*					for(int i=0;i<=tick/ticksBetweenClustering;i++)
 					{
 						ClustererObserver col=(ClustererObserver)(obslist.get(i));
 						if(i==0)
@@ -373,7 +378,7 @@ public abstract class SimulationController {
 						clusterltarray2.add(col.getClusterlist());
 						go.removeListener(col);
 					}
-					
+	*/				
 					if(tick == 0){
 						Matrix data = Sensor.readDataFromSimulation(agentType);
 						Matrix ticm=MatrixFactory.fill(new Double(tick), data.getRowCount(),1);
@@ -487,7 +492,9 @@ public abstract class SimulationController {
 				int noma=MatrixList.size();
 				for(int tick=maxTicks; tick>=0; tick--){
 					currenttick=tick;
-					if(tick >=0 && tick % ticksBetweenClustering == 0){
+					if(tick >=0 && tick % ticksBetweenClustering == 0)
+					if (tick!=steptarget)
+					{
 						noma--;
 						subm=MatrixList.get(noma);
 						System.out.println("Compute Hist..."+(tick / ticksBetweenClustering));
@@ -503,7 +510,6 @@ public abstract class SimulationController {
 		}
 			
 			
-			
 			/*        ClusterEval ctel = new ClusterEval(clusterltarray,clusterltarray2, ticklist, MatrixList, vtestlist, cltmg); 
 			WindowListener l = new WindowAdapter()
 			{
@@ -516,6 +522,80 @@ public abstract class SimulationController {
 		    ctel.pack() ;
 			ctel.setVisible(true);*/
 
+			Cluster clbase=clclone;
+			
+			Matrix nomc=Vtest.mfactm.zeros(clbase.avglobsm.getRowCount(), 1);
+			for (long n=0;n<nomc.getRowCount();n++)
+			{
+				nomc.setAsString(clbase.avglobsm.getRowLabel(n), n,0);
+			}
+
+			
+			
+			Matrix nm=observedcl.avglobsm;
+			nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));			
+			clbase.nbotherxp++;
+			clbase.havglobsm.add(clbase.nbotherxp-1, nm);
+			nm=observedcl.vtestsm;
+			nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
+			clbase.hvtestsm.add(clbase.nbotherxp-1, nm);
+			nm=observedcl.avgsm;
+			nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
+			clbase.havgsm.add(clbase.nbotherxp-1, nm);
+			nm=observedcl.stderrsm;
+			nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
+			clbase.hstderrsm.add(clbase.nbotherxp-1, nm);
+			nm=observedcl.stdglobsm;
+			nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
+			clbase.hstdglobsm.add(clbase.nbotherxp-1, nm);
+
+			nm=observedcl.distribparams;
+			nm=clbase.reorder(nm,nomc,clbase.distribparams,false,null);
+			clbase.hdistribparams.add(clbase.nbotherxp-1, nm);
+			Matrix nd=nm;
+			nm=observedcl.davgsm;
+			nm=clbase.reorder(nm,nomc,clbase.davgsm,false,null);
+//			nm.showGUI();
+			clbase.rebin(nm,clbase.davgsm,nd,clbase.distribparams);
+			clbase.hdavgsm.add(clbase.nbotherxp-1, nm);
+			nm=observedcl.davglobsm;
+			nm=clbase.reorder(nm,nomc,clbase.davglobsm,false,null);
+			clbase.rebin(nm,clbase.davglobsm,nd,clbase.distribparams);
+			clbase.hdavglobsm.add(clbase.nbotherxp-1, nm);
+			nm=observedcl.davgsmdef;
+			nm=clbase.reorder(nm,nomc,clbase.davgsmdef,false,null);
+			clbase.rebin(nm,clbase.davgsmdef,nd,clbase.distribparams);
+			clbase.hdavgsmdef.add(clbase.nbotherxp-1, nm);
+											
+			clbase.hname.add(clbase.nbotherxp-1,"newXP");
+			
+			observedcl=this.clusterTarget;
+
+
+			observedcl.avglobsm=clbase.avglobsm;
+			observedcl.nbotherxp=clbase.nbotherxp;
+			observedcl.havglobsm=clbase.havglobsm;
+			observedcl.vtestsm=clbase.vtestsm;
+			observedcl.hvtestsm=clbase.hvtestsm;
+			observedcl.avgsm=clbase.avgsm;
+			observedcl.havgsm=clbase.havgsm;
+			observedcl.stderrsm=clbase.stderrsm;
+			observedcl.hstderrsm=clbase.hstderrsm;
+			observedcl.stdglobsm=clbase.stdglobsm;
+			observedcl.hstdglobsm=clbase.hstdglobsm;
+			observedcl.distribparams=clbase.distribparams;
+			observedcl.hdistribparams=clbase.hdistribparams;
+			observedcl.davgsm=clbase.davgsm;
+			observedcl.hdavgsm=clbase.hdavgsm;
+			observedcl.davglobsm=clbase.davglobsm;
+			observedcl.hdavglobsm=clbase.hdavglobsm;
+			observedcl.davgsmdef=clbase.davgsmdef;
+			observedcl.hdavgsmdef=clbase.hdavgsmdef;
+			observedcl.hname=clbase.hname;
+											
+			clbase.avglobsm.showGUI();
+			clbase.havglobsm.get(0).showGUI();
+			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
