@@ -705,7 +705,7 @@ public abstract class SimulationController {
 						if(i==0)
 						tf = true;
 						inputN = i;
-						if(i==tick/ticksBetweenClustering)
+						if((double)i==(double)tick/(double)ticksBetweenClustering)
 						{
 							clusterltarray.add(col.getClusterlist());
 							clt = col.getClusterlist();
@@ -807,10 +807,10 @@ public abstract class SimulationController {
 				int noma=MatrixList.size();
 				for(int tick=maxTicks; tick>=0; tick--){
 					currenttick=tick;
-					if(tick >=0 && tick % ticksBetweenClustering == 0){
+					if(tick >=0 && tick % SimAnalyzer.updatestep == 0){
 						noma--;
 						subm=MatrixList.get(noma);
-						System.out.println("Compute Hist..."+(tick / ticksBetweenClustering));
+						System.out.println("Compute Hist..."+(tick / SimAnalyzer.updatestep));
 						for(int i=0;i<=maxTicks/ticksBetweenClustering;i++)
 						{
 							ClustererObserver col = new ClustererObserver(wcl.get(i),si);

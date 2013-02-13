@@ -4,6 +4,7 @@ package simtools.simanalyzer.controller;
 //AD import clustering.Cluster;
 import simtools.simanalyzer.clustering.Cluster;
 import simtools.simanalyzer.clustering.Clusterer;
+import simtools.simanalyzer.clustering.VarClusterer;
 import simtools.simanalyzer.clustering.WekaClusterer;
 import simtools.simanalyzer.logs.*;
 import simtools.simanalyzer.netlogo.NetLogoInterface;
@@ -104,8 +105,9 @@ public class SimAnalyzer extends JFrame
 	static JMenu menus=new JMenu("Save Data");
 	JMenuItem mist=new JMenuItem("Save to Database");
 	static String prname;
+	static String obsname="";
 	static File myDataFile = null;
-	static List<WekaClusterer> wcl = new ArrayList<WekaClusterer>();
+	static List<Clusterer> wcl = new ArrayList<Clusterer>();
 	JButton jbcreateproject,jbloadproject,jbloadresults;
 	public static int tabidintro=0;
 	public static int tabidproject=1;	
@@ -228,6 +230,13 @@ public class SimAnalyzer extends JFrame
 		c=ExtAgentParamObserver.class;
 		pn=ExtAgentParamObserver.ParamNames;		
 		pnd=ExtAgentParamObserver.DefaultValues;		
+		ObsPossibleTypeList.add(c.getName());		
+		obsParamNames.put(c.getName(), pn);
+		obsParamDefaultValues.put(c.getName(), pnd);
+		
+		c=FilterObserver.class;
+		pn=FilterObserver.ParamNames;		
+		pnd=FilterObserver.DefaultValues;		
 		ObsPossibleTypeList.add(c.getName());		
 		obsParamNames.put(c.getName(), pn);
 		obsParamDefaultValues.put(c.getName(), pnd);
@@ -493,6 +502,10 @@ public class SimAnalyzer extends JFrame
 		}
 		if (SimAnalyzer.clustererType==3)
 		{
+			 cl=new VarClusterer(SimAnalyzer.clustererParameters.clone() );
+		}
+		if (SimAnalyzer.clustererType==4)
+		{
 			 cl=new WekaClusterer(WekaClusterer.WekaClustererType.MakeDensityBasedClusterer, false
 					, SimAnalyzer.clustererParameters.clone() );
 		}
@@ -536,8 +549,7 @@ public class SimAnalyzer extends JFrame
 		    		}
 		    		if (SimAnalyzer.clustererType==3)
 		    		{
-			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
-								, SimAnalyzer.clustererParameters.clone()));
+			        	wcl.add(i, new VarClusterer( SimAnalyzer.clustererParameters.clone()));
 		    		}
 	       	    }
 				params = NetLogoSimulationController.getDefaultParams();
@@ -652,8 +664,7 @@ public class SimAnalyzer extends JFrame
 		    		}
 		    		if (SimAnalyzer.clustererType==3)
 		    		{
-			        	wcl.add(i, new WekaClusterer(WekaClusterer.WekaClustererType.XMeans, false
-								, SimAnalyzer.clustererParameters.clone()));
+			        	wcl.add(i, new VarClusterer( SimAnalyzer.clustererParameters.clone()));
 		    		}
 	       	    }
 				params = LogsSimulationController.getDefaultParams();
@@ -852,6 +863,9 @@ public class SimAnalyzer extends JFrame
 					for (int i=0; i<nm.getRowCount(); i++)
 						for (int j=0; j<nm.getColumnCount(); j++)
 							clbase.avglobsm.setAsDouble(nm.getAsDouble(i,j), i,j);
+						for (int j=0; j<nm.getColumnCount(); j++)
+							if (nm.getAsDouble(1,j)>0) clbase.idtickinit=j;
+//							clbase.avglobsm.setAsDouble(nm.getAsDouble(i,j), i,j);
 					for (int i=0; i<nm.getRowCount(); i++)
 						clbase.avglobsm.setRowLabel(i, nomc.getAsString(i,0));
 					nomf = new String(pathname+"/vtestsm.csv");
@@ -1590,16 +1604,17 @@ public class SimAnalyzer extends JFrame
 	{
 		private static final long serialVersionUID = 1L;
 		int nbobsmax=SimAnalyzer.nbObserverMax;
-		String nomproj;
 		JLabel[] l;//, l0,lt,  l1, l2,l2b, l3, l4, l5,  l6,  l7,l8,l9,l10;
 //		JTextField[] ltf; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
 		JButton[] jbparams; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
 		JComboBox[] lcombo; //l0t, l01, l02, l02b,l03, l04, l05, l06,  l07,l08,l09,l010;
 		JButton jbtOK, jbtcancel;
 		String[][] params;
+//		String obsname;
+//		String nomproj;
 		public ObserversConfig(int newtype, String nom) 
 		{
-			nomproj=nom;
+//			nomproj=nom;
 			params=new String[nbobsmax][Observer.nbparammax];
 			for (int i=0; i<nbobsmax; i++)
 			{
@@ -1662,7 +1677,7 @@ public class SimAnalyzer extends JFrame
 			this(0,nom);
 			FileReader fr = null;
 			try {
-				fr = new FileReader("projects/"+nomproj+"obs.config");
+				fr = new FileReader("projects/"+obsname+".config");
 			BufferedReader br = new BufferedReader(fr);		  
 			for (int i=0; i<nbobsmax; i++)
 			{
@@ -1689,7 +1704,7 @@ public class SimAnalyzer extends JFrame
 			{
 				FileWriter fw = null;
 				try {
-					fw = new FileWriter("projects/"+nomproj+"obs.config", false);
+					fw = new FileWriter("projects/"+obsname+".config", false);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -1740,7 +1755,7 @@ public class SimAnalyzer extends JFrame
 			{
 				FileWriter fw = null;
 				try {
-					fw = new FileWriter("projects/"+nomproj+"obs.config", false);
+					fw = new FileWriter("projects/"+obsname+".config", false);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -1804,7 +1819,7 @@ public class SimAnalyzer extends JFrame
 			grid.setVgap(15);  
 			panel_1.setLayout(grid);  
 			panel.add(panel_1);  
-			 nblab=14;
+			 nblab=15;
 			l=new JLabel[nblab];
 			ltf=new JTextField[nblab];
 
@@ -1853,7 +1868,7 @@ public class SimAnalyzer extends JFrame
 			jcitems[0]="XMeans";
 			jcitems[1]="SimpleKMeans";
 			jcitems[2]="DBScan";
-			jcitems[3]="Autre2";
+			jcitems[3]="Variable";
 			lcomb=new JComboBox(jcitems);
 			lcomb.addActionListener(this);
 			
@@ -1861,6 +1876,10 @@ public class SimAnalyzer extends JFrame
 		    l[no] = new JLabel("Clusterer parameters: ");  
 			ltf[no] = new JTextField("-L1 -H50 -I100");
 			ltparam=ltf[no];
+		    no++;
+			if (obsname.equals("")) obsname=prname+"obs";
+		    l[no] = new JLabel("ObserverConfigFile name: "); 
+			ltf[no] = new JTextField(obsname);
 			
 			for (int i=0; i<nblab; i++)
 			{
@@ -1883,8 +1902,8 @@ public class SimAnalyzer extends JFrame
 			panel_1.add(jbtOK);   
 			jbtOK.addActionListener(this);
 //			setVisible(true); 
-			 obsconf=new ObserversConfig(prname);
-			ltf[0].setEditable(false);
+			 obsconf=new ObserversConfig(ltf[0].getText());  //prname
+//			ltf[0].setEditable(false);
 //			obsconf.setVisible(false);
 			SimAnalyzer.tabbedpane.removeTabAt(SimAnalyzer.tabidobserver);
 			SimAnalyzer.tabbedpane.insertTab(tabnameobserver, tabicobserver,obsconf,tabttobserver,tabidobserver);
@@ -1901,7 +1920,7 @@ public class SimAnalyzer extends JFrame
 				e1.printStackTrace();
 			}
 			BufferedReader br = new BufferedReader(fr);		  
-			for (int i=1; i<nblab; i++)
+			for (int i=1; i<14; i++)
 			{
 			try {
 				ltf[i].setText(br.readLine());
@@ -1918,6 +1937,14 @@ public class SimAnalyzer extends JFrame
 				ltparam.setText("-L 1 -H 50 -I 100");
 				e.printStackTrace();
 			} 
+			for (int i=14; i<nblab; i++)
+			{
+			try {
+				ltf[i].setText(br.readLine());
+			} catch (IOException e) {
+				e.printStackTrace();
+			} 
+			}
 	    }
 
 		@SuppressWarnings("unused")
@@ -1933,7 +1960,7 @@ public class SimAnalyzer extends JFrame
 				if (lcomb.getSelectedIndex()==2)
 					ltparam.setText("-E 0.13 -M 5");
 				if (lcomb.getSelectedIndex()==3)
-					ltparam.setText("");
+					ltparam.setText("cluster");
 			}
 			if (src.equals(jbtdm))
 			{
@@ -2019,6 +2046,8 @@ public class SimAnalyzer extends JFrame
 			}
 			if (src.equals(jbtdm))
 			{
+				obsname=ltf[14].getText();
+				if (obsname.equals("")) obsname=prname+"obs";				
 				obsconf.setVisible(true);
 
 //				ObserversConfig obsconf=new ObserversConfig(ltf[0].getText());
@@ -2047,12 +2076,18 @@ public class SimAnalyzer extends JFrame
 				}
 				BufferedWriter bw = new BufferedWriter(fw);
 				try {
-					for (int i=1; i<nblab; i++)
+					for (int i=1; i<14; i++)
 					{
 						bw.write(ltf[i].getText());
 						bw.newLine();						
 					}
 					bw.write(""+this.lcomb.getSelectedIndex());
+					bw.newLine();						
+					for (int i=14; i<nblab; i++)
+					{
+						bw.write(ltf[i].getText());
+						bw.newLine();						
+					}
 					bw.newLine();						
 					bw.flush(); 
 					bw.close();
@@ -2065,6 +2100,7 @@ public class SimAnalyzer extends JFrame
 			
 			if (src.equals(jbtsim)|src.equals(jbtsave))
 			{
+//				 nomproj=ltf[0].getText();
 				name = "models/"+ltf[2].getText();
 				int typem=Integer.parseInt(ltf[1].getText());
 		        clusterstep = Integer.parseInt(ltf[3].getText());
@@ -2084,7 +2120,9 @@ public class SimAnalyzer extends JFrame
 		        String delims = "[ ]+";
 		        SimAnalyzer.clustererParametersString=ltf[13].getText();
 		        SimAnalyzer.clustererParameters=SimAnalyzer.clustererParametersString.split(delims);
-		        if (typem==1)
+				obsname=ltf[14].getText();
+				if (obsname.equals("")) obsname=prname+"obs";		
+				if (typem==1)
 		        {
 					startnetlogo=true;
 					startlogs=false;

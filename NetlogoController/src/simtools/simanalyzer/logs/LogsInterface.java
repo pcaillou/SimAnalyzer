@@ -32,6 +32,7 @@ import org.ujmp.core.enums.FileFormat;
 //AD import org.ujmp.core.enums.ValueType;
 import org.ujmp.core.exceptions.MatrixException;
 
+import simtools.simanalyzer.controller.SimAnalyzer;
 import simtools.simanalyzer.observer.SimulationInterface;
 import simtools.simanalyzer.observer.SimulationSensor;
 import simtools.simanalyzer.observer.SimulationUpdater;
@@ -177,7 +178,7 @@ public class LogsInterface extends SimulationInterface{
 	    double min=GlobalMatrix.getAsDouble(0,Timecol);
 	    int k=0;
 	    tickact=min;
-	    steptick=tdeb;
+	    steptick=SimAnalyzer.updatestep;
 	    while(k<GlobalMatrix.getRowCount())
 	        {
 	            if(GlobalMatrix.getAsDouble(k,Timecol)>=min+steptick)

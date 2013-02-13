@@ -16,8 +16,8 @@ import simtools.simanalyzer.observer.SimulationInterface;
 public class GraphObserver extends StatisticalObserver  {
 	long step = 1;
 	
-	public static String[] ParamNames={"ListenTo","ObservedBy","GraphColumnName","Display [0/1]","Directed [0/1]","time [opt]","weightEdgeDefault [opt]","timeCreationEdgeDefault [opt]","timeDeleteEdgeDefault [opt] (MAX = Long.MAX_VALUE)","","","","","","","","","","",""};
-	public static String[] DefaultValues={"0","1","3","1","1","","","","","","","","","","","","","",""};
+	public static String[] ParamNames={"ListenTo","ObservedBy","GraphColumnName","Display [0/1]","Directed [0/1]","time [opt]","weightEdgeDefault [opt]","timeCreationEdgeDefault [opt]","timeDeleteEdgeDefault [opt] (max = Long.MAX_VALUE)","","","","","","","","","","",""};
+	public static String[] DefaultValues={"0","1","","1","1","","","","","","","","","","","","","",""};
 	
 	/* temporaire le temps d'avoir les vrai constantes de label graph */
 	private String LABEL_GRAPH = "";

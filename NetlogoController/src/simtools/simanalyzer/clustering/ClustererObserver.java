@@ -111,12 +111,24 @@ public class ClustererObserver extends Observer {
 					
 				}
 			}
+			else
+			{
+				if (SimAnalyzer.startcol>-1)
+				{
+					if ((i>=SimAnalyzer.startcol)&(i<=SimAnalyzer.endcol))
+					{
+						SimulationController.VClust[(int)i]=true;
+						columns.add(i);						
+					}
+				}
+				
+			}
 		}
 		Matrix input = data.selectColumns(Ret.NEW, columns);
 		input.setLabel("Input");
 		// normalization across the samples cannot hurt
 		// i.e. zero mean and unit variance for each feature
-		input = input.standardize(Ret.NEW, Matrix.ROW);
+//		input = input.standardize(Ret.NEW, Matrix.ROW);
 		input.setLabel("Standardized Input");
 		// looks different?
 		if(simtools.simanalyzer.controller.SimulationController.tf)

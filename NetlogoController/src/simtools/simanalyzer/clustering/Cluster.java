@@ -38,10 +38,14 @@ public class Cluster {
 	public double[] stderr;
 	public DenseDoubleMatrix2D vtestsm;
 	public DenseDoubleMatrix2D avgsm;
+	public DenseDoubleMatrix2D avgsmce;
 	public DenseDoubleMatrix2D stderrsm;
+	public DenseDoubleMatrix2D stderrsmce;
 	public DenseDoubleMatrix2D vtestsmdef;
 	public DenseDoubleMatrix2D avgsmdef;
+	public DenseDoubleMatrix2D avgsmdefce;
 	public DenseDoubleMatrix2D stderrsmdef;
+	public DenseDoubleMatrix2D stderrsmdefce;
 	public DenseDoubleMatrix2D avglobsm;
 	public DenseDoubleMatrix2D stdglobsm;
 	public static DenseDoubleMatrix2D comdistribparams=Vtest.mfact.zeros(1,1);
@@ -66,8 +70,10 @@ public class Cluster {
 	public ArrayList<Matrix> hvtestsm;
 	public Matrix qavgsm;
 	public ArrayList<Matrix> havgsm;
+	public ArrayList<Matrix> havgsmce;
 	public Matrix qstderrsm;
 	public ArrayList<Matrix> hstderrsm;
+	public ArrayList<Matrix> hstderrsmce;
 	public Matrix qvtestsmdef;
 	public Matrix qavgsmdef;
 	public Matrix qstderrsmdef;
@@ -191,8 +197,10 @@ public class Cluster {
 		nbotherxp=0;
 		this.havglobsm=new ArrayList<Matrix>();
 		this.havgsm=new ArrayList<Matrix>();
+		this.havgsmce=new ArrayList<Matrix>();
 		this.hvtestsm=new ArrayList<Matrix>();
 		this.hstderrsm=new ArrayList<Matrix>();
+		this.hstderrsmce=new ArrayList<Matrix>();
 		this.hstdglobsm=new ArrayList<Matrix>();
 		this.hdavgsm=new ArrayList<Matrix>();
 		this.hdavglobsm=new ArrayList<Matrix>();
@@ -227,8 +235,8 @@ public class Cluster {
 			if(!(column == idColumn
 					|| column == classLabelColumn)){
 				String label = data.getColumnLabel(column);
-				VariableDistribution vd = VariableDistributionFactory.buildDistribution(data, column);
-				variableDistributions.put(label, vd);
+//				VariableDistribution vd = VariableDistributionFactory.buildDistribution(data, column);
+//				variableDistributions.put(label, vd);
 			}
 			
 		}

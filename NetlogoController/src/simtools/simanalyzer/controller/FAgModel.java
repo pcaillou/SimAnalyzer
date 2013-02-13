@@ -117,6 +117,7 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 	JCheckBox jcBinOrTimeXAxis;
 	JCheckBox jcLineOrAreaChart;
 	JCheckBox jcLineOrBarChart;
+	JCheckBox jcCenterVar;
 	JSlider jsbin;
 	JSlider jstime;
 	JButton jbexport;
@@ -194,6 +195,11 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 			distavglob= Vtest.mfactm.zeros(mbase.getRowCount(),clbase.nbotherxp+1);
 		    totdistavg= MatrixFactory.sparse(mbase.getRowCount(),clbase.nbotherxp+1);
 			totdistavglob= MatrixFactory.sparse(mbase.getRowCount(),clbase.nbotherxp+1);
+
+			clbase.avgsmce=(DenseDoubleMatrix2D) clbase.avgsm.minus(Ret.NEW, true, clbase.avglobsm).divide(Ret.NEW, true, clbase.stdglobsm);
+//			clbase.avgsmce.showGUI();
+			clbase.stderrsmce=(DenseDoubleMatrix2D) clbase.stderrsm.divide(Ret.NEW, true, clbase.stdglobsm);
+			
 			for(int i=0;i<mbase.getRowCount();i++)
 				isNaN.add(i,true);
 			for(int i=0;i<mbase.getRowCount();i++)
@@ -203,6 +209,14 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 				{
 					comp=clbase.avgsm.clone().transpose();
 					comp=MyMatrix.appendHorizontally(comp, clbase.havgsm.get(xp).transpose(Matrix.LINK));
+					if (this.jcCenterVar.isSelected())
+					{
+//						clbase.avgsmce=(DenseDoubleMatrix2D) clbase.avgsm.minus(Ret.NEW, true, clbase.avglobsm).divide(Ret.NEW, true, clbase.stdglobsm);
+//						clbase.avgsmce.showGUI();
+						comp=clbase.avgsmce.clone().transpose();
+						comp=MyMatrix.appendHorizontally(comp, clbase.havgsmce.get(xp).transpose(Matrix.LINK));
+						
+					}
 					corel=comp.corrcoef(Matrix.NEW, true);
 //					corel.showGUI();
 //					comp.showGUI();
@@ -1201,6 +1215,14 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 			jps.add(jcExtensionOrIntension,gbcs);
 			ny++;
 			
+			jcCenterVar=new JCheckBox("Center and Reduce variables"); 
+			jcCenterVar.addActionListener(this);
+			jcCenterVar.setSelected(false);
+			gbcs.gridx=nx;
+			gbcs.gridy=ny;
+			jps.add(jcCenterVar,gbcs);
+			
+			ny++;
 			jcheckVariance=new JCheckBox("Show Standard Error"); 
 			jcheckVariance.addActionListener(this);
 			jcheckVariance.setSelected(false);
@@ -1868,6 +1890,9 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 			 series[0]="base";
 				for(int j=0;j<mbase.getColumnCount();j++)
 				{
+					
+					if (!this.jcCenterVar.isSelected())
+					{
 					if (this.jcGlobalOrCluster.isSelected())
 						if (this.jcheckVariance.isSelected())
 					result.add(clbase.avgsm.getAsDouble(v1,j),clbase.stderrsm.getAsDouble(v1,j),series[0],new String(""+j));
@@ -1881,6 +1906,23 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 					if (!this.jcGlobalOrCluster.isSelected())
 						if (!this.jcheckVariance.isSelected())
 					result.add(clbase.avglobsm.getAsDouble(v1,j),0,series[0],new String(""+j));
+					}
+					if (this.jcCenterVar.isSelected())
+					{
+						if (this.jcGlobalOrCluster.isSelected())
+							if (this.jcheckVariance.isSelected())
+						result.add(clbase.avgsmce.getAsDouble(v1,j),clbase.stderrsmce.getAsDouble(v1,j),series[0],new String(""+j));
+						if (this.jcGlobalOrCluster.isSelected())
+							if (!this.jcheckVariance.isSelected())
+						result.add(clbase.avgsmce.getAsDouble(v1,j),0,series[0],new String(""+j));
+//						result.add(clbase.avgsmdef.getAsDouble(v1,j),clbase.stderrsmdef.getAsDouble(v1,j),series2,new String(""+j));
+						if (!this.jcGlobalOrCluster.isSelected())
+							if (this.jcheckVariance.isSelected())
+						result.add(clbase.avglobsm.getAsDouble(v1,j),clbase.stdglobsm.getAsDouble(v1,j),series[0],new String(""+j));
+						if (!this.jcGlobalOrCluster.isSelected())
+							if (!this.jcheckVariance.isSelected())
+						result.add(clbase.avglobsm.getAsDouble(v1,j),0,series[0],new String(""+j));
+					}
 					
 				}
 			 if (clbase.nbotherxp>0)
@@ -1889,6 +1931,8 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 					 series[i+1]=clbase.hname.get(i);
 						for(int j=0;j<mbase.getColumnCount();j++)
 						{
+							if (!this.jcCenterVar.isSelected())
+							{
 							if (this.jcGlobalOrCluster.isSelected())
 								if (this.jcheckVariance.isSelected())
 								result.add(clbase.havgsm.get(i).getAsDouble(v1,j),clbase.hstderrsm.get(i).getAsDouble(v1,j),series[i+1],new String(""+j));
@@ -1902,6 +1946,23 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 							if (!this.jcGlobalOrCluster.isSelected())
 								if (!this.jcheckVariance.isSelected())
 								result.add(clbase.havglobsm.get(i).getAsDouble(v1,j),0,series[i+1],new String(""+j));
+							}
+							if (this.jcCenterVar.isSelected())
+							{
+							if (this.jcGlobalOrCluster.isSelected())
+								if (this.jcheckVariance.isSelected())
+								result.add(clbase.havgsmce.get(i).getAsDouble(v1,j),clbase.hstderrsmce.get(i).getAsDouble(v1,j),series[i+1],new String(""+j));
+							if (this.jcGlobalOrCluster.isSelected())
+								if (!this.jcheckVariance.isSelected())
+								result.add(clbase.havgsmce.get(i).getAsDouble(v1,j),0,series[i+1],new String(""+j));
+//								result.add(clbase.avgsmdef.getAsDouble(v1,j),clbase.stderrsmdef.getAsDouble(v1,j),series2,new String(""+j));
+							if (!this.jcGlobalOrCluster.isSelected())
+								if (this.jcheckVariance.isSelected())
+								result.add(clbase.havglobsm.get(i).getAsDouble(v1,j),clbase.hstdglobsm.get(i).getAsDouble(v1,j),series[i+1],new String(""+j));
+							if (!this.jcGlobalOrCluster.isSelected())
+								if (!this.jcheckVariance.isSelected())
+								result.add(clbase.havglobsm.get(i).getAsDouble(v1,j),0,series[i+1],new String(""+j));
+							}
 							
 						}
 					
@@ -2233,6 +2294,13 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 			this.repaint();
 			
 		}
+		if (src==jcCenterVar)
+		{
+			majaff();
+			redrawgraph(false);
+			this.repaint();
+			
+		}
 		if (src==jcExtensionOrIntension)
 		{
 			majaff();
@@ -2342,6 +2410,7 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 			//		Matrix nm=clbase.avglobsm.clone();
 					Matrix nm=MatrixFactory.importFromFile(nomf);
 					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
+					Matrix avglobsm=nm;
 					clbase.nbotherxp++;
 					clbase.havglobsm.add(clbase.nbotherxp-1, nm);
 					nomf = new String(pathname+"/vtestsm.csv");
@@ -2352,15 +2421,26 @@ public class FAgModel extends MyPanel implements ActionListener,ChangeListener
 					nm=MatrixFactory.importFromFile(nomf);
 					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
 					clbase.havgsm.add(clbase.nbotherxp-1, nm);
+					Matrix avgsm=nm;
+					
 					nomf = new String(pathname+"/stderrsm.csv");
 					nm=MatrixFactory.importFromFile(nomf);
 					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
+					Matrix stderrsm=nm;
 					clbase.hstderrsm.add(clbase.nbotherxp-1, nm);
 					nomf = new String(pathname+"/stdglobsm.csv");
 					nm=MatrixFactory.importFromFile(nomf);
 					nm=clbase.reorder(nm,nomc,clbase.avglobsm,true,new Double(0));
+					Matrix stdglobsm=nm;
 					clbase.hstdglobsm.add(clbase.nbotherxp-1, nm);
 
+					Matrix avgsmce=(DenseDoubleMatrix2D) avgsm.minus(Ret.NEW, true, avglobsm).divide(Ret.NEW, true, stdglobsm);
+					clbase.havgsmce.add(clbase.nbotherxp-1, avgsmce);
+//					clbase.avgsmce.showGUI();
+					Matrix stderrsmce=(DenseDoubleMatrix2D) stderrsm.divide(Ret.NEW, true, stdglobsm);
+					clbase.hstderrsmce.add(clbase.nbotherxp-1, avgsmce);
+					
+					
 					nomf = new String(pathname+"/distribparam.csv");
 					nm=MatrixFactory.importFromFile(nomf);
 					nm=clbase.reorder(nm,nomc,clbase.distribparams,false,null);
